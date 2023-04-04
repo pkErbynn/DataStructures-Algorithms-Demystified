@@ -11,24 +11,26 @@ function anagram(str1, str2){
     let frequencyCounterStr2 = {};
 
     for(let value of str1){
-        frequencyCounterStr1[value] ? 
-            frequencyCounterStr1[value] = frequencyCounterStr1[value] + 1 : 
-            frequencyCounterStr1[value] = 1; 
+        frequencyCounterStr1[value] = frequencyCounterStr1[value] ?  frequencyCounterStr1[value] + 1 : 1;
+        // frequencyCounterStr1[value] = frequencyCounterStr1[value] + 1 || 1;
     }
+    
     console.log(frequencyCounterStr1);
 
     for(let value of str2){
-        frequencyCounterStr2[value] ? 
-            frequencyCounterStr2[value] = frequencyCounterStr2[value] + 1 : 
-            frequencyCounterStr2[value] = 1; 
+        frequencyCounterStr2[value] = frequencyCounterStr2[value] ?  frequencyCounterStr2[value] + 1 : 1;
     }
+
     console.log(frequencyCounterStr2);
 
     for(let key in frequencyCounterStr1){
         // if(!(key in frequencyCounterStr2)){
         //     return false;
         // }
-        if(!frequencyCounterStr2.hasOwnProperty(key)){
+        // if(!frequencyCounterStr2.hasOwnProperty(key)){
+        //     return false;
+        // }
+        if(!frequencyCounterStr2[key]){
             return false;
         }
 

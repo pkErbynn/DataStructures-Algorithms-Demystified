@@ -16,7 +16,7 @@ function same(arr1, arr2){
             return false;
         };
         console.log(arr2);
-        arr2.splice(doubledValueIndex, 1);   // remove found value from search list
+        arr2.splice(doubledValueIndex, 1);   // remove found value from search list...filter can be used
     }
     return true;    // inner loop looks for falsy statement while the outer seeks for truthy
 }

@@ -18,8 +18,11 @@ function validAnagram(str1, str2){
         // if(valueIndex < 0){
         //     return false;
         // }
+        // str2.splice(valueIndex, 1);   // remove found value from search list
 
         str2 = str2.replace(value, '');
+
+
         // console.log(str2);
     }
 
@@ -30,10 +33,10 @@ console.log(validAnagram('see', 'ees'));
 console.log(validAnagram('seee', 'eess'));
 console.log(validAnagram('cinema', 'iceman'));
 // console.log(validAnagram('', ''));
-console.log(validAnagram('anagram', 'nagaram'));
-console.log(validAnagram('rat', 'car'));
-console.log(validAnagram('awesome', 'awesom'));
-console.log(validAnagram('qwerty', 'qeywrt'));
+// console.log(validAnagram('anagram', 'nagaram'));
+// console.log(validAnagram('rat', 'car'));
+// console.log(validAnagram('awesome', 'awesom'));
+// console.log(validAnagram('qwerty', 'qeywrt'));
 
 
 // Time Complexity = O(n^2)

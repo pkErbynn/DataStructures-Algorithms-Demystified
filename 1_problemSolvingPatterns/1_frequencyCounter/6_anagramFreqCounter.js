@@ -19,10 +19,12 @@ function anagram(str1, str2){
     for(let letter of str2){
         if(!frequencyCounterStr1[letter]){
             return false;
-        } else{
+        } 
+        else{
             frequencyCounterStr1[letter] -= 1;
         }
     }
+
     console.log(frequencyCounterStr1);
     
     // since there are many checks to fail, I go through the failure checks, if passes then it's true
@@ -40,7 +42,6 @@ console.log(anagram('seee', 'eess'));
 
 
 // Time Complexity = O(n)
-
 
 
 // NB: 
