@@ -8,6 +8,6 @@
     - Process: base on condition
     - Output: pair of element/positions
 - Sliding Window:
-    - Input:
-    - Process:
-    - Output:
+    - Input: an array/string
+    - Process: maintain the window, add and subtract
+    - Output: the maximum or minimum value or a subsequence or substring that satisfies certain constraints
