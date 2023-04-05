@@ -10,5 +10,5 @@ The two-pointer approach is a common technique used in data structure questions 
 and moving in opposite directions or at different speeds until they meet or some other condition is met.
 
 #### scenarios to consider using the two-pointer approach:
-- When you need to "find a pair of elements in an array" that satisfy a certain condition, such as the sum of two elements being equal to a given target value. 
+- When you need to **"find a pair of elements in an array"** that satisfy a certain condition, such as the sum of two elements being equal to a given target value. 
     In this case, you can use two pointers that start at opposite ends of the array or linked list and move towards each other until they find a pair of elements that meet the condition.

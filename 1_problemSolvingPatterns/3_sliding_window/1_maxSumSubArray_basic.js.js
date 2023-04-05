@@ -22,7 +22,7 @@ function maxSubArray2(arr, num){
     let maxSum = 0;
 
     for(let i = 0; i < arr.length; i++){
-        let innerSum = 0;
+        let innerSum = 0;   // window sum
 
         for(let j = i; j < i+num; j++){
             if(j >= arr.length) break;  // checks inner-window's upper bound overstretch over outer-window's upper bound

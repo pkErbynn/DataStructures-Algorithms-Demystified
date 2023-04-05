@@ -9,7 +9,7 @@ function maxSumArray_SlidingWindow(arr, num){
     if(num > arr.length) return null;   // subarray > fullarray
 
     let maxSum = 0;
-    let tempSum = 0;
+    let tempSum = 0;    // as window sum
     
     // calc first loop sum as current max sum
     for(let i=0; i<num; i++){
@@ -24,6 +24,7 @@ function maxSumArray_SlidingWindow(arr, num){
     for(let i=num; i<arr.length; i++){
 
         // add next element, then compute to remove prev element by calc its index, ie (variable ele - constant ele)
+        // eg; [3-3]=[0], [4-3]=[1], [5-3]=[2]
         tempSum = tempSum + arr[i] - arr[i-num];
 
         // once temp sum is computed then we compare with prev maxSum before we to next element in array
