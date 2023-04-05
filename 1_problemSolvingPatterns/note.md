@@ -1,0 +1,13 @@
+### In sum...
+- Frequency Counter:
+    - Input: unsorted array/string
+    - Process: counter, frequency, occurrance
+    - Output: anagram, etc
+- Multiple-Pointer / 2-Pointer:
+    - Input: single sorted array/string
+    - Process: base on condition
+    - Output: pair of element/positions
+- Sliding Window:
+    - Input:
+    - Process:
+    - Output:
