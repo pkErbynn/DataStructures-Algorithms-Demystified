@@ -3,8 +3,6 @@
 // - The algorithm works by selecting a pivot element, partitioning the list around the pivot, and recursively sorting the sublists created by the partitioning.
 
 
-
-
 function pivotHelper(arr, startPivot = 0, end = arr.length){
     let pivotIndexForSwap = startPivot;
 
@@ -38,7 +36,8 @@ function quickSort(arr, start = 0, end = arr.length){
     return arr;
 }
 
-console.log(quickSort([2,1,5,0, -1, 10, -1, -120, 3, 100, -100, 4]));
+console.log("x", quickSort([2,1,5,0, -1, 10, -1, -120, 3, 100, -100, 4]));
+console.log("y", quickSort([3,2,6,-3,0]));
 
 
 
@@ -72,11 +71,13 @@ function quickieSort(arr){
         }
     }
 
-    return [...quickSort(left), pivotEle, ...quickSort(right)];
+    return [...quickieSort(left), pivotEle, ...quickieSort(right)];
 }
 
-let q = quickieSort([3,2,6,-3,0]);
-console.log("q:", q);
+console.log("x2", quickieSort([2,1,5,0, -1, 10, -1, -120, 3, 100, -100, 4]));
+console.log("y2", quickieSort([3,2,6,-3,0]));
+
+
 
 
 //// nb

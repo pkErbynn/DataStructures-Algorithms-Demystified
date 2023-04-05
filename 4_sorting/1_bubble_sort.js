@@ -19,37 +19,12 @@ function bubbleSort(array) {
 console.log("A:",bubbleSort([1,7,2,10,3,4,9,6]))
 
 
-
-
-///////////////////////
-// optimized
-// doesn't loop up to the far rigth end again after being sorted at that right-end wing
-function bubbleSort3(array) {
-    //from right end to left begining
-    for (let index = array.length; index > 0; index--) { 
-        // index2 < index...since the far right gets sorted
-        // bound decrease after each sort iteration..8,7,6...
-        // only used as bound
-        for (let index2 = 0; index2 < index; index2++) {
-        //    console.log(array);
-           if(array[index2] > array[index2+1]){
-            //    console.log(`${array[index2]} > ${array[index2+1]}, swap`);
-               [array[index2], array[index2+1]] = [array[index2+1], array[index2]];
-            }
-        }
-    }
-    return array;
-}
-
-console.log("B:", bubbleSort3([1,7,2,10,3,4,9,6]));
-
-
 //////////// optimization with increasing outer loop ***
 // optimized for nearly sorted data
 // use this impl
 function bubbleSortEffective(array) { // ***
     for (let i = 0; i < array.length; i++) {
-        let isNotSwapped = true;
+        let isSwapped = false;
 
         // j = 0...5, 0...4, 0...3, 0...2, 0...
         // can be up to `array.length - i - 1`
@@ -57,11 +32,11 @@ function bubbleSortEffective(array) { // ***
             // swap adjescent elements
            if(array[j] > array[j+1]){
                [array[j], array[j+1]] = [array[j+1], array[j]]; 
-               isNotSwapped = false; // since swap is made
+               isSwapped = true; // since swap is made
             }
         }
 
-        if(isNotSwapped){
+        if(!isSwapped){
             break;
         }
     }
