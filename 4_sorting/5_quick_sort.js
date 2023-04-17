@@ -2,6 +2,7 @@
 // - popular sorting algorithm that uses a divide-and-conquer approach to sort a list or an array of elements. 
 // - The algorithm works by selecting a pivot element, partitioning the list around the pivot, and recursively sorting the sublists created by the partitioning.
 
+// nb: very important for interviews 
 
 function pivotHelper(arr, startPivot = 0, end = arr.length){
     let pivotIndexForSwap = startPivot;
@@ -80,31 +81,33 @@ console.log("y2", quickieSort([3,2,6,-3,0]));
 
 
 
-//// nb
+/*
+nb
 
-// Worse-case time complexity = O(n^2) ==> ALREADY sorted or NEARLY sorted, 
-// cus the pivot element will always be the largest or smallest element in the array and the partitioning will result in subarrays of size n-1 and 1.
-// eg. [2,3,4,5,6]
-// there will not be any working partitioning, left element n right element, thus, not a n('log n') but n(n-1) = n^2
-// To avoid this, it is often recommended to use a randomized pivot selection method
-// ```const pivot = arr[Math.floor(Math.random() * arr.length)];
-//          pivote = arr[randomIndex]
-// ```
+Worse-case time complexity = O(n^2) ==> ALREADY sorted or NEARLY sorted, 
+cus the pivot element will always be the largest or smallest element in the array and the partitioning will result in subarrays of size n-1 and 1.
+eg. [2,3,4,5,6]
+there will not be any working partitioning, left element n right element, thus, not a n('log n') but n(n-1) = n^2
+To avoid this, it is often recommended to use a randomized pivot selection method
+```const pivot = arr[Math.floor(Math.random() * arr.length)];
+         pivote = arr[randomIndex]
+```
 
-// Average case = O(n log n), ==> for mixed data
-// which makes it an efficient sorting algorithm for large datasets.
+Average case = O(n log n), ==> for mixed data
+which makes it an efficient sorting algorithm for large datasets.
 
 
-// Worse Case = n^2 because
-// ...on partially sorted array, when the partition is made wrt to the pivot,
-// ...one half will be empty while the other half will be full element
-// ...meaning, the PIVOT will be compared to all the other element except itself
-// ...ie, PIVOT compared to (N-1)
-// ...also, by default/intutively, the pivot also get transitioned or moved each time to visit each element which is 'n'
-// ...so it becomes n(n) = n^2
+Worse Case = n^2 because
+...on partially sorted array, when the partition is made wrt to the pivot,
+...one half will be empty while the other half will be full element
+...meaning, the PIVOT will be compared to all the other element except itself
+...ie, PIVOT compared to (N-1)
+...also, by default/intutively, the pivot also get transitioned or moved each time to visit each element which is 'n'
+...so it becomes n(n) = n^2
 
-// on the flipside, Best Case = (n log n) because
-// ...during partition, the PIVOT is being compared to only HALF of the array element
-// ...where the HALVING means 'divide and conquer', thus log n
-// ...ie, n * log n
-// ...so it becomes (n log n)
+on the flipside, Best Case = (n log n) because
+...during partition, the PIVOT is being compared to only HALF of the array element
+...where the HALVING means 'divide and conquer', thus log n
+...ie, n * log n
+...so it becomes (n log n)
+*/

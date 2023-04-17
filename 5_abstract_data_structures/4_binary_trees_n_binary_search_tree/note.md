@@ -55,3 +55,29 @@ Ways of Traversing Nodes
 - DFS is not expensive
 - DFS:
     - In-order: used when wanna provide a sorted data, smallest to biggest
+
+#### Balanced vs Unbalanced Tree
+- A balanced binary search tree is a binary search tree in which the heights of the left and right subtrees of any node differ by at most one. 
+    - This means that the tree is approximately half full, with roughly equal numbers of elements in each subtree, and the height of the tree is minimized. 
+    - Examples of balanced binary search trees include AVL trees and red-black trees.
+
+- On the other hand, an unbalanced binary search tree is a binary search tree in which the heights of the left and right subtrees of a node can differ by any amount. 
+    - This can happen when the tree is constructed in a way that causes elements to be heavily skewed to one side or the other. 
+    - Unbalanced binary search trees can be much less efficient than balanced binary search trees in terms of time complexity, as operations such as search, insertion, and deletion may take much longer.
+
+#### Binary Tree vs Binary Search Tree
+- A binary search tree is a binary tree in which every node fits a specific ordering property: 
+    > all left descendents <= N < all right descendents. 
+- This must be true for each node N.
+
+#### Complete Binary Tree
+- A complete binary tree is a binary tree in which every level of the tree is fully filled, except for perhaps the last level. 
+- To the extent that the last level is filled, it is filled left to right. Otherwise, incomplete
+
+#### Full Binary Tree
+- a binary tree in which every node has either zero or two children. That is, no nodes have
+only one child.
+
+#### Perfect Binary Trees
+- one that is both full and complete. All leaf nodes will be at the same level, and this
+level has the maximum number of nodes.

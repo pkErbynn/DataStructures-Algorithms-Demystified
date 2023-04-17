@@ -1,24 +1,28 @@
-// all prev algos don't scale up
-// they only works efficient on small data
-// However, merge sort is much efficient even on large dataset 
+/*
+all prev algos don't scale up
+they only works efficient on small data
+However, merge sort is much efficient even on large dataset 
 
-// Merge Sort consists of 
-// - splitting
-// - merging while sorting
+Merge Sort consists of 
+- splitting
+- merging while sorting
 
-// Works by decomposing array into smaller arrays of 0 or 1 element 
-// ...and then building newly sorted array
+Works by decomposing array into smaller arrays of 0 or 1 element 
+...and then building newly sorted array
 
-////////////// Implementation
-// working in reverse
-// merge before sort
+//////////// Implementation
+working in reverse
+merge before sort
 
-// 1. function to MERGE two sorted arrays and return a newly sorted array
-// ...shouldn't modify the input sorted params
-// ...timeComplexit = O(n+m)
-// ...cus visiting reach elment in each array once
+1. function to MERGE two sorted arrays and return a newly sorted array
+...shouldn't modify the input sorted params
+...timeComplexit = O(n+m)
+...cus visiting reach elment in each array once
 
-function merge(arr1, arr2) {
+nb: very important for interviews 
+*/
+
+function merge(arr1, arr2) { 
     let result = [];
 
     // different pointers for each array
@@ -94,18 +98,19 @@ console.log('sorted:', sortedArray);
 
 
 
-
+/*
 /////////// analysis
 
-// The time complexity of Merge Sort is O(n log n), 
-// ...where "n" is the number of elements in the array being sorted.
+The time complexity of Merge Sort is O(n log n), 
+...where "n" is the number of elements in the array being sorted.
 
-// Why?
-// Because Merge Sort divides the array into smaller halves until there are only one or zero elements in each half, and then merges these sorted halves back together. 
-// The divide step takes O(log n) time - because the array is divided in half repeatedly, 
-// The merge step takes O(n) time - because it involves comparing and merging each element from the two halves.
+Why?
+Because Merge Sort divides the array into smaller halves until there are only one or zero elements in each half, and then merges these sorted halves back together. 
+The divide step takes O(log n) time - because the array is divided in half repeatedly, 
+The merge step takes O(n) time - because it involves comparing and merging each element from the two halves.
 
-// So the total time complexity = the divide steps * merge steps
-// = n * log n =  O(n log n). 
+So the total time complexity = the divide steps * merge steps
+= n * log n =  O(n log n). 
 
-// This makes Merge Sort a very efficient algorithm for sorting large arrays
+This makes Merge Sort a very efficient algorithm for sorting large arrays
+*/
