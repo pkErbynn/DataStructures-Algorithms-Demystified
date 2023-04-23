@@ -6,17 +6,17 @@ Example 1:
 
 Input: String="araaci", K=2
 Output: 4
-Explanation: The longest substring with no more than '2' distinct characters is "araa".
+Explanation: The longest substring with not more than '2' distinct characters is "araa".
 Example 2:
 
 Input: String="araaci", K=1
 Output: 2
-Explanation: The longest substring with no more than '1' distinct characters is "aa".
+Explanation: The longest substring with not more than '1' distinct characters is "aa".
 Example 3:
 
 Input: String="cbbebi", K=3
 Output: 5
-Explanation: The longest substrings with no more than '3' distinct characters are "cbbeb" & "bbebi".
+Explanation: The longest substrings with not more than '3' distinct characters are "cbbeb" & "bbebi".
 
 
 Hint:
@@ -26,25 +26,32 @@ This problem follows the Sliding Window pattern and we can use a similar dynamic
 
 function longest_Substring_with_K_Distinct_Characters(str, k){
     let maxLength = 0;
-    let charFrequency = {};
+    let charFrequency = {}; // keeps track of the window counters
     let windowStart = 0;
   
     for (let windowEnd = 0; windowEnd < str.length; windowEnd++) {
       const rightChar = str[windowEnd];
-      charFrequency[rightChar] = (charFrequency[rightChar] || 0) + 1;
+      // populate frequency counter {}
+      charFrequency[rightChar] = !charFrequency[rightChar] ? 1 : charFrequency[rightChar] + 1;
   
+      // convert object to map to get access to key length
       while (Object.keys(charFrequency).length > k) {
         const leftChar = str[windowStart];
-        charFrequency[leftChar]--;
-  
-        if (charFrequency[leftChar] === 0) {
-          delete charFrequency[leftChar];
+        
+        // move windowStart forward and update its counter by decreasing value or remove the key when counter is zero
+        if(charFrequency[leftChar] > 1){
+            charFrequency[leftChar] = charFrequency[leftChar] - 1;
+        } else {
+          // count = 0, delete key-value pair from object
+          // updating the "Object.keys(charFrequency).length"
+            delete charFrequency[leftChar];
         }
   
         windowStart++;
       }
   
-      maxLength = Math.max(maxLength, windowEnd - windowStart + 1);
+      const windowLength = windowEnd - windowStart + 1;
+      maxLength = Math.max(maxLength, windowLength);
     }
   
     return maxLength;

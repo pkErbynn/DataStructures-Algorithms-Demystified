@@ -10,7 +10,7 @@ Example 1:
 
 Input: [2, 1, 5, 2, 3, 2], S=7 
 Output: 2
-Explanation: The smallest subarray with a sum great than or equal to '7' is [5, 2].
+Explanation: The smallest subarray with a sum greater than or equal to '7' is [5, 2].
 
 Example 2:
 
@@ -26,7 +26,7 @@ Explanation: Smallest subarrays with a sum greater than or equal to '8' are [3, 
 
 
 There is one difference though:
-- we're rather finding 'k' this time around
+- we're rather dynamically finding 'k' this time around
 - the size of the sliding window is not fixed.
 - sliding window: cus of "contiguous subarray"
 */
@@ -43,7 +43,8 @@ function smallest_subarray_given_sum(arr, sum){
             const windowLength = (windowEndIndex - windowStartIndex) + 1; // +1 since it's indexed 
             windowMinLength = Math.min(windowMinLength, windowLength);
 
-            // remove current start element from total sum + move start pointer forward
+            // remove current start element from current windowsum until less than sum 
+            // + move start pointer forward
             windowSum = windowSum - arr[windowStartIndex];
             windowStartIndex++;
         }
@@ -55,4 +56,5 @@ function smallest_subarray_given_sum(arr, sum){
 
 console.log("k:", smallest_subarray_given_sum([2, 1, 5, 2, 3, 2, 8], 7));
 console.log("k:", smallest_subarray_given_sum([2, 1, 5, 2, 3, 2], 7));
+console.log("k:", smallest_subarray_given_sum([1, 1, 1, 2], 7));
 

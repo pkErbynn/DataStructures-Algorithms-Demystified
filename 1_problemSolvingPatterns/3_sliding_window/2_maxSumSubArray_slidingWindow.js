@@ -25,14 +25,14 @@ If you observe closely, you will realize that to calculate the sum of a contiguo
 
 */
 
-function maxSumArray_SlidingWindow(arr, num){
-    if(num > arr.length) return null;   // subarray > fullarray
+function maxSumArray_SlidingWindow(arr, k){
+    if(k > arr.length) return null;   // subarray > fullarray
 
     let maxSum = 0;
     let windowSum = 0;    // as window sum
     
     // calc first loop sum as current max sum
-    for(let i=0; i<num; i++){
+    for(let i=0; i<k; i++){
         maxSum += arr[i];
     }
 
@@ -42,11 +42,11 @@ function maxSumArray_SlidingWindow(arr, num){
     // sibling loop doesn't calc sum for itself/boundaries, 
     // it just help access rest of elements in array individually for computation
     // start after the first window
-    for(let i=num; i<arr.length; i++){
+    for(let i=k; i<arr.length; i++){
 
         // add next element, then compute to remove prev element by calc its index, ie (variable ele - constant ele)
         // eg; [3-3]=[0], [4-3]=[1], [5-3]=[2]
-        windowSum = windowSum + arr[i] - arr[i-num];
+        windowSum = windowSum + arr[i] - arr[i-k];
 
         // once temp sum is computed then we compare with prev maxSum before we to next element in array
          if(windowSum > maxSum){
