@@ -4,6 +4,9 @@
 - input: unsorted data
 - output: sum of subset
 
+> Leverage SlidingWindow when dealing with problems having an array (or a LinkedList), where asked to find or calculate something among all the **contiguous subarrays** (or sublists) of a **given size**.
+
+
 ##### Note
 The sliding window approach is commonly used in data structure questions that involve finding a maximum or minimum value, a subarray with a certain property, or a substring with a certain property.
 
@@ -12,3 +15,13 @@ The sliding window approach is commonly used in data structure questions that in
 - For example, consider the problem of finding the maximum sum of a subarray of length k in an array of n integers. One way to solve this problem using the sliding window approach is to start with a window of size k at the beginning of the array, and slide the window over the array one element at a time, updating the maximum sum as you go. At each step, you add the next element to the window and remove the first element from the window, so that the window always contains exactly k elements.
 
 - The sliding window approach can also be used to solve problems that involve finding all substrings or subarrays that satisfy certain constraints. For example, if you need to find all substrings of a string that contain exactly k distinct characters, you can use the sliding window approach to maintain a window of k distinct characters and slide the window over the string to find all substrings that satisfy the constraint.
+
+
+#### 2-Pointer vs Sliding Window
+- Realized 2P, pointer one starts from 0 and pointer 2 starts from 1 (next index)
+    - mostly for sorted inputs
+    - pointers move towards, right or middle
+
+- Realized SW, pointer one starts from 0 and pointer 2 also starts from 0
+    - mostly for unsorted inputs
+    - retrieves subset of the entire input contiguously
