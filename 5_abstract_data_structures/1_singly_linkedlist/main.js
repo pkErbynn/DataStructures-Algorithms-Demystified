@@ -22,7 +22,7 @@ class SinglyLinkedList {
         else{
             // set prevous tail's next
             this.tail.next = newNode;
-            // set new node as new tail
+            // set new node as new tail label
             this.tail = newNode;
         }
         this.length += 1;
@@ -61,11 +61,12 @@ class SinglyLinkedList {
         this.tail = penultimateNode; // set new tail
         this.length -= 1; // reduce length
 
-        // if after removing, list is empty
-        if(this.length === 0) {
-            this.head = null;
-            this.tail = null;
-        }
+        // if after removing, and list becomes empty
+        // if(this.length === 0) {
+        //     this.head = null;
+        //     this.tail = null;
+        // }
+
         return currentNode;
     }
 
@@ -77,7 +78,7 @@ class SinglyLinkedList {
             return null;
         }
 
-        let currentHead = this.head;
+        let currentHeadToRemove = this.head;
         let nextNode = this.head.next;
         this.head = nextNode;
 
@@ -86,9 +87,11 @@ class SinglyLinkedList {
         // if list becomes empty after biginner node removal
         if(this.length === 0){
             this.tail = null;
+            // head not set to null cus it will be set when this.head.next is null
         }
 
-        return currentHead;
+        currentHeadToRemove.next = null;    // strip its chain
+        return currentHeadToRemove;
     }
 
     // adding node to the begining
@@ -271,17 +274,22 @@ console.log(sl.print());
 console.log(sl.reverse());
 console.log(sl.print());
 
+let sl2 = new SinglyLinkedList();
+sl2.push(10);
+sl2.push(20);
+// sl2.pop();
+console.log(sl2.shift());
 
 
 // nb:
 // check for 
 // - -ve
-// - empty
+// - empty/zero
 // - one and
 // - many
 
 // linkedlist operations
-// - add to the end => push
+// - add to the end/tail => push
 // - remove from the end => pop
 // - add to the start => unshift
 // - remove from the start => shift
