@@ -104,7 +104,7 @@ class SinglyLinkedList {
             this.length += 1;
             return this;
         }
-        // if node already exists
+        // if linked list in not empty
         newNode.next = this.head;
         this.head = newNode;
         this.length += 1;
@@ -227,7 +227,7 @@ class SinglyLinkedList {
         
         let previousNode = null
         let currentNode = this.head;
-        // let nextNode = currentNode.next; // can't be hear cus doesnt get updated
+        // let nextNode = currentNode.next; // can't be here cus doesnt get updated
         
         while(currentNode){
             // temp keep next node
