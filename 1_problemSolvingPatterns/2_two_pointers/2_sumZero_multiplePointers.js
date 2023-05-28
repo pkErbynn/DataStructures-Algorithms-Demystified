@@ -21,18 +21,18 @@
 
 
 function sumZero(sortedArray){
-    let left = 0;
-    let right = sortedArray.length - 1;
+    let leftIndex = 0;
+    let rightIndex = sortedArray.length - 1;
 
-    while(left < right){
-        if(sortedArray[left] + sortedArray[right] === 0){
-            return [sortedArray[left], sortedArray[right]];
+    while(leftIndex < rightIndex){
+        if(sortedArray[leftIndex] + sortedArray[rightIndex] === 0){
+            return [sortedArray[leftIndex], sortedArray[rightIndex]];
         }
-        else if(sortedArray[left] + sortedArray[right] > 0){
-            right--;
+        else if(sortedArray[leftIndex] + sortedArray[rightIndex] > 0){
+            rightIndex--;
         }
         else { // < 0
-            left++;
+            leftIndex++;
         }
     }
 }

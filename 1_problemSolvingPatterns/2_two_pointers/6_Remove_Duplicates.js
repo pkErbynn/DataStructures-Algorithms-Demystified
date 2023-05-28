@@ -46,7 +46,7 @@ function remove_duplicate_2pnt(sortedNums){
         if(leftValue === rightValue){
             continue;
         }else{
-            sortedNums[leftIndex+1] = sortedNums[rightIndex];
+            sortedNums[leftIndex+1] = sortedNums[rightIndex];   // set the value into the next array slot index
             leftIndex++;
         }
     }
@@ -57,3 +57,25 @@ function remove_duplicate_2pnt(sortedNums){
 console.log("y:", remove_duplicate_2pnt([2, 3, 3, 3, 6, 9, 9]));
 console.log("y2:", remove_duplicate_2pnt([2, 2, 2, 11]));
 
+
+// ======================= revisit
+
+'use strict';
+
+const remove_duplicate_revisit = (numbers) => {
+    let leftPointer = 0;
+    for (let rightPointer = 1; rightPointer < numbers.length; rightPointer++) {
+        let leftElement = numbers[leftPointer];
+        let rightElement = numbers[rightPointer];
+
+        if(leftElement === rightElement) continue;  // not affect result since, on falsy of 2nd if-statement, rightPointer++ happens 
+        if(leftElement !== rightElement){
+            numbers[leftPointer+1] = rightElement;
+            leftPointer++;
+        }
+    }
+    console.log("Result:", numbers.slice(0, leftPointer));
+    return leftPointer;
+}
+
+console.log("unique:", remove_duplicate_revisit([2, 3, 3, 3, 6, 9, 9, 1, 1, 1]));

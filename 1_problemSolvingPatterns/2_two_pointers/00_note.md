@@ -1,11 +1,13 @@
-## Two-Pointer Approach
+## Two-Pointer approach
 - INPUT: mostly one SORTED array input
 - prevents from using 2 for-loops on same array
 - index positions can be moved around to meet certain conditions
 - sorted cus pointer move either toward the **begining, MIDDLE or END** based on condition
 - OUTPUT: pair of positions/indexes or element
 
-> Leverage Two-Pointers  when dealing with problems having an array (or a LinkedList), with **sorted arrays** (or LinkedLists) and need to find a **set of elements that fulfill certain constraints**. The set of elements could be a pair, a triplet or even a subarray.
+### When to use
+> Leverage Two-Pointers  when dealing with problems having with **sorted arrays** (or LinkedLists) 
+and need to find a **set of elements that fulfill certain constraints**. The set of elements could be a pair, a triplet or even a subarray.
 
 
 ## Note

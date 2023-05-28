@@ -14,7 +14,7 @@ function countUniqueValues(arr){
 
     let leftIndex = 0;
    
-    for (let rightIndex=1; rightIndex < arr.length; rightIndex++) {
+    for (let rightIndex = 1; rightIndex < arr.length; rightIndex++) {
         if(arr[leftIndex] !== arr[rightIndex]){
             leftIndex++;    // changing left position pointer
             arr[leftIndex] = arr[rightIndex];   // setting position with right value

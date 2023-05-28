@@ -1,16 +1,16 @@
 export function findSumOfThree(nums, target) {
-    nums = nums.sort((a, b) => a - b);
+    nums = nums.sort((a, b) => a - b);  // sorted in order
 
     for(let currentIndex = 0; currentIndex < nums.length; currentIndex++){
-        let lowIndex = currentIndex + 1;
-        let highIndex = nums.length - 1;
+        let leftIndex = currentIndex + 1;
+        let rightIndex = nums.length - 1;
 
-        while(lowIndex < highIndex){
-            let sum = nums[currentIndex] + nums[lowIndex] + nums[highIndex];
+        while(leftIndex < rightIndex){
+            let sum = nums[currentIndex] + nums[leftIndex] + nums[rightIndex];
             if(sum === target) return true;
 
-            if(sum < target) lowIndex++;
-            else if(sum > target) highIndex--;
+            if(sum < target) leftIndex++;
+            else if(sum > target) rightIndex--;
         }
 
     }
