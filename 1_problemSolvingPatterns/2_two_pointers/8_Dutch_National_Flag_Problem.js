@@ -60,3 +60,5 @@ const sortArrayElements = (numbers) => {
 
 console.log("Result:", sortArrayElements([1, 0, 2, 1, 0]));
 console.log("Result2:", sortArrayElements([2, 0, 2, 1, 1, 0])); 
+
+first commit 
