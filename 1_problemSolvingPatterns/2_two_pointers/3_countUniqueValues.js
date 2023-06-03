@@ -21,9 +21,8 @@ function countUniqueValues(arr){
         }
     }
 
-    return leftIndex+1;
+    return leftIndex + 1;   // +1, since index started from 0
 }
-
 
 
 console.log(countUniqueValues([1,1,1,2,2,2]));

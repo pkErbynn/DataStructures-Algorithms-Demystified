@@ -10,9 +10,9 @@ function same(array1, array2) {
     let frequencyCounter2 = {};
 
     for(const value of array1){
-        frequencyCounter1[value] = frequencyCounter1[value] ?  frequencyCounter1[value] + 1 : 1;
-        // frequencyCounter1[value] = !frequencyCounter1[value] ? 1 : frequencyCounter1[value] + 1;
+        frequencyCounter1[value] = !frequencyCounter1[value] ? 1 : frequencyCounter1[value] + 1;
 
+        // if has value already, +1, else init w/ 1
         // frequencyCounter1[value] ? 
         //     (frequencyCounter1[value] = frequencyCounter1[value] + 1) : 
         //     (frequencyCounter1[value] = 1);
@@ -22,10 +22,6 @@ function same(array1, array2) {
 
     for(const value of array2){
         frequencyCounter2[value] = frequencyCounter2[value] ? frequencyCounter2[value] + 1 : 1;
-
-        // frequencyCounter2[value] ?
-        //     frequencyCounter2[value] = frequencyCounter2[value] + 1 :
-        //     frequencyCounter2[value] = 1;
     }
 
     // for-in on object will print property keys
@@ -33,10 +29,10 @@ function same(array1, array2) {
     // going through values of frequencyCounter1 against frequencyCounter2 for a check
     for(let key in frequencyCounter1){
         let squaredKey = key ** 2;
-        if(!frequencyCounter2[squaredKey]){
+        if(!frequencyCounter2[squaredKey]){ // if keys doesn't exist, no valid value - checking keys
             return false;
         }
-        if(frequencyCounter1[key] !== frequencyCounter2[squaredKey]){
+        if(frequencyCounter1[key] !== frequencyCounter2[squaredKey]){   // - checking values
             return false;
         }
     }

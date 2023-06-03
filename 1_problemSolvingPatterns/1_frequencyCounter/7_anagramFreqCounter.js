@@ -1,6 +1,6 @@
 // using Frequency Counter Pattern
 // with reduced simbling loop
-// creating object for just one string, instead of two
+// creating object for just one string, instead of two, reducing space complexity
 
 function anagram(str1, str2){
     if(str1.length !== str2.length){

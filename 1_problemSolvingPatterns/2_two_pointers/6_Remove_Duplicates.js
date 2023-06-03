@@ -26,7 +26,7 @@ function remove_duplicate(sortedNums){
         let rightValue = sortedNums[index+1];
 
         while(leftValue === rightValue){
-            sortedNums.splice(index+1, 1);  // remove current right value using its index
+            sortedNums.splice(index+1, 1);  // remove current 'right' value from the array, using its index
             rightValue = sortedNums[index+1]; // update rightValue to remain its position otherwise infinite loop to remove everything
         }
     }
@@ -46,7 +46,7 @@ function remove_duplicate_2pnt(sortedNums){
         if(leftValue === rightValue){
             continue;
         }else{
-            sortedNums[leftIndex+1] = sortedNums[rightIndex];   // set the value into the next array slot index
+            sortedNums[leftIndex+1] = sortedNums[rightIndex];   // insert the 'right' value in-front of left-index pointer
             leftIndex++;
         }
     }
@@ -74,8 +74,8 @@ const remove_duplicate_revisit = (numbers) => {
             leftPointer++;
         }
     }
-    console.log("Result:", numbers.slice(0, leftPointer));
-    return leftPointer;
+    // console.log("Result:", numbers.slice(0, leftPointer));
+    return leftPointer + 1;
 }
 
 console.log("unique:", remove_duplicate_revisit([2, 3, 3, 3, 6, 9, 9, 1, 1, 1]));

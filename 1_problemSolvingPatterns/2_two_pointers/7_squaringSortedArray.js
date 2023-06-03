@@ -33,7 +33,9 @@ const createSquaredSortedArray = (numbers) => {
             rightPointer --;
         }
 
-        resultPointer--;
+        resultPointer--;    // change storage, left to right
+
+
     }
     return result;
 }

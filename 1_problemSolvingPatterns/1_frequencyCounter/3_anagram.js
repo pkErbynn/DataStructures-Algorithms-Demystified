@@ -40,3 +40,9 @@ console.log(validAnagram('cinema', 'iceman'));
 
 
 // Time Complexity = O(n^2)
+
+
+// Nb:
+// An anagram is a word or phrase formed by rearranging the letters of another word or phrase, 
+// using all the original letters exactly once. In other words, two strings are considered anagrams if they have the same characters, but in a different order.
+// For example, the words "listen" and "silent"

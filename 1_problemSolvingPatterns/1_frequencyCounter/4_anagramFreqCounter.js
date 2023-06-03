@@ -24,6 +24,7 @@ function anagram(str1, str2){
     console.log(frequencyCounterStr2);
 
     for(let key in frequencyCounterStr1){
+        // key comparison
         // if(!(key in frequencyCounterStr2)){
         //     return false;
         // }
@@ -34,6 +35,7 @@ function anagram(str1, str2){
             return false;
         }
 
+        // value comparison: number of character occurances
         if(frequencyCounterStr1[key] !== frequencyCounterStr2[key]){
             return false;
         }
