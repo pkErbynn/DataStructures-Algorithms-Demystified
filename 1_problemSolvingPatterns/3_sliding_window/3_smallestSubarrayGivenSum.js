@@ -40,7 +40,7 @@ function smallest_subarray_given_sum(arr, sum){
         windowSum = windowSum + arr[windowEndIndex];
 
         while(windowSum >= sum){
-            const windowLength = (windowEndIndex - windowStartIndex) + 1; // +1 since it's indexed 
+            const windowLength = (windowEndIndex - windowStartIndex) + 1; // +1 since it's 0-indexed 
             windowMinLength = Math.min(windowMinLength, windowLength);
 
             // remove current start element from current windowsum until less than sum 
@@ -50,7 +50,7 @@ function smallest_subarray_given_sum(arr, sum){
         }
     }
 
-    if(windowMinLength == Infinity) return 0;
+    if(windowMinLength == Infinity) return 0;   // if none of subarray exists
     return windowMinLength; 
 }
 

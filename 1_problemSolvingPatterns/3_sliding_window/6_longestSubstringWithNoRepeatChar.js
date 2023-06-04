@@ -27,25 +27,26 @@ Whenever we get a repeating character we will shrink our sliding window to ensur
 */
 
 
-function noRepeatSubstring(str){
+function lengthOfLongestSubstringWithNoCharRepeat(str){
     let windowStartIndex = 0;
     let maxLength = 0;
     let charIndexMap = {};  // keeps track of the last index of each char
 
     for (let windowEndIndex = 0; windowEndIndex < str.length; windowEndIndex++) {
-        const endwindowEndChar = str[windowEndIndex];
+        const windowEndChar = str[windowEndIndex];
 
-        if(charIndexMap.hasOwnProperty(endwindowEndChar)){  // or if(endwindowEndChar in charIndexMap){
-            // windowStartIndex = Math.max(windowStartIndex, charIndexMap[endwindowEndChar]  + 1)   // long process to move startIndex forward
-            windowStartIndex = windowEndIndex;
+        // reset startIndex pointer to current duplicate char found, if next char is duplicate
+        if(windowEndChar in charIndexMap){
+            windowStartIndex = Math.max(windowStartIndex, charIndexMap[windowEndChar]  + 1); 
+            // windowStartIndex = windowEndIndex;
         }
 
-        // doesn't move/update 'windowStartIndex' since value becomes 0 as first
+        // doesn't move/update 'windowStartIndex' since value becomes 0 at first
         // if(charIndexMap[endwindowEndChar]){
         //     windowStartIndex = Math.max(windowStartIndex, charIndexMap[endwindowEndChar]  + 1)
         // }
 
-        charIndexMap[endwindowEndChar] = windowEndIndex;
+        charIndexMap[windowEndChar] = windowEndIndex;
 
         let currentWindowLength = (windowEndIndex - windowStartIndex) + 1;
         maxLength = Math.max(maxLength, currentWindowLength);
@@ -54,14 +55,13 @@ function noRepeatSubstring(str){
     return {maxLength};
 }
 
-
-console.log(noRepeatSubstring("aabccbb"));
-console.log(noRepeatSubstring("abbbb"));
-console.log(noRepeatSubstring("abccde"));
-console.log(noRepeatSubstring("aaaaaaaa"));
-console.log(noRepeatSubstring("abccdefhg"));
-console.log(noRepeatSubstring("uvwxyz"));
-console.log(noRepeatSubstring("z"));
+console.log(lengthOfLongestSubstringWithNoCharRepeat("aabccbb"));
+console.log(lengthOfLongestSubstringWithNoCharRepeat("abbbb"));
+console.log(lengthOfLongestSubstringWithNoCharRepeat("abccde"));
+console.log(lengthOfLongestSubstringWithNoCharRepeat("aaaaaaaa"));
+console.log(lengthOfLongestSubstringWithNoCharRepeat("abccdefhg"));
+console.log(lengthOfLongestSubstringWithNoCharRepeat("uvwxyz"));
+console.log(lengthOfLongestSubstringWithNoCharRepeat("z"));
 
 
 

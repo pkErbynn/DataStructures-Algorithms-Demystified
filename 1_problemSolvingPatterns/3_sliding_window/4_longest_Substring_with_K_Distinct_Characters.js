@@ -30,15 +30,15 @@ function longest_Substring_with_K_Distinct_Characters(str, k){
     let windowStart = 0;
   
     for (let windowEnd = 0; windowEnd < str.length; windowEnd++) {
-      const rightChar = str[windowEnd];
+      const windowEndValue = str[windowEnd];
       // populate frequency counter {}
-      charFrequency[rightChar] = !charFrequency[rightChar] ? 1 : charFrequency[rightChar] + 1;
+      charFrequency[windowEndValue] = !charFrequency[windowEndValue] ? 1 : charFrequency[windowEndValue] + 1;
   
       // convert object to map to get access to key length
       while (Object.keys(charFrequency).length > k) {
         const leftChar = str[windowStart];
         
-        // move windowStart forward and update its counter by decreasing value or remove the key when counter is zero
+        // move windowStart forward + update its counter by decreasing value or remove the key when counter is zero
         if(charFrequency[leftChar] > 1){
             charFrequency[leftChar] = charFrequency[leftChar] - 1;
         } else {
