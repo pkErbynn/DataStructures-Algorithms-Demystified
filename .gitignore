@@ -1,0 +1,60 @@
+# C# projects
+
+# Compiled files
+*.dll
+*.exe
+*.pdb
+
+# NuGet packages
+*.nuget/
+**/packages/
+
+# Visual Studio files
+.vs/
+*.vspscc
+*.vssscc
+*.user
+*.suo
+*.cache
+*.sln.docstates
+*.userprefs
+obj/
+bin/
+
+# JavaScript projects
+
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Build files
+dist/
+build/
+out/
+
+# Visual Studio projects
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+bld/
+[Bb]in/
+[Oo]bj/
+
+# Visual Studio 2015/2017/2019 cache/options directory
+.vs/
+
+# Visual Studio Code projects
+
+.vscode/
+*.code-workspace
