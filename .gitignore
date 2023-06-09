@@ -58,3 +58,9 @@ bld/
 
 .vscode/
 *.code-workspace
+
+# macOS-specific ignore patterns
+
+.DS_Store
+.AppleDouble
+.LSOverride
