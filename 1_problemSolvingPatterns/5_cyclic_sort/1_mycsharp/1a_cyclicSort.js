@@ -22,7 +22,7 @@ console.log("Result:", cyclicSort([2, 6, 4, 3, 1, 5]));
 
 // ========= reversed condition
 
-const cyclicSort2 = (numbers) => {
+const cyclicSort2 = (numbers) => { // ***
 
     let index = 0;
     while(numbers[index]){  // while number exists

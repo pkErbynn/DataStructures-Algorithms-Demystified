@@ -33,7 +33,7 @@ class CyclicSort
         System.Console.WriteLine("===");
         SortCyclicly(new int[] {1, 2, 3, 4, 5, 6});
     }
-    public static void SortCyclicly(int[] numbers)
+    public static string SortCyclicly(int[] numbers)
     {
         // since will not be always increase the index (to jump to the next value) in each iteration,
         // only increment based on a condition, so for-loop won't be used
@@ -54,6 +54,8 @@ class CyclicSort
                 numbers[index] = temp;
             }
         }
-        numbers.ToList().ForEach(e => Console.WriteLine(e));
+        // numbers.ToList().ForEach(e => Console.WriteLine(e));
+        string resultString = string.Join(", ", numbers);
+        return $"[ {resultString} ]";
     }
 }

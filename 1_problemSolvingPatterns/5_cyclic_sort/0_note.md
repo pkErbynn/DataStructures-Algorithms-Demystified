@@ -1,12 +1,12 @@
 ### Trick
 - Cyclic Sort has a time complexity of O(n) since each element is visited and swapped once. 
-    - However, it can only be applied when the input array contains integers in a specific range, typically from 1 to n, where n is the size of the array.
+    - can only be applied when the input array contains **integers in a specific range, typically from 1 to n**, where n is the size of the array.
     - If the array contains elements outside this range or has duplicates, the algorithm may not produce the desired sorting.
 
 - When to use?
     - when need to sort elements
     - when given unsorted array in a given range of n
-    - and array start from 1 to n
+    - and array start from 1 to n, or 0 to (n-1)
 
 - Example
     - input: [3, 4, 5, 1, 2]
