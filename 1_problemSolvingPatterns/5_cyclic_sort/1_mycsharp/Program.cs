@@ -13,3 +13,16 @@ _a_DuplicateNumber.FindDuplicateNumber(new int[] { 2, 4, 1, 4, 4 });
 
 _a_DuplicateNumber.FindDuplicateNumbers(new int[] { 3, 4, 4, 5, 5 });
 _a_DuplicateNumber.FindDuplicateNumbers(new int[] { 5, 4, 7, 2, 3, 5, 3 });
+
+_a_DuplicateNumber.FindDuplicateNumber_NoRange(new int[] { 1, 23, 4, 10, 3, 2, 23, });
+
+_a_DuplicateNumber.FindTheCorruptPair(new int[] { 3, 1, 2, 5, 2 });
+_a_DuplicateNumber.FindTheCorruptPair(new int[] { 3, 1, 2, 3, 6, 4 });
+
+_a_SmallestMissingPositiveNumber.FindSmallestMissingPositiveNumber(new int[] { -3, 1, 5, 4, 2 });
+_a_SmallestMissingPositiveNumber.FindSmallestMissingPositiveNumber(new int[] { 3, -2, 0, 1, 2 });
+_a_SmallestMissingPositiveNumber.FindSmallestMissingPositiveNumber(new int[] { 3, 2, 5, 1 });
+_a_SmallestMissingPositiveNumber.FindSmallestMissingPositiveNumber(new int[] { 3, 2, 4, 1 });
+
+_a_FirstKMissingPositiveNumbers.FindTheFirstKPositiveMissingNumbers(new int[] { 3, -1, 4, 6, 5 }, 3);
+_a_FirstKMissingPositiveNumbers.FindTheFirstKPositiveMissingNumbersImproved(new int[] { 3, -1, 4, 6, 5 }, 3);
