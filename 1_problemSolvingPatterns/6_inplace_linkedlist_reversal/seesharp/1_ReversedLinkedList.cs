@@ -6,7 +6,7 @@ Write a function to return the new head of the reversed LinkedList.
 using System;
 namespace seesharp
 {
-	public class __ReversedLinkedList
+    public class ReversedLinkedList
 	{
 		public static Node ReverseLinkedList(Node head)
 		{
@@ -21,7 +21,7 @@ namespace seesharp
 			while (currentNode != null)
 			{
 				Node nextNode = currentNode.Next;
-				currentNode.Next = previousNode;
+				currentNode.Next = previousNode;	// point in reverse
 
 				// push pointers forward
 				previousNode = currentNode;
@@ -33,8 +33,10 @@ namespace seesharp
 
 		public static void PrintReversedLinkedList(Node head)
 		{
-			// print linkedlist before
-			var currentNode = head;
+            Console.WriteLine("ReverseLinkedList:");
+
+            // print linkedlist before
+            var currentNode = head;
             while (currentNode != null)
             {
                 Console.Write(currentNode.Value + " -> ");
@@ -50,18 +52,6 @@ namespace seesharp
 				Console.Write(reversedLinkedList.Value + " -> ");
 				reversedLinkedList = reversedLinkedList.Next;
 			}
-		}
-	}
-
-	public class Node
-	{
-        public int Value { get; set; }
-		public Node Next { get; set; }
-
-        public Node(int value)
-		{
-			this.Value = value;
-			this.Next = null;
 		}
 	}
 }

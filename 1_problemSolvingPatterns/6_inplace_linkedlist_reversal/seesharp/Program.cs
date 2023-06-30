@@ -4,12 +4,21 @@ class Program
     static void Main(string[] args)
     {
         Console.WriteLine("Hello, World!");
+
         // create linkedlist
         Node head = new Node(1);
         head.Next = new Node(2);
         head.Next.Next = new Node(3);
         head.Next.Next.Next = new Node(4);
         head.Next.Next.Next.Next = new Node(5);
-        __ReversedLinkedList.PrintReversedLinkedList(head);
+        ReversedLinkedList.PrintReversedLinkedList(head);
+
+        // create linkedlist
+        Node head2 = new Node(1);
+        head2.Next = new Node(2);
+        head2.Next.Next = new Node(3);
+        head2.Next.Next.Next = new Node(4);
+        head2.Next.Next.Next.Next = new Node(5);
+        LinkedListSubReversal.ReverseSubLinkedList(head2, 1, 2);
     }
 }
