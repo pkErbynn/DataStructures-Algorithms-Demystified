@@ -19,6 +19,6 @@ class Program
         head2.Next.Next = new Node(3);
         head2.Next.Next.Next = new Node(4);
         head2.Next.Next.Next.Next = new Node(5);
-        LinkedListSubReversal.ReverseSubLinkedList(head2, 1, 2);
+        LinkedListSubReversal.ReverseSubLinkedList(head2, 2, 4);
     }
 }
