@@ -17,11 +17,17 @@ The sliding window approach is commonly used in data structure questions that in
 - The sliding window approach can also be used to solve problems that involve finding all substrings or subarrays that satisfy certain constraints. For example, if you need to find all substrings of a string that contain exactly k distinct characters, you can use the sliding window approach to maintain a window of k distinct characters and slide the window over the string to find all substrings that satisfy the constraint.
 
 
-#### 2-Pointer vs Sliding Window
-- Realized 2P, pointer one starts from 0 and pointer 2 starts from 1 (next index)
-    - mostly for sorted inputs
+#### Frequency Counter vs 2-Pointer vs Sliding Window Approaches
+This may not be entirely true but so far this is my relization:
+
+- Realized FC, 
+    - inputs: unsorted inputs(arrays, string)
+
+- Realized 2P, pointer one starts from 0 and pointer two starts from 1 (i,e. next index) || left = 0, right = length - 1 (ie. last index)
+    - inputs: mostly for sorted inputs(arrays, linkedList) + ordered string
     - pointers move towards, right or middle
+    - sorted/ordered input so that pointers can move towards the middle
 
 - Realized SW, pointer one starts from 0 and pointer 2 also starts from 0
-    - mostly for unsorted inputs
+    - inputs: mostly for unsorted inputs
     - retrieves subset of the entire input contiguously

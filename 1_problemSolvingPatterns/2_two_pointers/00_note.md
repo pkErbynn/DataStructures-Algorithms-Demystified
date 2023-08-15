@@ -1,6 +1,6 @@
 ## Two-Pointer approach
 - INPUT: mostly one SORTED array input
-- prevents from using 2 for-loops on same array
+- WHY: it prevents from using 2 for-loops on same array
 - index positions can be moved around to meet certain conditions
 - sorted cus pointer move either toward the **begining, MIDDLE or END** based on condition
 - OUTPUT: pair of positions/indexes or element

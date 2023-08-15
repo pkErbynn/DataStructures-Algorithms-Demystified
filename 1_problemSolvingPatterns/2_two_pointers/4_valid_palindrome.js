@@ -25,3 +25,12 @@ function isPalindrome(s) {
 
     return true;
 }
+
+
+console.log("Result:", isPalindrome("madam"));
+console.log("Result2:", isPalindrome("racecar"));
+console.log("Result3:", isPalindrome("javascript"));
+
+
+// A palindrome is a word, phrase, number, or other sequence of characters 
+// that reads the same forward and backward, ignoring any spaces, punctuation, or capitalization
