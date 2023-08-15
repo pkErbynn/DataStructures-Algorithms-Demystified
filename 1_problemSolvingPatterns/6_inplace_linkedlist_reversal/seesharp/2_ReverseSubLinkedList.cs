@@ -1,5 +1,20 @@
 // Given the head of a LinkedList and two positions ‘p’ and ‘q’, reverse the LinkedList from position ‘p’ to ‘q’.
 
+/* 
+Solution #
+The problem follows the In-place Reversal of a LinkedList pattern. Similar approach can be used as discussed in Reverse a LinkedList. 
+Here are the steps we need to follow:
+
+1. Skip the first p-1 nodes, to reach the node at position p.
+2. Remember the node at position p-1 to be used later to connect with the reversed sub-list.
+3. Next, reverse the nodes from p to q using the same approach discussed in Reverse a LinkedList.
+4. Connect the p-1 and q+1 nodes to the reversed sub-list. 
+    NB: 4 pointers are needed from the 3 partioned sections for complete connections:
+        - 1. last node of first (1/3) section
+        - 2. first node of middle (2/3) section
+        - 3. last node of middle (2/3) section
+        - 4. first node of last (3/3) section
+*/
 
 // FOCUS: p and q
 namespace seesharp
@@ -10,19 +25,22 @@ namespace seesharp
         {
             Console.WriteLine("\nReverseSubLinkedList:");
 
-            if (head == null || head.Next == null || start == end) return;    // guard clause
+            if (head == null || head.Next == null || start == end) return;    // guard clause: invalid list
 
             Node currentNode = head;
             Node previousNode = null;
 
-            // move current forward to get to the start point
+            // move current forward to get to the start point, p
             while (currentNode != null && currentNode.Value < start)
             {
                 previousNode = currentNode;
                 currentNode = currentNode.Next;
             }
+            // after this while-loop: 
+                // currentNode is exactly on the start point, p (cus last iteration is: currentNode = currentNode.Next)
+                // previousNode is on the penultimate node of currentNode
 
-            // store these pointers (nodeBeforeSubList, nodeBeforeSubList.next) for future connection of reversedSubList to original whole list
+            // store these pointers (nodeBeforeSubList, nodeBeforeSubList.next) for future connection of reversedSubList to the original whole list
             Node nodeBeforeSubList = previousNode;
             Node endNodeOfSubList = currentNode;    // currentNode/first node of subList will become the end of subList after reversal
 
@@ -32,13 +50,17 @@ namespace seesharp
                 Node nextNode = currentNode.Next;
                 currentNode.Next = previousNode;
 
+                // move pointers 1-step forward
                 previousNode = currentNode;
                 currentNode = nextNode;
                 start = start + 1;
             }
+            // after this while-loop: 
+                // currentNode is at the first node of last (3/3) section
+                // previousNode is now the head/start of the reversed sublist
 
             // connect main list with first node of reversedSubList (previousNode)
-            if (nodeBeforeSubList != null)
+            if (nodeBeforeSubList != null)  // nodeBeforeSubList can be null if initialized "previousNode" is null or when the "start/p" interval starts from the head. Means, previousNode will point outside the linkedList and that it's not needed for connection
             {
                 nodeBeforeSubList.Next = previousNode;  // previousNode is now the head of the reversedSubList, connected to by the nodeBeforeReversedSublist
             }
@@ -51,7 +73,7 @@ namespace seesharp
                 head = previousNode;
             }
 
-            // connect end node of reversed sublist to main list
+            // connect end node of reversed sublist to main list (first node of last (3/3) section)
             endNodeOfSubList.Next = currentNode;    // currentNode is now the first node after subList, connected to by the endOfReversedSubList
 
 
@@ -59,10 +81,10 @@ namespace seesharp
             Node currentNodeToPrint = head;     // above operations done in-place so head can be traversed and will see the effect
             while (currentNodeToPrint != null)
             {
-                Console.Write(currentNodeToPrint.Value + ", ");
+                Console.Write(currentNodeToPrint.Value + " -> ");
                 currentNodeToPrint = currentNodeToPrint.Next;
             }
-            Console.WriteLine("...");
+            Console.WriteLine("done");
         }
     }
 }

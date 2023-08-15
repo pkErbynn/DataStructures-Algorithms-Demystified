@@ -33,7 +33,7 @@ namespace seesharp
 
 		public static void PrintReversedLinkedList(Node head)
 		{
-            Console.WriteLine("ReverseLinkedList:");
+            Console.WriteLine("OriginalLinkedList:");
 
             // print linkedlist before
             var currentNode = head;
@@ -45,6 +45,7 @@ namespace seesharp
 			Console.WriteLine(); // separate before and after line
 
             Node reversedLinkedList = ReverseLinkedList(head);
+            Console.WriteLine("ReverseLinkedList:");
 
 			// print reversed linkedlist
 			while (reversedLinkedList != null)
