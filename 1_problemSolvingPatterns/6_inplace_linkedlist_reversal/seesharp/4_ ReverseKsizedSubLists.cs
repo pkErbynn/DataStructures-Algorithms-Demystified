@@ -5,7 +5,7 @@ namespace seesharp
 	{
         public static void ReverseEveryKsizedSubLists(Node head, int k)
         { 
-            // Not reviewed and understood: just copied the solution
+            // Not reviewed. Simple but yet to understand probably: just copied the solution
 
             Console.WriteLine("\nReverseKsizedSubLists:");
 
