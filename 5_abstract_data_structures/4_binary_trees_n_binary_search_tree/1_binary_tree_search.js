@@ -139,7 +139,7 @@ class BST {
     // breath-first search => uses Queue
     bfs(){
         let queue = [];
-        let visitedReult = [];
+        let visitedResult = [];
 
         let currentNode = this.root;
         queue.push(currentNode);
@@ -147,16 +147,39 @@ class BST {
         // while there's something in the queue for processing...
         while(queue.length){
             let removedHeadNode = queue.shift();
-            visitedReult.push(removedHeadNode.value);
+            visitedResult.push(removedHeadNode.value);
 
-            // once removed and put to visitedReult, push their leg children nodes to the queue
+            // once removed and put to visitedResult, push their leg children nodes to the queue
             if(removedHeadNode.left) 
                 queue.push(removedHeadNode.left);
             if(removedHeadNode.right) 
                 queue.push(removedHeadNode.right);
 
         }
-        return visitedReult;
+        return visitedResult;
+    }
+
+    bfs2(){
+        let queue = [];
+        let visitedNodes = [];
+
+        let currentNode = this.root;
+        queue.push(currentNode);
+
+        while(queue.length > 0){
+            let removedNode = queue.shift();
+            visitedNodes.push(removedNode.value);
+
+            if(removedNode.left){
+                queue.push(removedNode.left);
+            }
+            if(removedNode.right){
+                queue.push(removedNode.right);
+            }
+
+        }
+
+        return visitedNodes;
     }
 
     // depth-first search => uses Stack
@@ -260,26 +283,28 @@ let bst = new BST();
 //     5       15
 //  2    8  12   18
 
-// console.log(bst.insert(10));
-// console.log(bst.insert(5));
-// console.log(bst.insert(15));
-// console.log(bst.insert(2));
-// console.log(bst.insert(8));
-// console.log(bst.insert(12));
-// console.log(bst.insert(18));
+console.log(bst.insert(10));
+console.log(bst.insert(5));
+console.log(bst.insert(15));
+console.log(bst.insert(2));
+console.log(bst.insert(8));
+console.log(bst.insert(12));
+console.log(bst.insert(18));
 // console.log(bst);
 
-console.log(bst.insert_recursive(10));
-console.log(bst.insert_recursive(5));
-console.log(bst.insert_recursive(15));
-console.log(bst.insert_recursive(2));
-console.log(bst.insert_recursive(8));
-console.log(bst.insert_recursive(12));
-console.log(bst.insert_recursive(18));
+// console.log(bst.insert_recursive(10));
+// console.log(bst.insert_recursive(5));
+// console.log(bst.insert_recursive(15));
+// console.log(bst.insert_recursive(2));
+// console.log(bst.insert_recursive(8));
+// console.log(bst.insert_recursive(12));
+// console.log(bst.insert_recursive(18));
 // console.log(bst);
 
 // console.log(bst.find(2));
 
+console.log("Ans: ");
+console.log(bst.bfs2());
 
 /*
 === Time Complexity ====

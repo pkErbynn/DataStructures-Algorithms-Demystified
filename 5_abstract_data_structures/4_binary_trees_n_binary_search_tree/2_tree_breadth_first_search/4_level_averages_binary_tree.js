@@ -1,0 +1,76 @@
+/*
+Question:
+Given a binary tree, populate an array to represent the averages of all of its levels.
+*/
+
+class Node {
+    constructor(value) {
+        this.value = value;
+        this.left = null;
+        this.right = null;
+    }
+}
+
+class BinaryTree {
+    constructor(rootNode = null) {
+        this.rootNode = rootNode;
+    }
+
+    zigzap_tree_traversal(){
+        let result = [];
+
+        if(this.rootNode == null){
+            return result;
+        }
+
+        let queue = [];
+        let currentNodePointer = this.rootNode;
+        queue.push(currentNodePointer);
+
+        // loop for entire tree
+        while(queue.length >= 1)
+        {
+            let levels = [];
+            let levelSum = 0;
+
+            // loop for each level
+            let levelLength = queue.length;
+
+            for(let i = 0; i < levelLength; i++){
+                let node = queue.shift();
+                levelSum = levelSum + node.value;
+
+                if(node.left != null) {
+                    queue.push(node.left);
+                }
+
+                if(node.right != null) {
+                    queue.push(node.right);
+                }
+
+            }
+
+            let average = levelSum / levelLength;
+            result.push(average);
+        }
+
+        return result;
+    }
+}
+
+//         10
+//     6       12
+//  2    8  12   18
+
+
+let root = new Node(10);
+root.left = new Node(6);
+root.right = new Node(12);
+root.left.left = new Node(2);
+root.left.right = new Node(8);
+root.right.left = new Node(12);
+root.right.right = new Node(18);
+
+const bt = new BinaryTree(root);
+const res = bt.zigzap_tree_traversal();
+console.log("Result2: ", res)
