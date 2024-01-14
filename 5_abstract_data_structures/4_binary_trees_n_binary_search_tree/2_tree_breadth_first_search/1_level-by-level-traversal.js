@@ -47,8 +47,9 @@ class BinaryTree {
         // since i don't know the size of array ahead of time, will use while loop
         while(queue.length >= 1){
             let levelNodesCollector = [];
+            let levelSize = queue.length;   // take snapshot of the size of level at that moment so that when the queue get updated, it doesn't give get modified
 
-            for(let i = 1; i <= queue.length; i++){
+            for(let i = 1; i <= levelSize; i++){
                 currentNode = queue.shift();
                 levelNodesCollector.push(currentNode.value);
 

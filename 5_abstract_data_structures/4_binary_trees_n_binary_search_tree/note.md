@@ -50,6 +50,15 @@ Ways of Traversing Nodes
     - Pre-order
     - Post-order
 
+NB:
+- Breadth-First: 
+    - Level by level Horizontal traversal
+    - thus: queue used because it is also horizontal
+
+- Depth-First: 
+    - top-down level vertical traversal
+    - thus: stack used because it is also arranged vertical
+
 #### BFS vs DFS
 - BFS is spacely expensive since have to be tracking visited and lots of leg nodes
 - DFS is not expensive

@@ -159,28 +159,9 @@ class BST {
         return visitedResult;
     }
 
-    bfs2(){
-        let queue = [];
-        let visitedNodes = [];
-
-        let currentNode = this.root;
-        queue.push(currentNode);
-
-        while(queue.length > 0){
-            let removedNode = queue.shift();
-            visitedNodes.push(removedNode.value);
-
-            if(removedNode.left){
-                queue.push(removedNode.left);
-            }
-            if(removedNode.right){
-                queue.push(removedNode.right);
-            }
-
-        }
-
-        return visitedNodes;
-    }
+    // Watch Video: 
+    // - https://www.youtube.com/watch?v=fPz40W9mfCg
+    // - https://www.youtube.com/watch?v=Bfqd8BsPVuw&list=LL&index=4&t=319s
 
     // depth-first search => uses Stack
     dfsPreOrder(){
@@ -196,6 +177,7 @@ class BST {
             visitedReult.push(removedNode.value);
 
             // once removed and put to visitedReult, push their leg children nodes to the stack
+            // NB: took right first, left second because since it's LIFO left node will be processed before the right, that's why the right is put on the stack first
             if(removedNode.right)
                 stack.push(removedNode.right);
             if(removedNode.left)
@@ -208,6 +190,16 @@ class BST {
             // visitedReult.push(removedNode.value);
             // if(removedNode.left)
             //     stack.push(removedNode.left);
+
+            ///////// post-order
+            // if(removedNode.right)
+            //     stack.push(removedNode.right);
+            // if(removedNode.left)
+            //     stack.push(removedNode.left);
+            // let removedNode = stack.pop();
+            // visitedReult.push(removedNode.value);
+
+            // NB: 
         }
         return visitedReult;
     }
@@ -218,6 +210,7 @@ class BST {
         
         let traverse = function(currentNode){
             // base case
+            // if(currentNode == null) return;
             if(!currentNode) return;
 
             // common base-case mistake

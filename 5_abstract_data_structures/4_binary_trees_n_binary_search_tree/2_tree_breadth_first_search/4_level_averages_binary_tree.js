@@ -74,3 +74,12 @@ root.right.right = new Node(18);
 const bt = new BinaryTree(root);
 const res = bt.zigzap_tree_traversal();
 console.log("Result2: ", res)
+
+// Time: O(n)
+// where ‘N’ is the total number of nodes in the tree. 
+// This is due to the fact that we traverse each node once.
+
+// Space: O(N) 
+// which is required for the queue. Since we can have a maximum of 
+// nodes at any level (this could happen only at the lowest level), therefore we will need 
+// O(N) space to store them in the queue.
