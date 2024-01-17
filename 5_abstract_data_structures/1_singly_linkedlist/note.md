@@ -12,14 +12,14 @@
 - efficient insertion and deletion of elements at the beginning of the list, or at any position if the pointer to the node preceding the position of insertion or deletion is available. 
 
 ### When not to use
-- accessing an element in the list requires traversing the list from the head until the desired element is reached, which can be time-consuming for large lists.
+- accessing an element in the list requires traversing the list from the HEAD until the desired element is reached, which can be time-consuming for large lists.
 
 ### vs Arrays
 - Arrays are indexed in order
     - List is not inexed
-- Accessing item is super fast **
+- In arrays, accessing item is super fast **
     - In List, individual item access is expensive cus need to traverse through all elements...eg: elevator can't skip some floors straight to a particular floor
-- Insertion or Deletion is super expensive
+- In Arrays, insertion or Deletion is super expensive
     - Insertion and deletion gave birth to List **
 
 

@@ -49,7 +49,7 @@ class SinglyLinkedList {
         let currentNode = this.head;
         let penultimateNode = null;
 
-        while(currentNode.next != null){
+        while(currentNode.next != null){    // look-ahead of the chain before a step is made, otherwise the currentNode can be null, if the step is null, moving two pointers ahead so need to make sure none is null
             penultimateNode = currentNode;
             currentNode = currentNode.next;
         }
@@ -67,7 +67,8 @@ class SinglyLinkedList {
         //     this.tail = null;
         // }
 
-        return currentNode;
+        return currentNode; // the node to remove
+        // nb: essense of two pointers steping forward, was to keep/track/hold the removedNode and the penunltimate (which becomes the new tail)
     }
 
     // remove node from begining of linked list
