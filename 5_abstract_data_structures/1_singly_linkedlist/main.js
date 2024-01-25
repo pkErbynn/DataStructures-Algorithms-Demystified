@@ -47,18 +47,19 @@ class SinglyLinkedList {
 
         // else, continue process w/ multiple nodes
         let currentNode = this.head;
-        let penultimateNode = null;
+        let penultimateNodeOfCurrentNode = null;
 
         while(currentNode.next != null){    // look-ahead of the chain before a step is made, otherwise the currentNode can be null, if the step is null, moving two pointers ahead so need to make sure none is null
-            penultimateNode = currentNode;
+            // update all 2 trackers to next step
+            penultimateNodeOfCurrentNode = currentNode;
             currentNode = currentNode.next;
         }
 
-        if(penultimateNode){
-            penultimateNode.next = null; // break the chain
+        if(penultimateNodeOfCurrentNode){
+            penultimateNodeOfCurrentNode.next = null; // break/terminate the chain
         }
         
-        this.tail = penultimateNode; // set new tail
+        this.tail = penultimateNodeOfCurrentNode; // set new tail
         this.length -= 1; // reduce length
 
         // if after removing, and list becomes empty
@@ -91,7 +92,7 @@ class SinglyLinkedList {
             // head not set to null cus it will be set when this.head.next is null
         }
 
-        currentHeadToRemove.next = null;    // strip its chain
+        currentHeadToRemove.next = null;    // strip/terminate its chain
         return currentHeadToRemove;
     }
 
@@ -117,18 +118,18 @@ class SinglyLinkedList {
     // this is where array beats linkedlist...cus element can be access directly without traversing through any other elements
     get(index){
         // check if not within range
-        if(index < 0 || index >= this.length){
+        if(index < 0 || index >= this.length){  // >= cus index start at 0
             return null;
         }
         
         if(index === 0) return this.head;
         
         let currentNode = this.head;
-        let counter = 0;
+        let counter = 0;    // initial index
         
         while(currentNode.next){
             currentNode = currentNode.next;
-            counter++;
+            counter++; // counting the steps to match the incoming index position that the object needs to be retrieved
             if(counter === index){
                 break;
             }
@@ -140,6 +141,32 @@ class SinglyLinkedList {
         //     counter++;
         // }
         // return currentNode;
+    }
+
+     // remove a node from specific position
+    remove(index){
+        // invalid range
+        if(index < 0 || index >= this.length) return null;
+
+        // at start
+        if(index === 0) {
+            let removedNode = this.shift();
+            return removedNode;
+        }
+
+        // at end
+        if(index === this.length-1){
+            let poppedNode = this.pop();
+            return poppedNode;
+        }
+
+        // at middle
+        let penultimateNode = this.get(index-1); // access to penultimateNode gives info about its forward node, hence accessing penultimateNode
+        let removedNodeMiddle = penultimateNode.next;
+        penultimateNode.next = penultimateNode.next.next;   // rejoin after node removal
+        this.length -= 1;
+
+        return removedNodeMiddle;
     }
 
     // change the value of node based on its position
@@ -182,32 +209,6 @@ class SinglyLinkedList {
         this.length += 1;
 
         return true;
-    }
-
-    // remove a node from specific position
-    remove(index){
-        // invalid range
-        if(index < 0 || index >= this.length) return null;
-
-        // at start
-        if(index === 0) {
-            let removedNode = this.shift();
-            return removedNode;
-        }
-
-        // at end
-        if(index === this.length-1){
-            let poppedNode = this.pop();
-            return poppedNode;
-        }
-
-        // at middle
-        let penultimateNode = this.get(index-1); // access to penultimateNode gives info about its forward node, hence accessing penultimateNode
-        let removedNodeMiddle = penultimateNode.next;
-        penultimateNode.next = removedNodeMiddle.next;
-        this.length -= 1;
-
-        return removedNodeMiddle;
     }
 
     print(){
