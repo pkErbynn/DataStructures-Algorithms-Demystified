@@ -42,7 +42,7 @@ class Queue {
     constructor(){
         this.first = null; // equi to head in linkedlist
         this.last = null; // equi to tail in linkedlist
-        this.length = 0; // equi to size in Stack
+        this.length = 0; // equi to size in linkedlist
     }
 
     // adding to the end (push)

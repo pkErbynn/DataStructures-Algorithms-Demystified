@@ -39,7 +39,7 @@ class BinaryTree {
             let {node, currentSum} = stack.pop();
             currentSum += node.value;
 
-            // if leaf node and sum equal target
+            // if current is a leaf node and sum equal target
             if(node.left == null & node.right == null & currentSum == targetSum){
                 return true;
             }

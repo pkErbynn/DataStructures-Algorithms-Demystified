@@ -44,7 +44,10 @@ The time complexity for node removal in a doubly linked list depends on the posi
 
 - If the node to be removed is somewhere in the middle of the doubly linked list, then the time complexity is O(n), where n is the number of nodes in the linked list. This is because we need to traverse the list to find the node to be removed, and then update the pointers of the surrounding nodes to remove the node from the list.
 
-Overall, the worst-case time complexity for node removal in a doubly linked list is O(n), while the best-case time complexity is O(1) if the node being removed is at the beginning or end of the list.
+Overall, 
+- the worst-case time complexity for node removal in a doubly linked list is O(n), 
+- while the best-case time complexity is O(1) if the node being removed is at the beginning or end of the list.
+
 
 #### what is the time complexity for insertion operation in doubly linked list
 

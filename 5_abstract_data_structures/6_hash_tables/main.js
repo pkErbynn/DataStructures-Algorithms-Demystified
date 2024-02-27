@@ -131,16 +131,7 @@ class HashTable {
             this.keyMapData[index] = [];  // initializes the index with empty array to prepare for pushing of element
         }
        
-        // checking for key duplicate
-        let kVData = ht.keyMapData[1].find(p => p[0] === key);
-
-        if(!kVData){
-            this.keyMapData[index].push([key, value]);
-            // this.keyMapData[index][key] = value;
-        }
-        else {
-            console.log(`The key "${key}" already exists in the hash table`);
-        }
+        this.keyMapData[index].push([key, value]);
     }
 
     get(key){
@@ -176,6 +167,7 @@ let ht = new HashTable();
 ht.set("john", "kwesi");
 ht.set("magie", "nyanba");
 ht.set("raph", "nyan");
+ht.set("raph", "nyan2");
 ht.set("tony", "mensa");
 ht.set("tony", "mensa2");
 

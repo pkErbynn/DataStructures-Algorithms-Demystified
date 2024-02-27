@@ -47,7 +47,7 @@ class SinglyLinkedList {
 
         // else, continue process w/ multiple nodes
         let currentNode = this.head;
-        let penultimateNodeOfCurrentNode = null;
+        let penultimateNodeOfCurrentNode = null;    // since LinkedList can't look back like Doubly LinkedList
 
         while(currentNode.next != null){    // look-ahead of the chain before a step is made, otherwise the currentNode can be null, if the step is null, moving two pointers ahead so need to make sure none is null
             // update all 2 trackers to next step
@@ -187,20 +187,23 @@ class SinglyLinkedList {
         }
 
         // if tryna add to the start then use unshift
-        let lengthBefore = this.length;
+        let lengthBeforeInsertion = this.length;
         if(index === 0){
             // return !!this.unshift(value); // bang-banb, !!, convert other types to respective boolean
             this.unshift(value);
-            return this.length === lengthBefore+1;
+            return this.length === lengthBeforeInsertion+1;
         }
 
         // if tryna add to the end then use push
         if(index === this.length){
             this.push(value);
-            return this.length === lengthBefore+1;
+            return this.length === lengthBeforeInsertion+1;
         }
 
-        // otherwise, inserting in the middle
+        // otherwise, inserting anywhere in the middle
+
+        // get the penultimate node because you couldn't lose track of the previous chained nodes + the forward nodes
+        // geting the actual node directly looses track of the prev since can't traverse back, only forward
         let penultimateNode = this.get(index - 1);
         let nextNode = penultimateNode.next;
         let newNode = new Node(value);
@@ -227,19 +230,20 @@ class SinglyLinkedList {
         if(!this.head) return null;
         if(this.length === 1) return this.head;
         
-        let previousNode = null
+        let penultimateOfCurrentNode = null
         let currentNode = this.head;
-        // let nextNode = currentNode.next; // can't be here cus doesnt get updated
+        
+        // let nextNode = currentNode.next; // can't be here in this scope cus doesnt get updated
         
         while(currentNode){
             // temp keep next node
             let nextNode = currentNode.next;
 
             // set link of currentNode to reverse
-            currentNode.next = previousNode;
+            currentNode.next = penultimateOfCurrentNode;
 
             // shift all pointers forward;
-            previousNode = currentNode;
+            penultimateOfCurrentNode = currentNode;
             currentNode = nextNode;
         }
         
@@ -260,6 +264,27 @@ class SinglyLinkedList {
         }
         return sum;
     }
+
+    // This modification uses the while (currentNode.next) condition to iterate through the linked list, 
+    // and then adds the value of the last node (where currentNode.next is null) outside the loop. 
+    // This ensures that the value of the last node is included in the sum.
+    sum() {
+        if (!this.head) return 0;
+    
+        let currentNode = this.head;
+        let sum = 0;
+    
+        while (currentNode.next) {
+            sum += currentNode.value;
+            currentNode = currentNode.next;
+        }
+    
+        // Add the value of the last node (currentNode) outside the loop
+        sum += currentNode.value;
+    
+        return sum;
+    }
+    
     
 }
 

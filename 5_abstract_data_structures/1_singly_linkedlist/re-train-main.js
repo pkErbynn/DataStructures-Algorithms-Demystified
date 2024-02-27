@@ -140,6 +140,86 @@ class SLL {
         this.length -= 1;
         return removedNode;
     }
+
+    set(index, value){
+           let node = this.get(index);
+           
+           if(!node){
+            return false;
+           }
+           node.value = value;
+           return true;
+    }
+
+    print(){
+        let currentNode = this.head;
+        let printOut = [];
+        while(currentNode){
+            printOut.push(currentNode.value);
+            currentNode = currentNode.next;
+        }
+        return printOut;
+    }
+
+    sum(){
+        if(!this.head) return 0;
+        let currentNode = this.head;
+        let sum = 0;
+
+        while(currentNode){
+            sum = sum + currentNode.value;
+            currentNode = currentNode.next;
+        }
+
+        return sum;
+    }
+
+    insert(index, value){
+        if(index < 0 || index >= this.length) return false;
+
+        let lengthBeforeInsertion = this.length;
+        if(index == 0){
+            this.unshift(value);
+            console.log(this);
+            return this.length === lengthBeforeInsertion+1;
+        }
+
+        if(index === this.length - 1){
+            this.push(value);
+            console.log(this);
+            return this.length === this.lengthBeforeInsertion+1;
+        }
+
+        let newNode = new Node(value);
+        let penultimate = this.get(index-1);
+        let nextNode = penultimate.next;
+        penultimate.next = newNode;
+        newNode.next = nextNode;
+        this.length += 1;
+        return true;
+    }
+
+    reverse(){
+        if(!this.head) return null;
+        if(this.length == 1) return this.head;
+
+        let penultimateOfCurrentNode = null;
+        let currentNode = this.head;
+
+        while(currentNode){
+            let nextNode = currentNode.next;
+
+            currentNode.next = penultimateOfCurrentNode;
+
+            penultimateOfCurrentNode = currentNode;
+            currentNode = nextNode;
+        }
+
+        this.head = this.tail;
+        this.tail = this.head;
+
+        return this;
+    }
 }
 
 let sl = new SLL();
@@ -153,4 +233,8 @@ sl.get(1);
 // sl.shift();
 // sl.shift();
 
-sl.remove(1);
+// sl.remove(1);
+
+sl.insert(1, 4)
+
+

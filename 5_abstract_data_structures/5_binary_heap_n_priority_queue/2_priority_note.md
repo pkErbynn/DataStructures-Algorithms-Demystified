@@ -4,7 +4,7 @@
 - a binary tree based abstract data structure
 - where each element is associated with priority
 - element with high priority are served before element with low priority
-- normally, low priority tag number means hight priority
+- normally, low priority tag number means high priority
 
 #### Implementation
 
@@ -20,7 +20,7 @@
 - using heap
     - better and efficient approach
     - provides order as to what element to searve next
-    - instead using pure values as node in heap, a class node will be used this time around **
+    - instead of using pure premitive values as node in heap, a class node will be used this time around **
 
 
 #### Confussion

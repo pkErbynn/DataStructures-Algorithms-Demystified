@@ -49,6 +49,7 @@ class DoublyLinkedList {
         let poppedtail = this.tail; // copy to return
         let prevNode = this.tail.prev;
         prevNode.next = null;
+
         this.tail.prev = null; // break chain to prevent leaks
 
         // set new tail and decrement length
@@ -103,7 +104,7 @@ class DoublyLinkedList {
         return this;
     }
 
-    // access node by its position
+    // access node by its position: element can be accessed either from front or back depending on the index
     get(index){
         // check if not within range
         if(index < 0 || index >= this.length){
@@ -248,13 +249,16 @@ dl.display();
 // - deletion: depends...start/end: O(1)...middle: o(n)
 // - access: o(n)
 // - search: o(n).....technically, search is O(n/2) but still o(n)
-// === In sum:
+// 
+//  === In sum:
 // - singly linked list 
 //   ...better for start/end insertion operations
 //   ...doesn't eat memory
 // - doubly linked list
-//   ...better for start/end insertion/deletion operations
-//   ...better for finding node cus can be done in half the time
+//   ...better for start/end insertion operation
+//   ...better end(tail node) DELETION operation ** (advantage over linkedlist)
+//      ...because the tail node has pointer to the prev node, so no need to travel from start the end like singly linkedlist
+//   ...better for finding node cus can be done in half the time ** (advantage over linkedlist)
 //   ...takes up MORE MEMORY considering the extra pointer
 //   ...USE-CASE
 //      ...navigating back and forth with browser history

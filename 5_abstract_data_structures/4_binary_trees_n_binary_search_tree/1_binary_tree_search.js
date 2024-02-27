@@ -145,7 +145,7 @@ class BST {
         queue.push(currentNode);
 
         // while there's something in the queue for processing...
-        while(queue.length){
+        while(queue.length > 0){
             let removedHeadNode = queue.shift();
             visitedResult.push(removedHeadNode.value);
 
@@ -172,12 +172,13 @@ class BST {
         stack.push(currentNode);
 
         // while there's something in the stack for processing...
-        while(stack.length){
+        while(stack.length){    // while stack has an element...
             let removedNode = stack.pop();
             visitedReult.push(removedNode.value);
 
             // once removed and put to visitedReult, push their leg children nodes to the stack
-            // NB: took right first, left second because since it's LIFO left node will be processed before the right, that's why the right is put on the stack first
+            // NB: took right first, left second because since it's LIFO, left node will be processed before the right, 
+            // that's why the right is put on the stack first
             if(removedNode.right)
                 stack.push(removedNode.right);
             if(removedNode.left)
