@@ -124,7 +124,7 @@ class Graph {
     // breadth => neighbor nodes have priority first, thus use queue 
     breadthFirstTraversal(startNode){  // ****
         let result = [];
-        let queue = [];
+        let queue = []; // horizonal so use QUEUE
         let visitedNodeTracking = {};  // true/false
 
         // add start node to Queue for treatment n diagnosis
@@ -136,20 +136,23 @@ class Graph {
             let currentNode = queue.shift();
 
             // visit the shifted currentNode by pushing to result collection storage + mark it as visit
-            if(!visitedNodeTracking[currentNode]) result.push(currentNode);
-            visitedNodeTracking[currentNode] = true;
+            if(!visitedNodeTracking[currentNode]) {
+                result.push(currentNode);
+                visitedNodeTracking[currentNode] = true;
 
-            // get the neighbor nodes of this current currentNode by accessing its adjascent list
-            let neighborNodes = this.adjacencyList[currentNode];
-            for (let neighbor of neighborNodes) {
-                if(!visitedNodeTracking[neighbor]){
-                    queue.push(neighbor);
+                // get the neighbor nodes of this current currentNode by accessing its adjascent list
+                let neighborNodes = this.adjacencyList[currentNode];
+                for (let neighbor of neighborNodes) {
+                    if(!visitedNodeTracking[neighbor]){
+                        queue.push(neighbor);
+                    }
                 }
             }
         }
 
         return result;
     }
+
 
 
     // checking if there's a path between the Source/Start node and Destination/End node
@@ -262,12 +265,12 @@ console.log("depth_search_recur:", myGraph2.depthFirstTraversalRecursive("A"))
 console.log("breath_search:", myGraph2.breadthFirstTraversal("A"))
 
 
-let edges = [
-    ["A", "B"],
-    ["A", "C"],
-    ["B", "D"],
-    ["C", "E"],
-]
+// let edges = [
+//     ["A", "B"],
+//     ["A", "C"],
+//     ["B", "D"],
+//     ["C", "E"],
+// ]
 console.log(myGraph2.buildGraph(edges));
 
 /*
