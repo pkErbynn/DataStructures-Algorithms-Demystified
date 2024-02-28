@@ -139,25 +139,29 @@ class BST {
     // breath-first search => uses Queue
     bfs(){
         let queue = [];
-        let visitedReult = [];
+        let visitedResult = [];
 
         let currentNode = this.root;
         queue.push(currentNode);
 
         // while there's something in the queue for processing...
-        while(queue.length){
+        while(queue.length > 0){
             let removedHeadNode = queue.shift();
-            visitedReult.push(removedHeadNode.value);
+            visitedResult.push(removedHeadNode.value);
 
-            // once removed and put to visitedReult, push their leg children nodes to the queue
+            // once removed and put to visitedResult, push their leg children nodes to the queue
             if(removedHeadNode.left) 
                 queue.push(removedHeadNode.left);
             if(removedHeadNode.right) 
                 queue.push(removedHeadNode.right);
 
         }
-        return visitedReult;
+        return visitedResult;
     }
+
+    // Watch Video: 
+    // - https://www.youtube.com/watch?v=fPz40W9mfCg
+    // - https://www.youtube.com/watch?v=Bfqd8BsPVuw&list=LL&index=4&t=319s
 
     // depth-first search => uses Stack
     dfsPreOrder(){
@@ -168,11 +172,13 @@ class BST {
         stack.push(currentNode);
 
         // while there's something in the stack for processing...
-        while(stack.length){
+        while(stack.length){    // while stack has an element...
             let removedNode = stack.pop();
             visitedReult.push(removedNode.value);
 
             // once removed and put to visitedReult, push their leg children nodes to the stack
+            // NB: took right first, left second because since it's LIFO, left node will be processed before the right, 
+            // that's why the right is put on the stack first
             if(removedNode.right)
                 stack.push(removedNode.right);
             if(removedNode.left)
@@ -185,6 +191,16 @@ class BST {
             // visitedReult.push(removedNode.value);
             // if(removedNode.left)
             //     stack.push(removedNode.left);
+
+            ///////// post-order
+            // if(removedNode.right)
+            //     stack.push(removedNode.right);
+            // if(removedNode.left)
+            //     stack.push(removedNode.left);
+            // let removedNode = stack.pop();
+            // visitedReult.push(removedNode.value);
+
+            // NB: 
         }
         return visitedReult;
     }
@@ -195,6 +211,7 @@ class BST {
         
         let traverse = function(currentNode){
             // base case
+            // if(currentNode == null) return;
             if(!currentNode) return;
 
             // common base-case mistake
@@ -260,26 +277,28 @@ let bst = new BST();
 //     5       15
 //  2    8  12   18
 
-// console.log(bst.insert(10));
-// console.log(bst.insert(5));
-// console.log(bst.insert(15));
-// console.log(bst.insert(2));
-// console.log(bst.insert(8));
-// console.log(bst.insert(12));
-// console.log(bst.insert(18));
+console.log(bst.insert(10));
+console.log(bst.insert(5));
+console.log(bst.insert(15));
+console.log(bst.insert(2));
+console.log(bst.insert(8));
+console.log(bst.insert(12));
+console.log(bst.insert(18));
 // console.log(bst);
 
-console.log(bst.insert_recursive(10));
-console.log(bst.insert_recursive(5));
-console.log(bst.insert_recursive(15));
-console.log(bst.insert_recursive(2));
-console.log(bst.insert_recursive(8));
-console.log(bst.insert_recursive(12));
-console.log(bst.insert_recursive(18));
+// console.log(bst.insert_recursive(10));
+// console.log(bst.insert_recursive(5));
+// console.log(bst.insert_recursive(15));
+// console.log(bst.insert_recursive(2));
+// console.log(bst.insert_recursive(8));
+// console.log(bst.insert_recursive(12));
+// console.log(bst.insert_recursive(18));
 // console.log(bst);
 
 // console.log(bst.find(2));
 
+console.log("Ans: ");
+console.log(bst.bfs2());
 
 /*
 === Time Complexity ====

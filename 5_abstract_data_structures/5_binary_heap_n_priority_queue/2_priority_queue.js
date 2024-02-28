@@ -5,9 +5,10 @@
 - a binary tree based abstract data structure
 - where each element is associated with priority
 - element with high priority are served before element with low priority
-- normally, low priority tag number means hight priority
+- normally, low priority tag number means high priority
+- compares element based on priority only, no value
 
-- most importance element is the first one in the array
+- ** most importance element is the first one in the array
     - the order of the rest of the elements is not realy that important
 
 ///////// Implementation
@@ -50,10 +51,11 @@ class PriorityQueue {
         this.values = [];
     }
 
-    // insert at array end -> bubble up to correct position
+    // insert at array end/tree bottom -> bubble up to correct position
     // thus, calc its parent
     // this time around, low priority number has highest priority: L#67
-    enqueue(value, priority){   // insert
+    // similar to insert operation in binary heap
+    enqueue(value, priority){
         let newNode = new Node(value, priority);
         
         this.values.push(newNode);
@@ -84,10 +86,50 @@ class PriorityQueue {
         return this.values;
     }
 
-    // remove at top -> bubble down
+    // remove at array front / tree top -> bubble down
     // thus, cal children nodes
     // similar as extractMax() in heap
-    dequeue(){
+    dequeueElement(){   // ****
+        let removedNode = this.values[0];
+        this.values[0] = this.values.pop();
+
+        let rootNodeIndex = 0;
+
+        // root index being in range as it will be moving forward to the edge of the array length
+        while(rootNodeIndex < this.values.length){
+
+            let rootNode = this.values[rootNodeIndex]; // recalculate for each iteration
+            let leftChildIndex = 2 * rootNodeIndex + 1;
+            let leftChildNode = this.values[leftChildIndex];
+            let rightChildIndex = 2 * rootNodeIndex + 2;
+            let rightChildNode = this.values[rightChildIndex];
+
+            // Check if left and right child indices are within bounds
+            if (leftChildIndex >= this.values.length || rightChildIndex >= this.values.length) {
+                break; // No more complete children to compare, exit loop
+            }
+
+            // Determine the maximum child value
+            let maxChildPriority = Math.min(leftChildNode.priority, rightChildNode.priority);
+            let maxChildPriorityIndex = maxChildPriority == leftChildNode.priority ? 
+                leftChildIndex : rightChildIndex;
+            let maxChildNode = this.values[maxChildPriorityIndex];
+
+            if(rootNode.priority > maxChildNode.priority) { // means small prio value means high priority
+                [ this.values[rootNodeIndex], this.values[maxChildPriorityIndex] ] = 
+                [ this.values[maxChildPriorityIndex], this.values[rootNodeIndex] ];
+
+                rootNodeIndex = maxChildPriorityIndex;
+            }
+            else {
+                break;
+            }
+        }
+
+        return removedNode;
+    }
+
+    dequeue(){  // alternative
         if(this.values.length === 0) return null;
         // swap first n last node
         // before removing last node(first node)...if removed at start, with shift, there will be reindexing which is expensive
@@ -189,7 +231,6 @@ class PriorityQueue {
         return extractedMax;
     }
     
-    
     // this is incomplete
     dequeue_beforeWhileLoop(){   // means, performs dequeue operation only once
         // swap first n last node
@@ -247,14 +288,19 @@ class PriorityQueue {
 // [5, 12, 15, 20, 13]
 
 let pq = new PriorityQueue();
-pq.enqueue("eat breakfask", 2);
+pq.enqueue("eat breakfask", 7);
 pq.enqueue("play game", 5);
 pq.enqueue("leave for work", 4);
 pq.enqueue("brush teeth", 3);
 pq.enqueue("out for date", 10);
 pq.enqueue("hit the gym", 8);
 
-console.log(pq.dequeue())
+// console.log(pq.dequeue())
+// console.log(pq.dequeue())
+// console.log(pq.dequeue())
+console.log(pq.dequeueElement());
+console.log(pq.dequeueElement());
+console.log(pq.dequeueElement());
 
 /* Time Complexity 
 - Binary Heap operation (applied on priority queue), is best know for INSERTION (ENQUEUE) and DELETION (DEQUEUE)

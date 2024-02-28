@@ -1,65 +1,7 @@
 /*
 
-Graphs
+== Unweighted Graph Structure
 
-Definition
-- a non-linear data structure (stack, queues, array, etc are all linear, tree is non-linear)
-- consisting of collection of nodes, connected by edges
-- A tree is a special form of Graph
-    - unlike trees, graphs have no parent / entry node / starting node
-    - every node can be the start in graphs
-
-Applications of Graphs
-- social networking
-- routing algorithms
-- mapping eg. google map
-- recommendations on social, shopping, movie platforms
-    - Netflix => "people also watch..."
-    - Amazon => "frequently bought with..."
-    - Fb => "people you might know..."
-
-Terminologies
-- vertex: a node
-- edge: connection between nodes
-- weighted/unweighted: values assigned to distances btn nodes/vertices
-- directed/undirected: directions assigned to distances btn nodes/vertices
-
-Ways of modeling Graphs in code
-1. Adjascency list
-    - faster to iterate through all nodes [upside]
-    - slower to look-up specific edge [downside]
-    - takes less space in Sparsed graph
-2. Adjascency matrix
-    - slower to iterate through all nodes [downside]
-    - faster to look-up specific edge [upside]
-    - takes more space in Sparsed graph
-
-Why Using Adjascency list
-- cus most graphs are Sparsed (one-on-one connection with nodes, not one graph to all nodes, ie, one-many)
-- and takes less space complexity
-
-Vs Tree
-- every tree is a graph, but not all graphs are trees
-- trees have every point to traverse from, but graphs can start anywhere
-- trees have one path to a paticular node, but graphs can have multiple paths to a node
-
-===== Graph Traversal =====
-Most useful part of graphs. Graph Traversal useful in:
-- web crawlers
-- finding the closest match / recommendations
-- shortest path relevance
-    - GPS Navigation
-    - Solving maze
-
-Depth-First Traversal
-- means prioritizing visiting children nodes before parents
-- also means, poping top children First
-- thus, using Stack
-- Note: recursive approach uses the underlining call stack
-    - hence, no need to explicitly use Stack, unless done in iterative approach
-
-
-Unweighted Graph Structure
 unweightedGraph = {
     "A": ["B", "C"],
     "B": ["A", "C"],
@@ -81,7 +23,7 @@ class Graph {
     // adding vertex
     addNode(name){
         // initial new node to empty list of edges 
-        if(!this.adjacencyList[name]){
+        if(!this.adjacencyList[name]){  // if doesn't have a value means does not have a key
             this.adjacencyList[name] = [];
         }
     }
@@ -90,7 +32,7 @@ class Graph {
     // edges comes with 2 nodes/vertices
     // undirected connection as, a -> b === b -> a
     addEdge(node1, node2){
-        if(this.adjacencyList[node1]) this.adjacencyList[node1].push(node2);
+        if(this.adjacencyList[node1]) this.adjacencyList[node1].push(node2); // push cus initialized to empty []
         if(this.adjacencyList[node2]) this.adjacencyList[node2].push(node1);
     }
 
@@ -120,11 +62,11 @@ class Graph {
 
     // determine your start node
     // depth means, children nodes has priority first, thus use stack 
-    // reminder: depth-stack => (ds), while breadth-queue => barbeQueue
+    // reminder: depth-stack => (ds), while breadth-queue => (barbeQueue)
     depthFirstTraversal(startNode){  // ****
         let result = [];
         let stack = [];
-        let visitedNodeTracking = {};  // true/false...prevent cyclic loop
+        let visitedNodeTracking = {};  // true/false...prevent cyclic loop...can use Set()
 
         // add start node to Stack for treatment n diagnosis
         stack.push(startNode);
@@ -135,14 +77,17 @@ class Graph {
             let currentNode = stack.pop();
 
             // visit the popped currentNode by pushing to result collection storage + mark it as visit
-            if(!visitedNodeTracking[currentNode]) result.push(currentNode);
-            visitedNodeTracking[currentNode] = true;
+            if(!visitedNodeTracking[currentNode]){
 
-            // get the neighbor nodes of this current currentNode by accessing its adjascent list
-            let neighborNodes = this.adjacencyList[currentNode];
-            for (let neighbor of neighborNodes) {
-                if(!visitedNodeTracking[neighbor]){
-                    stack.push(neighbor);
+                result.push(currentNode);
+                visitedNodeTracking[currentNode] = true;
+
+                // get the neighbor nodes of this current currentNode by accessing its adjascent list
+                let neighborNodes = this.adjacencyList[currentNode];
+                for (let neighbor of neighborNodes) {
+                    if(!visitedNodeTracking[neighbor]){
+                        stack.push(neighbor);
+                    }
                 }
             }
         }
@@ -179,7 +124,7 @@ class Graph {
     // breadth => neighbor nodes have priority first, thus use queue 
     breadthFirstTraversal(startNode){  // ****
         let result = [];
-        let queue = [];
+        let queue = []; // horizonal so use QUEUE
         let visitedNodeTracking = {};  // true/false
 
         // add start node to Queue for treatment n diagnosis
@@ -191,20 +136,23 @@ class Graph {
             let currentNode = queue.shift();
 
             // visit the shifted currentNode by pushing to result collection storage + mark it as visit
-            if(!visitedNodeTracking[currentNode]) result.push(currentNode);
-            visitedNodeTracking[currentNode] = true;
+            if(!visitedNodeTracking[currentNode]) {
+                result.push(currentNode);
+                visitedNodeTracking[currentNode] = true;
 
-            // get the neighbor nodes of this current currentNode by accessing its adjascent list
-            let neighborNodes = this.adjacencyList[currentNode];
-            for (let neighbor of neighborNodes) {
-                if(!visitedNodeTracking[neighbor]){
-                    queue.push(neighbor);
+                // get the neighbor nodes of this current currentNode by accessing its adjascent list
+                let neighborNodes = this.adjacencyList[currentNode];
+                for (let neighbor of neighborNodes) {
+                    if(!visitedNodeTracking[neighbor]){
+                        queue.push(neighbor);
+                    }
                 }
             }
         }
 
         return result;
     }
+
 
 
     // checking if there's a path between the Source/Start node and Destination/End node
@@ -312,17 +260,17 @@ myGraph2.addEdge("E", "F")
 //          F
 
 
-console.log("ds:", myGraph2.depthFirstTraversal("A"))
-console.log("ds_recur:", myGraph2.depthFirstTraversalRecursive("A"))
-console.log("bs:", myGraph2.breadthFirstTraversal("A"))
+console.log("depth_search:", myGraph2.depthFirstTraversal("A"))
+console.log("depth_search_recur:", myGraph2.depthFirstTraversalRecursive("A"))
+console.log("breath_search:", myGraph2.breadthFirstTraversal("A"))
 
 
-let edges = [
-    ["A", "B"],
-    ["A", "C"],
-    ["B", "D"],
-    ["C", "E"],
-]
+// let edges = [
+//     ["A", "B"],
+//     ["A", "C"],
+//     ["B", "D"],
+//     ["C", "E"],
+// ]
 console.log(myGraph2.buildGraph(edges));
 
 /*

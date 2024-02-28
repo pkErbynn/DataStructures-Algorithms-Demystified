@@ -47,18 +47,19 @@ class SinglyLinkedList {
 
         // else, continue process w/ multiple nodes
         let currentNode = this.head;
-        let penultimateNode = null;
+        let penultimateNodeOfCurrentNode = null;    // since LinkedList can't look back like Doubly LinkedList
 
-        while(currentNode.next != null){
-            penultimateNode = currentNode;
+        while(currentNode.next != null){    // look-ahead of the chain before a step is made, otherwise the currentNode can be null, if the step is null, moving two pointers ahead so need to make sure none is null
+            // update all 2 trackers to next step
+            penultimateNodeOfCurrentNode = currentNode;
             currentNode = currentNode.next;
         }
 
-        if(penultimateNode){
-            penultimateNode.next = null; // break the chain
+        if(penultimateNodeOfCurrentNode){
+            penultimateNodeOfCurrentNode.next = null; // break/terminate the chain
         }
         
-        this.tail = penultimateNode; // set new tail
+        this.tail = penultimateNodeOfCurrentNode; // set new tail
         this.length -= 1; // reduce length
 
         // if after removing, and list becomes empty
@@ -67,7 +68,8 @@ class SinglyLinkedList {
         //     this.tail = null;
         // }
 
-        return currentNode;
+        return currentNode; // the node to remove
+        // nb: essense of two pointers steping forward, was to keep/track/hold the removedNode and the penunltimate (which becomes the new tail)
     }
 
     // remove node from begining of linked list
@@ -90,7 +92,7 @@ class SinglyLinkedList {
             // head not set to null cus it will be set when this.head.next is null
         }
 
-        currentHeadToRemove.next = null;    // strip its chain
+        currentHeadToRemove.next = null;    // strip/terminate its chain
         return currentHeadToRemove;
     }
 
@@ -116,18 +118,18 @@ class SinglyLinkedList {
     // this is where array beats linkedlist...cus element can be access directly without traversing through any other elements
     get(index){
         // check if not within range
-        if(index < 0 || index >= this.length){
+        if(index < 0 || index >= this.length){  // >= cus index start at 0
             return null;
         }
         
         if(index === 0) return this.head;
         
         let currentNode = this.head;
-        let counter = 0;
+        let counter = 0;    // initial index
         
         while(currentNode.next){
             currentNode = currentNode.next;
-            counter++;
+            counter++; // counting the steps to match the incoming index position that the object needs to be retrieved
             if(counter === index){
                 break;
             }
@@ -139,6 +141,32 @@ class SinglyLinkedList {
         //     counter++;
         // }
         // return currentNode;
+    }
+
+     // remove a node from specific position
+    remove(index){
+        // invalid range
+        if(index < 0 || index >= this.length) return null;
+
+        // at start
+        if(index === 0) {
+            let removedNode = this.shift();
+            return removedNode;
+        }
+
+        // at end
+        if(index === this.length-1){
+            let poppedNode = this.pop();
+            return poppedNode;
+        }
+
+        // at middle
+        let penultimateNode = this.get(index-1); // access to penultimateNode gives info about its forward node, hence accessing penultimateNode
+        let removedNodeMiddle = penultimateNode.next;
+        penultimateNode.next = penultimateNode.next.next;   // rejoin after node removal
+        this.length -= 1;
+
+        return removedNodeMiddle;
     }
 
     // change the value of node based on its position
@@ -159,20 +187,23 @@ class SinglyLinkedList {
         }
 
         // if tryna add to the start then use unshift
-        let lengthBefore = this.length;
+        let lengthBeforeInsertion = this.length;
         if(index === 0){
             // return !!this.unshift(value); // bang-banb, !!, convert other types to respective boolean
             this.unshift(value);
-            return this.length === lengthBefore+1;
+            return this.length === lengthBeforeInsertion+1;
         }
 
         // if tryna add to the end then use push
         if(index === this.length){
             this.push(value);
-            return this.length === lengthBefore+1;
+            return this.length === lengthBeforeInsertion+1;
         }
 
-        // otherwise, inserting in the middle
+        // otherwise, inserting anywhere in the middle
+
+        // get the penultimate node because you couldn't lose track of the previous chained nodes + the forward nodes
+        // geting the actual node directly looses track of the prev since can't traverse back, only forward
         let penultimateNode = this.get(index - 1);
         let nextNode = penultimateNode.next;
         let newNode = new Node(value);
@@ -181,32 +212,6 @@ class SinglyLinkedList {
         this.length += 1;
 
         return true;
-    }
-
-    // remove a node from specific position
-    remove(index){
-        // invalid range
-        if(index < 0 || index >= this.length) return null;
-
-        // at start
-        if(index === 0) {
-            let removedNode = this.shift();
-            return removedNode;
-        }
-
-        // at end
-        if(index === this.length-1){
-            let poppedNode = this.pop();
-            return poppedNode;
-        }
-
-        // at middle
-        let penultimateNode = this.get(index-1); // access to penultimateNode gives info about its forward node, hence accessing penultimateNode
-        let removedNodeMiddle = penultimateNode.next;
-        penultimateNode.next = removedNodeMiddle.next;
-        this.length -= 1;
-
-        return removedNodeMiddle;
     }
 
     print(){
@@ -225,19 +230,20 @@ class SinglyLinkedList {
         if(!this.head) return null;
         if(this.length === 1) return this.head;
         
-        let previousNode = null
+        let penultimateOfCurrentNode = null
         let currentNode = this.head;
-        // let nextNode = currentNode.next; // can't be here cus doesnt get updated
+        
+        // let nextNode = currentNode.next; // can't be here in this scope cus doesnt get updated
         
         while(currentNode){
             // temp keep next node
             let nextNode = currentNode.next;
 
             // set link of currentNode to reverse
-            currentNode.next = previousNode;
+            currentNode.next = penultimateOfCurrentNode;
 
             // shift all pointers forward;
-            previousNode = currentNode;
+            penultimateOfCurrentNode = currentNode;
             currentNode = nextNode;
         }
         
@@ -258,6 +264,27 @@ class SinglyLinkedList {
         }
         return sum;
     }
+
+    // This modification uses the while (currentNode.next) condition to iterate through the linked list, 
+    // and then adds the value of the last node (where currentNode.next is null) outside the loop. 
+    // This ensures that the value of the last node is included in the sum.
+    sum() {
+        if (!this.head) return 0;
+    
+        let currentNode = this.head;
+        let sum = 0;
+    
+        while (currentNode.next) {
+            sum += currentNode.value;
+            currentNode = currentNode.next;
+        }
+    
+        // Add the value of the last node (currentNode) outside the loop
+        sum += currentNode.value;
+    
+        return sum;
+    }
+    
     
 }
 

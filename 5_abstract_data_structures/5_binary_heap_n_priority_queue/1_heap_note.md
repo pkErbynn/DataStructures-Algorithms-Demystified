@@ -10,7 +10,7 @@
     2. Min Binary Heap
 - no ordering btn siblings.
     - like left node should be smaller than the right
-- left nodes are filled first before right node
+- left nodes are FILLED FIRST before right node
 - similar to Binary Search Tree but with different rules
 
 
@@ -33,3 +33,13 @@ Overall, the core benefit of a binary heap is its ability to efficiently maintai
     - Right child stored at index: 2n + 2
 - Finding parent node from children nodes in an Array
     - Formular: (n-1)/2
+
+
+### Heap Tree vs Search Tree
+- Search Tree: 
+    - left node is less that parent + right node is greater 
+    - help in search traversing, thus called Binary SEARCH Tree
+- Heap Tree: 
+    - Max Heap = parent greater than children
+    - Min Heap = parent lesser than children
+    

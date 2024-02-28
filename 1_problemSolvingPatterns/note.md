@@ -18,3 +18,6 @@
 * Next:
     - These solved questions are okay
     - Next will be to move on with Tree Pattern algo questions
+
+
+https://www.linkedin.com/premium/redeem/gift?_ed=-jLC69uYJCnIpMkP4gLxAWLYpBPc

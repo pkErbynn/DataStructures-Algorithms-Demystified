@@ -4,7 +4,7 @@
 // f(4) = 4 * 3 * 2 * 1 = 24
 
 function factorial_iterative_1(num){
-    if(num<=0) return 1; // 0! = 1
+    if(num<=1) return 1; // 1! or 0! = 1...guard clause
 
     // initial value for mult operation is 1, while addition is 0
     let accumulator = 1;
