@@ -18,7 +18,7 @@ function same(arr1, arr2){
         arr2 = arr2.filter(x => x !== doubledValue);    // checks element frequencies as removed from array...checks L26
     }
         return true;    // inner loop looks for falsy statement while the outer seeks for truthy
-    }
+}
 
 
 console.log(same([1,2,3], [2,3]));

@@ -25,7 +25,7 @@ function sumZero(sortedArray){
     let rightIndex = sortedArray.length - 1;
 
     while(leftIndex < rightIndex){
-        if(sortedArray[leftIndex] + sortedArray[rightIndex] === 0){
+        if( (sortedArray[leftIndex] + sortedArray[rightIndex]) === 0){
             return [sortedArray[leftIndex], sortedArray[rightIndex]];
         }
         else if(sortedArray[leftIndex] + sortedArray[rightIndex] > 0){
