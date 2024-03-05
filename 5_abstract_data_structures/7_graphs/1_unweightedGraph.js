@@ -20,10 +20,11 @@ class Graph {
 
     ////////// building graph ////////
     
-    // adding vertex
+    // adding vertex/node
+    // node are the keys with no value yet to create edge
     addNode(name){
         // initial new node to empty list of edges 
-        if(!this.adjacencyList[name]){  // if doesn't have a value means does not have a key
+        if(!this.adjacencyList[name]){  // if doesn't have a value means doesn't have a key
             this.adjacencyList[name] = [];
         }
     }

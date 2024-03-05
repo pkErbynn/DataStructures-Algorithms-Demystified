@@ -18,12 +18,12 @@ namespace seesharp
 			Node previousNode = null;
 			Node currentNode = head;
 
-			while (currentNode != null)
+			while (currentNode != null)	// while valid
 			{
 				Node nextNode = currentNode.Next;
 				currentNode.Next = previousNode;	// point in reverse
 
-				// push pointers forward
+				// push/move pointers forward
 				previousNode = currentNode;
 				currentNode = nextNode;
 			}
