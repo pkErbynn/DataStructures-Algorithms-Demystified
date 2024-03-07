@@ -1,5 +1,5 @@
 // TipGist:
-// - swaps adjascent elements
+// - swaps adjascent elements, placing large values at far right end
 // - creating sorted portion at far right end
 
 function bubbleSort(array) {
