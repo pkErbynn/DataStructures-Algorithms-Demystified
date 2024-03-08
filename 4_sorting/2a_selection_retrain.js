@@ -35,7 +35,7 @@ function selSort2(arr) {
             }
         }
 
-        if(i === miniValueIndex) continue;
+        if(i === miniValueIndex) continue;  
         [ arr[i], arr[miniValueIndex] ] = [ arr[miniValueIndex], arr[i] ]
     }
 

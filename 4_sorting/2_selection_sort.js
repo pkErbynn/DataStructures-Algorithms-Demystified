@@ -6,6 +6,8 @@
 // ...Selection select first element (temp smallest from unsorted portion) with the smallest element in the rest (n-1) of the unsorted array, if found smalles
 // ...Swapping is done using Index position
 // ...in sum, select the smallest value, and place it in the correct possition index through swapping
+// CoreTip: 
+// SelectionnSort = more effort into SELECTING the correct + less effort(naturally) to place/insert in correct position
 
 function selectionSort(arr){
     for (let outerIndex = 0; outerIndex < arr.length; outerIndex++) {
@@ -71,6 +73,8 @@ console.log("result2:", x);
 // unlike bubble sort where swap is done inside the inner loop with only inner loops indexes,
 // selection sort, does that outside the inner loop with both the outer and inner loop indexes
 // - "Selection sort" => 'select' the smallest in the list and then place it in the left sorted wing
+// CoreTip: 
+// SelectionnSort = more effort into SELECTING the correct + less effort(naturally) to place/insert in correct position
 
 // TimeComplexity 
 // best case = O(n^2)...nearly sorted
