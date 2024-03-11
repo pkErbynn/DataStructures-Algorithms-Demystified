@@ -9,12 +9,45 @@ Merge Sort consists of
 
 Works by decomposing array into smaller arrays of 0 or 1 element 
 ...and then building newly sorted array
+*/
 
 //////////// Implementation
-working in reverse
-merge before sort
+// 1. split
+// 2. merge
 
-1. function to MERGE two sorted arrays and return a newly sorted array
+
+//////////////
+// 1. Split each array into small chunk and merge the chunks
+
+function merge_sort_with_spliting(arr){
+    // base case or guard
+    if(arr.length <= 1){
+        return arr;
+    }
+
+    // split, by shallow copy, to divid array into 2 halves
+    let midIndex = Math.floor(arr.length / 2);
+    let leftHalf = arr.slice(0, midIndex);  // can't use split() cus applies on string
+    let rightHalf = arr.slice(midIndex, arr.length);
+    console.log(leftHalf, rightHalf);
+
+    // split further by recursion to achieve single/zero element, that are considered sorted
+    let splitedLefttHalf = merge_sort_with_spliting(leftHalf);
+    let splitedRightHalf = merge_sort_with_spliting(rightHalf);
+
+    // merge the two further splited (sorted) halves
+    let mergedArray = merge(splitedLefttHalf, splitedRightHalf);
+
+
+    return mergedArray;
+}
+
+let sortedArray = merge_sort_with_spliting([2,4,5,1,0,6,2,-4]);
+console.log('sorted:', sortedArray);
+
+////////
+/*
+2. function to MERGE two sorted arrays and return a newly sorted array
 ...shouldn't modify the input sorted params
 ...timeComplexit = O(n+m)
 ...cus visiting reach elment in each array once
@@ -22,6 +55,7 @@ merge before sort
 nb: very important for interviews 
 */
 
+//////////////////
 function merge(arr1, arr2) { 
     let result = [];
 
@@ -63,38 +97,6 @@ function merge(arr1, arr2) {
 
 // console.log(merge([2,4,6, 5, 15, 15, 18, 20], [1,3,9, 10]));
 // console.log(merge([1,3,9, 10], [2,4,6, 5, 15, 18, 20]));
-
-
-
-//////////////
-// 2. Split each array into small chunk and merge the chunks
-
-function merge_sort_with_spliting(arr){
-    // base case or guard
-    if(arr.length <= 1){
-        return arr;
-    }
-
-    // split, by shallow copy, to divid array into 2 halves
-    let midIndex = Math.floor(arr.length / 2);
-    let leftHalf = arr.slice(0, midIndex);  // can't use split() cus applies on string
-    let rightHalf = arr.slice(midIndex, arr.length);
-    console.log(leftHalf, rightHalf);
-
-    // split further by recursion to achieve single/zero element, that are considered sorted
-    let splitedLefttHalf = merge_sort_with_spliting(leftHalf);
-    let splitedRightHalf = merge_sort_with_spliting(rightHalf);
-
-    // merge the two further splited (sorted) halves
-    let mergedArray = merge(splitedLefttHalf, splitedRightHalf);
-
-
-    return mergedArray;
-}
-
-let sortedArray = merge_sort_with_spliting([2,4,5,1,0,6,2,-4]);
-console.log('sorted:', sortedArray);
-
 
 
 

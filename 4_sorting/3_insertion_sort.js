@@ -19,7 +19,7 @@ function insertionUsingForloop(arr){
         let j = i-1;  // 'var' is function scoped, while 'let' is block scoped
 
         // compare currentValue to the rest of the left half
-        for(j; j >= 0 && arr[j] > currentValue; j--){    // j = value before currentValue and loop back to index = 0...arr[j] > currentValue condition can't be outsource in if block, cus will alter the j index during insertion after the loop
+        for(j; j >= 0 && arr[j] > currentValue; j--){    // j = value before currentValue and loop back to index = 0...arr[j] > currentValue condition can't be outsource in if block, cus will alter the j index during insertion after the loop, shouldn't even loop if curValue is not smaller, use while loop for better impl
             arr[j+1] = arr[j];  // copy/shift j
         }
 
@@ -29,6 +29,30 @@ function insertionUsingForloop(arr){
 }
 
 console.log("insertionUsingForloop:", insertionUsingForloop([8, -1, 5, 0, -2, 3, 4]));
+
+
+///////////////
+
+function insertionUsingWhileloop(arr){
+    // i = 1 cus first element is considered sorted
+    for(let i=1; i<arr.length; i++){
+        let currentValue = arr[i];  
+
+        let j = i-1;  // 'var' is function scoped, while 'let' is block scoped
+
+        // compare backwardly
+        while(arr[j] > currentValue && j >= 0){
+            arr[j + 1] = arr[j];
+            j--;
+        }
+
+        arr[j + 1] = currentValue;    // [j+1] index, why not [j] index?, cus j-- occurred inside the inner loop before condition was not met to come outside
+    }
+    return arr;
+}
+
+console.log("insertionUsingWhileloop:", insertionUsingWhileloop([8, -1, 5, 0, -2, 3, 4]));
+
 
 
 //////////////////
