@@ -4,12 +4,13 @@
 
 // nb: very important for interviews 
 
+
 function pivotHelper(arr, startPivot = 0, end = arr.length){
     let pivotIndexForSwap = startPivot;
 
     // compare init pivot w/ rest of array elements
     for(let i = startPivot+1; i < end; i++){
-        if(arr[startPivot] > arr[i]){
+        if(arr[i] < arr[startPivot]){
             // move pivot pointer forward
             pivotIndexForSwap++;
             // swap moved pivot pointer w/ current loop element
@@ -29,6 +30,7 @@ function quickSort(arr, start = 0, end = arr.length){
     }
 
     let pivotIndex = pivotHelper(arr, start, end);
+
     // left
     quickSort(arr, start, pivotIndex);
     // right
@@ -52,7 +54,7 @@ console.log("y", quickSort([3,2,6,-3,0]));
 
 
 
-////////////// simplified ///////////////
+////////////// simplified - uses extra space ///////////////
 
 function quickieSort(arr){
     if (arr.length <= 1) {
@@ -96,7 +98,6 @@ To avoid this, it is often recommended to use a randomized pivot selection metho
 Average case = O(n log n), ==> for mixed data
 which makes it an efficient sorting algorithm for large datasets.
 
-
 Worse Case = n^2 because
 ...on partially sorted array, when the partition is made wrt to the pivot,
 ...one half will be empty while the other half will be full element
@@ -110,4 +111,8 @@ on the flipside, Best Case = (n log n) because
 ...where the HALVING means 'divide and conquer', thus log n
 ...ie, n * log n
 ...so it becomes (n log n)
+
+
+space complexity is o(log n) that makes it memory efficient than Merge sort which it o(n)
+
 */

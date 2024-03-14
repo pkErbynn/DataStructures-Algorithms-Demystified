@@ -1,5 +1,5 @@
 /*
-all prev algos don't scale up
+all prev algos(bubble, selection, insertion sort) don't scale up
 they only works efficient on small data
 However, merge sort is much efficient even on large dataset 
 
@@ -115,4 +115,6 @@ So the total time complexity = the divide steps * merge steps
 = n * log n =  O(n log n). 
 
 This makes Merge Sort a very efficient algorithm for sorting large arrays
+
+Space complecity of 0(n)
 */

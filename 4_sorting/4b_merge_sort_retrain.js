@@ -107,4 +107,5 @@ function merge_slitted_halves(leftHalf, rightHalf) {
 
 
 console.log("result_modular", merge_sort_algo_modular([4,3,5,2,8,6, -1]))
+console.log("result_modular", merge_sort_algo_modular([5, 2, 4, 7,1, 3, 2, 6])) // [    1, 2, 2, 3,     4, 5, 6, 7 ]
 
