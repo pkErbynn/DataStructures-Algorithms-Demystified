@@ -1,19 +1,19 @@
 // binary search approach
 
 function search(arr, targetValue){
-    let minIndex = 0;
-    let maxIndex = arr.length-1;
+    let minIndexPointer = 0;
+    let maxIndexPointer = arr.length-1;
 
-    while(minIndex <= maxIndex){
-        let middleIndex = Math.floor((minIndex + maxIndex) / 2) // removes decimal points
-        if(targetValue > arr[middleIndex]){
-            minIndex = middleIndex + 1; // lower bound moves up/right
+    while(minIndexPointer <= maxIndexPointer){
+        let middleIndexPointer = Math.floor((minIndexPointer + maxIndexPointer) / 2) // removes decimal points
+        if(targetValue > arr[middleIndexPointer]){
+            minIndexPointer = middleIndexPointer + 1; // lower bound moves up/right
         }
-        else if(targetValue < arr[middleIndex]){
-            maxIndex = middleIndex - 1; // max bound moves down/left
+        else if(targetValue < arr[middleIndexPointer]){
+            maxIndexPointer = middleIndexPointer - 1; // max bound moves down/left
         }
         else{
-            return middleIndex;
+            return middleIndexPointer;
         }
     }
 

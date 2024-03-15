@@ -19,7 +19,7 @@ function same(arr1, arr2){
 
     for(let key in freqC1){
         let squaredKey = key ** 2;
-        if(!freqC2[squaredKey]){
+        if(!freqC2[squaredKey]){    // no value, then no key exists
             console.log(freqC2[squaredKey]);
             return false;
         }

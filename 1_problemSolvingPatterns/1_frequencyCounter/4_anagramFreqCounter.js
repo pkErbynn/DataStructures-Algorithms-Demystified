@@ -31,7 +31,7 @@ function anagram(str1, str2){
         // if(!frequencyCounterStr2.hasOwnProperty(key)){
         //     return false;
         // }
-        if(!frequencyCounterStr2[key]){
+        if(!frequencyCounterStr2[key]){ // no value, implies no key
             return false;
         }
 
