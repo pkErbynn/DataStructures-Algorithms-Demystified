@@ -1,6 +1,10 @@
 // Givem two strings, write a function to determine if the second string is an anagram of the first.
 // Eg: 'cinema', formed from 'iceman'
 
+// Anagram SIMPLE MEANING
+// => implies rearranging the same letters in a different order to create a new word
+// => Greek word "ana-" means "back" or "again," and "gramma" meaning "letter." 
+// => "anagram" literally means rearranging letters "again" or "backwards" to form a new word or phrase. 
 
 // using Brute-Force approach
 
