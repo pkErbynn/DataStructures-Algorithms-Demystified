@@ -29,7 +29,7 @@ function same(array1, array2) {
     // going through values of frequencyCounter1 against frequencyCounter2 for a check
     for(let key in frequencyCounter1){
         let squaredKey = key ** 2;
-        if(!frequencyCounter2[squaredKey]){ // if keys doesn't exist, no valid value - checking keys
+        if(!frequencyCounter2[squaredKey]){ // if no valid value, then its key, 'squaredKey' doesn't exist - checking keys
             return false;
         }
         if(frequencyCounter1[key] !== frequencyCounter2[squaredKey]){   // - checking values
@@ -48,3 +48,12 @@ console.log(same([1,2,3], [9,1,4]));
 
 
 // TIME COMPLEXITY = O(n)
+
+
+// NB=======;
+// CHECKING IF A KEY EXISTS IN AN OBJECT, USING
+// `if(!frequencyCounter2[squaredKey])`
+// ...this checks if no valid value (ie, invalid values includes [false, 0, '', null, undefined, NaN], otherwise us), then its key, 'squaredKey' doesn't exist - checking keys
+// ...if some of the invalid values [false, 0, '', null, undefined, NaN] are valid to you in some cases, then otherwise
+// ...use `if (frequencyCounter2.hasOwnProperty(squaredKey)`
+// ......to only check the key just exists on the object without caring about the validity of the value associated

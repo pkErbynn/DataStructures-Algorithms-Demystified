@@ -1,6 +1,7 @@
 // using Frequency Counter Pattern
-// with reduced simbling loop
-// creating object for just one string, instead of two, reducing space complexity
+// Improve solution with reduced sibling loops...from 3 loops to 2
+// ...creating object for just one string, instead of two, reducing space complexity
+
 
 function anagram(str1, str2){
     if(str1.length !== str2.length){
@@ -11,11 +12,11 @@ function anagram(str1, str2){
 
     for(let value of str1){
         frequencyCounterStr1[value] ? 
-            frequencyCounterStr1[value] += 1 : 
+            frequencyCounterStr1[value] += 1 :  // frequencyCounterStr1[value] = frequencyCounterStr1[value] + 1 : 
             frequencyCounterStr1[value] = 1; 
     }
 
-    // loop through second array and search for keys in first array object
+    // loop through second array and search for keys in first array's object, frequencyCounterStr1
     for(let letter of str2){
         if(!frequencyCounterStr1[letter]){
             return false;
