@@ -21,42 +21,27 @@
 
 
 function sumZero(sortedArray){
-    let leftIndex = 0;
-    let rightIndex = sortedArray.length - 1;
+    let leftIndexPointer = 0;
+    let rightIndexPointer = sortedArray.length - 1;    // n-1 cus left pointer starts from 0
 
-    while(leftIndex < rightIndex){
-        if( (sortedArray[leftIndex] + sortedArray[rightIndex]) === 0){
-            return [sortedArray[leftIndex], sortedArray[rightIndex]];
+    while(leftIndexPointer < rightIndexPointer){
+        if( (sortedArray[leftIndexPointer] + sortedArray[rightIndexPointer]) === 0){
+            return [sortedArray[leftIndexPointer], sortedArray[rightIndexPointer]];
         }
-        else if(sortedArray[leftIndex] + sortedArray[rightIndex] > 0){
-            rightIndex--;
+        else if(sortedArray[leftIndexPointer] + sortedArray[rightIndexPointer] > 0){
+            rightIndexPointer--;
         }
         else { // < 0
-            leftIndex++;
+            leftIndexPointer++;
         }
     }
 }
 
-function sz(arr) {
-    let leftPointer = 0;
-    let rightPointer = arr.length - 1;
-    while (leftPointer < rightPointer) {
-        if( (arr[leftPointer] + arr[rightPointer]) == 0){
-            return [arr[leftPointer], arr[rightPointer]]
-        }
-        else if ( (arr[leftPointer] + arr[rightPointer]) > 0){
-            rightPointer--;
-        }else{
-            leftPointer++;
-        }
-    }
-}
 
 // sumZero([-2, -1, 0, 1, 2])
 console.log(sumZero([-2, -1, 0, 1, 2]))
 // sumZero([-2, 0, 1, 3])
 
-console.log(sz([-3, -2, -1, 0, 1, 2, 3]))
 
 // For this, 
 // - pointers start from ends and move to the middle

@@ -32,6 +32,7 @@ Output: [0 0 1 2 2 2 ]
     - TC: O(n)
     - SC: O(1)
 
+Video: https://www.youtube.com/watch?v=yj_14t67Bh0&t=654s
 */
 
 
@@ -52,7 +53,7 @@ const sortArrayElements = (numbers) => {
         else if(numbers[midPointer] === 2){
             [numbers[midPointer], numbers[rightPointer]] = [numbers[rightPointer], numbers[midPointer]];
             rightPointer--;
-            midPointer++;
+            // midPointer++;
         }
     }
     return numbers;

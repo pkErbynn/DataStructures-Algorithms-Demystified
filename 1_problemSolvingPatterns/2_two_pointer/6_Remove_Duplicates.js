@@ -37,63 +37,24 @@ console.log("x:", remove_duplicate([2, 3, 3, 3, 6, 9, 9]));
 
 // two-pointers approach
 function remove_duplicate_2pnt(sortedNums){
-    let leftIndex = 0;
+    let leftIndexPointer = 0;
 
-    for (let rightIndex = 1; rightIndex < sortedNums.length; rightIndex++) {
-        let leftValue = sortedNums[leftIndex];
-        let rightValue = sortedNums[rightIndex];
+    for (let rightIndexPointer = 1; rightIndexPointer < sortedNums.length; rightIndexPointer++) {
+        let leftValue = sortedNums[leftIndexPointer];
+        let rightValue = sortedNums[rightIndexPointer];
         
         if(leftValue === rightValue){
             continue;
         }else{
-            sortedNums[leftIndex+1] = sortedNums[rightIndex];   // insert the 'right' value in-front of left-index pointer
-            leftIndex++;
+            sortedNums[leftIndexPointer+1] = sortedNums[rightIndexPointer];   // insert the 'right' value in-front of left-index pointer
+            leftIndexPointer++;
         }
     }
 
-    return leftIndex+1;
+    // console.log("Result:", numbers.slice(0, leftIndexPointer));
+    return leftIndexPointer+1;
 }
 
 console.log("y:", remove_duplicate_2pnt([2, 3, 3, 3, 6, 9, 9]));
 console.log("y2:", remove_duplicate_2pnt([2, 2, 2, 11]));
 
-
-// ======================= revisit
-
-'use strict';
-
-const remove_duplicate_revisit = (numbers) => {
-    let leftPointer = 0;
-    for (let rightPointer = 1; rightPointer < numbers.length; rightPointer++) {
-        let leftElement = numbers[leftPointer];
-        let rightElement = numbers[rightPointer];
-
-        if(leftElement === rightElement) continue;  // not affect result since, on falsy of 2nd if-statement, rightPointer++ happens 
-        if(leftElement !== rightElement){
-            numbers[leftPointer+1] = rightElement;
-            leftPointer++;
-        }
-    }
-    // console.log("Result:", numbers.slice(0, leftPointer));
-    return leftPointer + 1;
-}
-
-console.log("zzzz:", rd([2, 3, 3, 3, 6, 9, 9, 1, 1, 1]));
-function rd(nums) {
-    let lp = 0;
-
-    for (let rp = 1; rp < nums.length-1; rp++) {
-        
-        if(nums[lp] === nums[rp]) continue;
-        if(nums[lp] !== nums[rp]){
-            nums[lp + 1] = nums[rp];
-            lp++;
-        }
-    }
-
-    return nums.splice(0, lp+1);
-}
-
-
-
-console.log("unique:", remove_duplicate_revisit([2, 3, 3, 3, 6, 9, 9, 1, 1, 1]));

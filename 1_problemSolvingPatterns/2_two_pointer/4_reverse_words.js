@@ -35,10 +35,11 @@ console.log("B2:", reverseWords2("This   puzzle game is    interesting"));
 
 
 // ==== using 2-pointer
+// ...swap values at both ends
 
 function reverseSentence(sentence) {
+    // input validation
     if(!sentence || sentence.length === 0) return "invalid input";
-
     let wordsArray = sentence.split(" ").filter(f => f !== "");
     if(wordsArray.length === 0) return "invalid input";
 
@@ -53,24 +54,6 @@ function reverseSentence(sentence) {
 
     return wordsArray.join(" ");
 }
-
-function rx(sentence) {
-    if(!sentence) return;
-
-    let words = sentence.split(" ").filter(f => f !== "");
-    if(words.length === 0) return;
-
-    let lp = 0;
-    let rp = words.length - 1;
-
-    while(lp < rp){
-        [words[lp], words[rp]] = [words[rp], words[lp]];
-        lp++;
-        rp--;
-    }
-    return words;
-}
-console.log("zzzzzz:", rx("This puzzle game is interesting"));
 
 
 console.log("C:", reverseSentence(null));

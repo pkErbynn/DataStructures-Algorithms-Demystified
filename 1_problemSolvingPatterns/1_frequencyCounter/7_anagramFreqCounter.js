@@ -9,7 +9,7 @@ function anagram(str1, str2){
     }
 
     let frequencyCounterStr1 = {};
-
+    
     for(let value of str1){
         frequencyCounterStr1[value] ? 
             frequencyCounterStr1[value] += 1 :  // frequencyCounterStr1[value] = frequencyCounterStr1[value] + 1 : 
@@ -17,16 +17,21 @@ function anagram(str1, str2){
     }
 
     // loop through second array and search for keys in first array's object, frequencyCounterStr1
+
+    // fc1 = {a: 3, n: 1, g: 1, r: 1, m: 1}    // 'anagram', 'nagaram'
+    // str2 = ['n', 'a', 'g', 'a', 'r', 'a', 'm']
+    //        letter
     for(let letter of str2){
         if(!frequencyCounterStr1[letter]){
             return false;
         } 
         else{
-            frequencyCounterStr1[letter] -= 1;
+            frequencyCounterStr1[letter] = frequencyCounterStr1[letter] - 1;    // reduce object value by 1
+            // frequencyCounterStr1[letter] -= 1;
         }
     }
 
-    console.log(frequencyCounterStr1);
+    // console.log(frequencyCounterStr1);
     
     // since there are many checks to fail, I go through the failure checks, if passes then it's true
     return true;

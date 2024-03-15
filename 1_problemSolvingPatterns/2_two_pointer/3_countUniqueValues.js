@@ -2,9 +2,10 @@
 // - which accept sorted
 // - and counts the unique values in the Array
 // - array can contain -ve numbers but sorted
+// - input = [1,1,1,2,2,2]...output = 2
 
 // solution
-// using Multi-pointers pattern
+// using Pointer-pointer pattern
 
 
 function countUniqueValues(arr){
