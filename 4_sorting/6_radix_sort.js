@@ -1,5 +1,6 @@
 // Radix Sort
 // mostly asked in interviews
+// It's not a Comparison sorting algorigthm
 
 const digitCount = (num) => (Math.abs(num) + "").length;
 
@@ -20,6 +21,7 @@ const getEachDigitFromNum = function(num, index){
 }
 
 console.log(getEachDigitFromNum(432));
+
 function radixSort(nums){
     // max number of digit in the given array of numbers
     let maxDigit = maxDigitCount(nums);
