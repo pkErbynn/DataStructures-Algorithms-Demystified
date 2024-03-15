@@ -54,6 +54,25 @@ function reverseSentence(sentence) {
     return wordsArray.join(" ");
 }
 
+function rx(sentence) {
+    if(!sentence) return;
+
+    let words = sentence.split(" ").filter(f => f !== "");
+    if(words.length === 0) return;
+
+    let lp = 0;
+    let rp = words.length - 1;
+
+    while(lp < rp){
+        [words[lp], words[rp]] = [words[rp], words[lp]];
+        lp++;
+        rp--;
+    }
+    return words;
+}
+console.log("zzzzzz:", rx("This puzzle game is interesting"));
+
+
 console.log("C:", reverseSentence(null));
 console.log("C2:", reverseSentence("  "));
 console.log("C3:", reverseSentence(""));

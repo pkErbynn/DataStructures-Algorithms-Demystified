@@ -23,6 +23,15 @@ function isPalindrome(s) {
         startIndex++;
     }
 
+    // while(startIndex <= endIndex){
+    //     if(s[startIndex] == s[endIndex]){
+    //         startIndex++;
+    //         endIndex--;
+    //         continue;
+    //     }
+    //     return false;
+    // }
+
     return true;
 }
 

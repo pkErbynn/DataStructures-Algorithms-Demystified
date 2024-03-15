@@ -22,6 +22,7 @@ function search(arr, targetValue){
 
 console.log(search([1,2,4,5], 4));
 
+
 // o(log n)
 
 // if while-loop can replace for-loop, Why not use for-loop.

@@ -37,10 +37,26 @@ function sumZero(sortedArray){
     }
 }
 
+function sz(arr) {
+    let leftPointer = 0;
+    let rightPointer = arr.length - 1;
+    while (leftPointer < rightPointer) {
+        if( (arr[leftPointer] + arr[rightPointer]) == 0){
+            return [arr[leftPointer], arr[rightPointer]]
+        }
+        else if ( (arr[leftPointer] + arr[rightPointer]) > 0){
+            rightPointer--;
+        }else{
+            leftPointer++;
+        }
+    }
+}
+
 // sumZero([-2, -1, 0, 1, 2])
 console.log(sumZero([-2, -1, 0, 1, 2]))
 // sumZero([-2, 0, 1, 3])
 
+console.log(sz([-3, -2, -1, 0, 1, 2, 3]))
 
 // For this, 
 // - pointers start from ends and move to the middle
