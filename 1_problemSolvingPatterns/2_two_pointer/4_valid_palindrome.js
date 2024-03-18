@@ -12,7 +12,7 @@ Write a function that takes a string s as input and checks whether it’s a pali
 
 function isPalindrome(s) {
     let startIndex = 0;
-    let endIndex = s.length-1;
+    let endIndex = s.length-1;  // -1 cus of zero-based index
 
     while(startIndex <= endIndex){
         if(s[startIndex] != s[endIndex]){

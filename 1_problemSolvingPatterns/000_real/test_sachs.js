@@ -168,3 +168,71 @@ console.log(countPalindromes('aaa')); // Output: 6
 console.log(countPalindromes('abccba')); // Output: 9
 console.log(countPalindromes('daata')); // Output: 7
 
+function countPalindromeszz(s) {
+  let count = 0;
+
+  for (let i = 0; i < s.length; i++) {
+      // Check for odd-length palindromes (single character center)
+      let left = i, right = i;
+      while (left >= 0 && right < s.length && s[left] === s[right]) {
+          count++;  // Increment count for each palindrome found
+          left--;   // Expand to the left
+          right++;  // Expand to the right
+      }
+
+      // Check for even-length palindromes (center between two characters)
+      left = i, right = i + 1;
+      while (left >= 0 && right < s.length && s[left] === s[right]) {
+          count++;  // Increment count for each palindrome found
+          left--;   // Expand to the left
+          right++;  // Expand to the right
+      }
+  }
+
+  return count;
+}
+
+console.log("zz", countPalindromeszz('aaa')); // Output: 6
+console.log("zz", countPalindromeszz('abccba')); // Output: 9
+console.log("zz", countPalindromeszz('daata')); // Output: 7
+
+
+
+/////////// RETRAIN ////////
+
+// input = []
+function betterCompression_r1(str) {
+  const freqMap = {};
+    let char = '';
+    let numStr = '';
+
+    for (let i = 0; i < str.length; i++) {
+        if (isNaN(str[i])) {
+            if (char && numStr) {
+                freqMap[char] = (freqMap[char] || 0) + parseInt(numStr);
+            }
+            char = str[i];
+            numStr = '';
+        } 
+        else {
+            numStr += str[i];
+        }
+    }
+
+    // Add the last character and frequency
+    if (char && numStr) {
+        freqMap[char] = (freqMap[char] || 0) + parseInt(numStr);
+    }
+
+    // Sort characters and construct the result
+    const sortedChars = Object.keys(freqMap).sort();
+    let result = '';
+    sortedChars.forEach(char => {
+        result += char + freqMap[char];
+    });
+
+    return result;
+
+}
+console.log(betterCompression_r1('a3c9b2c1')); // 'a3b2c10'
+console.log(betterCompression_r1('b3c9b2c1a6c5')); // 'a3b2c10'

@@ -17,8 +17,8 @@ function countUniqueValues(arr){
    
     for (let rightIndex = 1; rightIndex < arr.length; rightIndex++) {
         if(arr[leftIndex] !== arr[rightIndex]){
-            leftIndex++;    // changing left position pointer
-            arr[leftIndex] = arr[rightIndex];   // setting position with right value
+            leftIndex++;    // change left position pointer to forward
+            arr[leftIndex] = arr[rightIndex];   // ...and set position with rightPointer value by copying
         }
     }
 

@@ -11,11 +11,9 @@ function maxSubArray(arr, num){
             maxSum = innerSum;
         }
     }
-
-    console.log(maxSum);
+    return maxSum;
 }
-
-maxSubArray([1,2,3,4,5], 3);
+console.log("maxSum:", maxSubArray([1,2,3,4,5], 3));
 
 
 function maxSubArray2(arr, num){

@@ -44,7 +44,7 @@ function maxSumArray_SlidingWindow(arr, k){
     // start after the first window
     for(let i = k; i < arr.length; i++){
 
-        // add next element, then compute to remove prev element by calc its index, ie (variable ele - constant ele)
+        // add next element, then compute to remove prev element by calc its index, ie (variable index - constant element)
         // eg; [3-3]=[0], [4-3]=[1], [5-3]=[2]
         windowSum = windowSum + arr[i] - arr[i - k];
  
@@ -57,11 +57,11 @@ function maxSumArray_SlidingWindow(arr, k){
     return maxSum;
 }
 
-console.log(maxSumArray_SlidingWindow([20,3,4,5,1,6], 3));
-console.log(maxSumArray_SlidingWindow([20,3,4,5,30,6], 3));
-console.log(maxSumArray_SlidingWindow([1, 2, 3, 4, 5, 6], 3));
-console.log(maxSumArray_SlidingWindow([1, 2, 3, 4], 2));
-console.log(maxSumArray_SlidingWindow([2,6,9,2,1,8,5,6,3], 3));
+console.log("a:", maxSumArray_SlidingWindow([20,3,4,5,1,6], 3));
+console.log("b:", maxSumArray_SlidingWindow([20,3,4,5,30,6], 3));
+console.log("c:", maxSumArray_SlidingWindow([1, 2, 3, 4, 5, 6], 3));
+console.log("d:", maxSumArray_SlidingWindow([1, 2, 3, 4], 2));
+console.log("e:", maxSumArray_SlidingWindow([2,6,9,2,1,8,5,6,3], 3));
 
 
 // TimeComplexity = o(n)
