@@ -1,4 +1,6 @@
 /*
+=== DYNAMIC SLIDING WINDOW ===
+
 Smallest Subarray with a given sum (easy)
 
 Given an array of positive numbers and a positive number ‘S’, 
@@ -26,7 +28,7 @@ Explanation: Smallest subarrays with a sum greater than or equal to '8' are [3, 
 
 
 There is one difference though:
-- we're rather dynamically finding 'k' this time around
+- we're rather DYNAMICALLY finding 'k' this time around
 - the size of the sliding window is not fixed.
 - sliding window: cus of "contiguous subarray"
 */
@@ -36,12 +38,13 @@ function smallest_subarray_given_sum(arr, sum){
     let windowSum = 0;
     let windowMinLength = Infinity;
 
+    // current start index at 0....slide end index to the right...take action until sume becomes equal/more than windowSum
     for(let windowEndIndex = 0; windowEndIndex < arr.length; windowEndIndex++){
         windowSum = windowSum + arr[windowEndIndex];
 
         while(windowSum >= sum){
-            const windowLength = (windowEndIndex - windowStartIndex) + 1; // +1 since it's 0-indexed 
-            windowMinLength = Math.min(windowMinLength, windowLength);
+            const currentWindowLength = (windowEndIndex - windowStartIndex) + 1; // +1 since it's 0-indexed 
+            windowMinLength = Math.min(windowMinLength, currentWindowLength);
 
             // remove current start element from current windowsum until less than sum 
             // + move start pointer forward
