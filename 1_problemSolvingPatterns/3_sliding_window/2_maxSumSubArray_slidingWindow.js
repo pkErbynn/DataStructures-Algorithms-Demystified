@@ -49,7 +49,7 @@ function maxSumArray_SlidingWindow(arr, k){
         windowSum = windowSum + arr[i] - arr[i - k];
  
         // once temp sum is computed then we compare with prev maxSum before we to next element in array
-         if(windowSum > maxSum){
+        if(windowSum > maxSum){
             maxSum = windowSum;
         }
     }
