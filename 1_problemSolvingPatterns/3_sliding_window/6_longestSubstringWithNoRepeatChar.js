@@ -32,22 +32,21 @@ function lengthOfLongestSubstringWithNoCharRepeat(str){
     let maxLength = 0;
     let charIndexMap = {};  // keeps track of the last index of each char
 
-    for (let windowEndIndex = 0; windowEndIndex < str.length; windowEndIndex++) {
-        const windowEndChar = str[windowEndIndex];
+    // Input: String="abccde"
 
-        // reset startIndex pointer to current duplicate char found, if next char is duplicate
-        if(windowEndChar in charIndexMap){
-            windowStartIndex = Math.max(windowStartIndex, charIndexMap[windowEndChar]  + 1); 
+    for (let windowEndIndex = 0; windowEndIndex < str.length; windowEndIndex++) {
+        const currentChar = str[windowEndIndex];
+
+        // If the character is seen again, move the windowStart to the next index after the previous occurrence
+        if(charIndexMap[currentChar]){
+            windowStartIndex = Math.max(windowStartIndex, charIndexMap[currentChar]  + 1); 
             // windowStartIndex = windowEndIndex;
         }
 
-        // doesn't move/update 'windowStartIndex' since value becomes 0 at first
-        // if(charIndexMap[endwindowEndChar]){
-        //     windowStartIndex = Math.max(windowStartIndex, charIndexMap[endwindowEndChar]  + 1)
-        // }
+        // Update the last seen index of the character
+        charIndexMap[currentChar] = windowEndIndex;
 
-        charIndexMap[windowEndChar] = windowEndIndex;
-
+        // Update the maximum length of the substring
         let currentWindowLength = (windowEndIndex - windowStartIndex) + 1;
         maxLength = Math.max(maxLength, currentWindowLength);
     }
@@ -78,3 +77,4 @@ Space Comp = o(k) = o(1)
     we can say that the algorithm runs in fixed space = O(1); 
 
 */
+

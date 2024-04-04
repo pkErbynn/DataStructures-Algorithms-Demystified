@@ -6,7 +6,7 @@ you are given two baskets and your goal is to put maximum number of fruits in ea
 The only restriction is that each basket can have only one type of fruit.
 
 You can start with any tree, but once you have started you can’t skip a tree. 
-You will pick one fruit from each tree until you cannot, i.e., you will stop when you have to pick from a third fruit type.
+You we will pick one fruit from each tree until you cannot, i.e., you will stop when you have to pick from a third fruit type.
 
 Write a function to return the maximum number of fruits in both the baskets.
 
@@ -15,6 +15,7 @@ Example 1:
 Input: Fruit=['A', 'B', 'C', 'A', 'C']
 Output: 3
 Explanation: We can put 2 'C' in one basket and one 'A' in the other from the subarray ['C', 'A', 'C']
+
 Example 2:
 
 Input: Fruit=['A', 'B', 'C', 'B', 'B', 'C']
@@ -24,6 +25,7 @@ This can be done if we start with the second letter: ['B', 'C', 'B', 'B', 'C']
 
 TIP:
 - "start with any tree, but once you have started you can’t skip a tree" => contiguous
+- similar to previous question
 */
 
 
@@ -72,3 +74,38 @@ Space Complexity #
 The algorithm runs in constant space  O(1)
 because there can be a maximum of three types of fruits stored in the frequency map.
 */
+
+
+
+function fruitIntoBsket(fruits) {
+    let ml = 0;
+    let fc = {};
+    let ws = 0;
+
+    for(let we = 0; we < fruits.length; we++){
+        let rc = fruits[we];
+        fc[rc] = !fc[rc] ? 1 : fc[rc] + 1;
+
+        while (Object.keys(fc).length > 2) {
+            let lc = fruits[ws];
+
+            if(fc[lc] > 1){
+                fc[lc] = fc[lc] - 1;
+            }
+            else {
+                delete fc[lc]
+            }
+
+            ws++;
+        }
+
+        let cwl = we - ws + 1;
+        ml = Math.max(cwl, ml);
+
+    }
+
+    return ml
+
+}
+
+console.log("xxxx:", fruitIntoBsket(['A', 'B', 'C', 'B', 'B', 'C']));

@@ -26,8 +26,7 @@ This problem follows the Sliding Window pattern and we can use a similar dynamic
 
 */
 
-// String="araaci", K=2
-// keys == 2 and not > 2 
+// Str="araaci", K=2
 
 function longest_Substring_with_K_Distinct_Characters(str, k){
     let maxLength = Number.NEGATIVE_INFINITY;   // give -ve while looking for max positive
@@ -36,12 +35,12 @@ function longest_Substring_with_K_Distinct_Characters(str, k){
     let windowStart = 0;  // 0
   
     for (let windowEnd = 0; windowEnd < str.length; windowEnd++) {
-      const windowEndValue = str[windowEnd];  // 
+      const windowEndValue = str[windowEnd];
       // populate frequency counter {}
       charFrequency[windowEndValue] = !charFrequency[windowEndValue] ? 1 : charFrequency[windowEndValue] + 1; // charFrequency = { "a": 2, c: 1 };
   
       // convert object to map to get access to key length
-      while (Object.keys(charFrequency).length > k) { // 1 !> 2
+      while (Object.keys(charFrequency).length > k) {
         const currentWindowStartValue = str[windowStart];
         
         // update its counter by decreasing value or remove the key when counter is zero or 1
@@ -49,23 +48,24 @@ function longest_Substring_with_K_Distinct_Characters(str, k){
             charFrequency[currentWindowStartValue] = charFrequency[currentWindowStartValue] - 1;
         } 
         else {
-          // count = 0, delete key-value pair from object
+          // count = 0 / 1, delete key-value pair from object
           // updating the "Object.keys(charFrequency).length"
             delete charFrequency[currentWindowStartValue];
         }
 
         // move windowStart forward
-        windowStart++; // a
-      }
+        windowStart++;
   
-      const windowLength = windowEnd - windowStart + 1; // 2 - 0 + 1 = 3
-      maxLength = Math.max(maxLength, windowLength);  // 4
+      const windowLength = windowEnd - windowStart + 1;
+      maxLength = Math.max(maxLength, windowLength);
     }
   
     return maxLength;
+  }
 }
   
 // Example usage:
 console.log(longest_Substring_with_K_Distinct_Characters("araaci", 2)); // Output: 4
 console.log(longest_Substring_with_K_Distinct_Characters("araaci", 1)); // Output: 2
 console.log(longest_Substring_with_K_Distinct_Characters("cbbebi", 3)); // Output: 5
+                                                                                                                                      
