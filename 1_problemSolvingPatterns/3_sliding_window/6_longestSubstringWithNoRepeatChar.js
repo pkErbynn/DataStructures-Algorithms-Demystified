@@ -27,6 +27,46 @@ Whenever we get a repeating character we will shrink our sliding window to ensur
 */
 
 
+
+function maxSubWithNoRepeatingString_wrong(str) {
+    let windowStart = 0;
+    let maxLength = 0;
+    let freqC = {};
+
+    for (let windowEnd = 0; windowEnd < str.length; windowEnd++) {
+        const windowEndValue = str[windowEnd];
+        
+        if(freqC[windowEndValue]){
+            windowStart = windowStart + 1;
+        }
+
+        freqC[windowEndValue] = true;
+
+        let curMaxLength = windowEnd - windowStart + 1;
+        maxLength = Math.max(maxLength, curMaxLength);
+    }
+
+    return maxLength;
+}
+
+console.log(maxSubWithNoRepeatingString("abba"));
+
+/*
+The Above implementation is wrong because: 
+
+Initially, windowStart is at index 0 and windowEnd is at index 0. The substring between windowStart and windowEnd is "a", which has no repeating characters.
+Then, windowEnd moves to index 1. The substring between windowStart and windowEnd is "ab", which still has no repeating characters.
+Next, windowEnd moves to index 2. Now, the substring between windowStart and windowEnd is "abb", which contains a repeating character ("b"). 
+According to your original logic, you would increment windowStart to 1, but this would not ensure that the resulting substring ("bb") has no repeating characters.
+
+The correct approach is to move/jump windowStart to the next index after the previous occurrence of the repeating character. 
+In this case, windowStart should be moved to index 2 (the index after the first occurrence of "b"). This ensures that the resulting substring ("ba") has no repeating characters.
+That's why simply incrementing windowStart by one is not sufficient to handle all cases where repeating characters are encountered in the substring.
+*/
+
+
+/// ========= correct
+
 function lengthOfLongestSubstringWithNoCharRepeat(str){
     let windowStartIndex = 0;
     let maxLength = 0;
