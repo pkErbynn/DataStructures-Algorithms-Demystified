@@ -3,6 +3,7 @@ Question:
 Given the head of a Singly LinkedList that contains a cycle, write a function to find the starting node of the cycle.
 
 Solution:
+Note that the start of the cycle means that a small cycle is created within the larger linkedlist which is not a head-to-tail cycle, instead, middle node to tail node
 If we know the length of the LinkedList cycle, we can find the start of the cycle through the following steps:
 
 1. Take two pointers. Let’s call them pointer1 and pointer2.
@@ -31,31 +32,6 @@ class Node {
     }
 }
 
-const startOfLinkedListCyle2 = function(head) {
-    let cycleLength = lengthOfLinkedListCycle(head);
-    console.log('length:', cycleLength);
-
-    let startPointer = head;
-    let forwardPointer = head;
-
-    // move forwardPointer ahead by the cycle length
-    while(cycleLength > 0){
-        forwardPointer = forwardPointer.next;
-        cycleLength -= 1;
-    }
-
-    while(startPointer != forwardPointer){
-        forwardPointer = forwardPointer.next;
-        startPointer = startPointer.next;
-    }
-
-    if(startPointer === forwardPointer) {   // can just return
-        return forwardPointer;
-    }
-
-    return null;
-}
-
 const startOfLinkedListCyle1 = function(head) {
     let cycleLength = lengthOfLinkedListCycle(head);
     console.log('length:', cycleLength);
@@ -76,6 +52,31 @@ const startOfLinkedListCyle1 = function(head) {
         if(forwardPointer === startPointer){
             return forwardPointer;
         }
+    }
+
+    return null;
+}
+
+const startOfLinkedListCyle2 = function(head) {
+    let cycleLength = lengthOfLinkedListCycle(head);
+    console.log('length:', cycleLength);
+
+    let startPointer = head;
+    let forwardPointer = head;
+
+    // move forwardPointer ahead by the cycle length
+    while(cycleLength > 0){
+        forwardPointer = forwardPointer.next;
+        cycleLength -= 1;
+    }
+
+    while(startPointer != forwardPointer){
+        forwardPointer = forwardPointer.next;
+        startPointer = startPointer.next;
+    }
+
+    if(startPointer === forwardPointer) {   // can just return
+        return forwardPointer;
     }
 
     return null;

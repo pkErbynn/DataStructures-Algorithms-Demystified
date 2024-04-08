@@ -49,6 +49,7 @@ const isLinkedListCyclic = function(head) {
     let fastPointer = head;
 
     while(fastPointer && fastPointer.next){   // fastpointer not-null check before it's .next check...ook-ahead check with fastpointer as it's at forward
+        slowPointer = slowPointer.next;
         fastPointer = fastPointer.next.next;
 
         if(fastPointer === slowPointer){
@@ -130,6 +131,37 @@ const findCycleLength = function(head) {
     return 0;
 }
 
+// =======
+
+const findCycleLength_withBreak = function(head) {
+    if(!head) return 0;
+
+    let slowPointer = head;
+    let fastPointer = head;
+    let cycleLength = 0;
+    let countPointer = slowPointer;
+
+    while(fastPointer && fastPointer.next){
+        slowPointer = slowPointer.next;
+        fastPointer = fastPointer.next.next;
+
+        if(slowPointer === fastPointer){
+            countPointer = slowPointer;
+            break;
+        }
+    }
+
+    while(countPointer.next){
+        countPointer = countPointer.next;
+        cycleLength += 1;
+
+        if(countPointer === slowPointer){
+            return cycleLength;
+        }
+    }
+
+    return 0;
+}
 
 // building linkedList
 const head2 = new Node(10);
@@ -145,6 +177,7 @@ console.log("length1:", findCycleLength(head2))   // 0
 head2.next.next.next.next.next.next.next.next = head2.next.next;    // point the end to any mid node
 console.log("length2:", findCycleLength(head2))   // 6
 
+console.log("findCycleLength_withBreak:", findCycleLength_withBreak(head2))   // 6
 
 
 
