@@ -70,17 +70,16 @@ That's why simply incrementing windowStart by one is not sufficient to handle al
 function lengthOfLongestSubstringWithNoCharRepeat(str){
     let windowStartIndex = 0;
     let maxLength = 0;
-    let charIndexMap = {};  // keeps track of the last index of each char
+    let charIndexMap = {};  // keeps track of the earliest index of each char
 
     // Input: String="abccde"
 
     for (let windowEndIndex = 0; windowEndIndex < str.length; windowEndIndex++) {
         const currentChar = str[windowEndIndex];
 
-        // If the character is seen again, move the windowStart to the next index after the previous occurrence
+        // If the character is seen again, jump the windowStart to the next index after the previous occurrence, using the mapObject {}
         if(charIndexMap[currentChar]){
             windowStartIndex = Math.max(windowStartIndex, charIndexMap[currentChar]  + 1); 
-            // windowStartIndex = windowEndIndex;
         }
 
         // Update the last seen index of the character
