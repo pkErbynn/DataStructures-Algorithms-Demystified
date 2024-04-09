@@ -3,7 +3,7 @@ Question:
 Given the head of a Singly LinkedList that contains a cycle, write a function to find the starting node of the cycle.
 
 Solution:
-Note that the start of the cycle means that a small cycle is created within the larger linkedlist which is not a head-to-tail cycle, instead, middle node to tail node
+Note that the start of the cycle means that a small cycle can be created within the larger cyclick linkedlist which is not a head-to-tail cycle, instead, middle node to tail node
 If we know the length of the LinkedList cycle, we can find the start of the cycle through the following steps:
 
 1. Take two pointers. Let’s call them pointer1 and pointer2.
