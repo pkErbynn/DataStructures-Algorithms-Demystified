@@ -24,7 +24,7 @@ Happy Numbers:
 1^2 + 0^2 = 1
 
 100: 
-1^2 + 0^2 + 0^2 = 1
+1^2 + 0^2 + 0^2 = 1 
 
 Not-Happy Numbers:
 
