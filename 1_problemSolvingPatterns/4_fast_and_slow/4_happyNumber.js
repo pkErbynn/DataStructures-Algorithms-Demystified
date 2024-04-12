@@ -70,7 +70,7 @@ const isHappyNumber = function(num){
     let slowPointer = num;
     let fastPointer =  num;    // 2 steps ahead on the sum
 
-    while(fastPointer > 0) {    // while positive number
+    while(fastPointer > 0) {    // while positive number...in object, while(x != null)...in int, while(x > 0)...
         slowPointer = calculateSumOfDigitSquare(slowPointer);   // 1 step move on the sum
         fastPointer = calculateSumOfDigitSquare(calculateSumOfDigitSquare(fastPointer));    // 2-step move on the sum
 
@@ -98,8 +98,9 @@ const calculateSumOfDigitSquare = function(num){
         let digitSquared = lastDigit * lastDigit;
         sum = sum + digitSquared;
 
-        num = Math.floor(num / 10); // 23 -> 2.3 -> 2...cut the last processed digit off
+        num = Math.floor(num / 10); // update num to keep loopp updateed...23 -> 2.3 -> 2...cut the last processed digit off...
     }
+
     return sum;
 
     // nb: eg: 123
@@ -110,5 +111,6 @@ const calculateSumOfDigitSquare = function(num){
 }
 
 console.log("sum:", isHappyNumber(23));
-console.log("sum:", isHappyNumber(100));
 console.log("sum:", isHappyNumber(12));
+console.log("sum:", isHappyNumber(100));
+
