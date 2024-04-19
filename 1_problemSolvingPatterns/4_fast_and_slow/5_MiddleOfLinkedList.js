@@ -9,10 +9,12 @@ Example 1:
 
 Input: 1 -> 2 -> 3 -> 4 -> 5 -> null
 Output: 3
+
 Example 2:
 
 Input: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> null
 Output: 4
+
 Example 3:
 
 Input: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> null
@@ -36,8 +38,10 @@ class Node {
     }
 }
 
+// 1 -> 2 -> 3 -> 4 -> 5 -> null
+
 const middleOfLinkedlist = function(head) {
-    if (!head) return null;
+    if (!head || !head.next) return null;
 
     let slowPointer = head;
     let fastPointer = head;
@@ -47,11 +51,7 @@ const middleOfLinkedlist = function(head) {
         fastPointer = fastPointer.next.next;
     }
 
-    if (!fastPointer?.next) {   // check might not be needful as outside the 'while' is invalid fastPointer
-        return slowPointer;
-    }
-
-    return null;
+    return slowPointer; // return the last slow pointer as soon as the fast pointer falls off (either node or next node is null)
 }
 
 
@@ -60,9 +60,29 @@ headLinkedList.next = new Node(2);
 headLinkedList.next.next = new Node(3);
 headLinkedList.next.next.next = new Node(4);
 headLinkedList.next.next.next.next = new Node(5);
-console.log("mid node:", middleOfLinkedlist(headLinkedList));   // even list
+console.log("mid-node:", middleOfLinkedlist(headLinkedList));   // even list
 
 headLinkedList.next.next.next.next.next = new Node(6);  // odd list
-console.log("mid node2:", middleOfLinkedlist(headLinkedList));
+console.log("mid-node2:", middleOfLinkedlist(headLinkedList));
+
+
+
+const middleOfLinkedlist_2 = function(head) {
+    if (!head || !head.next) return null;
+
+    let slowPointer = head;
+    let fastPointer = head;
+
+    while(fastPointer && fastPointer.next){
+        slowPointer = slowPointer.next;
+        fastPointer = fastPointer.next.next;
+    }
+
+    if (!fastPointer?.next) {
+        return slowPointer.value;
+    }
+
+    return null;
+}
 
 
