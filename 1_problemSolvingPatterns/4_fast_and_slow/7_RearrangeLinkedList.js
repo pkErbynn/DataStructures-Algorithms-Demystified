@@ -10,6 +10,7 @@ Example 1:
 
 Input: 2 -> 4 -> 6 -> 8 -> 10 -> 12 -> null
 Output: 2 -> 12 -> 4 -> 10 -> 6 -> 8 -> null 
+
 Example 2:
 
 Input: 2 -> 4 -> 6 -> 8 -> 10 -> null
@@ -55,7 +56,7 @@ const rearrangeLinkedList = function(linkedListHead) {
     }
 
     // slowPointer gets to the middle, when the fastPointer gets to the end of the linkedlist
-    console.log("MiddleNode:", slowPointer); // second half
+    // console.log("MiddleNode:", slowPointer); // second half
 
     // reversed linkedListFromMiddle & Original half linkedList
     let linkedListSecondHalf = reverseLinkedList(slowPointer);
@@ -65,6 +66,7 @@ const rearrangeLinkedList = function(linkedListHead) {
         // full: 2 -> 4 -> 6 -> 8 -> 10 -> 12 -> null
         // linkedListFirstHalf: 2 -> 4 -> 6 -> 8 -> null
         // linkedListSecondHalf: 12 -> 10 -> 8 -> null
+        // output: 2 -> 12 -> 4 -> 10 -> 6 -> 8 -> null 
     while (linkedListFirstHalf && linkedListSecondHalf) {
         // steps: 1. temp store next node, 2. point next node to the head of the other half, 3. truncate the list by moving the head to next node, kept in temp
         let linkedListFirstHalfNext = linkedListFirstHalf.next;
@@ -113,3 +115,39 @@ linkedListHead.next.next.next = new Node(8);
 linkedListHead.next.next.next.next = new Node(10);
 linkedListHead.next.next.next.next.next = new Node(12);
 console.log("rearrangeLinkedList:", rearrangeLinkedList(linkedListHead));
+
+
+
+const rearrangingList2 = (linkedListHead) => {
+    if(!linkedListHead) return null;
+
+    let sp = linkedListHead;
+    let fp = linkedListHead;
+
+    while(fp && fp.next) {
+        sp = sp.next;
+        fp = fp.next.next;
+    }
+
+    let listList2ndHalf = reverseLinkedList(sp);
+    let listList1stHalf = linkedListHead;
+
+    while(listList1stHalf && listList2ndHalf)
+    {   
+        let n1 = listList1stHalf.next;
+        let n2 = listList2ndHalf.next;
+        listList1stHalf.next = listList2ndHalf;
+        listList2ndHalf.next = listList2ndHalf;
+
+        listList1stHalf = n1;
+        listList2ndHalf = n2;
+    }
+
+    if(listList1stHalf){
+        listList1stHalf.next = null;
+    }
+
+    return linkedListHead;
+}
+
+// console.log("rearrangeLinkedList22:", rearrangingList2(linkedListHead));
