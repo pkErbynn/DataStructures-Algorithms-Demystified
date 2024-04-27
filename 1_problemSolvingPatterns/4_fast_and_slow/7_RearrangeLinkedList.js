@@ -59,29 +59,30 @@ const rearrangeLinkedList = function(linkedListHead) {
     // console.log("MiddleNode:", slowPointer); // second half
 
     // reversed linkedListFromMiddle & Original half linkedList
-    let linkedListSecondHalf = reverseLinkedList(slowPointer);
-    let linkedListFirstHalf = linkedListHead;
+    let secondHalf = reverseLinkedList(slowPointer);
+    let firstHalf = linkedListHead;
 
     // create the alternating linked list
         // full: 2 -> 4 -> 6 -> 8 -> 10 -> 12 -> null
-        // linkedListFirstHalf: 2 -> 4 -> 6 -> 8 -> null
-        // linkedListSecondHalf: 12 -> 10 -> 8 -> null
+        // firstHalf: 2 -> 4 -> 6 -> 8 -> null
+        // secondHalf: 12 -> 10 -> 8 -> null
         // output: 2 -> 12 -> 4 -> 10 -> 6 -> 8 -> null 
-    while (linkedListFirstHalf && linkedListSecondHalf) {
+    while (firstHalf && secondHalf) {
         // steps: 1. temp store next node, 2. point next node to the head of the other half, 3. truncate the list by moving the head to next node, kept in temp
-        let linkedListFirstHalfNext = linkedListFirstHalf.next;
-        linkedListFirstHalf.next = linkedListSecondHalf;
-        linkedListFirstHalf = linkedListFirstHalfNext;
+        let firstHalfNext = firstHalf.next;
+        firstHalf.next = secondHalf;
 
-        // // similar steps
-        let linkedListSecondHalfNext = linkedListSecondHalf.next;
-        linkedListSecondHalf.next = linkedListFirstHalf;
-        linkedListSecondHalf = linkedListSecondHalfNext;
+        let secondHalfNext = secondHalf.next;
+        secondHalf.next = firstHalf;
+
+        // move forward on step
+        firstHalf = firstHalfNext;
+        secondHalf = secondHalfNext;
     }
     
     // terminate firstHalf list if it's long
-    if (linkedListFirstHalf) {
-        linkedListFirstHalf.next = null;
+    if (firstHalf) {
+        firstHalf.next = null;
     }
 
     return linkedListHead;

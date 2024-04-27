@@ -20,6 +20,8 @@ const cyclicSort = (numbers) => {
 
 console.log("Result:", cyclicSort([2, 6, 4, 3, 1, 5]));
 
+
+
 // ========= reversed condition
 
 const cyclicSort2 = (numbers) => { // ***
