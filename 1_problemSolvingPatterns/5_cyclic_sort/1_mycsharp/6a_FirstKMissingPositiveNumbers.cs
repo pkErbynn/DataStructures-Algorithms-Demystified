@@ -1,6 +1,7 @@
 ﻿/*
 [Hard but Starred]
-Given an unsorted array containing numbers and a number ‘k’, find the first ‘k’ missing positive numbers in the array.
+Given an unsorted array containing numbers and a number ‘k’, 
+find the first ‘k’ missing positive numbers in the array.
 
 Example 1:
 

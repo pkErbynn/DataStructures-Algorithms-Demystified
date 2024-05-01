@@ -7,6 +7,8 @@
     - when need to sort elements
     - when given unsorted array in a given range of n
         - and array start **from 1 to n, or 0 to (n-1)**
+        - and to find **missing** number(s)
+        - and to find **duplicate** number(s)
     - when only O(1) space complexity is needed
     - when O(n) runtime complexity is needed
 
@@ -19,11 +21,11 @@
     - no repeated element
 
 - To determine if the Cyclic Sort pattern is suitable for a given problem, you can consider the following characteristics:
-    1. Range of Elements: the array are within a specific range, typically from (1 to n) or (0 to n-1), where n is the size of the array. 
+    1. Range of Elements: the array are within a specific range, typically from **(1 to n) or (0 to n-1)**, where n is the size of the array. 
         - If the elements fall within this range and 
         - there are no duplicates or missing elements, then 
         - Cyclic Sort can be a good fit.
-    2. In-Place Sorting Algo: meaning it doesn't require additional memory or data structures. 
+    2. In-Place Sorting Algo: meaning it **doesn't require additional memory** or data structures. 
         - If you need to sort the elements in-place without using extra space, Cyclic Sort can be a suitable choice.
 
 - Watch

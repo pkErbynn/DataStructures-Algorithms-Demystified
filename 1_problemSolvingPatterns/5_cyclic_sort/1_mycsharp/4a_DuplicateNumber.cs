@@ -31,8 +31,8 @@ namespace _1_mycsharp
 		*/
 
 
-		
-        public static void FindDuplicateNumber(int[] numbers)
+
+        public static void FindDistinctDuplicateNumber(int[] numbers)
 		{
 			// for-loop won't workout as index won't move for each element but will move index conditionally, thus, while loop
 			//for (int index = 0; index < numbers.Length; index++)
@@ -42,8 +42,8 @@ namespace _1_mycsharp
 			int index = 0;
 			while (index < numbers.Length)
 			{
-				// compare current element and ahead element
-				int indexPointer2 = index + 1;
+				// quick check if duplicate occure at the first two elements
+				int indexPointer2 = index + 1;	// pointer ahead by one
 				if (indexPointer2 < numbers.Length &&
                     index < numbers.Length &&
 					numbers[index] == numbers[indexPointer2])
@@ -205,3 +205,11 @@ namespace _1_mycsharp
 
 }
 
+
+
+
+
+/******************* NB ***********************************************************
+
+Missing Number: gotten from array INDEX after conplete cyclic sort
+Duplicate Number: gotten from array VALUE after conplete cyclic sort

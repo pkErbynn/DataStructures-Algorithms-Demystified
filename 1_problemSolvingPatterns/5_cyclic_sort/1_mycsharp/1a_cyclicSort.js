@@ -37,12 +37,12 @@ const cyclicSort = (numbers) => {
     while(index < numbers.length){
         let currentNumber = numbers[index];
         let rightNumber = numbers[currentNumber - 1];
-        if(currentNumber == rightNumber){
-            index++;
-        }
-        else if(currentNumber != rightNumber){
+        
+        if(currentNumber != rightNumber && currentNumber < numbers.length){     // DON'T FORGET "WITHIN-RANGE" CONDITION
             [numbers[index], numbers[currentNumber - 1]] = [numbers[currentNumber - 1], numbers[index]];
-            // [numbers[index], numbers[currentNumber - 1]] = [numbers[currentNumber - 1], numbers[index]];
+        }
+        else{
+            index++;
         }
     }
 
@@ -60,12 +60,13 @@ const cyclicSort2 = (numbers) => { // ***
     while(numbers[index]){  // while number exists
         let currentNumber = numbers[index];
         let rightNumber = numbers[currentNumber - 1];
-       
-        if(currentNumber != rightNumber){
-            [numbers[index], numbers[currentNumber - 1]] = [numbers[currentNumber - 1], numbers[index]];
-        }
-        else{
+
+        if(currentNumber == rightNumber){
             index++;
+        }
+        else if(currentNumber != rightNumber && currentNumber < numbers.length){
+            [numbers[index], numbers[currentNumber - 1]] = [numbers[currentNumber - 1], numbers[index]];
+            // [numbers[index], numbers[currentNumber - 1]] = [numbers[currentNumber - 1], numbers[index]];
         }
     }
 

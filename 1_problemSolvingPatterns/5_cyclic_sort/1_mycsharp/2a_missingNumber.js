@@ -35,7 +35,7 @@ const findMissingNumber = (numbers) => {
             index += 1;
         }
     }
-    console.log(numbers); // [ 0, 1, 4, 3 ]
+    // console.log(numbers); // [ 0, 1, 4, 3 ]
 
     // find missing numbers
     // check if numbers are not same as their respective indexes, return that index as missed
