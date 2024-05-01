@@ -16,6 +16,9 @@ Output: 7
 - input range from 0 to n
 - array size is of n
 
+
+=== watch explaination:
+- https://www.youtube.com/watch?v=JfinxytTYFQ&t=380s
 */
 
 'use strict'
@@ -32,8 +35,9 @@ const findMissingNumber = (numbers) => {
             index += 1;
         }
     }
-    // console.log(numbers); // [ 0, 1, 4, 3 ]
+    console.log(numbers); // [ 0, 1, 4, 3 ]
 
+    // find missing numbers
     // check if numbers are not same as their respective indexes, return that index as missed
     for(let i = 0; i < numbers.length; i++){
         if(numbers[i] !== i){
@@ -41,6 +45,8 @@ const findMissingNumber = (numbers) => {
         }
     }
 
-    return -1;
+    // Case where all elements sorted, missing element is the next element outside the array, since index starts from "i", next missing number is array.length
+    // Also, Case where missing number is not found in array [1, 0, 3, 2] = [0, 1, 2,3]...means 4 is missing so return the array length
+    return numbers.length;
 }
 console.log("R1:", findMissingNumber([4, 0, 2, 3, 1]));

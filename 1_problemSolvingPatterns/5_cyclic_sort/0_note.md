@@ -6,7 +6,9 @@
 - When to use?
     - when need to sort elements
     - when given unsorted array in a given range of n
-    - and array start from 1 to n, or 0 to (n-1)
+        - and array start **from 1 to n, or 0 to (n-1)**
+    - when only O(1) space complexity is needed
+    - when O(n) runtime complexity is needed
 
 - Example
     - input: [3, 4, 5, 1, 2]

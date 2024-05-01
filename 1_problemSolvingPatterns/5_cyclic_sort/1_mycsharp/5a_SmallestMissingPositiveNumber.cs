@@ -9,11 +9,15 @@ Given an unsorted array containing numbers, find the smallest missing positive n
 This problem follows the Cyclic Sort pattern and shares similarities with Find the Missing Number with one big difference.
 In this problem, the numbers are not bound by any range so can have any number in the input array.
 
-However, will follow a similar approach to place the numbers on their correct indices and
-ignore all numbers that are out of the range of the array (i.e., all negative numbers and all numbers greater than or equal to the length of the array).
-Once we are done with the cyclic sort we will iterate the array and
-the first index that does not have the correct number will be the smallest missing positive number!
+However, follow a similar approach to place the numbers on their correct indices and
+	- ignore all numbers that are out of the range of the array (i.e., all negative numbers and all numbers greater than or equal to the length of the array).
+	- Once we are done with the cyclic sort we will iterate the array and
+	- the first index that does not have the correct number will be the smallest missing positive number!
 
+CLUE: Positive number means start from 1 to N, thus cyclic sort
+
+
+Watch: https://youtube.com/watch?v=JfinxytTYFQ&t=380s
 */
 
 using System;
