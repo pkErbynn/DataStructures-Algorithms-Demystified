@@ -47,7 +47,7 @@ const x = smallestKMissingPositiveNumbers = (arr, numOfTimes) => {
 
     for (let index = 0; index < arr.length; index++) {
         if(arr[index] != (index+1)){
-            missingValues.push(index+1)
+            missingValues.push(index+1)     // missing numbers implies INDEX
         }
     }
     console.log("missingValues:", missingValues);
@@ -58,7 +58,7 @@ const x = smallestKMissingPositiveNumbers = (arr, numOfTimes) => {
     while(missingValues.length < numOfTimes)
     {
         let nextValue = arrLen++;
-        if(!arr.includes(nextValue)){
+        if(!arr.includes(nextValue)){   // add number that is not already in the original array
             missingValues.push(nextValue)
         }
     }

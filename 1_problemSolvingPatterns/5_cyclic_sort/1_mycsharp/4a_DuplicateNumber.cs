@@ -71,7 +71,7 @@ namespace _1_mycsharp
 			{
 				if (numbers[i] != (i + 1))
 				{
-					Console.WriteLine("Duplicate Number Long: " + numbers[i]);
+					Console.WriteLine("Duplicate Number Long: " + numbers[i]);	// duplicate number mean getting the value and not the index unlike the "missing number"
 					return;
 				}
 			}
