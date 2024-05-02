@@ -48,7 +48,7 @@ class MissingNumbers
         {
             if (numbers[i] != (i + 1))
             {
-                results.Add(i + 1);
+                results.Add(i + 1);     // missing numbers means getting index not the value
             }
 
         }
