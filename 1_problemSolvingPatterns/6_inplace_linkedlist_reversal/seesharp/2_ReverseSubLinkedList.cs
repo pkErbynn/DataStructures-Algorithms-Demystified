@@ -9,7 +9,7 @@ Here are the steps we need to follow:
 2. Remember the node at position p-1 to be used later to connect with the reversed sub-list.
 3. Next, reverse the nodes from p to q using the same approach discussed in Reverse a LinkedList.
 4. Connect the p-1 and q+1 nodes to the reversed sub-list. 
-    NB: 4 pointers are needed from the 3 partioned sections for complete connections:
+    NB: 4 pointers are needed from the 3 partitioned sections for complete connections:
         - 1. last node of first (1/3) section
         - 2. first node of middle (2/3) section
         - 3. last node of middle (2/3) section
@@ -31,6 +31,7 @@ namespace seesharp
             Node previousNode = null;
 
             // move current forward to get to the start point, p
+            // nb: test data is int type not string so ".value < start" makes sense, ensuring it's within range
             while (currentNode != null && currentNode.Value < start)
             {
                 previousNode = currentNode;
@@ -39,11 +40,16 @@ namespace seesharp
             // after this while-loop: 
                 // currentNode is exactly on the start point, p (cus last iteration is: currentNode = currentNode.Next)
                 // previousNode is on the penultimate node of currentNode
+                    // previousNode is needed since it's the pointer storage holding the node section that will be extracted 
+                    // (ie, last node of first section(1/2)) 
 
             // store these pointers (nodeBeforeSubList, nodeBeforeSubList.next) for future connection of reversedSubList to the original whole list
             Node nodeBeforeSubList = previousNode;
             Node endNodeOfSubList = currentNode;    // currentNode/first node of subList will become the end of subList after reversal
 
+////////
+///CONTINUE FROM HERE
+///////
             // do regular linkedList reversal in range, ie. from start to end 
             while (currentNode != null && start <= end)
             {
