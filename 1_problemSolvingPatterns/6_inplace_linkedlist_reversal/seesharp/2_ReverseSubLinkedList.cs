@@ -37,6 +37,16 @@ namespace seesharp
                 previousNode = currentNode;
                 currentNode = currentNode.Next;
             }
+
+            // alternatively: 
+            // while (currentNode != null)
+            // {
+            //     previousNode = currentNode;
+            //     currentNode = currentNode.Next;
+
+            //     if(currentNode.Value == start) break;
+            // }
+            
             // after this while-loop: 
                 // currentNode is exactly on the start point, p (cus last iteration is: currentNode = currentNode.Next)
                 // previousNode is on the penultimate node of currentNode
@@ -50,14 +60,15 @@ namespace seesharp
 ////////
 ///CONTINUE FROM HERE
 ///////
-            // do regular linkedList reversal in range, ie. from start to end 
+            // do regular linkedList reversal in range, ie. from "start" to "end" 
             while (currentNode != null && start <= end)
             {
                 Node nextNode = currentNode.Next;
                 currentNode.Next = previousNode;
 
                 // move pointers 1-step forward
-                previousNode = currentNode;
+                b
+                 = currentNode;
                 currentNode = nextNode;
                 start = start + 1;
             }
@@ -66,7 +77,7 @@ namespace seesharp
                 // previousNode is now the head/start of the reversed sublist
 
             // connect main list with first node of reversedSubList (previousNode)
-            if (nodeBeforeSubList != null)  // nodeBeforeSubList can be null if initialized "previousNode" is null or when the "start/p" interval starts from the head. Means, previousNode will point outside the linkedList and that it's not needed for connection
+            if (nodeBeforeSubList != null)  // nodeBeforeSubList can be null if "previousNode" was initialized to null or when the "start/p" interval starts from the head. Means, previousNode will point outside the linkedList and that it's not needed for connection
             {
                 nodeBeforeSubList.Next = previousNode;  // previousNode is now the head of the reversedSubList, connected to by the nodeBeforeReversedSublist
             }
