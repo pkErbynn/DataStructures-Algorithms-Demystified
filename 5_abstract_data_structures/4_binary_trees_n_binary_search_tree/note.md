@@ -42,7 +42,7 @@
 
 
 #### TRAVERSAL
-Ways of Traversing Nodes
+Ways of Traversing Nodes with an ORDER
 1. Breath-First Search (BFS)
     - visiting node horizontally from left to right
 2. Depth-First Search (DFS)

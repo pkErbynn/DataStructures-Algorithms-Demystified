@@ -9,7 +9,7 @@ function power_iterative(base, exponent){
     let ans;
     for(let i=0; i<exponent; i++){
         if(i===0){
-            ans = base; // keeping initial value
+            ans = base; // keeping initial value to be the base
             continue;
         }
         ans = ans * base;

@@ -27,7 +27,7 @@ function merge_sort_with_spliting(arr){
 
     // split, by shallow copy, to divid array into 2 halves
     let midIndex = Math.floor(arr.length / 2);
-    let leftHalf = arr.slice(0, midIndex);  // can't use split() cus applies on string
+    let leftHalf = arr.slice(0, midIndex);  // can't use split() cus it applies on string...slice is immutable
     let rightHalf = arr.slice(midIndex, arr.length);
     console.log(leftHalf, rightHalf);
 
@@ -61,8 +61,8 @@ function merge(arr1, arr2) {
 
     // different pointers for each array
     // ...since each pointer will be moved differently
-    let i = 0;
-    let j = 0;
+    let i = 0;  // arr1 pointer
+    let j = 0;  // arr2 pointer
 
     // up to equal lengths of each array
     while (i < arr1.length && j < arr2.length) {
@@ -70,7 +70,7 @@ function merge(arr1, arr2) {
             result.push(arr1[i]);
             i++;
         }
-        else{
+        else if(arr2[j] <= arr1[i]){
             result.push(arr2[j]);
             j++;
         }

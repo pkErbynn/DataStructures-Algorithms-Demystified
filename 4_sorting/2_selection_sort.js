@@ -10,13 +10,13 @@
 // SelectionnSort = more effort into SELECTING the correct + less effort(naturally) to place/insert in correct position
 
 function selectionSort(arr){
-    for (let outerIndex = 0; outerIndex < arr.length; outerIndex++) {
-        let smallestIndex = outerIndex;
+    for (let outerIndexPointer = 0; outerIndexPointer < arr.length; outerIndexPointer++) {
+        let smallestIndex = outerIndexPointer;
         
         // if innerIndex start from 0, you will slip to compare with already sorted element
-        for (let innerIndex = outerIndex; innerIndex < arr.length; innerIndex++) {
-            if(arr[innerIndex] < arr[outerIndex]){
-                // innerIndex needed not the value, 
+        for (let innerIndexPointer = outerIndexPointer; innerIndexPointer < arr.length; innerIndexPointer++) {
+            if(arr[innerIndexPointer] < arr[outerIndexPointer]){
+                // innerIndexPointer needed not the value, 
                 // in order to get access to the position even outside the loop
                 // for swapping after each iteration 
                 smallestIndex = innerIndex;
@@ -24,7 +24,7 @@ function selectionSort(arr){
         }
 
         // swapping
-        [arr[outerIndex], arr[smallestIndex]] = [arr[smallestIndex], arr[outerIndex]];
+        [arr[outerIndexPointer], arr[smallestIndex]] = [arr[smallestIndex], arr[outerIndexPointer]];
     }
 
     return arr;

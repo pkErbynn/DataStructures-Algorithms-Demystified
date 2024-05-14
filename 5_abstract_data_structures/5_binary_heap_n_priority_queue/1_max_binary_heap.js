@@ -14,7 +14,7 @@ WHY ?
 - 3. since they are arranged in using Breadth-First Search approach
 
 Psudo Code
-In view of that? Psuedo of Heap with Array is:
+In view of that, Psuedo of Heap with Array is:
 1. Heap has values array as property
 2. Push element to the end of the values bucket
 3. Bubble the element up to the correct spot

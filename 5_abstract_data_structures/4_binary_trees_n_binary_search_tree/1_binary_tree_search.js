@@ -25,7 +25,7 @@ class BST {
         // else
         let currentNode = this.root; // for traversing and tracking
 
-        while(currentNode){
+        while(currentNode != null){
             // duplicate node check
             if(value === currentNode.value) return null;
 
