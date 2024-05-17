@@ -41,6 +41,6 @@
    - Best in insertion by key 
    - Best in deletion by key
 10. Graphs
-   - Best for searching/traversing from multiple paths unlike trees that always start from root
+    - Best for searching/traversing from multiple paths unlike trees that always start from root
  
 
