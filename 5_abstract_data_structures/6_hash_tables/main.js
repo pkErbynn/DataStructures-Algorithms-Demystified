@@ -26,12 +26,15 @@ Vs Arrays
 Hashing conceptualization
 - implemented just like arrays but uses any other ds like strings
 - converts string into an index, store in that array index and keep the associated value in that index
-- uses hash function for the conversion into a hash value/code
+- uses hash function for the conversion of string/object into a hash value/code
 
 Qualities of Good hashmap
 - fast, ie constant time cus it'll be called regulary
+    - 
 - no collissions, ie doesn't conflict/cluster output at specifix index, but distribute uniformly
 - consistent, ie same input yeilds same output
+
+
 
 Hash Functions
 - converts string into a number corresponding to an index in an array

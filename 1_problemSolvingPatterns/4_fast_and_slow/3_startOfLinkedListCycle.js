@@ -93,7 +93,7 @@ const lengthOfLinkedListCycle = function(head) {
         fastPointer = fastPointer.next.next;
 
         if(fastPointer === slowPointer){
-            let counterPointer = fastPointer;
+            let counterPointer = fastPointer; // or can point to slowPointer
             let stepCounter = 0;
 
             while(counterPointer.next){
