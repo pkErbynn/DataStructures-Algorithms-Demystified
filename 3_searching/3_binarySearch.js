@@ -10,11 +10,11 @@ function binarySearch_iteration(sortedArr, target){
     // only (start < end) will exempt mid value when start and end point to same midpoint
     while(start <= end){
         // .floor() rounds down thus removing decimal points 
-        let midIndex = Math.floor((start + end) / 2); 
+        let midIndex = Math.floor(start + (end - start) / 2); // instead of "(start + end) / 2", causing memory overfloor
 
-        if(sortedArr[midIndex] === target) return midIndex;
+        if(target === sortedArr[midIndex]) return midIndex;
 
-        if(sortedArr[midIndex] < target){
+        if(target > sortedArr[midIndex]){
             start = midIndex + 1;
         } 
         else {
@@ -25,10 +25,11 @@ function binarySearch_iteration(sortedArr, target){
     return -1; 
 }
 
-console.log(binarySearch_iteration([1,2,3,4,5,6,7,8,9], 7));
-console.log(binarySearch_iteration([1,2,3,4,5,6,7,8,9], 6));
-console.log(binarySearch_iteration([1,2,3,4,5,6,7,8,9], 1));
-console.log(binarySearch_iteration([1,2,3,4,5,6,7,8,9], 0));
+console.log("binarySearch_iteration:", binarySearch_iteration([1,2,3,4,5,6,7,8,9], 7));
+console.log("binarySearch_iteration:", binarySearch_iteration([1,2,3,4,5,6,7,8,9], 6));
+console.log("binarySearch_iteration", binarySearch_iteration([1,2,3,4,5,6,7,8,9], 1));
+console.log("binarySearch_iteration", binarySearch_iteration([1,2,3,4,5,6,7,8,9], 3));
+console.log("binarySearch_iteration", binarySearch_iteration([9,8,7,6,5,4,3,2,1], 3));  // wrong solution
 
 
 
@@ -53,3 +54,10 @@ console.log("===== recursive =====")
 let sortedArr = [1,2,3,4,5,6,7,8,9];
 console.log(binarySearch_recursion(sortedArr, 7, 0, sortedArr.length));
 binarySearch_recursion(sortedArr, 7, 0, sortedArr.length)
+
+/*
+Reason why O(n) = log n
+=> https://github.com/pkErbynn/DSA-Bootcamp-Java-Kunal/blob/main/lectures/10-binary%20search/Binary%20Search.pdf
+
+*/
+
