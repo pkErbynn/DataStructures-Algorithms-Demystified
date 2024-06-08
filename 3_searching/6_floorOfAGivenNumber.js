@@ -20,20 +20,17 @@ function binarySearch_floor(sortedArr, target){
     let start = 0;
     let end = sortedArr.length - 1;
 
-    if(target < sortedArr[start])
-        return -1;
-
     while(start <= end){
         
         let midIndex = Math.floor(start + (end - start) / 2);
 
         if(target === sortedArr[midIndex]) return midIndex;
 
-        if(target > sortedArr[midIndex]){
-            start = midIndex + 1;
+        if(target < sortedArr[midIndex]){
+            end = midIndex - 1;
         } 
         else {
-            end = midIndex - 1;
+            start = midIndex + 1;
         }
     }
 

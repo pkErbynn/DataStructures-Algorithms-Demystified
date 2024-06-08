@@ -20,7 +20,9 @@ function binarySearch_ceiling(sortedArr, target){
     let end = sortedArr.length - 1;
 
     if(target > sortedArr[end])
+    {
         return -1;
+    }
 
     while(start <= end){
         
@@ -28,11 +30,11 @@ function binarySearch_ceiling(sortedArr, target){
 
         if(target === sortedArr[midIndex]) return midIndex;
 
-        if(target > sortedArr[midIndex]){
-            start = midIndex + 1;
-        } 
-        else {
+        if(target < sortedArr[midIndex]){
             end = midIndex - 1;
+        }
+        else {
+            start = midIndex + 1;
         }
     }
 
