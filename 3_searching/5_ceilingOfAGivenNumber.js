@@ -14,7 +14,8 @@ For x = 20:   ceil doesn't exist in array, -1
 Explaination found in vid: https://youtu.be/W9QJ8HaRvJQ?list=PL9gnSGHSqcnr_DxHsP7AW9ftq0AtAyYqJ&t=839
 */
 
-
+// returns index if found
+// returns -1 if not found
 function binarySearch_ceiling(sortedArr, target){
     let start = 0;
     let end = sortedArr.length - 1;

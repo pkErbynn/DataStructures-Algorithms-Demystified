@@ -10,7 +10,9 @@ function binarySearch_iteration(sortedArr, target){
     // only (start < end) will exempt mid value when start and end point to same midpoint
     while(start <= end){
         // .floor() rounds down thus removing decimal points 
-        let midIndex = Math.floor(start + (end - start) / 2); // instead of "(start + end) / 2", causing memory overfloor
+        // let midIndex = Math.floor((start + end) / 2); // might be possible that (start + end) exceeds data type range
+
+        let midIndex = Math.floor(start + (end - start) / 2);
 
         if(target === sortedArr[midIndex]) return midIndex;
 
