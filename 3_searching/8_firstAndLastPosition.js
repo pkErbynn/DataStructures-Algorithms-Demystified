@@ -34,13 +34,13 @@ function search(nums, target, isFindingStartIndex) {
     let end = nums.length - 1;
 
     while(start <= end){
-        let mid = Math.floor(start + (end - start)/2);
+        let mid = Math.floor(start + (end - start)/2);  // prevents potential overflow issues with large numbers
 
         if(target < nums[mid]){
-            end = mid - 1;
+            end = mid - 1;  // move torwards the start
         }
         else if(target > nums[mid]){
-            start = mid + 1;
+            start = mid + 1;    // move towards the end
         }
         else {
             ans = mid;  // potential ans
@@ -61,3 +61,12 @@ function search(nums, target, isFindingStartIndex) {
 console.log("firstAndLastPosition:", firstAndLastPosition([5,7,7,8,8,10], 8));
 console.log("firstAndLastPosition:", firstAndLastPosition([5,7,7,8,8,10], 6));
 console.log("firstAndLastPosition:", firstAndLastPosition([], 0));
+
+/*
+
+NB:
+The method start + (end - start) / 2 
+    - helps avoid potential overflow issues that might occur if start and end are very large numbers. 
+    - By subtracting start from end first, the values stay within a safe range before division, ensuring the calculation remains accurate and efficient
+
+*/

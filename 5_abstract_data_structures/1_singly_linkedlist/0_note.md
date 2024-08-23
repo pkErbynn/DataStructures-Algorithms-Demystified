@@ -9,7 +9,8 @@
 - cargo train
 
 ### Why use
-- efficient insertion and deletion of elements at the beginning of the list, or at any position if the pointer to the node preceding the position of insertion or deletion is available. 
+- efficient insertion and deletion of elements at the beginning of the list, 
+    - or at any position if the pointer to the node preceding the position of insertion or deletion is available. 
 
 ### When not to use
 - accessing an element in the list requires traversing the list from the HEAD until the desired element is reached, which can be time-consuming for large lists.
@@ -36,6 +37,7 @@
 - No, a singly linked list is not the same as the List<> data structure in C#.
 - A singly linked list is a linear data structure consisting of a sequence of nodes, where each node stores a data element and a reference (or pointer) to the next node in the list.
 - In contrast, List<> is a dynamic array-like data structure in C# that stores elements in a contiguous block of memory. It provides random access to elements by index and supports dynamic resizing, insertion, and deletion of elements. Unlike a singly linked list, List<> does not have pointers or references to other elements in the list.
+    - List<> = [a, b, c]    // simlar to array 
 - Insertion or deletion of an element in the middle of an ArrayList requires shifting all the subsequent elements, which can be a time-consuming operation for large lists. In a case When a new element is added to the end of an array in JavaScript using the push() method, the new element is simply appended to the end of the array without any shifting of existing elements.
 
 

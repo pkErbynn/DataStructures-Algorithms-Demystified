@@ -10,6 +10,7 @@
     2. Min Binary Heap
 - no ordering btn siblings.
     - like left node should be smaller than the right
+    - naa, nothing like that exists in heaps, cus we're only interested in the current parent(min/max) on top
 - left nodes are FILLED FIRST before right node
 - similar to Binary Search Tree but with different rules
 
@@ -20,7 +21,8 @@
 - useful for sorting arrays in O(n log n) time by first building a heap and then repeatedly extracting the minimum (or maximum) element.
 - used in Graph traversal algorithms
 
-Overall, the core benefit of a binary heap is its ability to efficiently maintain a collection of elements that have a priority order, which makes it useful in a variety of applications, including job scheduling, event-driven simulations, and graph algorithms such as Dijkstra's shortest path algorithm.
+Overall, the core benefit of a binary heap is 
+- its ability to efficiently maintain a collection of elements that have a **priority order**, which makes it useful in a variety of applications, including job scheduling, event-driven simulations, and graph algorithms such as Dijkstra's shortest path algorithm.
 
 #### Time Complexities
 - insertion: O(log n) time

@@ -13,8 +13,10 @@
 2. Singly LinkedList (SLL)
    - Best in **insertion** and **deletion** operation @ **beginning** of list
        - or at _any position_ if the pointer to the node _preceding_ the insertion or deletion position is available.
+      - If you want to add or remove a node somewhere else in the list (not at the beginning), the process is also quick—**but only if** you already have a pointer (reference) to the node right before the spot where you want to make the change. If you have this pointer, you can easily adjust the pointers to insert or delete a node at that position.
     - Best in **insertion** @ **end** of list
     - Poor in deletion at end (solved by DLL)
+      -  inefficient because you need to traverse the entire list(with two pointers) from the beginning to find the second-to-last node and keep it as the tail
 3. Doubly LinkedList (DLL)
    - Best in **insertion** and **deletion** @ beginning
    - Best in **insertion** and **deletion**([because...](https://github.com/pkErbynn/DataStructuresDemystified/blob/main/5_abstract_data_structures/2_doubly_linkedlist/1_main.js#L260)) @ end

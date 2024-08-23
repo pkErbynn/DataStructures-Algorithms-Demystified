@@ -6,9 +6,9 @@ arr.unshift(9);
 arr.shift();
 
 // - unshift(8) => to add to the beginning of the array
-// - shift() => to remove the last unshifted element
+// - shift() => to remove at the beginning of the array, ie. the unshifted element
 
-// - this is efficient cus the rest of the element needs to be reindex
+// - this is inefficient cus the rest of the element needs to be reindex
 // - add/remove at beginning of array is totally poor for huge data
 // - thus, do at the end
 // - push() / pop() needed 
@@ -34,8 +34,8 @@ STACK
 - means, last element added to the stack will be the first element to be removed
 
 Applications
+- when need to store data such that LAST THING ADDED, is the last thing removed ***
 - undo
 - function call stack: manage function invocations
-- when need to store data such that last thing added, it the last thing removed
 
 */

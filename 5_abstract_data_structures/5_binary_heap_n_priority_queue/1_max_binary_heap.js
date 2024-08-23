@@ -1,6 +1,6 @@
 /* 
 Unlike binary search tree implemented using a node class,
-Max Binary head can be implemented simply using ARRAY
+Max Binary Heap can be implemented simply using ARRAY
 It is usually implemented using AN ARRAY
 
 WHY ?
@@ -17,13 +17,13 @@ Psudo Code
 In view of that, Psuedo of Heap with Array is:
 1. Heap has values array as property
 2. Push element to the end of the values bucket
-3. Bubble the element up to the correct spot
+3. Then, Bubble the element up to the correct spot
 */
 
 
 class MaxBinaryHeap{
     constructor(){
-        this.values = [41,39,33,18,27,12];
+        this.values = [41, 39, 33, 18, 27, 12];
     }
 
     
@@ -33,13 +33,13 @@ class MaxBinaryHeap{
     insert(element){
         this.values.push(element);
 
-        let elementIndex = this.values.length - 1;
+        let elementIndex = this.values.length - 1;  // since it's at the back now
         let elementValue = this.values[elementIndex];   // didn't use the incomming value cus this will be dynamic from the array
 
         while(elementIndex > 0) {   // while it still falls within the array/tree, as element and parent move from right to left direction
             // bubling up to the correct spot
 
-            // calculate element's parent properties: index and value from the array each iteration
+            // calculate element's parent properties: index and value from the array in each iteration
             let parentIndex = Math.floor((elementIndex - 1) / 2);
             let parentValue = this.values[parentIndex];
 
@@ -65,13 +65,13 @@ class MaxBinaryHeap{
     }
 
 
-    // remove root value from array/tree
-    // make last element as root
-    // bubble down / sink down root to its correct position
+    // first, remove root value from array/tree
+    // then, make last element as current root by placing it at the top
+    // now, sink down root to its correct position
     // thus, calculating its children nodes
     removeMax(){ // **
-        let extractedMax = this.values[0];
-        this.values[0] = this.values.pop();
+        let extractedMax = this.values[0];  // temp copy removable max value
+        this.values[0] = this.values.pop(); // replace first removed-max element with last element poped, ie, swap first and last
 
         if (this.values.length === 0) {
             return null;
@@ -83,7 +83,7 @@ class MaxBinaryHeap{
         let leftChildIndex = 2*rootIndex + 1;
         let rightChildIndex = 2*rootIndex + 2;
 
-        while(rootIndex < this.values.length){ // while still within the array as it bubbles down to the end
+        while(rootIndex < this.values.length){ // while still within the array as it sinks down to the bottom end
 
             // check if children indexes are also within array range
             if(leftChildIndex >= this.values.length || rightChildIndex >= this.values.length) {
@@ -126,8 +126,8 @@ class MaxBinaryHeap{
         }
 
         // alternatively, swap first and last elements and remove the last element as the max
-        [this.values[0], this.values[this.values.length-1]] = 
-            [this.values[this.values.length-1], this.values[0]];
+        [this.values[0], this.values[this.values.length - 1]] = 
+            [this.values[this.values.length - 1], this.values[0]];
         let maxElement = this.values.pop();
 
         let rootIndex = 0;
@@ -154,7 +154,7 @@ class MaxBinaryHeap{
                 [ this.values[rootIndex], this.values[maxChildValueIndex] ] =
                 [ this.values[maxChildValueIndex], this.values[rootIndex] ];
 
-                // move indexe forward (in array), and down (in tree) by reindexing via recalculation
+                // move index forward (in array), and down (in tree) by reindexing via recalculation
                 rootIndex = maxChildValueIndex;
             } 
             else {

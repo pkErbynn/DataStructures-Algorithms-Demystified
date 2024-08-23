@@ -8,7 +8,7 @@
 ///////// Use case / applications
 // - uploading resources: first sent is uploading provided same file size
 // - printing of file
-// - background tasks
+// - background tasks **
 
 
 //////// Implementation
@@ -20,7 +20,7 @@
 //// 1. Using Array
 // - push() combined with shift();
 // - unshift() combined with pop();
-// - not efficient cus of RE-INDEXING when an item is added or removed from the start
+// - not efficient cus of RE-INDEXING when an item is added or removed from the start ***
 
 
 //// 2. Using linkedlist-like DS
@@ -48,12 +48,16 @@ class Queue {
     // adding to the end (push)
     enqueue(value){
         let newNode = new Node(value);
+
+        // when list is empty/zero
         if(!this.first || this.length === 0){
             this.first = newNode;
             this.last = newNode;
             this.length += 1;
             return this.length;
         }
+
+        // when not zero
         this.last.next = newNode;
         this.last = newNode;
         this.length += 1;

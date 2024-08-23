@@ -27,7 +27,7 @@ Tradoff
 #### In sum:
 - singly linked list 
   ...better for start/end insertion operations
-  ...doesn't eat memory
+  ...doesn't eat memory, lol
 - doubly linked list
   ...better for start/end insertion/deletion operations
   ...better for finding node cus can be done in half the time

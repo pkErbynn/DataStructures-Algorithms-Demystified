@@ -16,20 +16,24 @@ class BST {
     insert(value){ // **
         let newNode = new Node(value);
 
+        // IF @ EMPTY TREE
+
         // if not root node, set new node as root
         if(!this.root) {
             this.root = newNode;
             return this;
         }
 
-        // else
+        // IF @ NON-EMPTY TREE
+
+        // start with root at parent
         let currentNode = this.root; // for traversing and tracking
 
         while(currentNode != null){
             // duplicate node check
             if(value === currentNode.value) return null;
 
-            // if incomming value is less that current parent node
+            // if incomming value is less than current parent node
             // then look left, for the insertion
             if(value < currentNode.value){
                 // leaf node
@@ -38,11 +42,11 @@ class BST {
                     return this;
                 }
 
-                // reset root/parent node to traverse further downwards
+                // if incomming node is not connected to a leaf node, then reset root/parent node to traverse further downwards
                 currentNode = currentNode.left;
             }
             
-            // if incomming value is greater that current parent node
+            // if incomming value is greater than current parent node
             // then look right, for the insertion
             if(value > currentNode.value) {
                 // right leaf node
@@ -50,7 +54,7 @@ class BST {
                     currentNode.right = newNode;
                     return this;
                 }
-                // reset current node to next right downward child node
+                // if not a leaf node, reset current node to next right downward child node
                 currentNode = currentNode.right;
             }
         }
@@ -142,12 +146,13 @@ class BST {
         let visitedResult = [];
 
         let currentNode = this.root;
-        queue.push(currentNode);
+        queue.push(currentNode);    // push to queue's back...initialize with initial root value
 
         // while there's something in the queue for processing...
         while(queue.length > 0){
-            let removedHeadNode = queue.shift();
-            visitedResult.push(removedHeadNode.value);
+            let removedHeadNode = queue.shift();    // take from queu's front
+
+            visitedResult.push(removedHeadNode.value);  // explore/process element from queue...when element leaves the queue, it's considered visited (likewise, when leaves a stack, it's considered visited)
 
             // once removed and put to visitedResult, push their leg children nodes to the queue
             if(removedHeadNode.left) 
@@ -166,17 +171,19 @@ class BST {
     // depth-first search => uses Stack
     dfsPreOrder(){
         let stack = [];
-        let visitedReult = [];
+        let visitedResult = [];
 
         let currentNode = this.root;
-        stack.push(currentNode);
+        stack.push(currentNode);    // stack initialised with root
 
         // while there's something in the stack for processing...
-        while(stack.length){    // while stack has an element...
-            let removedNode = stack.pop();
-            visitedReult.push(removedNode.value);
+        while(stack.length){    // => (stack.length > 0) => while stack has an element...
+            let removedNode = stack.pop();  // element considered visited/used when removed from Stack, similar to dsf with queue
+            
+            // process removed element n push to stack
+            visitedResult.push(removedNode.value);
 
-            // once removed and put to visitedReult, push their leg children nodes to the stack
+            // once removed and put to visitedResult, push their leg children nodes to the stack
             // NB: took right first, left second because since it's LIFO, left node will be processed before the right, 
             // that's why the right is put on the stack first
             if(removedNode.right)
@@ -185,24 +192,26 @@ class BST {
                 stack.push(removedNode.left);
 
             ///////// in-order
+            // let removedNode = stack.pop();
+            //
             // if(removedNode.right)
             //     stack.push(removedNode.right);
-            // let removedNode = stack.pop();
-            // visitedReult.push(removedNode.value);
+            // visitedResult.push(removedNode.value);
             // if(removedNode.left)
             //     stack.push(removedNode.left);
 
             ///////// post-order
+            // let removedNode = stack.pop();
+            // 
             // if(removedNode.right)
             //     stack.push(removedNode.right);
             // if(removedNode.left)
             //     stack.push(removedNode.left);
-            // let removedNode = stack.pop();
-            // visitedReult.push(removedNode.value);
+            // visitedResult.push(removedNode.value);
 
             // NB: 
         }
-        return visitedReult;
+        return visitedResult;
     }
 
     // using recursion for dfs
@@ -211,8 +220,7 @@ class BST {
         
         let traverse = function(currentNode){
             // base case
-            // if(currentNode == null) return;
-            if(!currentNode) return;
+            if(currentNode == null) return;
 
             // common base-case mistake
             // if(!currentNode.left && !currentNode.right) return; // this yeilds lots of prob cus you have to do extra checks like if only left/right side is available, thus don't do the check on children
@@ -234,6 +242,7 @@ class BST {
         
         let traverse = function(currentNode){
             // base case
+            // if(currentNode == null) return;
             if(!currentNode) return;
             
             traverse(currentNode.left);

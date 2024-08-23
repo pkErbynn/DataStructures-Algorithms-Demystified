@@ -74,8 +74,8 @@ class DoublyLinkedList {
         nextHead.prev = null;
         this.head = nextHead; // mark head
 
-        headToDelete.next = null;
-        headToDelete.prev = null; // explicit
+        headToDelete.next = null; // break chains/leaks
+        headToDelete.prev = null; 
         
         this.length -= 1;
         return headToDelete;

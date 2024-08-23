@@ -6,7 +6,7 @@
 #### Facts
 - Real tree inversed
 - has ONE root
-- branch endges points DOWNWARDS
+- branch endges pointing DOWNWARDS
 - non-linear paths
 - linkedlist is a special tree
    - it's linear
@@ -33,12 +33,13 @@
 - each parent node has at most TWO CHILD nodes
 - every child node at LEFT of parent node is always LESS THAN the parent
 - every child node at RIGHT of parent node is always GREATER THAN the parent
-- These properties ensure that the elements in a binary search tree are stored in SORTED ORDER
+- these properties ensure that the elements in a binary search tree are stored in SORTED ORDER
 
 #### BENEFITS n WHY: CORE PURPOSE
-- efficient SEARCH and retrieval of data
+- for efficient SEARCH [retrieval]
     - both average and worst-case scenarios: time complexity of O(log n)
-- for efficient INSERTION, DELETION, TRAVERSAL(pre and post-order) operations.
+- for efficient INSERTION, DELETION [modification]
+- for efficient TRAVERSAL(pre and post-order) operations [sorting]
 
 
 #### TRAVERSAL
@@ -62,8 +63,7 @@ NB:
 #### BFS vs DFS
 - BFS is spacely expensive since have to be tracking visited and lots of leg nodes
 - DFS is not expensive
-- DFS:
-    - In-order: used when wanna provide a sorted data, smallest to biggest
+    - In-order: used when wanna provide a sorted data, smallest to biggest. ie, to make things "in order", lol.
 
 #### Balanced vs Unbalanced Tree
 - A balanced binary search tree is a binary search tree in which the heights of the left and right subtrees of any node differ by at most one. 
