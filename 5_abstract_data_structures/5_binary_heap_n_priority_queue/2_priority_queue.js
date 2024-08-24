@@ -55,7 +55,7 @@ class PriorityQueue {
     // thus, calc its parent
     // this time around, low priority number has highest priority: L#67
     // similar to insert operation in binary heap
-    enqueue(value, priority){
+    enqueueElement(value, priority){
         let newNode = new Node(value, priority);
         
         this.values.push(newNode);
@@ -63,14 +63,14 @@ class PriorityQueue {
         let newChildNodeIndex = this.values.length - 1;
         let newChildNode = this.values[newChildNodeIndex];
         
-        let parentNodeIndex = Math.floor((newChildNodeIndex-1)/2); // child, find parent...moving backwards, thus (n-1)/2
+        let parentNodeIndex = Math.floor((newChildNodeIndex - 1) / 2); // child, find parent...moving backwards, thus (n-1)/2
         let parentNode = this.values[parentNodeIndex];
 
         // element in array, no parent for such element
         if(!parentNode) return this.values;
 
         // if parent exists
-        while(parentNode != null){  // can be (parentNodeIndex > 0) but using the object is much safer
+        while(parentNode != null){  // can be (parentNodeIndex >/= 0) but using the object is much safer
             if(newChildNode.priority < parentNode.priority){  // small priority means higher priority, </> changes for max/min heap
                 [this.values[newChildNodeIndex], this.values[parentNodeIndex]] = 
                     [this.values[parentNodeIndex], this.values[newChildNodeIndex]];
@@ -89,7 +89,7 @@ class PriorityQueue {
     // remove at array front / tree top -> bubble down
     // thus, cal children nodes
     // similar as extractMax() in heap
-    dequeue(){   // ****
+    dequeueElement(){   // **** (better if parent, child calculations are done within loop, cus it reculate dynamically if an index changes)
         let removedNode = this.values[0];
         this.values[0] = this.values.pop();
 
@@ -119,7 +119,7 @@ class PriorityQueue {
                 [ this.values[rootNodeIndex], this.values[maxChildPriorityIndex] ] = 
                 [ this.values[maxChildPriorityIndex], this.values[rootNodeIndex] ];
 
-                rootNodeIndex = maxChildPriorityIndex;
+                rootNodeIndex = maxChildPriorityIndex;  // only parent index changes then the rest are done dynamically since calc falls within the loop
             }
             else {
                 break;
@@ -130,7 +130,7 @@ class PriorityQueue {
     }
 
     // ====== Alternative ======
-    dequeueElemenet(){
+    dequeueElemenent2(){
         if(this.values.length === 0) return null;
         // swap first n last node
         // before removing last node(first node)...if removed at start, with shift, there will be reindexing which is expensive
@@ -198,39 +198,6 @@ class PriorityQueue {
         return removedNode;
         
     }
-
-    extractHighPriorityElement(){   // Same as dequeue()
-        let rootNodeIndex = 0;
-        let lastNodeIndex = this.values.length-1;
-        [this.values[rootNodeIndex], this.values[lastNodeIndex]] = 
-            [this.values[lastNodeIndex], this.values[rootNodeIndex]];
-
-        let extractedMax = this.values.pop();
-        
-        let rootIndex = 0;
-        let rootValue = this.values[rootIndex];
-        let leftChildIndex = 2*rootIndex + 1;
-        let rightChildIndex = 2*rootIndex + 2;
-
-        while(rootIndex < this.values.length){ // while still within the array as it bubbles down to the end
-            let maxChildValue = Math.max(this.values[leftChildIndex], this.values[rightChildIndex]);
-            
-            if(maxChildValue > rootValue){
-                let maxChildValueIndex = this.values.indexOf(maxChildValue);
-                [this.values[rootIndex], this.values[maxChildValueIndex]] = [this.values[maxChildValueIndex], this.values[rootIndex]];
-
-                // re-asign new index positions
-                rootIndex = maxChildValueIndex;
-                leftChildIndex = 2*rootIndex + 1;
-                rightChildIndex = 2*rootIndex + 2;
-            }
-            else {
-                break;
-            }
-        }
-        console.log(this.values);
-        return extractedMax;
-    }
     
     // this is incomplete
     dequeue_beforeWhileLoop(){   // means, performs dequeue operation only once
@@ -289,19 +256,21 @@ class PriorityQueue {
 // [5, 12, 15, 20, 13]
 
 let pq = new PriorityQueue();
-pq.enqueue("eat breakfask", 7);
-pq.enqueue("play game", 5);
-pq.enqueue("leave for work", 4);
-pq.enqueue("brush teeth", 3);
-pq.enqueue("out for date", 10);
-pq.enqueue("hit the gym", 8);
+pq.enqueueElement("eat breakfask", 7);
+pq.enqueueElement("play game", 5);
+pq.enqueueElement("leave for work", 4);
+pq.enqueueElement("brush teeth", 3);
+pq.enqueueElement("out for date", 10);
+pq.enqueueElement("hit the gym", 8);
+pq.enqueueElement("hit the gym", 2);
+pq.enqueueElement("hit the gym", 9);
 
-// console.log(pq.dequeueElemenet())
-// console.log(pq.dequeueElemenet())
-// console.log(pq.dequeueElemenet())
-console.log(pq.dequeue());
-console.log(pq.dequeue());
-console.log(pq.dequeue());
+// console.log(pq.dequeueElement());
+// console.log(pq.dequeueElement());
+console.log(pq.dequeueElemenent2())
+console.log(pq.dequeueElemenent2())
+console.log(pq.dequeueElemenent2())
+
 
 /* Time Complexity 
 - Binary Heap operation (applied on priority queue), is best know for INSERTION (ENQUEUE) and DELETION (DEQUEUE)

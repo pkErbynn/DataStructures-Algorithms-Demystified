@@ -22,3 +22,8 @@ Because each one excels better in diff situations
 - note: 
 static method got nothing with instance('this') 
 data often used for utility methods
+
+### 
+- Two pointers
+- DFS
+

@@ -43,16 +43,20 @@ class HashTable {
 
     delete(key) {
         let index = this._hash(key);
+
         if (this.keyMap[index]) {
           let nestedArrData = this.keyMap[index];
+
           for (let i = 0; i < nestedArrData.length; i++) {
             const element = nestedArrData[i];
+
             if (element[0] === key) {
               const deletedItem = nestedArrData.splice(i, 1);
               return deletedItem[0][1];
             }
           }
         }
+        
         return null;
       }
 

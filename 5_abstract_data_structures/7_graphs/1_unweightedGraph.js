@@ -8,10 +8,49 @@ unweightedGraph = {
     "C": ["D"]
 }
 
+==== NB:
+- in
+    - for (let item of items)
+    - produces the values
+
+- of
+    - for (let key in items)
+    - produces the keys or index
+
+
+==== Time Complexity for Traversal
+Time = O(e), where e = edges....eg: A <-> B <-> C <-> D 
+Space = O(n), where n = nodes
+
+
+==== List Declarations ====
+- Graphs uses object of arrays
+    ```
+    {
+        "A": [B, C],
+        "B": [A, C],
+    }
+    ```
+
+- HashTable uses array of arrays  
+    ```
+    [
+        [k, v],
+        [k, v],
+        [k, v]
+    ]
+
+    which turns into this under the hood:
+    [
+        0: [k, v],
+        1: [k, v],
+        2: [k, v]
+    ]
+    ```
+
 */
 
-
-// Building undirected graph
+// Building UNDIRECTED graph
 
 class Graph {
     constructor() {
@@ -69,10 +108,10 @@ class Graph {
         let stack = [];
         let visitedNodeTracking = {};  // true/false...prevent cyclic loop...can use Set()
 
-        // add start node to Stack for treatment n diagnosis
+        // add start node to Stack for processing, treatment n diagnosis
         stack.push(startNode);
 
-        // while something is on Stack for treatment...
+        // while something is on Stack for processing/treatment...
         while(stack.length) {  // same as: stack.length > 0
             // get the node from the Stack bed for treatment
             let currentNode = stack.pop();
@@ -154,8 +193,6 @@ class Graph {
         return result;
     }
 
-
-
     // checking if there's a path between the Source/Start node and Destination/End node
     // can be implemented using BFS or DFS
     // will use BFS, thus Queue, because DFS can snake around for a long time while BFS will explore neighbor nodes
@@ -184,13 +221,14 @@ class Graph {
     }
 
     // building undirected graphs from edges
-    // from: edge = [
+    // with input: edges = [
     //     ["A", "B"],
     //     ["A", "C"]
     // ]
     // to: adjacencyList = {
     //     "A": ["B", "C"],
     // }
+
     buildGraph(edges){
         const graph = {};
 
@@ -266,28 +304,54 @@ console.log("depth_search_recur:", myGraph2.depthFirstTraversalRecursive("A"))
 console.log("breath_search:", myGraph2.breadthFirstTraversal("A"))
 
 
-// let edges = [
-//     ["A", "B"],
-//     ["A", "C"],
-//     ["B", "D"],
-//     ["C", "E"],
-// ]
+let edges = [
+    ["A", "B"],
+    ["A", "C"],
+    ["B", "D"],
+    ["C", "E"],
+]
 console.log(myGraph2.buildGraph(edges));
 
 /*
 
-////// nb:
-- in
+==== NB:
+- 'of'
     - for (let item of items)
     - produces the values
 
-- of
+- 'in'
     - for (let key in items)
     - produces the keys or index
 
 
-///// Time Complexity for Traversal
+==== Time Complexity for Traversal
 Time = O(e), where e = edges....eg: A <-> B <-> C <-> D 
 Space = O(n), where n = nodes
+
+
+==== List Declarations ====
+- Graphs uses object of arrays
+    ```
+    {
+        "A": [B, C],
+        "B": [A, C],
+    }
+    ```
+
+- HashTable uses array of arrays  
+    ```
+    [
+        [k, v],
+        [k, v],
+        [k, v]
+    ]
+
+    which turns into this under the hood:
+    [
+        0: [k, v],
+        1: [k, v],
+        2: [k, v]
+    ]
+    ```
 
 */

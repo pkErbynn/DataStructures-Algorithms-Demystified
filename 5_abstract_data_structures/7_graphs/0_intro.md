@@ -24,13 +24,13 @@ Terminologies
 
 Ways of modeling Graphs in code
 1. Adjascency list
-    - **faster to iterate/traverse through all nodes** [upside]...[because adj list contains only connected notes]
-    - slower to look-up specific edge [downside]...[cus nodes are in list and needs iteration]
+    - **faster to iterate/traverse through all nodes** [upside]...[because adjascent list contains only connected notes]
+    - slower to look-up **specific edge** [downside]...[cus nodes are in list and needs iteration]
     - takes **less space** in Sparsed graph
     - <i> USED WHEN: In most cases where **nodes don't have lot of connections/edges** to other nodes, so it means look-up for edges will me minimal, and using a list to store the connections of a particular node is a lot easier to maintain since it's not many, and iterate in future </i>
 2. Adjascency matrix
-    - slower to iterate through all nodes [downside]....[bacause matrix includes list of nodes that may not even be connected to that particular not, those unconnected noted are set to value 0 ]
-    - faster to look-up specific edge [upside]...[because edges values are spread into matrix so index can help to look-up faster]
+    - slower to iterate through all nodes [downside]....[bacause matrix includes list of nodes that may not even be connected to that particular node, those unconnected nodes are set to value 0 ]
+    - faster to look-up **specific edge** [upside]...[because edges values are spread into matrix so index can help to look-up faster]
     - takes more space in Sparsed graph
     - <i> USED WHEN: In most cases nodes are connected to almost every edges node, thus use matrix for specific look-up via indexing...**In sum, used when nodes has lots of connections** </i>
 
@@ -43,7 +43,7 @@ Vs Tree
 - trees have entry point to traverse from, but graphs can start anywhere
 - trees have one path to a paticular node, but graphs can have multiple paths to a node
 
-
+<br>
 ===== Graph Traversal =====
 
 Most useful part of graphs. Graph Traversal useful in:
@@ -56,7 +56,7 @@ Most useful part of graphs. Graph Traversal useful in:
 Depth-First Traversal
 - means prioritizing visiting children nodes before parents
 - also means, poping top children First
-- thus, using Stack
+- thus, uses **Stack** (since Depth simulates top-to-down, likewise Stacked plate, lol)
 - Note: recursive approach uses the underlining call stack
     - hence, no need to explicitly use Stack, unless done in iterative approach
 

@@ -99,7 +99,7 @@ class MaxBinaryHeap{
 
                 // re-asign new index positions
                 rootIndex = maxChildValueIndex;
-                leftChildIndex = 2*rootIndex + 1;   // this can be done inside the while-loop since it's recalculated each iteration
+                leftChildIndex = 2*rootIndex + 1;   // since calc are outside the while-loop, explicit recalculation is needed for most indexes
                 rightChildIndex = 2*rootIndex + 2;
             }
             else {
@@ -128,6 +128,7 @@ class MaxBinaryHeap{
         // alternatively, swap first and last elements and remove the last element as the max
         [this.values[0], this.values[this.values.length - 1]] = 
             [this.values[this.values.length - 1], this.values[0]];
+
         let maxElement = this.values.pop();
 
         let rootIndex = 0;
@@ -155,6 +156,7 @@ class MaxBinaryHeap{
                 [ this.values[maxChildValueIndex], this.values[rootIndex] ];
 
                 // move index forward (in array), and down (in tree) by reindexing via recalculation
+                // the rest of the calculation are done dynamically since it's within the loop
                 rootIndex = maxChildValueIndex;
             } 
             else {

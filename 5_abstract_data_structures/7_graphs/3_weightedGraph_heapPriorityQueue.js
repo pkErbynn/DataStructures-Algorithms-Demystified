@@ -30,13 +30,13 @@ class PriorityQueue {
         let newChildNodeIndex = this.values.length - 1;
         let newChildNode = this.values[newChildNodeIndex];
         
-        let parentNodeIndex = Math.floor((newChildNodeIndex-1)/2); // child, find parent...moving backwards, thus (n-1)/2
+        let parentNodeIndex = Math.floor((newChildNodeIndex - 1) / 2); // child, find parent...moving backwards, thus (n-1)/2
         let parentNode = this.values[parentNodeIndex];
 
         // element in array, no parent for such element
         if(!parentNode) return this.values;
 
-        // not (parentNodeIndex > 0) this time around cus using the value is much safer
+        // not (parentNodeIndex > 0) this time around cus using the object value is much safer
         while(parentNode){
             if(newChildNode.priority < parentNode.priority){  // </> changes for max/min heap
                 [this.values[newChildNodeIndex], this.values[parentNodeIndex]] = 
@@ -74,7 +74,7 @@ class PriorityQueue {
         let rightChildNode = this.values[rightChildNodeIndex];
 
         // while there are children nodes, 
-            // n new root node is less that one of its children, bubble down to the correct position
+            // new root node is less than one of its children, bubble down to the correct position
         // conditioning leftChildNode because if there's any child node, the left node will be created first
         while(leftChildNode){
              // find highest priority child node to compare w/ parent node
