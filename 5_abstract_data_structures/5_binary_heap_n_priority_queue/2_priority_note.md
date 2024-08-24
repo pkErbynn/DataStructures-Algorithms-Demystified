@@ -1,8 +1,8 @@
 ### Prioriy Queue
 
 - born from binary heap
-- a binary tree based abstract data structure
-- where each element is associated with priority
+- it's a binary tree based abstract data structure
+    - where each element is associated with priority
 - element with high priority are served before element with low priority
 - normally, low priority tag number means high priority
 

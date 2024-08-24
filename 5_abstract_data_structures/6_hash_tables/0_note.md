@@ -6,7 +6,7 @@ Unlike Arrays where items are key-value pairs
 
 HashTables also a DS that store key-value pairs in large array, and works by hashing the keys
 - but the keys are not ordered/indexed
-- they fast in all operations
+- they **fast in all operations**
     - finding element
     - adding element
     - removing element
@@ -27,13 +27,14 @@ Vs Arrays
 Hashing conceptualization
 - implemented just like arrays but uses any other ds like strings
 - converts string into an index, store in that array index and keep the associated value in that index
-- uses hash function (hash function) for the conversion of string/object(keys) into a **hash value/code**
+- uses **hash function** for the conversion of string/object(keys) into a **hash value/code**
+    - that corresponse to an index in an array
         
 
 Qualities of Good hashmap
 - fast, ie constant time cus it'll be called regulary
 - no collissions, ie doesn't conflict/cluster output at specifix index, but distribute uniformly
-- consistent, ie same input yeilds same output
+- consistent, ie same input yields same output
 
 ### Core Reason
 - To get value very fast in constant time when we use the key
@@ -42,7 +43,7 @@ Qualities of Good hashmap
 
 Hash Functions
 - converts string into a number corresponding to an index in an array
-- uses hash function for the conversion of string/object(keys) into a **hash value/code**
+- uses **hash function** for the conversion of string/object(keys) into a **hash value/code**
     - all **hashcode must be represented as +ve numbers**, these numbers represent the slots locations
     - if hashcode is larger than the entire array
     - reduce it, such that to be less than and contained in the entire array, using **modulo**
@@ -97,9 +98,9 @@ Dealing/Handling Collisions in Hash Functions
 Why the name property name, KeyMap
 - A hashtable is a data structure that stores key-value pairs, 
     - where the key is used to index and quickly retrieve the associated value.
-    - The key is typically a unique identifier that is used to locate the value in the hashtable.
+    - The **key is typically a unique identifier that is used to locate the value in the hashtable**.
 
-- In programming, a "keymap" typically refers to a data structure that maps keys (such as keyboard keys) to their associated actions or functions. 
+- In programming, a **"keymap"** typically refers to a data structure that maps keys (such as keyboard keys) to their associated actions or functions. 
     - For example, a keymap might map the "A" key to the action of typing the letter "A", and the "Enter" key to the action of submitting a form.
 
 Class definition

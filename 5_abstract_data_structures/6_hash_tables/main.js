@@ -120,7 +120,7 @@ class HashTable {
         return total % this.keyMapData.length;
     }
 
-    // yet to understand
+    // naive way
     // set(key, value){
     //     let index = this._hash(key);
     //     this.keyMapData[index] = [];  // will always clean existing data for new data
@@ -134,7 +134,18 @@ class HashTable {
             this.keyMapData[index] = [];  // initializes the index with empty array to prepare for pushing of element
         }
        
-        this.keyMapData[index].push([key, value]);
+        // key already exists, update it
+        let keyValueData = this.keyMapData[index];
+
+        for(let i = 0; i < keyValueData.length; i++){
+            if(keyValueData[i][0] === key){
+                keyValueData[i][1] = value;
+                return;
+            }
+        }
+
+        // if key doesn't exist
+        this.keyMapData[index].push([key, value]);  // this.keyMapData[index][key] = value; won't work
     }
 
     get(key){
@@ -173,6 +184,8 @@ ht.set("raph", "nyan");
 ht.set("raph", "nyan2");
 ht.set("tony", "mensa");
 ht.set("tony", "mensa2");
+console.log(ht.keys());
+console.log(ht.values());
 
 
 

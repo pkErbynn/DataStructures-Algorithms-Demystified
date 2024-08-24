@@ -48,10 +48,10 @@ class Node {
 
 class PriorityQueue {
     constructor() {
-        this.values = [];
+        this.values = [];   // uses object(string + integer priority) instead of primitives(only integer priority)
     }
 
-    // insert at array end/tree bottom -> bubble up to correct position
+    // insert at "array end" or "tree bottom" -> bubble up to correct position
     // thus, calc its parent
     // this time around, low priority number has highest priority: L#67
     // similar to insert operation in binary heap
@@ -69,9 +69,9 @@ class PriorityQueue {
         // element in array, no parent for such element
         if(!parentNode) return this.values;
 
-        // not (parentNodeIndex > 0) this time around cus using the value is much safer
-        while(parentNode){
-            if(newChildNode.priority < parentNode.priority){  // </> changes for max/min heap
+        // if parent exists
+        while(parentNode != null){  // can be (parentNodeIndex > 0) but using the object is much safer
+            if(newChildNode.priority < parentNode.priority){  // small priority means higher priority, </> changes for max/min heap
                 [this.values[newChildNodeIndex], this.values[parentNodeIndex]] = 
                     [this.values[parentNodeIndex], this.values[newChildNodeIndex]];
     
@@ -89,7 +89,7 @@ class PriorityQueue {
     // remove at array front / tree top -> bubble down
     // thus, cal children nodes
     // similar as extractMax() in heap
-    dequeueElement(){   // ****
+    dequeue(){   // ****
         let removedNode = this.values[0];
         this.values[0] = this.values.pop();
 
@@ -109,13 +109,13 @@ class PriorityQueue {
                 break; // No more complete children to compare, exit loop
             }
 
-            // Determine the maximum child value
+            // Determine the child with maximum value (ie, min priority)
             let maxChildPriority = Math.min(leftChildNode.priority, rightChildNode.priority);
             let maxChildPriorityIndex = maxChildPriority == leftChildNode.priority ? 
                 leftChildIndex : rightChildIndex;
             let maxChildNode = this.values[maxChildPriorityIndex];
 
-            if(rootNode.priority > maxChildNode.priority) { // means small prio value means high priority
+            if(rootNode.priority > maxChildNode.priority) { // => small priority value means high priority, therefore swap
                 [ this.values[rootNodeIndex], this.values[maxChildPriorityIndex] ] = 
                 [ this.values[maxChildPriorityIndex], this.values[rootNodeIndex] ];
 
@@ -129,7 +129,8 @@ class PriorityQueue {
         return removedNode;
     }
 
-    dequeue(){  // alternative
+    // ====== Alternative ======
+    dequeueElemenet(){
         if(this.values.length === 0) return null;
         // swap first n last node
         // before removing last node(first node)...if removed at start, with shift, there will be reindexing which is expensive
@@ -198,7 +199,7 @@ class PriorityQueue {
         
     }
 
-    extractHighPriority(){
+    extractHighPriorityElement(){   // Same as dequeue()
         let rootNodeIndex = 0;
         let lastNodeIndex = this.values.length-1;
         [this.values[rootNodeIndex], this.values[lastNodeIndex]] = 
@@ -295,12 +296,12 @@ pq.enqueue("brush teeth", 3);
 pq.enqueue("out for date", 10);
 pq.enqueue("hit the gym", 8);
 
-// console.log(pq.dequeue())
-// console.log(pq.dequeue())
-// console.log(pq.dequeue())
-console.log(pq.dequeueElement());
-console.log(pq.dequeueElement());
-console.log(pq.dequeueElement());
+// console.log(pq.dequeueElemenet())
+// console.log(pq.dequeueElemenet())
+// console.log(pq.dequeueElemenet())
+console.log(pq.dequeue());
+console.log(pq.dequeue());
+console.log(pq.dequeue());
 
 /* Time Complexity 
 - Binary Heap operation (applied on priority queue), is best know for INSERTION (ENQUEUE) and DELETION (DEQUEUE)
