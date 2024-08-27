@@ -81,7 +81,7 @@ class PriorityQueue {
             let smallestButHighPriority, 
                 smallestButHighPriorityNodeIndex, 
                 smallestButHighPriorityNode;
-            if(!rightChildNode ){  // means one-left child node only, since new node are queued to left first
+            if(!rightChildNode ){  // means one-left child node only, since new node are queued to left first, added extra check to previous impl for optimization
                 smallestButHighPriority = leftChildNode.priority;
                 smallestButHighPriorityNodeIndex = leftChildNodeIndex;
                 smallestButHighPriorityNode = this.values[smallestButHighPriorityNodeIndex];

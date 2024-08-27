@@ -24,7 +24,7 @@ console.log("A:", bubbleSort([2,3,4,1]))
 
 function bubbleSortEffective(array) { // ***
     for (let i = 0; i < array.length; i++) {
-        let noSwap = true;
+        let isSwapped = false;  // no swap initially
 
         // j = 0...5, 0...4, 0...3, 0...2, 0... => deduction (-1) made by i => helps j forcus of unsorted area
         // can be up to `array.length - i - 1`
@@ -32,11 +32,11 @@ function bubbleSortEffective(array) { // ***
             // swap adjescent elements
            if(array[j] > array[j+1]){
                [array[j], array[j+1]] = [array[j+1], array[j]]; 
-               noSwap = false; // since swap is made
+               isSwapped = true; // since swap is made
             }
         }
 
-        if(noSwap){    // good to check if the array is sorted after one full inner iteration trip, if so, no need for the rest of the iterations that happens with the outer loop counts, cus the array is already sorted
+        if(!isSwapped){    // same as: (isSwapped == false)...good to check if the array is sorted after one full inner iteration trip, if noSwap occur, then no need for the rest of the iterations to happen with the outer loop counts, cus the array is already sorted
             break;  // break from the entire loop cus all elements are sorted
         }
     }
