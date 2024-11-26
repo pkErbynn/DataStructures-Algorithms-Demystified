@@ -1,6 +1,6 @@
 /*
 
-Given a string, find the length of the longest substring in it with no more than K distinct characters.
+Given a string, find the length of the longest substring in it with not more than K distinct characters.
 
 Example 1:
 
@@ -22,46 +22,49 @@ Explanation: The longest substrings with not more than '3' distinct characters a
 
 
 Hint:
-This problem follows the Sliding Window pattern and we can use a similar dynamic sliding window strategy as discussed previously
+This problem follows the Sliding Window pattern and similar dynamic sliding window strategy can be used
 
 */
 
 // Str="araaci", K=2
 
 function longest_Substring_with_K_Distinct_Characters(str, k){
-    let maxLength = Number.NEGATIVE_INFINITY;   // give -ve while looking for max positive
+  let maxLength = Number.NEGATIVE_INFINITY;   // give -ve while looking for max positive
 
-    let charFrequency = {}; // keeps track of the window counters...map/object used cus keys are distinct as well
-    let windowStart = 0;  // 0
-  
-    for (let windowEnd = 0; windowEnd < str.length; windowEnd++) {
-      const windowEndValue = str[windowEnd];
-      // populate frequency counter {}
-      charFrequency[windowEndValue] = !charFrequency[windowEndValue] ? 1 : charFrequency[windowEndValue] + 1; // charFrequency = { "a": 2, c: 1 };
-  
-      // convert object to map to get access to key length
-      while (Object.keys(charFrequency).length > k) {
-        const currentWindowStartValue = str[windowStart];
-        
-        // update its counter by decreasing value or remove the key when counter is zero or 1
-        if(charFrequency[currentWindowStartValue] >= 2){  // > 1
-            charFrequency[currentWindowStartValue] = charFrequency[currentWindowStartValue] - 1;
-        } 
-        else {
-          // count = 0 / 1, delete key-value pair from object
-          // updating the "Object.keys(charFrequency).length"
-            delete charFrequency[currentWindowStartValue];
-        }
+  let charFrequency = {}; // keeps track of the window counters...map/object used cus keys are distinct as well, helping find distinct chars
+  let windowStart = 0;  // 0
 
-        // move windowStart forward
-        windowStart++;
-  
-      const windowLength = windowEnd - windowStart + 1;
-      maxLength = Math.max(maxLength, windowLength);
+  for (let windowEnd = 0; windowEnd < str.length; windowEnd++) {
+    const windowEndValue = str[windowEnd];
+    // populate frequency counter {}
+    charFrequency[windowEndValue] = !charFrequency[windowEndValue] ? 1 : charFrequency[windowEndValue] + 1; // charFrequency = { "a": 2, c: 1 };
+
+    // convert object to map to get access to key length
+    while (Object.keys(charFrequency).length > k) {
+      
+      const currentWindowStartValue = str[windowStart];
+      
+      // update its counter by decreasing value or remove the key when counter is zero or 1
+      if(charFrequency[currentWindowStartValue] >= 2){  // > 1
+          charFrequency[currentWindowStartValue] = charFrequency[currentWindowStartValue] - 1;
+      } 
+      else {
+        // if count = 0 or 1, delete key-value pair from object entirely
+        // updating the "Object.keys(charFrequency).length"
+          delete charFrequency[currentWindowStartValue];
+      }
+
+      // move windowStart forward, after updating the Object{}
+      windowStart++;
+      
+      // calc length once the number of distinct exceeds k
+      const windowLength = (windowEnd - windowStart) + 1;
+      maxLength = Math.max(maxLength, windowLength);  // after dealing with {} calc length
     }
-  
-    return maxLength;
+
   }
+
+  return maxLength;
 }
   
 // Example usage:

@@ -58,7 +58,6 @@ As we have described above, each number will definitely have a cycle.
 Therefore, we will use the same fast & slow pointer strategy to find the cycle and once the cycle is found, 
 we will see if the cycle is stuck on number ‘1’ to find out if the number is happy or not.
 
-
 */
 
 
@@ -70,14 +69,29 @@ const isHappyNumber = function(num){
     let slowPointer = num;
     let fastPointer =  num;    // 2 steps ahead on the sum
 
+    // Printing diagram
+    // let slowpic = "";
+    // let fastpic = "";
+    // slowpic = slowpic + "=>" + slowPointer + "=>";
+    // fastpic = fastpic + "=>" + fastPointer + "=>";
+
     while(fastPointer > 0) {    // while positive number...in object, while(x != null)...in int, while(x > 0)...
         slowPointer = calculateSumOfDigitSquare(slowPointer);   // 1 step move on the sum
         fastPointer = calculateSumOfDigitSquare(calculateSumOfDigitSquare(fastPointer));    // 2-step move on the sum
 
+        // slowpic += slowPointer + "=>";
+        // fastpic += fastPointer + "=>";
+
         if(slowPointer === fastPointer && slowPointer === 1){
+            // slowpic += slowPointer + "=>true"
+            // console.log("slowpicture: " + slowpic);
+            
             return true;
         }
         if(slowPointer === fastPointer && slowPointer !== 1){
+            // fastpic += fastPointer + "=>true"
+            // console.log("fastpic: " + fastpic);
+            
             return false;
         }
 
@@ -98,19 +112,19 @@ const calculateSumOfDigitSquare = function(num){
         let digitSquared = lastDigit * lastDigit;
         sum = sum + digitSquared;
 
-        num = Math.floor(num / 10); // update num to keep loopp updateed...23 -> 2.3 -> 2...cut the last processed digit off...
+        num = Math.floor(num / 10); // update num to keep loop updateed...23 -> 2.3 -> 2...cut the last processed digit off...
     }
 
     return sum;
 
-    // nb: eg: 123
+    // nb: Key tip is to know how each digit is snatched. Starts from back using modulo 10.  Eg: 123
     // 1. get last digit, 3. 
     // 2. square and store it in 'sum'
     // 3. next, chop off the last processed digit from the number with floor(num/10), 12.3 -> 12
     // 4. pass the chopped number on to next iteration, and repeat #1
 }
 
-console.log("sum:", isHappyNumber(23));
-console.log("sum:", isHappyNumber(12));
-console.log("sum:", isHappyNumber(100));
-
+console.log("is 23 HappyNumber:", isHappyNumber(23));
+console.log("is 19 HappyNumber:", isHappyNumber(19));
+console.log("is 12 HappyNumber:", isHappyNumber(12));
+console.log("is 100 HappyNumber:", isHappyNumber(100));

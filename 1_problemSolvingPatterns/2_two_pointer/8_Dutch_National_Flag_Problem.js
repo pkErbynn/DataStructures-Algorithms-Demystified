@@ -43,17 +43,17 @@ const sortArrayElements = (numbers) => {
 
     while (midPointer <= rightPointer) {
         if(numbers[midPointer] === 0){
-            [numbers[leftPointer], numbers[midPointer]] = [numbers[midPointer], numbers[leftPointer]];
-            leftPointer++;
+            [numbers[leftPointer], numbers[midPointer]] = [numbers[midPointer], numbers[leftPointer]];  // swap values and increase indexes
+            leftPointer++;  // index filled with correct value(0), so pointer should move forward
             midPointer++;
         }
         else if(numbers[midPointer] === 1){
-            midPointer++;
+            midPointer++;   // pointer should not swap, maintain value, skip and move pointer forward...since 1's are supposed to fall in the middle
         }
         else if(numbers[midPointer] === 2){
             [numbers[midPointer], numbers[rightPointer]] = [numbers[rightPointer], numbers[midPointer]];
-            rightPointer--;
-            // midPointer++;
+            rightPointer--; // index filled with correct value, so pointer should move backwards
+            midPointer++; // don't need to cus it will break the look prematurelly
         }
     }
     return numbers;

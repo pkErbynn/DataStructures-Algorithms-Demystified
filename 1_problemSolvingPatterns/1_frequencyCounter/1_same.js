@@ -9,17 +9,19 @@ function same(arr1, arr2){
     if(arr1.length !== arr2.length){
         return false;
     }
-    for(let i=0; i<arr1.length; i++ ){
+    
+    for(let i = 0; i < arr1.length; i++ ){
         let doubledValue = arr1[i] ** 2;
-        if(!arr2.includes(doubledValue)){   // includes() runs through loop
+
+        if(!arr2.includes(doubledValue)){   // includes() runs an inner loop
             return false;
         }
-        // console.log(arr2);
+
         arr2 = arr2.filter(x => x !== doubledValue);    // checks element frequencies as removed from array...checks L26
     }
-        return true;    // inner loop looks for falsy statement while the outer seeks for truthy
+    
+    return true;    // inner loop looks for falsy statement while the outer seeks for truthy
 }
-
 
 console.log(same([1,2,3], [2,3]));
 console.log(same([1,2,3], [1,4,9]));
@@ -36,16 +38,18 @@ function same2(arr1, arr2){
     if(arr1.length !== arr2.length){
         return false;
     }
+    
     for(let i=0; i<arr1.length; i++ ){
         let doubledValue = arr1[i] ** 2;
         let doubledValueIndex = arr2.indexOf(doubledValue);  // indexOf does a for-loop
-        console.log(doubledValueIndex);
+
         if(doubledValueIndex === -1){
             return false;
         };
-        console.log(arr2);
+
         arr2.splice(doubledValueIndex, 1);   // remove found value from search list...filter can be used
     }
+
     return true;    // inner loop looks for falsy statement while the outer seeks for truthy
 }
 

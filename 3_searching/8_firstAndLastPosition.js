@@ -45,10 +45,11 @@ function search(nums, target, isFindingStartIndex) {
         else {
             ans = mid;  // potential ans
 
-            // can pointers be moved further left or right to find other potential ans at ends
+            // if true, helps to move pointer to search at left
             if(isFindingStartIndex){
                 end = mid - 1;
             }
+            // if false, moves pointer to search towards the right
             else {
                 start = mid + 1;
             }
@@ -69,4 +70,7 @@ The method start + (end - start) / 2
     - helps avoid potential overflow issues that might occur if start and end are very large numbers. 
     - By subtracting start from end first, the values stay within a safe range before division, ensuring the calculation remains accurate and efficient
 
+Clue: 
+- 90% of "sorted array" questions are solved with BS
+- nlogn is another clue
 */

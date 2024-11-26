@@ -27,3 +27,20 @@ data often used for utility methods
 - Two pointers
 - DFS
 
+### Important Tip: 
+1. Given:
+```js
+while i > n:
+    i = i / 2
+```
+Time Complexity: O(log n)
+
+2. Given:
+```js
+while i < n:
+    i = i * 2
+```
+Time Complexity: O(log n) and not O(n)
+
+
+

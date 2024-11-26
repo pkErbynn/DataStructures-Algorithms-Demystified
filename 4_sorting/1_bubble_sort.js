@@ -15,14 +15,14 @@ function bubbleSort(array) {
     return array;
 }
 
-console.log("A:", bubbleSort([2,3,4,1]))
+console.log("bubbleSort:", bubbleSort([2,3,4,1]))
 
 
 //////////// optimization with increasing outer loop ***
 // optimized for nearly sorted data
 // use this impl
 
-function bubbleSortEffective(array) { // ***
+function bubbleSortEfficient(array) { // ***
     for (let i = 0; i < array.length; i++) {
         let isSwapped = false;  // no swap initially
 
@@ -43,8 +43,8 @@ function bubbleSortEffective(array) { // ***
     return array;
 }
 
-console.log("C:",bubbleSortEffective([1,7,2,10,3,4,9,6]));
-console.log("C2:",bubbleSortEffective([2,3,4,1]));
+console.log("bubbleSortEfficient:",bubbleSortEfficient([1,7,2,10,3,4,9,6]));
+console.log("bubbleSortEfficient2:",bubbleSortEfficient([2,3,4,1]));
 
 
 

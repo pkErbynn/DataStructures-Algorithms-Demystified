@@ -41,3 +41,6 @@ console.log("binarySearch_floor:", binarySearch_floor([1, 2, 8, 10, 10, 12, 19],
 console.log("binarySearch_floor:", binarySearch_floor([1, 2, 8, 10, 10, 12, 19], 5));
 console.log("binarySearch_floor:", binarySearch_floor([1, 2, 8, 10, 10, 12, 19], 0));
 console.log("binarySearch_floor:", binarySearch_floor([1, 2, 8, 10, 10, 12, 19], 20));
+
+// Clue: 
+// 90% of "sorted array" questions are solved with BS

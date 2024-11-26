@@ -65,3 +65,5 @@ console.log("binarySearch_nextGreatestLetter:", binarySearch_nextGreatestLetter(
 console.log("binarySearch_nextGreatestLetter:", binarySearch_nextGreatestLetter(["c","f","j"], "c"));
 console.log("binarySearch_nextGreatestLetter:", binarySearch_nextGreatestLetter(["x","x","y","y"], "z"));
 
+// Clue: 
+// 90% of "sorted array" questions are solved with BS

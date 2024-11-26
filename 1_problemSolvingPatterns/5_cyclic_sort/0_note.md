@@ -5,8 +5,8 @@
 
 - When to use?
     - when need to sort elements
-    - when given unsorted array in a given range of n
-        - and array start **from 1 to n, or 0 to (n-1)**
+    - when given unsorted array in a 111
+        - and array start **from range 1 to n, or 0 to (n-1)**
         - and to find **missing** number(s)
         - and to find **duplicate** number(s)
     - when only O(1) space complexity is needed
@@ -17,7 +17,7 @@
     - unsorted
     - smallest element starts from 1
     - biggest element is 5
-    - input array size is 5
+    - input array size is also 5
     - no repeated element
 
 - To determine if the Cyclic Sort pattern is suitable for a given problem, you can consider the following characteristics:

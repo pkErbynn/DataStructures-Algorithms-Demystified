@@ -48,7 +48,7 @@ const isLinkedListCyclic = function(head) {
     let slowPointer = head;
     let fastPointer = head;
 
-    while(fastPointer && fastPointer.next){   // fastpointer not-null check before it's .next check...ook-ahead check with fastpointer as it's at forward
+    while((fastPointer != null) && fastPointer.next){   // fastpointer not-null() check before it's .next check...look-ahead check with fastpointer as it is at forward
         slowPointer = slowPointer.next;
         fastPointer = fastPointer.next.next;
 

@@ -14,11 +14,38 @@ Output: [0 1 1 4 9]
 */
 
 
-const createSquaredSortedArray = (numbers) => {
+function createSquaredSortedArray(numbers) {
     let leftPointer = 0;
     let rightPointer = numbers.length - 1;
+
+    let result = []; // Initialize result as an empty array and stack
+
+    while (leftPointer <= rightPointer) {
+        let leftValueSquared = numbers[leftPointer] * numbers[leftPointer];
+        let rightValueSquared = numbers[rightPointer] * numbers[rightPointer];
+
+        if (leftValueSquared <= rightValueSquared) {
+            result.unshift(rightValueSquared); // Add to the beginning of the result array
+            rightPointer--;
+        } else {
+            result.unshift(leftValueSquared); // Add to the beginning of the result array
+            leftPointer++;
+        }
+    }
+
+    return result;
+}
+
+console.log("createSquaredSortedArray:", createSquaredSortedArray([-2, -1, 0, 2, 3]));
+
+
+
+const createSquaredSortedArray_Alt = (numbers) => {
+    let leftPointer = 0;
+    let rightPointer = numbers.length - 1;
+
     let result = new Array(numbers.length);
-    let resultPointer = numbers.length - 1;
+    let resultPointer = numbers.length - 1; // without using stack
     
     while (leftPointer <= rightPointer) {
         let leftValueSquare = numbers[leftPointer] * numbers[leftPointer];
@@ -40,30 +67,6 @@ const createSquaredSortedArray = (numbers) => {
 
 console.log("createSquaredSortedArray:", createSquaredSortedArray([-2, -1, 0, 2, 3]));
 
-function createSquaredSortedArray_Easier(numbers) {
-    let leftPointer = 0;
-    let rightPointer = numbers.length - 1;
-
-    let result = []; // Initialize result as an empty array
-
-    while (leftPointer <= rightPointer) {
-        let leftValueSquared = numbers[leftPointer] * numbers[leftPointer];
-        let rightValueSquared = numbers[rightPointer] * numbers[rightPointer];
-
-        if (leftValueSquared <= rightValueSquared) {
-            result.unshift(rightValueSquared); // Add to the beginning of the result array
-            rightPointer--;
-        } else {
-            result.unshift(leftValueSquared); // Add to the beginning of the result array
-            leftPointer++;
-        }
-    }
-
-    return result;
-}
-
-console.log("createSquaredSortedArray_Easier:", createSquaredSortedArray_Easier([-2, -1, 0, 2, 3]));
-
 /*
 - why pointers didn't move together from left to right
     - cus since array is sorted, and contains +ve and -ve values, largest squared number can only come from the start/end elements
@@ -80,30 +83,3 @@ O(N) as we are iterating the input array only once.
 Space complexity #
 O(N) space used for the output array.
 */
-
-
-// [-2, -1, 0, 2, 3]
-function zzzz(numbers) {
-    let leftPointer = 0;
-    let rightPointer = numbers.length - 1;
-
-    let result = []; 
-
-    while (leftPointer <= rightPointer) {
-        let leftValueSquared = numbers[leftPointer] * numbers[leftPointer];
-        let rightValueSquared = numbers[rightPointer] * numbers[rightPointer];
-
-        if(leftValueSquared <= rightValueSquared){
-            result.push(leftValueSquared);
-            leftPointer ++;
-        }
-        else{
-            result.push(rightValueSquared);
-            rightPointer --;
-        }
-    }
-
-    return result.sort( (a, b) => a - b);
-}
-
-console.log("zzzz:", zzzz([-2, -1, 0, 2, 3]));

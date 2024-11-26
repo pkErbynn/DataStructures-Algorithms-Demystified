@@ -44,5 +44,9 @@
    - Best in deletion by key
 10. Graphs
     - Best for searching/traversing from multiple paths unlike trees that always start from root
+
+
+Vid:
+- https://youtu.be/DjYZk8nrXVY?si=ByAcg1w9oWEx00-0
  
 

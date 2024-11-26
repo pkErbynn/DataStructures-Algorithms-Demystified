@@ -17,7 +17,7 @@ Works by decomposing array into smaller arrays of 0 or 1 element
 
 
 //////////////
-// 1. Split each array into small chunk and merge the chunks
+// 1. Split each array into small chunk and merge the chunks, using recursion
 
 function merge_sort_with_spliting(arr){
     // base case or guard
@@ -25,17 +25,17 @@ function merge_sort_with_spliting(arr){
         return arr;
     }
 
-    // split, by shallow copy, to divid array into 2 halves
-    let midIndex = Math.floor(arr.length / 2);
-    let leftHalf = arr.slice(0, midIndex);  // can't use split() cus it applies on string...slice is immutable
-    let rightHalf = arr.slice(midIndex, arr.length);
+    // split, by shallow copy, to divide array into 2 halves
+    let midIndex = Math.floor(arr.length / 2);  // taking floor skews index to left, and since index starts from 0 and not 1, it's okay
+    let leftHalf = arr.slice(0, midIndex);  // can't use split() cus it applies on string...slice is immutable...0 to n-1
+    let rightHalf = arr.slice(midIndex, arr.length); // 
     console.log(leftHalf, rightHalf);
 
     // split further by recursion to achieve single/zero element, that are considered sorted
-    let splitedLefttHalf = merge_sort_with_spliting(leftHalf);
+    let splitedLefttHalf = merge_sort_with_spliting(leftHalf); //remember, with will tackle all split and merge (on-sided) on the left side completely before starting the right side on the next line, then merge the two results
     let splitedRightHalf = merge_sort_with_spliting(rightHalf);
 
-    // merge the two further splited (sorted) halves
+    // merge the two further splited (sorted) halves, after all inner let, and right sides are handled, with merge having only two sides (left, and right) as input, being sorted into one big result array
     let mergedArray = merge(splitedLefttHalf, splitedRightHalf);
 
 

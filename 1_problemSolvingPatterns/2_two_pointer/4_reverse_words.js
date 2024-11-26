@@ -35,9 +35,10 @@ console.log("B2:", reverseWords2("This   puzzle game is    interesting"));
 
 
 // ==== using 2-pointer
+// ...not using extra memory space, done in-place
 // ...swap values at both ends
 
-function reverseSentence(sentence) {
+function reverseSentence(sentence) {    // **
     // input validation
     if(!sentence || sentence.length === 0) return "invalid input";
     let wordsArray = sentence.split(" ").filter(f => f !== "");

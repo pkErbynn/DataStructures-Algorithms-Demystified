@@ -332,50 +332,59 @@ console.log("--- after shift ---");
 console.log(sl2.print());
 
 
+/*
 
-// nb:
-// check for 
-// - empty/zero
-// - one and
-// - many
-// for index inputs functions, check for 
-// - -ve and beyond bounds
-// - @ start
-// - @ end
-// - @ middle
+SUMMARY
 
-// linkedlist operations
-// - add to the end/tail => push
-// - remove from the end => pop
-// - add to the start => unshift
-// - remove from the start => shift
-// - add to anywhere => insert
-// - get anywhere => get
-// - change anywhere => set
-// - remove from anywhere => remove
+check for 
+- empty/zero
+- one and
+- many
+for index inputs functions, check for 
+- -ve and beyond bounds
+- @ start
+- @ end
+- @ middle
+
+linkedlist operations
+- add to the end/tail => push
+- remove from the end => pop
+- add to the start => unshift
+- remove from the start => shift
+- add to anywhere => insert
+- get anywhere => get
+- change anywhere => set
+- remove from anywhere => remove
+
+Time Complexity
+
+- Insertion: O(1) / O(n) depending on position
+...@ head/beginning => 0(1)..it doesn't matter the number of items in the list
+...@ tail/end => O(1), if tail pointer EXISTS, as can directly access the tail node and append the new node in constant time. 
+...@ tail/end => O(n), if NO tail pointer exists, need to traverse entire list in 'n' time. 
+...@ middle/anywhere => O(n)
+...for arrays
+     ...O(n) => all item needs to be shifted if added to end or middle, ie. O(n)
+     ...O(1) => adding item to the end of array, which is rare
+
+- Removal: O(1) or O(n) depending on the position
+...@ head => O(1)...as only need to update the head pointer to point to the second node.
+...@ anywhere else => O(n)...as requires traversing the entire list to find the penultimate node to set its node's next pointer to null.
 
 
-// SUMMARY
-// Time Complexity of major opertations
-// - Insertion: O(1) / O(n) depending on position
-// ...0(1) => head/tail..it doesn't matter the number of items in the list
-// ...for arrays
-//      ...O(n) => all item needs to be shifted if added to end or middle, ie. O(n)
-//      ...O(1) => adding item to the end of array, which is rare
-// - Removal: O(1) or O(n) depending on the position
-// ...O(1) => removing node at the head
-// ...O(n) => removing node anywhere else
-// - Search/Access: O(n)
-// ...O(1) => search at head
-// ...O(n) => search anywhere
-// ...O(1) => for arrays
+- Search/Access: O(n)
+...@ head => O(1)
+...@ anywhere => O(n)
+...for arrays => O(1)
 
-// - Recap:
-// ...LinkedList is the best alternative where INSERTION / DELETION (MODIFICATION) is VERY frequent
-// ...Arrays contains a built-in index, whereas LinkedList does not
-// ...Data structures containing Node is the foundation of other data structures like Stacks, Queues
+- Recap:
+...LinkedList is the best alternative where INSERTION / DELETION (MODIFICATION) is VERY frequent
+...Arrays contains a built-in index, whereas LinkedList does not
+...Data structures containing Node is the foundation of other data structures like Stacks, Queues
 
-// Reminder Tip
-// ...take shift() as hospital queue where the first person is called by doc and the entire patience has to shift forward after first person is removed from the array 
-// ...for any operations with 'index' input, check out-of-bound, if @ start, if @ end, and if @ middle
-// ...for any operations without 'index', check if nodes/length is/are 0, 1 or many
+Reminder Tip
+...take shift() as hospital queue where the first person is called by doc and the entire patience has to shift forward after first person is removed from the array 
+...for any operations with 'index' input, check out-of-bound, if @ start, if @ end, and if @ middle
+...for any operations without 'index', check if nodes/length is/are 0, 1 or many
+
+*/

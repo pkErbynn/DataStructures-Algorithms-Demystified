@@ -1,4 +1,4 @@
-// Frequency Counter 
+// Using Frequency Counter 
 
 function same(array1, array2) {
 
@@ -21,7 +21,7 @@ function same(array1, array2) {
     }
 
     for(const value of array2){
-        frequencyCounter2[value] = frequencyCounter2[value] ? frequencyCounter2[value] + 1 : 1;
+        frequencyCounter2[value] = frequencyCounter2[value] ? frequencyCounter2[value] + 1 : 1; // flipped condition
     }
 
     // for-in on object will print property keys

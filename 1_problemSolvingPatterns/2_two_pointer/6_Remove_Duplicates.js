@@ -46,7 +46,7 @@ function remove_duplicate_2pnt(sortedNums){
         if(leftValue === rightValue){
             continue;
         }else{
-            sortedNums[leftIndexPointer+1] = sortedNums[rightIndexPointer];   // insert the 'right' value in-front of left-index pointer
+            sortedNums[leftIndexPointer + 1] = sortedNums[rightIndexPointer];   // insert the 'right' value in-front of left-index pointer
             leftIndexPointer++;
         }
     }

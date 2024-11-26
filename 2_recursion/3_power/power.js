@@ -6,6 +6,7 @@
 function power_iterative(base, exponent){
 
     if(exponent === 0) return 1;
+    
     let ans;
     for(let i=0; i<exponent; i++){
         if(i===0){

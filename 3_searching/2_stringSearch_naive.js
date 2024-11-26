@@ -25,41 +25,12 @@ function stringSearch(longStr, shortStr) { // ***
     return counter;
 }
 
-let longString = i="the quick brown th fox jumps over the lazy dog";
+let longString = "the quick brown th fox jumps over the lazy dog";
 let subString = "the";
 console.log(stringSearch(longString, subString)); // Output: 2
 
+///////////////////
 
-/// long length - short length
-function stringSearch2(longStr, shortStr) { // ***
-    let counter = 0;
-    for(let i = 0; i < longStr.length - shortStr.length; i++){
-        for(let j = 0; j < shortStr.length; j++){
-            let currentLongChar = longStr[i];
-            let currentShortChar = shortStr[j];
-
-            if(currentLongChar === currentShortChar){
-                i++;
-            }
-            if(currentLongChar !== currentShortChar){   // stop the current j loop 
-                break;
-            }
-            
-            if(j === shortStr.length - 1){      // counting full word             
-                counter++;
-            }
-        }
-    }
-
-    return counter;
-}
-
-let longString2 = i="the quick brown th fox jumps over the lazy dog";
-let subString2 = "the";
-console.log(stringSearch2(longString2, subString2));  // Output: 2
-
-
-///////////////// 
 // different approach determining move current element's index of long string to next element's index using [i+j]
 function stringSearch3(longStr, shortStr) {
     let counter = 0;
@@ -87,14 +58,14 @@ function stringSearch3(longStr, shortStr) {
     return counter;
 }
 
-
 let longString3 = "the quick brown th fox jumps over the lazy dog";
 let subString3 = "the";
 console.log(stringSearch3(longString3, subString3)); // Output: 2
 
 
 
-///////////// clean code
+////////////////// clean code
+
 function stringSearch3_clean(longStr, shortStr) {
     let counter = 0;
     for(let i = 0; i < longStr.length; i++){

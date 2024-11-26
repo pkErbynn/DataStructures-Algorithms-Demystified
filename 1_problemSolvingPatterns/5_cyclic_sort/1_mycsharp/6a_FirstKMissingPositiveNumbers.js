@@ -33,10 +33,8 @@ const x = smallestKMissingPositiveNumbers = (arr, numOfTimes) => {
         const curentNumber = arr[index];
         const correctNumber = arr[curentNumber - 1];
 
-        if(curentNumber != correctNumber 
-            && curentNumber > 0 && curentNumber < arr.length ){    // considering only positive numbers in within range
-            [arr[index], arr[curentNumber - 1]] = 
-            [arr[curentNumber - 1], arr[index]];
+        if(curentNumber > 0 && curentNumber < arr.length && curentNumber != correctNumber){    // considering only positive numbers in within range
+            [arr[index], arr[curentNumber - 1]] = [arr[curentNumber - 1], arr[index]];
         }
         else {
             index++;
@@ -46,7 +44,7 @@ const x = smallestKMissingPositiveNumbers = (arr, numOfTimes) => {
     let missingValues = [];
 
     for (let index = 0; index < arr.length; index++) {
-        if(arr[index] != (index+1)){
+        if(arr[index] != (index + 1)){
             missingValues.push(index+1)     // missing numbers implies INDEX
         }
     }

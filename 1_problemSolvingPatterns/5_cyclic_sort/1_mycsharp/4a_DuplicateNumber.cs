@@ -32,47 +32,46 @@ namespace _1_mycsharp
 
 
 
-        public static void FindDistinctDuplicateNumber(int[] numbers)
+        public static int FindDistinctDuplicateNumber(int[] numbers)
 		{
 			// for-loop won't workout as index won't move for each element but will move index conditionally, thus, while loop
 			//for (int index = 0; index < numbers.Length; index++)
 			//{
 			//}
 
-			int index = 0;
-			while (index < numbers.Length)
+			int startIndex = 0;
+			while (startIndex < numbers.Length)
 			{
-				// quick check if duplicate occure at the first two elements
-				int indexPointer2 = index + 1;	// pointer ahead by one
-				if (indexPointer2 < numbers.Length &&
-                    index < numbers.Length &&
-					numbers[index] == numbers[indexPointer2])
+				// optimization layer: Guick check if duplicate occure at the first two elements
+				int indexPointer2 = startIndex + 1;	// pointer ahead by one
+				if ( (indexPointer2 < numbers.Length) && (startIndex < numbers.Length) && (numbers[startIndex] == numbers[indexPointer2]) )
 				{
-					Console.WriteLine("Duplicate Number Quick: " + numbers[index]);
-					return;
+					Console.WriteLine("Duplicate Number quick: " + numbers[startIndex]);
+					return numbers[startIndex];
 				}
 
-				int currentNumber = numbers[index];
+				// if duplicate occure at any part
+				int currentNumber = numbers[startIndex];
 				if (currentNumber != numbers[currentNumber - 1])
 				{
-					var temp = numbers[index];
-					numbers[index] = numbers[currentNumber - 1];
+					var temp = numbers[startIndex];
+					numbers[startIndex] = numbers[currentNumber - 1];
 					numbers[currentNumber - 1] = temp;
 				}
 				else
 				{
-					index++;
+					startIndex++;
 				}
 
 			}
 
-			// if any number is not in its right index position
+			// if any number is not in its right index position, then that's the duplicate
 			for (int i = 0; i < numbers.Length; i++)
 			{
 				if (numbers[i] != (i + 1))
 				{
-					Console.WriteLine("Duplicate Number Long: " + numbers[i]);	// duplicate number mean getting the value and not the index unlike the "missing number"
-					return;
+					Console.WriteLine("Duplicate Number at any place: " + numbers[i]);	// duplicate number mean getting the value and not the index unlike the "missing number"
+					return numbers[i];
 				}
 			}
 		
@@ -80,6 +79,8 @@ namespace _1_mycsharp
 
 
         /*
+		Question 2:
+
 		We are given an unsorted array containing ‘n’ numbers taken from the range 1 to ‘n’.
 		The array has some DUPLICATES, find all the duplicate numbers without using any extra space.
 
@@ -95,27 +96,29 @@ namespace _1_mycsharp
 		*/
         public static void FindDuplicateNumbers(int[] numbers)
         {
-            int index = 0;
-            while (index < numbers.Length)
+            int startIndex = 0;
+            while (startIndex < numbers.Length)
             {
-                int currentNumber = numbers[index];
+                int currentNumber = numbers[startIndex];
                 if (currentNumber != numbers[currentNumber - 1])
                 {
-                    var temp = numbers[index];
-                    numbers[index] = numbers[currentNumber - 1];
+                    var temp = numbers[startIndex];
+                    numbers[startIndex] = numbers[currentNumber - 1];
                     numbers[currentNumber - 1] = temp;
                 }
                 else
                 {
-                    index++;
+                    startIndex++;
                 }
 
             }
 
 			List<int> duplicates = new List<int>();
+
             for (int i = 0; i < numbers.Length; i++)
             {
-                if (numbers[i] != (i + 1))
+				// if any number is not in its right index position, then that's the duplicate
+                if (numbers[i] != (i + 1))	// compared to (i + 1) cus input array values starts from 1
                 {
 					duplicates.Add(numbers[i]);
                 }

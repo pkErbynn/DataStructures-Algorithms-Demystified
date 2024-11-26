@@ -25,7 +25,8 @@ Explanation: The smallest missing positive numbers are 1 and 2.
 === Solution
 - Sort numbers in-place
 - Find missing numbers using their indexes
-- Also, separately keep the actual values that are in incorrect positions, so that when the K length is not met yet and want to find missing numbers beyond the array, it can be used for checking
+- Also, separately keep the actual values that are in incorrect positions, so that when the K length is not met yet 
+	- wants to find missing numbers beyond the array, it can be used to fill up the array up the K length
 - Find mising numbers using indexes beyond the array
 */
 

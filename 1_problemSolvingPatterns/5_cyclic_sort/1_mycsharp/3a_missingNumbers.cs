@@ -25,20 +25,20 @@ class MissingNumbers
 {
     public static void FindMissingNumbers(int[] numbers)
     {
-        int index = 0;
-        while (index < numbers.Length)
+        int startIndex = 0;
+        while (startIndex < numbers.Length)
         {
-            var currentNumber = numbers[index];
+            var currentNumber = numbers[startIndex];
 
             if(currentNumber != numbers[currentNumber - 1])
             {
-                var temp = numbers[index];
-                numbers[index] = numbers[currentNumber - 1];
+                var temp = numbers[startIndex];
+                numbers[startIndex] = numbers[currentNumber - 1];
                 numbers[currentNumber - 1] = temp;
             }
             else
             {
-                index++;
+                startIndex++;
             }
         }
         // numbers.ToList().ForEach(System.Console.WriteLine);
@@ -46,9 +46,9 @@ class MissingNumbers
         List<int> results = new List<int>();
         for (int i = 0; i < numbers.Length; i++)
         {
-            if (numbers[i] != (i + 1))
+            if (numbers[i] != (i + 1))  // compured to (i + 1) cus input array values starts from 1
             {
-                results.Add(i + 1);     // missing numbers means getting index not the value
+                results.Add(i + 1);     // missing numbers means getting INDEXes not the VALUEs
             }
 
         }
@@ -60,11 +60,11 @@ class MissingNumbers
 
 
 /*
- * 
-Time complexity:
-O(n).
+NB:
+- Finding missing numbers means getting INDEXes not the VALUEs
 
-Space complexity:
-Ignoring the space required for the output array, the algorithm runs in constant space O(1).
+Complexity: 
+- Time complexity: O(n)
+- Space complexity: Constant space O(1), ignoring the space required for the output array, the algorithm runs in .
 
  */

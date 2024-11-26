@@ -16,10 +16,12 @@ If we know the length of the LinkedList cycle, we can find the start of the cycl
 Questioning my solution:
 Why do i have to move pointer2 ahead by k nodes before starting the increament?
 
-- Moving pointer2 ahead by 'K' nodes, from start, is necessary because at the beginning, both pointers are pointing to the start of the LinkedList and have not entered the cycle yet.
+- Using previous "isLinkedListCyclic" algo won't work cus pointers can meet anywhere in the loop that might not neccessarily be the start of the loop 
+- To fix this, move pointer2 ahead by 'K' nodes, from the start. This is because at the beginning, both pointers are pointing to the start of the LinkedList and have not entered the cycle yet.
 - By moving pointer2 ahead by 'K' nodes, it ensures that both pointers enter the cycle at the same time.
-- If we didn't move pointer2 ahead by 'K' nodes and start incrementing both pointers from the beginning of the LinkedList, the pointers would enter the cycle at different times. 
-- As a result, they would not meet at the start of the cycle, which is what we are trying to find.
+- If we didn't move pointer2 ahead by 'K' nodes and start incrementing both pointers from the beginning of the LinkedList, the pointers would enter the cycle at different times, meeting at diff node. 
+- As a result, they would not meet at the start of the cycle, which is what we are trying to find. 
+- Also, since one pointer is already moved ahead, there's no way to step double, just one step for each pointer works out
 So by moving pointer2 ahead by 'K' nodes, ensures that both pointers enter the cycle at the same time (despite pointer2 already in the cycle, it will re-enter) 
 and we can start incrementing both pointers until they meet at the start of the cycle.
 
@@ -58,8 +60,7 @@ const startOfLinkedListCyle1 = function(head) {
 }
 
 const startOfLinkedListCyle2 = function(head) {
-    let cycleLength = lengthOfLinkedListCycle(head);
-    console.log('length:', cycleLength);
+    let cycleLength = lengthOfLinkedListCycle(head);    // calculated length earlier
 
     let startPointer = head;
     let forwardPointer = head;
@@ -115,7 +116,31 @@ headLinkedList.next.next = new Node(3);
 headLinkedList.next.next.next = new Node(4);
 headLinkedList.next.next.next.next = new Node(5);
 headLinkedList.next.next.next.next.next = new Node(6);
-headLinkedList.next.next.next.next.next.next = headLinkedList.next.next; // point the next to any mid node
+headLinkedList.next.next.next.next.next.next = headLinkedList.next; // point the next to any mid node
 
 console.log("StartNode1:", startOfLinkedListCyle1(headLinkedList));
 console.log("StartNode2", startOfLinkedListCyle2(headLinkedList));
+
+
+
+// Implementation from previous results wrong start node
+// const isLinkedListCyclic = function(head) {
+//     if(!head) return false;
+
+//     let slowPointer = head;
+//     let fastPointer = head;
+
+//     while(fastPointer && fastPointer.next){   // fastpointer not-null check before it's .next check...ook-ahead check with fastpointer as it's at forward
+//         slowPointer = slowPointer.next;
+//         fastPointer = fastPointer.next.next;
+
+//         if(fastPointer === slowPointer){
+//             return fastPointer;
+//         }
+//     }
+
+//     return false;
+// }
+
+// console.log("StartNode2_isLinkedListCyclic:", isLinkedListCyclic(headLinkedList));
+

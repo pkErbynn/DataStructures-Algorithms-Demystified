@@ -16,6 +16,8 @@ Explaination found in vid: https://youtu.be/W9QJ8HaRvJQ?list=PL9gnSGHSqcnr_DxHsP
 
 // returns index if found
 // returns -1 if not found
+
+
 function binarySearch_ceiling(sortedArr, target){
     let start = 0;
     let end = sortedArr.length - 1;
@@ -47,3 +49,5 @@ console.log("binarySearch_ceiling:", binarySearch_ceiling([1, 2, 8, 10, 10, 12, 
 console.log("binarySearch_ceiling:", binarySearch_ceiling([1, 2, 8, 10, 10, 12, 19], 0));
 console.log("binarySearch_ceiling:", binarySearch_ceiling([1, 2, 8, 10, 10, 12, 19], 20));
 
+// Clue: 
+// 90% of "sorted array" questions are solved with BS

@@ -14,7 +14,7 @@ function rangeSum(num){
 
     // recall itself w/ modified input
     let modifiedNum = num-1;
-    let sum = num + rangeSum(modifiedNum);
+    let sum = num + rangeSum(modifiedNum);  // suming at a level
 
     return sum;
 }

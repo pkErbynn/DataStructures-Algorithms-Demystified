@@ -6,7 +6,7 @@ you are given two baskets and your goal is to put maximum number of fruits in ea
 The only restriction is that each basket can have only one type of fruit.
 
 You can start with any tree, but once you have started you can’t skip a tree. 
-You we will pick one fruit from each tree until you cannot, i.e., you will stop when you have to pick from a third fruit type.
+You will pick one fruit from each tree until you cannot, i.e., you will stop when you have to pick from a third fruit type.
 
 Write a function to return the maximum number of fruits in both the baskets.
 
@@ -37,9 +37,9 @@ function fruitIntoBasket(fruits){
 
     for (let windowEndIndex = 0; windowEndIndex < fruits.length; windowEndIndex++) {
         let rightChar = fruits[windowEndIndex];
-        frequencyCounterTwoBaskets[rightChar] = !frequencyCounterTwoBaskets[rightChar] ? 1 : frequencyCounterTwoBaskets[rightChar] + 1
+        frequencyCounterTwoBaskets[rightChar] = !frequencyCounterTwoBaskets[rightChar] ? 1 : frequencyCounterTwoBaskets[rightChar] + 1; // fruit types equals keys
         
-        while(Object.keys(frequencyCounterTwoBaskets).length > 2){ // 2 => two fruit kinds
+        while(Object.keys(frequencyCounterTwoBaskets).length > 2){ // 2 => two fruit kinds  
             let leftChar = fruits[windowStartIndex];
 
             if(frequencyCounterTwoBaskets[leftChar] > 1){

@@ -10,7 +10,7 @@ Write a function that takes a string s as input and checks whether it’s a pali
 //   So, when you encounter a palindrome, think of it as the word's reflection, staying the same regardless of how you see it, just like your reflection in a mirror!
 */
 
-function isPalindrome(s) {
+function isPalindrome(s) { // **
     let startIndex = 0;
     let endIndex = s.length-1;  // -1 cus of zero-based index
 

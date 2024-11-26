@@ -9,8 +9,8 @@ function countDown(num){
 
     console.log(num);
 
-    // recall function itself with modified input
-    num--;
+    // recall function itself with **modified input**...modified input makes it possible to reach the base case
+    num -= 1;
     countDown(num);
 }
 
