@@ -5,6 +5,8 @@
     - where each element is associated with priority
 - element with high priority are served before element with low priority
 - normally, low priority tag number means high priority
+- ![Prioriy queue image](../../assets/priority-queue.png)
+
 
 #### Implementation
 
