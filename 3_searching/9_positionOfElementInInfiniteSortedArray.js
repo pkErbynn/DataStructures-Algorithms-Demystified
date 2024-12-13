@@ -11,10 +11,10 @@ findThePostitionOfTarget  = function(arr, target) {
     // so that binary search can be used to find the target value
     while (target > arr[end]) {
         let boxSize = (end - start) + 1
-        let newStart = end + 1;    // end element
+        // let newStart = ;    // end element
 
-        start = newStart;
-        end = newStart + (boxSize * 2); // new end
+        start = end + 1;        // start moves behind end one-step 
+        end = start + (boxSize * 2); // new end streches starting from start position
     }
 
     // binary search
