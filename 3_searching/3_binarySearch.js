@@ -19,7 +19,7 @@ function binarySearch_iteration(sortedArr, target){
         if(target > sortedArr[midIndex]){
             start = midIndex + 1;
         } 
-        else {x
+        else {
             end = midIndex - 1;
         }
     }

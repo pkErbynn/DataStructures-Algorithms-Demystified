@@ -9,20 +9,17 @@ function peakIndexInMountainArray(arr) {
         let mid = Math.floor( start + ((end - start) / 2) )
         
         // at the increasing part, move start pointer forward to the next bigger value
-        if(arr[mid] < arr[mid + 1]){
+        if(arr[mid + 1] > arr[mid]){
             start = mid + 1
         }
 
-        // at the decreasing part
+        // at the decreasing part.... "==" not an option cus that's the loops breaking point
         else if(arr[mid] > arr[mid + 1]) {
             // setting end = mid - 1, might skip the peak value if mid is the peak value
             // this mid may is a possible answer but look at left, by pinning this mid as end, and finding newMid (at line 10) to compare with this if that is greater or not
             end = mid
         }
     }
-
-    console.log([start, midout, end]);
-
 
     return start;   // if both points to value, means that value is the largest
 }

@@ -61,7 +61,7 @@ function binarySearch_nextGreatestLetter(letters, target){
     return letters[start];
 }
 
-console.log("binarySearch_nextGreatestLetter:", binarySearch_nextGreatestLetter(["c","f","j"], "f"));
+console.log("binarySearch_nextGreatestLetter:", binarySearch_nextGreatestLetter(["c","f","j"], "a"));
 console.log("binarySearch_nextGreatestLetter:", binarySearch_nextGreatestLetter(["c","f","j"], "c"));
 console.log("binarySearch_nextGreatestLetter:", binarySearch_nextGreatestLetter(["x","x","y","y"], "z"));
 
