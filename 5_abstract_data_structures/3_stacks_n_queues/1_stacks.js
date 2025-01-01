@@ -25,6 +25,53 @@ arr.shift();
 // 2. Using LinkedList
 
 
+class CustomStack {
+    constructor() {
+        const DEFAULT_SIZE = 10;
+        this.data = []
+
+        this.pointer = -1;
+    }
+
+    constructor(size){
+        this.data[size]
+    }
+
+    push(item){
+        if(isFull()){
+            console.log("Stack is full.");
+            return false;
+        }
+
+        // pointer moves foward and set next item
+        this.pointer++;
+        this.data[this.pointer] = item;
+
+        return true;
+    }
+
+    isFull(){
+        return this.pointer == this.data.length - 1 // last element
+    }
+
+    pop(){
+        if(isEmpty()){
+            console.log("Stack is empty");
+            return null;
+        }
+
+        let removedItem = this.data[this.pointer--]
+        return removedItem;
+    }
+
+    isEmpty(){
+        return this.pointer == - 1  // not moved
+    }
+
+    peak(){
+        return this.data[this.pointer]
+    }
+}
 
 /*
 
@@ -39,3 +86,26 @@ Applications
 - function call stack: manage function invocations
 
 */
+
+class DynamicCustomStack extends CustomStack {
+    push() {
+        if(isFull()){
+            // double the size
+            let doubledSizedData = this.data[this.data.length * 2]
+
+            // copy prev items to new data
+            for (let index = 0; index < this.data.length; index++) {
+                doubledSizedData[index] = this.data[index];
+                
+            }
+
+            // set with big size
+            this.data = doubledSizedData;
+        }
+
+        this.pointer++;
+        this.data[this.pointer] = item;
+
+        return true;
+    }
+  }

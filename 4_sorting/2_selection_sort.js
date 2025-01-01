@@ -9,6 +9,7 @@
 
 // CoreTip: 
 // SelectionnSort = more effort into SELECTING the correct element + less effort(naturally) to place/insert in correct position
+// In sum, SELECT the smallest/largest element and place it at the correct index
 
 function selectionSort(arr){    // **
     for (let outerIndexPointer = 0; outerIndexPointer < arr.length; outerIndexPointer++) {

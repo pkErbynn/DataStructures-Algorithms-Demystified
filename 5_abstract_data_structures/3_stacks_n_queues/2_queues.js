@@ -81,7 +81,7 @@ class Queue {
             return dequeuedNode;
         }
         
-        // multi-node present
+        // multi-node present...if Dequeue was implemented with arrays no obj, all elements would have shifted to the left
         let removedNode = this.first; // 'var' dequeuedNode = this.first; in L#72 will be accessible here cus of function() scoped not block{} scoped
         let firstNextNode = this.first.next;
         this.first = firstNextNode;

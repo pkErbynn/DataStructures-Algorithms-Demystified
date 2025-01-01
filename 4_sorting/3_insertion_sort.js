@@ -13,7 +13,7 @@
 
 ///////////////
 
-function insertionUsingWhileloop(arr){  // ***
+function insertionUsingWhileloop(arr){  // **
     
     // i = 1 cus first element is considered sorted
     for(let i = 1; i < arr.length; i++){
@@ -39,11 +39,35 @@ function insertionUsingWhileloop(arr){  // ***
 console.log("insertionUsingWhileloop:", insertionUsingWhileloop([8, -1, 5, 0, -2, 3, 4]));
 
 
+function insertionUsingWhileloopOptimized(arr) {     // ******
+    for (let i = 1; i < arr.length; i++) {
+        let currentValue = arr[i];
+        let j = i - 1;
+
+        // Skip unnecessary iterations if the element is already in the correct position
+        if (arr[j] <= currentValue) continue;
+
+        // Use a while loop to find the correct position for currentValue
+        while (j >= 0 && arr[j] > currentValue) {
+            arr[j + 1] = arr[j]; // Shift elements to the right
+            j--; // Move to the previous element
+        }
+
+        // Insert currentValue at its correct position
+        arr[j + 1] = currentValue;
+    }
+    return arr;
+}
+
+console.log("insertionUsingWhileloopOptimized:", insertionUsingWhileloopOptimized([8, -1, 5, 0])); // Output: [-1, 0, 5, 8]
+console.log("insertionUsingWhileloopOptimized:", insertionUsingWhileloopOptimized([2, 3, 4, 1])); // Output: [1, 2, 3, 4]
+
+
 
 //////////////////
-// optimise code
+// optimise code, using For-loop
 // much efficent especially on nearly sorted data
-function insertionOptimized(arr){
+function insertionOptimized(arr){ 
     for(let i=1; i<arr.length; i++){
         let currentValue = arr[i];
 
@@ -106,4 +130,17 @@ Challenging questions/node/tips:
 1. why is the forloop init value outside?
     ...so that its scope can be used for insertion in other scope
 2. no swapping, just shiffing through copy
+
+
+Swapping can be used too BUT...
+
+Shifting is more efficient than swapping 
+...because it requires fewer memory write operations; 
+...shifting moves elements in one direction with a single write per operation, 
+...whereas swapping involves three write operations:**
+......1. Writing the first value to a temporary location.
+......2. Writing the second value to the position of the first.
+......3. Writing the temporary value back to the position of the second. 
+
+This makes swapping computationally more expensive compared to shifting, especially for larger datasets.
 */

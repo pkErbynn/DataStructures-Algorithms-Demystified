@@ -2,7 +2,7 @@
 // - swaps adjascent elements, placing large values at far right end
 // - creating sorted portion at far right end
 
-function bubbleSort(array) {
+function bubbleSort1(array) {
     //outer + inner loop starts at very begining
     for (let i = 0; i < array.length; i++) {
         for (let j = 0; j < array.length; j++) {
@@ -15,7 +15,25 @@ function bubbleSort(array) {
     return array;
 }
 
-console.log("bubbleSort:", bubbleSort([2,3,4,1]))
+console.log("bubbleSort1:", bubbleSort1([2, 3, 4, 1]))
+
+
+function findingLargestElementInUnsortedArrayUsingBubbleSort(array) {   // first iteration bubbles the largest element to the end
+    //outer + inner loop starts at very begining
+    for (let i = 0; i < array.length; i++) {
+        for (let j = 0; j < array.length; j++) {
+           if(array[j] > array[j+1]){
+                //swap
+                [array[j], array[j+1]] = [array[j+1], array[j]]; 
+            }
+        }
+        break
+
+    }
+    return array[array.length - 1];
+}
+
+console.log("findingLargestElementInUnsortedArrayUsingBubbleSort:", findingLargestElementInUnsortedArrayUsingBubbleSort([2, 4, 3, 10, 3, 4, 1]))
 
 
 //////////// optimization with increasing outer loop ***
@@ -52,6 +70,7 @@ console.log("bubbleSortEfficient2:",bubbleSortEfficient([2,3,4,1]));
 ///////////////
 // nb
 // i<arr.length or i<=arr.length-1 are same
+// This is a Comparison Sort algo
 
 
 // Time Complexity
