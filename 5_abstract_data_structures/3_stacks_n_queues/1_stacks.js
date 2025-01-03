@@ -72,7 +72,7 @@ class CustomStack {
     }
 
     isFull(){
-        return this.pointer == this.data.length - 1 // last element
+        return this.pointer === this.data.length - 1 // last element
     }
 
     pop(){
@@ -91,7 +91,7 @@ class CustomStack {
     }
 
     isEmpty(){
-        return this.pointer == - 1  // pointer hasn't moved
+        return this.pointer === - 1  // pointer hasn't moved
     }
 
     peak(){

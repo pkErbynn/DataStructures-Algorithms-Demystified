@@ -17,13 +17,85 @@
 // - 2. using linkedlist DS
 
 
-//// 1. Using Array
+////========= 1. Using Array
 // - push() combined with shift();
 // - unshift() combined with pop();
 // - not efficient cus of RE-INDEXING when an item is added or removed from the start ***
+// - insertion = o(1)
+// - deletion = o(n)
+
+// Here, items are added from the right side but removed from the left side
+
+class CustomQueue {
+    data;
+    pointer = -1;   // can also start from index 0 as well...pointer is an END pointer tracking last element position
+    DEFAULTSIZE = 5;
+
+    constructor(size = null) {
+        const queueSize = size || this.DEFAULTSIZE;
+        this.data = new Array(queueSize);
+    }
+
+    insert(item){   // push to the end
+        if(this.isFull()){
+            console.log("Queue is false");
+            return false;
+        }
+
+        this.pointer++
+        this.data[this.pointer] = item;
+
+        return true;
+    }
+
+    remove(){   // del from start/front + shift...like hospital waiting bench queue
+        if(this.isEmpty()){
+            console.log("Can't remove from empty queue");
+            return null;
+        }
+
+        let removedItem = this.data[0];
+
+        // shift items to the left
+        for (let index = 1; index < this.pointer; index++) {
+            this.data[index - 1] = this.data[index]
+        }
+
+        this.pointer --;
+
+        return removedItem;
+    }
+
+    startItem(){    // front item
+        console.log(this.data[0] || null);
+        return this.data[0] || null;
+    }
+
+    isFull(){
+        return this.pointer === this.data.length - 1;
+    }
+
+    isEmpty(){
+        return this.pointer === -1;
+    }
+    
+    display(){
+        console.log(this.data);
+    }
+}
 
 
-//// 2. Using linkedlist-like DS
+let customQueue = new CustomQueue();
+customQueue.insert(10)
+customQueue.insert(20)
+customQueue.insert(30)
+customQueue.display();
+customQueue.remove();
+customQueue.display();
+customQueue.startItem()
+
+
+//// ============= 2. Using linkedlist-like DS
 // 2 options:
 // - 1. adding to the begining(unshift) and removing from end(pop)
 //       - unshift() will be efficient but pop() will be very slow because it nodes traversal
