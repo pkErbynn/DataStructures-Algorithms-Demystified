@@ -307,7 +307,7 @@ console.log(bst.insert(18));
 // console.log(bst.find(2));
 
 console.log("Ans: ");
-console.log(bst.bfs2());
+console.log(bst.bfs());
 
 /*
 === Time Complexity ====

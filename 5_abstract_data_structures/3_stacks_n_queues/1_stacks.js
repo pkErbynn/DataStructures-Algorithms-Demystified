@@ -1,3 +1,17 @@
+/*
+
+STACK
+- is a data collection data structure
+- based on LIFO operation
+- means, last element added to the stack will be the first element to be removed
+
+Applications
+- when need to store data such that LAST THING ADDED, is the last thing removed ***
+- undo
+- function call stack: manage function invocations
+
+*/
+
 // 2 Ways of stack implementation
 
 // 1. Using Array
@@ -25,20 +39,26 @@ arr.shift();
 // 2. Using LinkedList
 
 
+// ======= Array Implementation ====
+
 class CustomStack {
-    constructor() {
-        const DEFAULT_SIZE = 10;
-        this.data = []
+    data
+    pointer = -1
+    #DEFAULT_SIZE = 5;
 
-        this.pointer = -1;
-    }
+    // Js doesn't support multiple ctor
+    // constructor() {
+    //     this(this.#DEFAULT_SIZE)
+    // }
 
-    constructor(size){
-        this.data[size]
+    constructor(size = null) {
+        const stackSize = size || this.#DEFAULT_SIZE;
+        this.data = new Array(stackSize)
+        // this.data = [stackSize]
     }
 
     push(item){
-        if(isFull()){
+        if(this.isFull()){
             console.log("Stack is full.");
             return false;
         }
@@ -46,6 +66,7 @@ class CustomStack {
         // pointer moves foward and set next item
         this.pointer++;
         this.data[this.pointer] = item;
+        // this.data[++this.pointer] = item;
 
         return true;
     }
@@ -55,57 +76,88 @@ class CustomStack {
     }
 
     pop(){
-        if(isEmpty()){
-            console.log("Stack is empty");
+        if(this.isEmpty()){
+            console.log("Can't pop from empty stack");  // can throw exception here
             return null;
         }
 
-        let removedItem = this.data[this.pointer--]
+        // return this.data[this.pointer--]
+
+        let removedItem = this.data[this.pointer]
+        // this.data[this.pointer] = undefined   // clear popped element
+        this.pointer--;
+
         return removedItem;
     }
 
     isEmpty(){
-        return this.pointer == - 1  // not moved
+        return this.pointer == - 1  // pointer hasn't moved
     }
 
     peak(){
-        return this.data[this.pointer]
+        if(this.isEmpty()){
+            console.log("Cannot peak from empty stack");
+        }
+        return this.data[this.pointer]    // peak the element at the top with the pointer cus pointer tracks the top element
+    }
+
+    display(){
+        for (let index = this.pointer; index >= 0; index--) {
+            console.log(this.data[index]);
+        }
     }
 }
 
-/*
+// let customStack = new CustomStack(15)
+let customStack = new CustomStack()
+// customStack.push(10);
+// customStack.push(20);
+// customStack.push(30);
+// customStack.push(40);
+// customStack.push(50);
+// customStack.push(60);
+// customStack.display()
+// customStack.pop();
+// customStack.display()
 
-STACK
-- is a data collection data structure
-- based on LIFO operation
-- means, last element added to the stack will be the first element to be removed
 
-Applications
-- when need to store data such that LAST THING ADDED, is the last thing removed ***
-- undo
-- function call stack: manage function invocations
-
-*/
+// ========== Dynamic Stack =========
 
 class DynamicCustomStack extends CustomStack {
-    push() {
-        if(isFull()){
+    constructor(size = null) {
+        super(size)
+    }
+
+    push(item) {
+        if(this.isFull()){
             // double the size
-            let doubledSizedData = this.data[this.data.length * 2]
+            let doubledSizedData = new Array(this.data.length * 2)
 
             // copy prev items to new data
             for (let index = 0; index < this.data.length; index++) {
                 doubledSizedData[index] = this.data[index];
-                
             }
 
             // set with big size
             this.data = doubledSizedData;
         }
 
+        // add item to stack
         this.pointer++;
         this.data[this.pointer] = item;
 
         return true;
     }
-  }
+}
+
+let dynamicCustomStack = new DynamicCustomStack();
+dynamicCustomStack.push(10);
+dynamicCustomStack.push(20);
+dynamicCustomStack.push(30);
+dynamicCustomStack.push(40);
+dynamicCustomStack.push(50);
+dynamicCustomStack.push(70);
+dynamicCustomStack.push(80);
+dynamicCustomStack.push(90);
+dynamicCustomStack.push(100);
+dynamicCustomStack.display()
