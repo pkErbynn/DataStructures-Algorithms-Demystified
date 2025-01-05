@@ -1,3 +1,5 @@
+////// Valid Parenthesis using Stack ///////
+
 class MyNode {
     value;
     next;
@@ -37,7 +39,6 @@ class Stack {
     }
 }
 
-////// Valid Parenthesis ///////
 function validParenthesis(input) {
     const stack = new Stack();
     for (const character of input) {
