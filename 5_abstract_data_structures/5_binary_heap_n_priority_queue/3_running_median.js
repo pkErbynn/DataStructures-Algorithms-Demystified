@@ -1,3 +1,5 @@
+// Implemented in 1_max_binary_heap file
+
 // class RunningMedian {
 //     constructor() {
 //         this.maxHeap = new MaxBinaryHeap(); // Left half (smaller numbers)
