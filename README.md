@@ -1,2 +1,2 @@
 # DataStructuresDemystified
-Unveiling the core and advanced data structures, exploring essential coding patterns and techniques with clarity.
+Unveiling core and advanced data structures, mastering essential DSA patterns and techniques, enhancing problem-solving skills, and connecting the dots with clarity.
