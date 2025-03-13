@@ -80,7 +80,7 @@ const rearrangeLinkedList = function(linkedListHead) {
         secondHalf = secondHalfNext;
     }
     
-    // terminate firstHalf list if it's long
+    // terminate firstHalf list still has trailing data prevent data leakage
     if (firstHalf) {
         firstHalf.next = null;
     }
