@@ -22,7 +22,16 @@ Explanation: The longest substrings with not more than '3' distinct characters a
 
 
 Hint:
-This problem follows the Sliding Window pattern and similar dynamic sliding window strategy can be used
+- Simply put, find the longest subarray chunk/block/window that contains only 2(ie. k) different letters 
+- This problem follows the Sliding Window pattern and similar dynamic sliding window strategy can be used
+
+Algo:
+- start sliding from start pointer
+- But we need a way to make sure that unique elements in the window does not exceed certain threshold 
+...if it does, we need to find a way to reduce the number of distinct elements during shrinkage 
+...also, need to keep track of the number of occurences i have in that window 
+...thus, hashmap serves these purpose, where keys will be the #(distinct elements) ans values as occurences 
+...with this, when shrinkage is happens on the left, need to update the map's key and value occurence accordingly 
 
 */
 
@@ -31,20 +40,21 @@ This problem follows the Sliding Window pattern and similar dynamic sliding wind
 function longest_Substring_with_K_Distinct_Characters(str, k){
   let maxLength = Number.NEGATIVE_INFINITY;   // give -ve while looking for max positive
 
-  let charFrequency = {}; // keeps track of the window counters...map/object used cus keys are distinct as well, helping find distinct chars
+  let charFrequency = {}; // keeps track of the window counters...map/object used cus keys are distinct, which can help find distinct chars's length
   let windowStart = 0;  // 0
 
   for (let windowEnd = 0; windowEnd < str.length; windowEnd++) {
     const windowEndValue = str[windowEnd];
-    // populate frequency counter {}
+    // populates frequency counter {}
     charFrequency[windowEndValue] = !charFrequency[windowEndValue] ? 1 : charFrequency[windowEndValue] + 1; // charFrequency = { "a": 2, c: 1 };
 
-    // convert object to map to get access to key length
+    // convert object to map to get access to key length which represent the length of distinct letters 
+    // used to ensure that whenever the number of diff/unique letters is more than the k, then remove the firstEle from the window block to resize it 
     while (Object.keys(charFrequency).length > k) {
       
       const currentWindowStartValue = str[windowStart];
       
-      // update its counter by decreasing value or remove the key when counter is zero or 1
+      // update map counter by decreasing its value or remove the key when counter is zero or 1
       if(charFrequency[currentWindowStartValue] >= 2){  // > 1
           charFrequency[currentWindowStartValue] = charFrequency[currentWindowStartValue] - 1;
       } 
