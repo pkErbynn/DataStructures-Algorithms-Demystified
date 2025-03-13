@@ -5,7 +5,7 @@
 
 ###### How?
 - By moving at different speeds (say, in a cyclic LinkedList), the algorithm proves that the two pointers are bound to meet. 
-- The fast pointer should catch the slow pointer once both the pointers are in a cyclic loop.
+- The fast pointer should eventually catch the slow pointer at some point, once both the pointers are within a cyclic loop.
 
 - One of the famous problems solved using this technique was Finding a cycle in a LinkedList. 
 
