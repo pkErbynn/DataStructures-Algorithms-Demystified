@@ -27,7 +27,9 @@ This may not be entirely true but so far this is my relization:
     - inputs: mostly for sorted inputs(arrays, linkedList) + ordered string
     - pointers move towards, right or middle
     - sorted/ordered input so that pointers can move towards the middle
+    - **when you think sorted, think 2-pointer**
 
-- Realized SW, pointer one starts from 0 and pointer 2 also starts from 0
+- Realized SW, pointer 1 starts from 0 and pointer 2 also starts from 0 or anywhere
     - inputs: mostly for unsorted inputs
     - retrieves subset of the entire input **contiguously**
+    - it's special kind of 2-pointer but in close boundary
