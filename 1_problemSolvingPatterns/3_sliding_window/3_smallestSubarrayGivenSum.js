@@ -31,7 +31,16 @@ There is one different:
 - Previous: Find maxSum, given the number of elemeents, K
 - This time, rather DYNAMICALLY finding 'K'(ie, number of elements) given the Sum
 - the size of the sliding window is not fixed.
+
+- Instead of calculating the first k-block'sum and then begin sliding then adding and removing element alongside, unlike the prev question,
+- ...here, you start sliding immediately to the right, calculating the sum 
+- ...as soon as the sum goes beyond the threshold,
+- ...calculate the size of the current window then compare with previous size to find which has minimum len
+- ...now, remove the first element it started the sliding from, then move the pointer forward so that it can start another iteration 
+
+
 - sliding window: cus of "contiguous subarray"
+
 */
 
 
@@ -49,7 +58,7 @@ function smallest_subarray_given_sum(arr, sum){
         // Shrink the window as small as possible while the window's sum is greater than or equal to 'sum'
         while(windowSum >= sum){
             // calculate current length of window
-            // + save current minimum window
+            // + compare window size with prev to save current minimum window
             const currentWindowLength = (windowEndIndex - windowStartIndex) + 1; // +1 since it's 0-indexed, and need +1 to get actual size
             windowMinLength = Math.min(windowMinLength, currentWindowLength);
 
@@ -60,8 +69,9 @@ function smallest_subarray_given_sum(arr, sum){
         }
     }
 
-    if(windowMinLength == Infinity) return 0;   // if none of subarray exists
-    return windowMinLength; 
+    if(windowMinLength == Infinity) return 0;   // if none of subarray exists, then it means my initial min length remains same as set 
+    
+    return windowMinLength; // there exists an answer 
 
     // return minLength === Infinity ? 0 : minLength;
 }
