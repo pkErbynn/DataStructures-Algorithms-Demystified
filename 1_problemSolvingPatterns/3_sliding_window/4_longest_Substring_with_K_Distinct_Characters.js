@@ -27,8 +27,10 @@ Hint:
 
 Algo:
 - start sliding from start pointer
-- But we need a way to make sure that unique elements in the window does not exceed certain threshold 
+- Keep sliding until we get more then K diff unique letters 
+- we need a way to make sure that unique elements in the window does not exceed certain threshold 
 ...if it does, we need to find a way to reduce the number of distinct elements during shrinkage 
+...can find the len of that block and compare to prev for the max 
 ...also, need to keep track of the number of occurences i have in that window 
 ...thus, hashmap serves these purpose, where keys will be the #(distinct elements) ans values as occurences 
 ...with this, when shrinkage is happens on the left, need to update the map's key and value occurence accordingly 
