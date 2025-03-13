@@ -1,8 +1,6 @@
 /*
 Write a function that takes a string s as input and checks whether it’s a palindrome or not.
 
-
-
 // Palindrome is a word, phrase, number, or other sequence of characters 
 // that reads the same forward and backward, ignoring any spaces, punctuation, or capitalization
 // Palindrome like;

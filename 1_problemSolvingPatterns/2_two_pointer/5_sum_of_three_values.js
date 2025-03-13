@@ -13,10 +13,10 @@ function findSumOfThree(nums, target) {
             }
 
             if(sum < target) {
-                leftIndexPointer++;
+                leftIndexPointer++; // move to point to bigger values to meet target, since below target
             }
             else if(sum > target) {
-                rightIndexPointer--;
+                rightIndexPointer--;    // since over target, move pointer down to smaller values 
             }
         }
 
@@ -26,3 +26,14 @@ function findSumOfThree(nums, target) {
 
 console.log("sum:", findSumOfThree( [3, 5, 2, 0, 5, 2, 3], 10 ));
 
+/*
+
+Time Complexity:
+•	Sorting takes O(n log n).
+•	The two-pointer approach runs in O(n) inside a loop.
+•	Total complexity: O(n²) (since we iterate n times with an O(n) search).
+
+Space Complexity:
+•	O(1) because sorting is done in-place, and only a few integer variables are used.
+
+*/

@@ -17,7 +17,7 @@ function search(arr, targetValue){
         }
     }
 
-    return -1;
+    return -1;  // -ve as not found, cus any positive number is a valid array index
 }
 
 console.log(search([1,2,4,5], 4));

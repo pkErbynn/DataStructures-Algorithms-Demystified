@@ -11,6 +11,24 @@ Example 2:
 
 Input: [-3, -1, 0, 1, 2]
 Output: [0 1 1 4 9]
+
+=== impl ===
+Given Ex 1: [-2, -1, 0, 2, 3]
+1. Stick pointers are ends of the array 
+2. Compare the pointer values - push the biggest in an array
+    - guaranteed that one of them will difinitely be the biggest value amongst the entire array, since the array is sorted having the big -ve and +ve values at ends
+3. Now add the biggest value to a stack using an array
+    - stack because the biggest value added to the stack should be the last element when i read the entire stack's data (FistInLastOut)
+    - that's why data is pushed to the beginging of the array instead of the end of the array
+    - example Adding big values:
+        []
+        add 10: 10 -> []: ...[10]
+        add 8: 8 -> [10]: ...[8, 10]
+        add 7: 7 -> [8, 10]: ...[7, 8, 10]
+        add 6: 6 -> [7, 8, 10]: ...[6, 7, 8, 10]
+
+    - final result: [6, 7, 8, 10]
+        - from small to big
 */
 
 
@@ -25,7 +43,7 @@ function createSquaredSortedArray(numbers) {
         let rightValueSquared = numbers[rightPointer] * numbers[rightPointer];
 
         if (leftValueSquared <= rightValueSquared) {
-            result.unshift(rightValueSquared); // Add to the beginning of the result array
+            result.unshift(rightValueSquared); // Add to the beginning of the result array if less or equal to right values
             rightPointer--;
         } else {
             result.unshift(leftValueSquared); // Add to the beginning of the result array
@@ -38,14 +56,31 @@ function createSquaredSortedArray(numbers) {
 
 console.log("createSquaredSortedArray:", createSquaredSortedArray([-2, -1, 0, 2, 3]));
 
+/*
 
+Time: 
+    - Runs in O(n) time complexity.
+Space:
+    - O(n)
 
-const createSquaredSortedArray_Alt = (numbers) => {
+NB:
+- an expensive computation is incured when data is huge, 
+- there are efficiency concerns due to the use of unshift(), which affects performance.
+- unshift(value) inserts elements at the beginning of the result array.
+- Problem: 
+    - Each unshift() operation rearranges all elements, making it O(n) per operation.
+    - Worst-case scenario: Instead of O(n), it results in O(n²) total time complexity.
+- ie. shifting made by element from left to right is expensive, since it's an array that is being used as a Stack 
+    - in view of that, the next implementation fixes that, by using actual pointer to place values in the array_result
+
+*/
+
+const createSquaredSortedArray_optimized = (numbers) => {
     let leftPointer = 0;
     let rightPointer = numbers.length - 1;
 
     let result = new Array(numbers.length);
-    let resultPointer = numbers.length - 1; // without using stack
+    let resultPointer = numbers.length - 1; // without using stack, but this is how stack is impl under-the-hood
     
     while (leftPointer <= rightPointer) {
         let leftValueSquare = numbers[leftPointer] * numbers[leftPointer];
@@ -65,7 +100,7 @@ const createSquaredSortedArray_Alt = (numbers) => {
     return result;
 }
 
-console.log("createSquaredSortedArray:", createSquaredSortedArray([-2, -1, 0, 2, 3]));
+console.log("createSquaredSortedArray_optimized:", createSquaredSortedArray_optimized([-2, -1, 0, 2, 3]));
 
 /*
 - why pointers didn't move together from left to right

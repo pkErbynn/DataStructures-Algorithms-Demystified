@@ -41,6 +41,7 @@ console.log("B2:", reverseWords2("This   puzzle game is    interesting"));
 function reverseSentence(sentence) {    // **
     // input validation
     if(!sentence || sentence.length === 0) return "invalid input";
+    
     let wordsArray = sentence.split(" ").filter(f => f !== "");
     if(wordsArray.length === 0) return "invalid input";
 

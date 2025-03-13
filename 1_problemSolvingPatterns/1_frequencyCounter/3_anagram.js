@@ -2,7 +2,7 @@
 // Eg: 'cinema', formed from 'iceman'
 
 // Anagram SIMPLE MEANING
-// => implies rearranging the same letters in a different order to create a new word
+// => implies rearranging the same letters in a different order to create ANOTHER new word
 // => Greek word "ana-" means "back" or "again," and "gramma" meaning "letter." 
 // => "anagram" literally means rearranging letters "again" or "backwards" to form a new word or phrase. 
 

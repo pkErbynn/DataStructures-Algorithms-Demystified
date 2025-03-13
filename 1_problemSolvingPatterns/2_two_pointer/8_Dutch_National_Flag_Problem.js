@@ -41,7 +41,7 @@ const sortArrayElements = (numbers) => {
     let rightPointer = numbers.length - 1;
     let midPointer = 0;     // for swapping to either leftPointer/rightPointer
 
-    while (midPointer <= rightPointer) {
+    while (midPointer <= rightPointer) {    // midPointer is the reference pointer so should be adjusted under all conditions
         if(numbers[midPointer] === 0){
             [numbers[leftPointer], numbers[midPointer]] = [numbers[midPointer], numbers[leftPointer]];  // swap values and increase indexes
             leftPointer++;  // index filled with correct value(0), so pointer should move forward
@@ -61,3 +61,32 @@ const sortArrayElements = (numbers) => {
 
 console.log("Result:", sortArrayElements([1, 0, 2, 1, 0]));
 console.log("Result2:", sortArrayElements([2, 0, 2, 1, 1, 0])); 
+
+
+/*
+
+[1, 0, 2, 1, 0]
+[0, 0, 2, 1, 1]
+[0, 0, 2, 1, 1]
+[0, 0, 1, 1, 2]
+
+
+[0, 0, 1, 1, 2]
+
+====
+
+Input: [2, 2, 0, 1, 2, 0]
+[0, 2, 0, 1, 2, 2]
+[0, 2, 0, 1, 2, 2]
+
+Output: [0 0 1 2 2 2 ]
+*/
+
+
+/****
+ * 
+ * Right now, if there is one thing to get from these implementation so far is that;
+ * 1. When you think of SORTED input array, think of BINARY SEARCH + TWO-POINTER approach
+ *  
+ * 
+***/

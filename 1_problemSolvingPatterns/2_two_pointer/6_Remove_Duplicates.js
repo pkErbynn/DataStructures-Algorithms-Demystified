@@ -1,7 +1,7 @@
 /*
 # Problem Statement #
 Given an array of sorted numbers, remove all duplicates from it.
-You should not use any extra space (or array); after removing the duplicates in-place return the new length of the array.
+You should not use any extra space (or array); after removing the duplicates in-place return the new LENGTH of the array.
 
 Example 1:
 
@@ -19,7 +19,7 @@ Explanation: The first two elements after removing the duplicates will be [2, 11
 
 
 // brute-force approach
-function remove_duplicate(sortedNums){
+function remove_duplicate_and_return_new_length(sortedNums){
     
     for(let index = 0; index < sortedNums.length; index++){
         let leftValue = sortedNums[index];
@@ -32,11 +32,16 @@ function remove_duplicate(sortedNums){
     }
     return sortedNums.length;
 }
-console.log("x:", remove_duplicate([2, 3, 3, 3, 6, 9, 9]));
+console.log("x:", remove_duplicate_and_return_new_length([2, 3, 3, 3, 6, 9, 9]));
 
 
-// two-pointers approach
-function remove_duplicate_2pnt(sortedNums){
+// two-pointers optimized approach
+
+/*
+1. 1st pointer at start of array
+2. 2nd pointer at the rest so can compare with the 1st pointer value
+*/
+function remove_duplicate_to_return_new_length_optimized(sortedNums){
     let leftIndexPointer = 0;
 
     for (let rightIndexPointer = 1; rightIndexPointer < sortedNums.length; rightIndexPointer++) {
@@ -45,16 +50,17 @@ function remove_duplicate_2pnt(sortedNums){
         
         if(leftValue === rightValue){
             continue;
-        }else{
+        }
+        else{   // different values
             sortedNums[leftIndexPointer + 1] = sortedNums[rightIndexPointer];   // insert the 'right' value in-front of left-index pointer
-            leftIndexPointer++;
+            leftIndexPointer++; // then move pointer forward to stand on the position that the non-duplicate value was inserted
         }
     }
 
     // console.log("Result:", numbers.slice(0, leftIndexPointer));
-    return leftIndexPointer+1;
+    return leftIndexPointer + 1;    // since array is 0 indexed
 }
 
-console.log("y:", remove_duplicate_2pnt([2, 3, 3, 3, 6, 9, 9]));
-console.log("y2:", remove_duplicate_2pnt([2, 2, 2, 11]));
+console.log("y:", remove_duplicate_to_return_new_length_optimized([2, 3, 3, 3, 6, 9, 9]));
+console.log("y2:", remove_duplicate_to_return_new_length_optimized([2, 2, 2, 11]));
 

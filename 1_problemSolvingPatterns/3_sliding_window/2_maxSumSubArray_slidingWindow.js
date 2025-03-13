@@ -25,6 +25,7 @@ If you observe closely, you will realize that to calculate the sum of a contiguo
 
 */
 
+// k static size 
 function maxSumArray_SlidingWindow(arr, k){
     if(k > arr.length) return null;   // subarray > fullarray
 
@@ -33,11 +34,11 @@ function maxSumArray_SlidingWindow(arr, k){
     
     // calc first loop sum as current max sum
     for(let i = 0; i < k; i++){
-        maxSum += arr[i];
+        windowSum += arr[i];
     }
 
-    // keep copy of current max sum for future(next sibling loop) modification...+ and -
-    windowSum = maxSum;
+    // keep copy of current windowSum for future(next sibling loop) modification...+ and -
+    maxSum = windowSum;
 
     // sibling loop doesn't calc sum for itself/boundaries, 
     // it just help access rest of elements in array individually for computation
