@@ -121,6 +121,21 @@ headLinkedList.next.next.next.next.next.next = headLinkedList.next; // point the
 console.log("StartNode1:", startOfLinkedListCyle1(headLinkedList));
 console.log("StartNode2", startOfLinkedListCyle2(headLinkedList));
 
+/*
+
+Nb: 
+- where the pointers meet does not neccessarily mean that is the starting of the cycle
+- since it's a cycle, they can meet at any point in the cycle
+
+Time Complexity #
+- finding the cycle in a LinkedList with ‘N’ nodes and also finding the length of the cycle requires O(N). 
+- Also, in the above algorithm, it takes O(N) to find the start of the cycle. 
+- Therefore, the overall time complexity of our algorithm will be O(N).
+
+Space Complexity #
+The algorithm runs in constant space O(1).
+
+*/
 
 
 // Implementation from previous results wrong start node
