@@ -152,3 +152,15 @@ const rearrangingList2 = (linkedListHead) => {
 }
 
 // console.log("rearrangeLinkedList22:", rearrangingList2(linkedListHead));
+
+
+/*
+so far: 
+
+YOU THINK... - DO...
+1. unsorted input, occurrence - frequency counter map
+1. sorted input - binary search, two-pointer 
+2. sub continuous array - sliding window
+2. cyclic, midpoint - fast n slow 
+
+*/
