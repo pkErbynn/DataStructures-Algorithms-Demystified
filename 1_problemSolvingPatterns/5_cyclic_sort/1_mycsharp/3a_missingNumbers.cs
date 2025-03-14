@@ -30,8 +30,9 @@ class MissingNumbers
         {
             var currentNumber = numbers[startIndex];
 
-            if(currentNumber != numbers[currentNumber - 1])
+            if(currentNumber != numbers[currentNumber - 1])     // (curNum - 1) as index since the lowest number in the array is 1 not 0
             {
+                // swap
                 var temp = numbers[startIndex];
                 numbers[startIndex] = numbers[currentNumber - 1];
                 numbers[currentNumber - 1] = temp;

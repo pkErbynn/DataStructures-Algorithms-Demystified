@@ -5,6 +5,9 @@
 
 Given an unsorted array containing numbers, find the smallest missing positive number in it.
 
+Example:
+	Input: [-1, 1, 3, 4]
+	Output: 2
 
 == Solution
 This problem follows the Cyclic Sort pattern and shares similarities with Find the Missing Number with one big difference.
@@ -33,7 +36,7 @@ namespace _1_mycsharp
 		// Input: [-1, 1, 3, 4]
 		// Output: 2
 
-		// Question same as: Finding the first missing position number
+		// Question same as: Finding the FIRST missing position number
 		public static void FindSmallestMissingPositiveNumber(int[] numbers)
 		{
 			int startIndex = 0;
@@ -44,9 +47,9 @@ namespace _1_mycsharp
                 // since 0 is not a positive number, start inserting from number 1 not 0
                 // 1 at index 0, 2 at index 1, 3 at index 2, etc
                 // and ignoring all out-of range values
-				// (correctValueIndex > 0), cus looking for +ve numbers
+				// (correctValueIndex > 0), cus looking for +ve numbers **
 				// (correctValueIndex < len), cus looking for numbers within range
-                if ( (correctValueIndex > 0) && (correctValueIndex <= numbers.Length) && (numbers[startIndex] != numbers[correctValueIndex - 1]) )
+                if ( (numbers[startIndex] != numbers[correctValueIndex - 1]) && (correctValueIndex > 0) && (correctValueIndex <= numbers.Length) )
 				{
 					// swap
 					var temp = numbers[startIndex];

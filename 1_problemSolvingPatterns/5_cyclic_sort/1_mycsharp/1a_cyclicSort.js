@@ -29,19 +29,47 @@ NB:
 */
 
 
-
-const cyclicSort2 = (numbers) => { // ***
-
-    // since will not be always increase the index (to jump to the next value) in each iteration,
-    // only increment based on a condition, so for-loop won't be used
-    // instead, while-loop will be used
-    
+const cyclicSort = (numbers) => {
     let startIndexPointer = 0;
 
-    while(numbers[startIndexPointer] < numbers.length){  // while number exists 'while(numbers[startIndexPointer])' won't work cus when value at that index is 0, it will evaluate to false ( if(0) = false ), use array length as range
+    // since array index will NOT be always increase (to jump to the next value) in each iteration,
+    // only increment based on a condition, so for-loop won't be used
+    // instead, while-loop will be used
+    while(startIndexPointer < numbers.length){
         let currentNumber = numbers[startIndexPointer];
-        let rightNumber = numbers[currentNumber - 1];
+        let rightNumber = numbers[currentNumber - 1];   // the number value itself is used as index for checking 
+         
+        // keep swapping until right value at right index is found, there, pointer moves forward
+        if(currentNumber != rightNumber && currentNumber < numbers.length){     // DON'T FORGET "WITHIN-RANGE" CONDITION
+            [numbers[startIndexPointer], numbers[currentNumber - 1]] = [numbers[currentNumber - 1], numbers[startIndexPointer]];
+        }
+        else{
+            startIndexPointer++; // move to next number if swap didn't happen, means the number is in its correct possition
+        }
+    }
 
+    return numbers;
+}
+
+console.log("Result:", cyclicSort([2, 6, 4, 3, 1, 5]));
+
+
+
+/*
+
+// ========= reversed condition
+// ...downside: figured this algo doesn't work with subsequent improved question, findingMissing
+const cyclicSort2 = (numbers) => { // ***
+
+    let startIndexPointer = 0;
+
+    while(numbers[startIndexPointer] < numbers.length){  // or( <= numbers.length - 1) // while number exists 'while(numbers[startIndexPointer])' won't work cus when value at that index is 0, it will evaluate to false ( if(0) = false ), use array length as range
+        let currentNumber = numbers[startIndexPointer];
+        let rightNumber = numbers[currentNumber - 1];   // use the current number as index
+
+        // move pointer to next element only when the current number is at the right place
+        // ...since we know eventually all the elements in the array will fall in the right place
+        
         if(currentNumber == rightNumber){
             startIndexPointer++;
         }
@@ -56,29 +84,7 @@ const cyclicSort2 = (numbers) => { // ***
 
 console.log("Result2:", cyclicSort2([2, 6, 4, 3, 1, 5]));
 
-
-// ========= reversed condition
-
-const cyclicSort = (numbers) => {
-    let startIndexPointer = 0;
-
-    while(startIndexPointer < numbers.length){
-        let currentNumber = numbers[startIndexPointer];
-        let rightNumber = numbers[currentNumber - 1];   // the number value itself is used as index for checking 
-         
-        if(currentNumber != rightNumber && currentNumber < numbers.length){     // DON'T FORGET "WITHIN-RANGE" CONDITION
-            [numbers[startIndexPointer], numbers[currentNumber - 1]] = [numbers[currentNumber - 1], numbers[startIndexPointer]];
-        }
-        else{
-            startIndexPointer++; // move to next number if swap didn't happen, means the number is in its correct possition
-        }
-    }
-
-    return numbers;
-}
-
-console.log("Result:", cyclicSort([2, 6, 4, 3, 1, 5]));
-
+*/
 
 /******
  * Use while loop instead of forloop cus it's not after every operation that the index moves forward

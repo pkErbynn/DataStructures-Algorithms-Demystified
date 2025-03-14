@@ -26,9 +26,16 @@ Output: 7
 const findMissingNumber = (numbers) => {
     let startIndex = 0;
 
+    // while the index falls within valid range 
     while(startIndex < numbers.length){
         let currentNumber = numbers[startIndex];
         let correctNumberThatShouldBeAtCorrectstartIndex = numbers[currentNumber];   // no nums[num-1], since array size is 0 to n, value 0 should be at startIndex 0, value 1 should be at startIndex 1, value 2 should be at startIndex 2...
+
+        // since we know that some of the values in the array can not be at their right place,
+        // ...this pointer movement condition will not work because 4 will not be a valid index 
+        // if(currentNumber == rightNumber){
+        //     startIndexPointer++;
+        // }
 
         if(currentNumber !== correctNumberThatShouldBeAtCorrectstartIndex && currentNumber < numbers.length){
             [numbers[startIndex], numbers[currentNumber]] = [numbers[currentNumber], numbers[startIndex]];    // [currentNumber, correctNumberThatShouldBeAtCorrectstartIndex] = [correctNumberThatShouldBeAtCorrectstartIndex, currentNumber]...using the values itself doesn't swap, unless startIndex is used 
@@ -50,4 +57,13 @@ const findMissingNumber = (numbers) => {
     // Also, Case where missing number is not found in array [1, 0, 3, 2] = [0, 1, 2,3]...means 4 is missing so return the array length
     return numbers.length;
 }
+
 console.log("R1:", findMissingNumber([4, 0, 2, 3, 1]));
+
+/*
+
+Basic Core Algo Concepts: 
+1. Swap numbers to sort
+2. Then, loop through to get misplaced element/index
+
+*/
