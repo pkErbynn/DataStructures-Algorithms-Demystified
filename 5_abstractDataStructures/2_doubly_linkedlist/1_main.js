@@ -126,6 +126,7 @@ class DoublyLinkedList {
                 counter += 1;
             }
 
+            // fetch node when steps counter == target index 
             return currentNode;
         }
 
