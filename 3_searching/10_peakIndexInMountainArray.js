@@ -1,6 +1,39 @@
-// index where the increasing part of the array stops and decereases
-// input array are sorted. thus, apply binary search
+// find the index where the increasing part of the array stops and decereases
+// Hint: input array are sorted + search goal thus, apply binary search
 
+
+function peakIndexInMountainArray2(arr) {
+    let start = 0;
+    let end = arr.length - 1;
+
+    while (start <= end) {
+        let mid = Math.floor( start + ((end - start) / 2) )
+        
+        // if both points to same index/value, means that's the peak meak
+        if(start == end) return start
+        
+        // at the increasing part, move start pointer forward to the next bigger value
+        if(arr[mid + 1] > arr[mid]){
+            start = mid + 1
+        }
+        // at the decreasing part.... "==" not an option cus that's the loops breaking point
+        else 
+        {        
+            // setting end = mid - 1, might skip the peak value if mid is the peak value
+            // this mid may is a possible answer but look at left, by pinning this mid as end, and finding newMid (at line 10) to compare with this if that is greater or not
+            end = mid
+        }
+    }
+
+    return -1;
+}
+
+console.log("Peak11", peakIndexInMountainArray2([1, 2, 3, 5, 9, 7, 5, 1]))
+console.log("Peak22", peakIndexInMountainArray2([3, 5, 9, 1, 0]))
+console.log("Peak33", peakIndexInMountainArray2([3, 9, 8, 7, 5, 6, 4, 3, 2, 1, 0 ]))
+
+
+/////// Alternative
 function peakIndexInMountainArray(arr) {
     let start = 0;
     let end = arr.length - 1;
@@ -28,7 +61,6 @@ function peakIndexInMountainArray(arr) {
 console.log("Peak1", peakIndexInMountainArray([1, 2, 3, 5, 9, 7, 5, 1]))
 console.log("Peak2", peakIndexInMountainArray([3, 5, 9, 1, 0]))
 console.log("Peak3", peakIndexInMountainArray([3, 9, 8, 7, 5, 6, 4, 3, 2, 1, 0 ]))
-
 
 
 //NB

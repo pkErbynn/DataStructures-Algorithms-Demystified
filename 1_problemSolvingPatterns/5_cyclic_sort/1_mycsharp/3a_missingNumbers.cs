@@ -68,4 +68,10 @@ Complexity:
 - Time complexity: O(n)
 - Space complexity: Constant space O(1), ignoring the space required for the output array, the algorithm runs in .
 
- */
+===
+
+Basic Core Algo Concepts: 
+1. Swap numbers to sort them
+2. Then, loop through to get misplaced element/index
+
+*/

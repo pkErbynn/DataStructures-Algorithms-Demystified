@@ -44,7 +44,7 @@ namespace _1_mycsharp
 			{
 				// optimization layer: Guick check if duplicate occure at the first two elements
 				int indexPointer2 = startIndex + 1;	// pointer ahead by one
-				if ( (indexPointer2 < numbers.Length) && (startIndex < numbers.Length) && (numbers[startIndex] == numbers[indexPointer2]) )
+				if ( (numbers[startIndex] == numbers[indexPointer2]) && (indexPointer2 < numbers.Length) && (startIndex < numbers.Length) )
 				{
 					Console.WriteLine("Duplicate Number quick: " + numbers[startIndex]);
 					return numbers[startIndex];
@@ -162,6 +162,7 @@ namespace _1_mycsharp
 		Input: [3, 1, 2, 5, 2]
 		Output: [2, 4]
 		Explanation: '2' is duplicated and '4' is missing.
+		
 		Example 2:
 
 		Input: [3, 1, 2, 3, 6, 4]
@@ -216,3 +217,11 @@ namespace _1_mycsharp
 
 Missing Number: gotten from array INDEX after conplete cyclic sort
 Duplicate Number: gotten from array VALUE after conplete cyclic sort
+
+===
+
+Basic Core Algo: 
+1. Swap numbers to sort
+2. Then, loop through to get misplaced element/index
+
+
