@@ -9,9 +9,7 @@ In this regard, In-place Reversal of a LinkedList pattern describes an efficient
 - `dotnet run [.cs-file]`
 
 
-/*
-
-Tip so far: 
+## Tip so far...: 
 
 YOU THINK... => DO...
 1. unsorted input + occurrence                                      => frequency counter map
@@ -20,5 +18,3 @@ YOU THINK... => DO...
 4. cyclic + linkedlist midpoint                                     => fast n slow (tortoise and hare) 
 5. inputs range from 1/0 to n/(n-1) or small overrange difference   => cyclic sort
 6. Linkedlist head                                                  => inplace linked list 
-
-*/
