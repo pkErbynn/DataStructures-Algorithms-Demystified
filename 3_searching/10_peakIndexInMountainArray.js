@@ -14,7 +14,8 @@ function peakIndexInMountainArray(arr) {
         }
 
         // at the decreasing part.... "==" not an option cus that's the loops breaking point
-        else if(arr[mid] > arr[mid + 1]) {
+        else 
+        {        
             // setting end = mid - 1, might skip the peak value if mid is the peak value
             // this mid may is a possible answer but look at left, by pinning this mid as end, and finding newMid (at line 10) to compare with this if that is greater or not
             end = mid

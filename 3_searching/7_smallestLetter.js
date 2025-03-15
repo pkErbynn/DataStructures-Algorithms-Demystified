@@ -55,6 +55,7 @@ function binarySearch_nextGreatestLetter(letters, target){
         }
     }
 
+    // when the target is last element, then the next greatest letter goes round to the first element
     if(start == letters.length)
         return letters[0];
 

@@ -28,14 +28,17 @@ function agnostic_binary_search(arr, target){
     let start = 0;
     let end = arr.length - 1;
 
+    // I'm assuming arr is ascending by default...means the first element is smaller than the last one
+    // ...false, if the first element turns out to be bigger than the last, ie, descending
     let isAscending = true;
-    if(arr[start] > arr[end])   // let isAscending = arr[0] < arr[0] // in short
+    if(arr[start] > arr[end])
     {
         isAscending = false;
     }
     
     while (start <= end){   // uses the index so doesn't affect the order (when in ascending/descending)
-        let mid = Math.floor( start + (end - start) / 2 );
+
+        let mid = Math.floor( start + (end - start) / 2 );  
 
         if(target === arr[mid]) return mid;
 
@@ -49,6 +52,7 @@ function agnostic_binary_search(arr, target){
         } 
 
         if(!isAscending){
+            // if descending like [9, 8, 7, 6, 5, 4, 3, 2, 1]...bring endPointer closer to the left side because that is where the target will be found since target is bigger
             if(target > arr[mid]){
                 end = mid - 1;
             }

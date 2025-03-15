@@ -70,7 +70,7 @@ function stringSearch3_clean(longStr, shortStr) {
     let counter = 0;
     for(let i = 0; i < longStr.length; i++){
         for(let j = 0; j < shortStr.length; j++){
-            if(longStr[i+j] !== shortStr[j]) break;
+            if(longStr[i + j] !== shortStr[j]) break;
             if(j === shortStr.length - 1) counter++;
         }
     }

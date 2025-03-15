@@ -22,6 +22,7 @@ function binarySearch_ceiling(sortedArr, target){
     let start = 0;
     let end = sortedArr.length - 1;
 
+    // target falls outside of the array
     if(target > sortedArr[end])
     {
         return -1;

@@ -22,7 +22,7 @@ function firstAndLastPosition(nums, target){
     let ans = [-1, -1];
 
     ans[0] = search(nums, target, true);
-    ans[1] = search(nums, target, false);
+    ans[1] = search(nums, target, false);   // false, implies finding the end position
 
     return ans;
 }
@@ -43,13 +43,13 @@ function search(nums, target, isFindingStartIndex) {
             start = mid + 1;    // move towards the end
         }
         else {
-            ans = mid;  // potential ans
+            ans = mid;  // potential ans...cus other ans might exist either left or right
 
-            // if true, helps to move pointer to search at left
+            // if true flag, then move pointer to search at left side
             if(isFindingStartIndex){
                 end = mid - 1;
             }
-            // if false, moves pointer to search towards the right
+            // if false flag, then move pointer to search towards the right
             else {
                 start = mid + 1;
             }

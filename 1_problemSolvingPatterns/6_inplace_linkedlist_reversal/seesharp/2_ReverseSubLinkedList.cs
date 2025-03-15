@@ -31,21 +31,24 @@ namespace seesharp
             Node previousNode = null;
 
             // move current forward to get to the start point, p
-            // nb: test data is int type not string so ".value < start" makes sense, ensuring it's within range
-            while (currentNode != null && currentNode.Value < start)
+            while (currentNode != null)
             {
                 previousNode = currentNode;
                 currentNode = currentNode.Next;
+
+                if(currentNode.Value == start) break;   // at the right node
             }
 
             // alternatively: 
-            // while (currentNode != null)
+            // // nb: test data is int type not string so ".value < start" makes sense, ensuring it's within range
+            // while (currentNode != null && currentNode.Value < start)
             // {
+            //     // move pointers forward to get to the start node and get out of the loop
             //     previousNode = currentNode;
             //     currentNode = currentNode.Next;
-
-            //     if(currentNode.Value == start) break;
             // }
+
+            
             
             // after this while-loop: 
                 // currentNode is exactly on the start point, p (cus last iteration is: currentNode = currentNode.Next)
@@ -55,7 +58,7 @@ namespace seesharp
 
             // store these pointers (nodeBeforeSubList, nodeBeforeSubList.next) for future connection of reversedSubList to the original whole list
             Node nodeBeforeSubList = previousNode;
-            Node endNodeOfSubList = currentNode;    // currentNode/first node of subList will become the end of subList after reversal
+            Node endNodeOfSubList = currentNode;    // currentNode/first node of subList will become the END of subList after reversal, thus 'endNodeOfSubList' name
 
 ////////
 ///CONTINUE FROM HERE
@@ -67,11 +70,11 @@ namespace seesharp
                 currentNode.Next = previousNode;
 
                 // move pointers 1-step forward
-                b
-                 = currentNode;
+                previousNode = currentNode;
                 currentNode = nextNode;
                 start = start + 1;
             }
+            
             // after this while-loop: 
                 // currentNode is at the first node of last (3/3) section
                 // previousNode is now the head/start of the reversed sublist
@@ -82,10 +85,11 @@ namespace seesharp
                 nodeBeforeSubList.Next = previousNode;  // previousNode is now the head of the reversedSubList, connected to by the nodeBeforeReversedSublist
             }
 
-            // if happens nodeBeforeSubList is null, means start subList range started from the head of main linkedList
-            // further means, didn't enter first while loop, thus previousNode will be null
+            // if happens that  nodeBeforeSubList is null, means start subList range start equal the head of orginal linkedList
+                // further means, linkedlist didn't enter first while loop, thus previousNode will be null
             // then head has to start from prevNode, which is the startNode of the reversedSubList
-            if (nodeBeforeSubList == null)
+            
+            if (nodeBeforeSubList == null)  // not currentNode because current node pointer will always point outside the listlist. With this problem, it will point beyond the 'end'
             {
                 head = previousNode;
             }
