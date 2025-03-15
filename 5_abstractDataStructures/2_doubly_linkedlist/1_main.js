@@ -62,14 +62,17 @@ class DoublyLinkedList {
     // remove node from the start
     shift(){
         if(!this.head) return null;
-        
+
+        let headToDelete = this.head;
+
+        // one node
         if(this.length === 1) {
             this.head = null;
             this.tail = null;
-            return this.head;
+            return headToDelete;
         }
 
-        let headToDelete = this.head;
+        // multiple nodes
         let nextHead = headToDelete.next;
         nextHead.prev = null;
         this.head = nextHead; // mark head
