@@ -41,8 +41,7 @@ class BST {
                     currentNode.left = newNode;
                     return this;
                 }
-
-                // if incomming node is not connected to a leaf node, then reset root/parent node to traverse further downwards
+                // if currentNode is NOT a leaf node, then reset root/parent node to traverse further downwards
                 currentNode = currentNode.left;
             }
             
@@ -154,7 +153,7 @@ class BST {
 
             visitedResult.push(removedHeadNode.value);  // explore/process element from queue...when element leaves the queue, it's considered visited (likewise, when leaves a stack, it's considered visited)
 
-            // once removed and put to visitedResult, push their leg children nodes to the queue
+            // once removed and put to visitedResult, push parent's leg children nodes to the end of the queue...this allows all parents to come out visited before their chidlren provided they have one
             if(removedHeadNode.left) 
                 queue.push(removedHeadNode.left);
             if(removedHeadNode.right) 

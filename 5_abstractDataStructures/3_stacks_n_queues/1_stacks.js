@@ -41,9 +41,9 @@ arr.shift();
 
 // ======= Array Implementation ====
 
-class CustomStack {
-    data
-    pointer = -1
+class CustomStackArr {
+    data;
+    pointer = -1;   // points to nothing by default
     #DEFAULT_SIZE = 5;
 
     // Js doesn't support multiple ctor
@@ -108,22 +108,22 @@ class CustomStack {
     }
 }
 
-// let customStack = new CustomStack(15)
-let customStack = new CustomStack()
-// customStack.push(10);
-// customStack.push(20);
-// customStack.push(30);
-// customStack.push(40);
-// customStack.push(50);
-// customStack.push(60);
-// customStack.display()
-// customStack.pop();
-// customStack.display()
+// let customStackArr = new CustomStackArr(15)
+let customStackArr = new CustomStackArr()
+// customStackArr.push(10);
+// customStackArr.push(20);
+// customStackArr.push(30);
+// customStackArr.push(40);
+// customStackArr.push(50);
+// customStackArr.push(60);
+// customStackArr.display()
+// customStackArr.pop();
+// customStackArr.display()
 
 
 // ========== Dynamic Stack =========
 
-class DynamicCustomStack extends CustomStack {
+class DynamicCustomStackArr extends CustomStackArr {
     constructor(size = null) {
         super(size)
     }
@@ -150,14 +150,14 @@ class DynamicCustomStack extends CustomStack {
     }
 }
 
-let dynamicCustomStack = new DynamicCustomStack();
-dynamicCustomStack.push(10);
-dynamicCustomStack.push(20);
-dynamicCustomStack.push(30);
-dynamicCustomStack.push(40);
-dynamicCustomStack.push(50);
-dynamicCustomStack.push(70);
-dynamicCustomStack.push(80);
-dynamicCustomStack.push(90);
-dynamicCustomStack.push(100);
-dynamicCustomStack.display()
+let dynamicCustomStackArr = new DynamicCustomStackArr();
+dynamicCustomStackArr.push(10);
+dynamicCustomStackArr.push(20);
+dynamicCustomStackArr.push(30);
+dynamicCustomStackArr.push(40);
+dynamicCustomStackArr.push(50);
+dynamicCustomStackArr.push(70);
+dynamicCustomStackArr.push(80);
+dynamicCustomStackArr.push(90);
+dynamicCustomStackArr.push(100);
+dynamicCustomStackArr.display()

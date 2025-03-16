@@ -28,6 +28,61 @@ Actual Rules:
 4. All operators engulved in a "()" should be poped from the stack and appended to the list
 */
 
+
+// == Copied from previous ===
+class LLNode {
+    value;
+    next;
+
+    constructor(value) {
+        this.value = value;
+        this.next = null;                                                                                                                                                                                                       
+    }
+}
+
+class StackLL {
+    top;
+    size
+
+    constructor(){
+        this.top = null
+        this.size = 0;
+    }
+    push(value){
+        const newNode = new LLNode(value);
+        if(this.top) {
+            newNode.next = this.top;
+        }
+        this.top = newNode; // marked as new top
+        this.size++;
+    }
+
+    pop(){
+        if(this.isEmpty()){
+            throw new Error("Stack is empty")
+        }
+        const poppedValue = this.top.value;
+        this.top = this.top.next;   // mark new top
+        this.size--;
+        return poppedValue;
+    }
+
+    peek(){
+        return this.top ? this.top.value : null;
+    }
+
+    isEmpty() {
+        return this.top == null || this.size == 0;
+    }
+
+    getSize(){
+        return this.size;
+    }
+}
+// ==== End of copy =====
+
+
+
 function isANumber(char) {
     return !isNaN(Number(char));
 }
@@ -40,7 +95,8 @@ function infixToPostfix(inputExpr){
         '/': 2
     }
     const postfixResult = []
-    const operatorsStack = new Stack();
+
+    const operatorsStack = new StackLL();
 
     for (const char of inputExpr.split(' ')) {
         if (isANumber(char))
@@ -52,6 +108,7 @@ function infixToPostfix(inputExpr){
 
         // When using the "in" operator, if the property exists anywhere in the object's prototype chain/parent, it will return true, even if the property is not directly on the child object itself
         else if (orderOfPrecedence.hasOwnProperty(char)){
+
             // continually be removing existing high priority operator from stack
             while(!operatorsStack.isEmpty() && 
                 operatorsStack.peek() !== "(" &&
@@ -65,6 +122,7 @@ function infixToPostfix(inputExpr){
         }
 
         else if (char == ")"){
+
             // Gather element between ()
             while (!operatorsStack.isEmpty() && 
                 operatorsStack.peek() !== "("

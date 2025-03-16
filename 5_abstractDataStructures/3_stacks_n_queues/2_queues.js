@@ -26,7 +26,7 @@
 
 // Here, items are added from the right side but removed from the left side
 
-class CustomQueue {
+class CustomQueueArr {
     data;
     pointer = -1;   // can also start from index 0 as well...pointer is an END pointer tracking last element position
     DEFAULTSIZE = 5;
@@ -61,7 +61,7 @@ class CustomQueue {
             this.data[index - 1] = this.data[index]
         }
 
-        this.pointer --;
+        this.pointer--;
 
         return removedItem;
     }
@@ -85,32 +85,43 @@ class CustomQueue {
 }
 
 
-let customQueue = new CustomQueue();
-customQueue.insert(10)
-customQueue.insert(20)
-customQueue.insert(30)
-customQueue.display();
-customQueue.remove();
-customQueue.display();
-customQueue.startItem()
+let customQueueArr = new CustomQueueArr();
+customQueueArr.insert(10)
+customQueueArr.insert(20)
+customQueueArr.insert(30)
+customQueueArr.display();
+customQueueArr.remove();
+customQueueArr.display();
+customQueueArr.startItem()
 
 
-//// ============= 2. Using linkedlist-like DS
-// 2 options:
-// - 1. adding to the begining(unshift) and removing from end(pop)
-//       - unshift() will be efficient but pop() will be very slow because it nodes traversal
-// - 2. adding to the end(push) and removing from begining(shift)
-//       - push() and shift() will BOTH be efficient
-//       - thus: CHOOSING OPTION 2 for Implementation
+//// =========== 2. Using linkedlist-like DS
+/*
 
-class Node {
+2 options:
+- 1. adding to the begining(unshift) and removing from end(pop)
+      - unshift() will be efficient but pop() will be very slow because it nodes traversal
+- 2. adding to the end(push) and removing from begining(shift)
+      - push() and shift() will BOTH be efficient
+      - thus: CHOOSING OPTION 2 for Implementation
+
+Image:
+    10(First) → 20 → 10 → 30(last) → null
+
+    - Elements are added at the last/rare
+    - Elements are removed at the first/front 
+    - NB: direction of arrows are in opposite direction of how elements are added
+
+*/
+
+class QueueNode {
     constructor(value){
         this.value = value;
         this.next = null;
     }
 }
 
-class Queue {
+class CustomQueueLL {
     constructor(){
         this.first = null; // equi to head in linkedlist
         this.last = null; // equi to tail in linkedlist
@@ -119,7 +130,7 @@ class Queue {
 
     // adding to the end (push)
     enqueue(value){
-        let newNode = new Node(value);
+        let newNode = new QueueNode(value);
 
         // when list is empty/zero
         if(!this.first || this.length === 0){
@@ -129,7 +140,7 @@ class Queue {
             return this.length;
         }
 
-        // when not zero
+        // when list contains one/more nodes
         this.last.next = newNode;
         this.last = newNode;
         this.length += 1;
@@ -163,7 +174,7 @@ class Queue {
     }
 }
 
-let myqu = new Queue();
+let myqu = new CustomQueueLL();
 
 
 //// Time Complexity

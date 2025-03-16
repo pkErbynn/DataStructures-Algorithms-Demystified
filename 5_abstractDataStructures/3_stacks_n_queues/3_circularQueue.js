@@ -28,7 +28,7 @@ class CircularQueue {
 
         this.data[this.endPointer] = item;
         this.endPointer++;  // moved to next slot
-        this.endPointer = this.endPointer % this.data.length;   // brings pointer to front of array when endPointer goes out of boundary
+        this.endPointer = this.endPointer % this.data.length;   // brings pointer to front of array when endPointer goes out of boundary...otherwise, still remains as the value it was increased to in L#30
         this.queueTotalItems++;   // counter for number of items in the queue
 
         return true;
@@ -41,7 +41,7 @@ class CircularQueue {
         }
 
         let removedItem = this.data[this.startPointer];
-        this.startPointer++;
+        this.startPointer++;    // move start pointer forward since prev start pointer will be removed
 
         this.startPointer = this.startPointer % this.data.length;   // keep startPointer within the data array when it goes out-of-boundary to wrap around
         this.queueTotalItems --;

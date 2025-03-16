@@ -12,6 +12,11 @@ function peakIndexInMountainArray2(arr) {
         // if both points to same index/value, means that's the peak meak
         if(start == end) return start
         
+        // if mid is the peak...(p-1), p, (p-1)...3, 4, 3
+        if(arr[mid + 1] < arr[mid]  &&  arr[mid] > arr[mid - 1]){
+            return mid
+        }
+
         // at the increasing part, move start pointer forward to the next bigger value
         if(arr[mid + 1] > arr[mid]){
             start = mid + 1
@@ -31,6 +36,10 @@ function peakIndexInMountainArray2(arr) {
 console.log("Peak11", peakIndexInMountainArray2([1, 2, 3, 5, 9, 7, 5, 1]))
 console.log("Peak22", peakIndexInMountainArray2([3, 5, 9, 1, 0]))
 console.log("Peak33", peakIndexInMountainArray2([3, 9, 8, 7, 5, 6, 4, 3, 2, 1, 0 ]))
+console.log("zzzzzz:", peakIndexInMountainArray2([6, 7, 0, 1, 2, 4]));
+console.log("Pivot1:", peakIndexInMountainArray2([4, 5, 6, 7, 0, 1, 2]));
+
+
 
 
 /////// Alternative

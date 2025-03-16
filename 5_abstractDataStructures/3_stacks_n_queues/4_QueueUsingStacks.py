@@ -1,7 +1,9 @@
+# // TODO: Implement in js
+
 
 ####### implement queue with stack
 
-# 1
+# 1 ***
 class QueueUsingStacks:
     def __init__(self):
         self.stack1 = Stack()  # Stack for enqueue operations

@@ -1,5 +1,6 @@
 /*
 
+// Amazon'ed
 Given a mountain array mountainArr, return the MINIMUM index such that mountainValue == target. If such an index does not exist, return -1.
 
 Example 1:
@@ -35,9 +36,16 @@ function findPeakIndex(inputArray){
     while (startPointer < endPointer) {
         let midPointer = Math.floor( startPointer + ( (endPointer - startPointer) / 2 ) )
 
+        // if mid is the pivot...(p-1), p, (p-1)...3, 4, 3
+        if(arr[midPointer + 1] < arr[midPointer]  &&  arr[midPointer] > arr[midPointer - 1]){
+            return mid
+        }
+        
+        // increasing
         if(inputArray[midPointer + 1] > inputArray[midPointer]){
             startPointer = midPointer + 1
         }
+        // decreasing
         else if(inputArray[midPointer + 1] < inputArray[midPointer]) {
             endPointer = midPointer
         }
