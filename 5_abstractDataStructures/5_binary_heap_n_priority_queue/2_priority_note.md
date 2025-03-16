@@ -22,7 +22,7 @@
 - using heap
     - better and efficient approach
     - provides order as to what element to searve next
-    - instead of using pure premitive values as node in heap, a class node will be used this time around **
+    - instead of using pure premitive values as node in heap, a node object will be used this time around **
 
 
 #### Confussion

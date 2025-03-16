@@ -145,7 +145,7 @@ class BST {
         let visitedResult = [];
 
         let currentNode = this.root;
-        queue.push(currentNode);    // push to queue's back...initialize with initial root value
+        queue.push(currentNode);    // push to queue's back...initialize with initial root value...all nodes needs to pass through the queue pipeline, only when can be considered as visited
 
         // while there's something in the queue for processing...
         while(queue.length > 0){

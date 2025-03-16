@@ -78,7 +78,7 @@ class PriorityQueue {
                 // re-assign old parent becomes new child, new parent moved up
                 newChildNodeIndex = parentNodeIndex;    // a
 
-                parentNodeIndex = Math.floor((newChildNodeIndex-1)/2);
+                parentNodeIndex = Math.floor((newChildNodeIndex - 1) / 2);
                 parentNode = this.values[parentNodeIndex];
             } else{
                 break;
