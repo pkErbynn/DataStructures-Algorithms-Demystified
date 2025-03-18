@@ -112,8 +112,7 @@ class PriorityQueue {
 
             // Determine the child with maximum value (ie, min priority)
             let maxChildPriority = Math.min(leftChildNode.priority, rightChildNode.priority);
-            let maxChildPriorityIndex = maxChildPriority == leftChildNode.priority ? 
-                leftChildIndex : rightChildIndex;
+            let maxChildPriorityIndex = maxChildPriority == leftChildNode.priority ? leftChildIndex : rightChildIndex;
             let maxChildNode = this.values[maxChildPriorityIndex];
 
             if(rootNode.priority > maxChildNode.priority) { // => small priority value means high priority, therefore swap

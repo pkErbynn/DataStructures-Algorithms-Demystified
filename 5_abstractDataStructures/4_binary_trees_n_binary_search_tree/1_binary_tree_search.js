@@ -173,7 +173,7 @@ class BST {
         let visitedResult = [];
 
         let currentNode = this.root;
-        stack.push(currentNode);    // stack initialised with root
+        stack.push(currentNode);    // stack initialised with root...node cano be considered visited only when it passes through the stack
 
         // while there's something in the stack for processing...
         while(stack.length){    // => (stack.length > 0) => while stack has an element...
@@ -182,6 +182,7 @@ class BST {
             // process removed element n push to stack
             visitedResult.push(removedNode.value);
 
+            ///////// PreOrder pattern: parentNode-leftNode-RightNode
             // once removed and put to visitedResult, push their leg children nodes to the stack
             // NB: took right first, left second because since it's LIFO, left node will be processed before the right, 
             // that's why the right is put on the stack first
@@ -190,7 +191,7 @@ class BST {
             if(removedNode.left)
                 stack.push(removedNode.left);
 
-            ///////// in-order
+            ///////// in-order: leftNode-parentNode-RightNode
             // let removedNode = stack.pop();
             //
             // if(removedNode.right)
@@ -199,7 +200,7 @@ class BST {
             // if(removedNode.left)
             //     stack.push(removedNode.left);
 
-            ///////// post-order
+            ///////// post-order: leftNode-RightNode-parentNode
             // let removedNode = stack.pop();
             // 
             // if(removedNode.right)

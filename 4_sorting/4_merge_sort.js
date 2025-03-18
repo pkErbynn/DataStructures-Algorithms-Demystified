@@ -116,5 +116,5 @@ So the total time complexity = the divide steps * merge steps
 
 This makes Merge Sort a very efficient algorithm for sorting large arrays
 
-Space complecity of 0(n)
+Space complecity of 0(n) because of the storage for the result
 */
