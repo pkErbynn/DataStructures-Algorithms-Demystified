@@ -44,7 +44,7 @@ function pivotPartitionHelper(arr, startIndxPointer = 0, endIndxPointer = arr.le
             // move pivot pointer forward to place the smaller element there through swap...moved forward so that current pivot pointer's value doesn't get overridden by the smaller element
             pivotIndexForSwap++;    // ...eg: [ 3(pivot), 2(i-index)(pivot-index), 6, -3, 0 ]...(pivot-index) has moved foward
 
-            // optimized
+            // optimized...when two diff pointers wants to swap same value at same position
             if(pivotIndexForSwap === i) continue;   // ...eg: [ 3(pivot), 2(i-index)(pivot-index), 6, -3, 0 ]...no swap since all on same index position, other will swap on next line operation
 
             // now, swap foward-moved-pivot pointer w/ current smaller element
