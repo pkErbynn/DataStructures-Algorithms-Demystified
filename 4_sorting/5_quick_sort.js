@@ -61,6 +61,8 @@ function pivotPartitionHelper(arr, startIndxPointer = 0, endIndxPointer = arr.le
 
 
 function quickSort(arr, start = 0, end = arr.length){
+    
+    // base case required...since quick sort is recursive
     if(start >= end) {
         return arr;
     }
