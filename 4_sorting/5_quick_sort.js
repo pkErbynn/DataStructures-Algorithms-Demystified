@@ -11,7 +11,7 @@ QuickSort
         c. Remember that at this point, the order of the element in each half doesn't matter. What matters is that left < pivot > right half.
     3. Recursively repeating step (1) on each half of the sub-array until sub-array has only one element or empty...ie, all elements becomes sorted, in their little pieces of subarrays [] [] []
 
-- This is done IN-PLACE...ie, no extra memory is used
+- This is done IN-PLACE...ie, no extra memory is required
 
 - Partition the array arount the Pivot: Algorithm @ low level
     1. Choose the first element as the pivot
@@ -29,12 +29,13 @@ Nb: Confusing but easy so interviwers like it...they like confusing algo :)
 */
 
 // Example: Arr = [3, 2, 6, -3, 0]
-function pivotPartitionHelper(arr, startIndxPointer = 0, endIndxPointer = arr.length){
+
+function pivotPartitionHelper(arr, startIndxPointer = 0, endIndxPointer = arr.length - 1){
     let pivotElement = arr[startIndxPointer];   // pivot element as first element...eg: [3(pivot), 2, 6, -3, 0]
     let pivotIndexForSwap = startIndxPointer;   // this keeps track of the position where the pivot element should end up / placed through swapping
 
     // loop through the rest of array elements till the end, thus i = start + 1
-    for(let i = startIndxPointer + 1; i < endIndxPointer; i++){     //...eg: [ 3(pivot), 2(i-index), 6, -3, 0 ]
+    for(let i = startIndxPointer + 1; i <= endIndxPointer; i++){     //...eg: [ 3(pivot), 2(i-index), 6, -3, 0 ]
 
         // compare current element with the pivot element
         // if current element is less than the pivot element, it should fall at far left side
@@ -60,34 +61,35 @@ function pivotPartitionHelper(arr, startIndxPointer = 0, endIndxPointer = arr.le
 }
 
 
-function quickSort(arr, start = 0, end = arr.length){
-    
+function quickSort(arr, leftPointer = 0, rightPointer = arr.length - 1){
+
     // base case required...since quick sort is recursive
-    if(start >= end) {
+    if(leftPointer >= rightPointer) {
         return arr;
     }
 
-    let pivotIndex = pivotPartitionHelper(arr, start, end);
+    let pivotIndexPointer = pivotPartitionHelper(arr, leftPointer, rightPointer);  // [left....pivot-1, pivot, pivot+1...right]...then quickSort applied on each side of the pivot, excluding the pivot
 
     // left
-    quickSort(arr, start, pivotIndex);
+    quickSort(arr, leftPointer, pivotIndexPointer - 1);
     // right
-    quickSort(arr, pivotIndex + 1, end);
+    quickSort(arr, pivotIndexPointer + 1, rightPointer);
     
     return arr;
 }
 
-console.log("quickSort1", quickSort([3, 2, 6, -3, 0]));
-console.log("quickSort2", quickSort([2, 1, 5, 0, -1, 10, -1, -120, 3, 100, -100, 4]));
+console.log("quickSort1", quickSort([4, 6, 9, 1, 2, 5, 3]));
+console.log("quickSort3", quickSort([3, 2, 6, -3, 0]));
+console.log("quickSort3", quickSort([2, 1, 5, 0, 10, -1, 3, -100, 4]));
 
 
 
 // NB:
 // Can't use (arr.length <= 1) as base condition since we're not creating new array from the original
 // or reducing the size of the original array
-// since same array is being modified, condition can be made w/ the pointers (start >= end)
+// since same array is being modified, condition can be made w/ the pointers (leftPointer >= rightPointer)
 
-// if L27 param is (pivotIndex-1) then (i <= end) in L5
+// if L27 param is (pivotIndex-1) then (i <= rightPointer) in L5
 
 
 

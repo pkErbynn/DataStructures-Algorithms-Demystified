@@ -36,8 +36,6 @@ function peakIndexInMountainArray2(arr) {
 console.log("Peak11", peakIndexInMountainArray2([1, 2, 3, 5, 9, 7, 5, 1]))
 console.log("Peak22", peakIndexInMountainArray2([3, 5, 9, 1, 0]))
 console.log("Peak33", peakIndexInMountainArray2([3, 9, 8, 7, 5, 6, 4, 3, 2, 1, 0 ]))
-console.log("zzzzzz:", peakIndexInMountainArray2([6, 7, 0, 1, 2, 4]));
-console.log("Pivot1:", peakIndexInMountainArray2([4, 5, 6, 7, 0, 1, 2]));
 
 
 

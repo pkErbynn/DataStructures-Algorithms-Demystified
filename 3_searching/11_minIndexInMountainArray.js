@@ -95,3 +95,22 @@ function agnosticBinarySearch(array, target, startPointer, endPointer) {    // a
 console.log("find1:", findMinimumTargetIndexInMountainArray([1, 2, 3, 4, 5, 3, 1], 3));
 console.log("find2:", findMinimumTargetIndexInMountainArray([0, 1, 2, 4, 2, 1], 3));
 console.log("find2:", findMinimumTargetIndexInMountainArray([0, 1, 2, 4, 3, 2, 1], 3));
+
+
+/*
+
+Peak Index in a Mountain Array
+•	Key Idea: The array has one peak where values increase and then decrease.
+•	    How increasing/decreasing part is detected: The check is centered around the mid index itself.
+•	
+    Why?
+•	Since we know the array is a mountain array (it first increases then decreases), we can simply compare arr[mid] with arr[mid-1] and arr[mid+1] to determine whether:
+•	    - We are at the peak (arr[mid] > arr[mid-1] and arr[mid] > arr[mid+1]).
+•	    - We are in the increasing part (arr[mid] < arr[mid+1]), meaning the peak is ahead, so we move start = mid + 1.
+•	    - We are in the decreasing part (arr[mid] > arr[mid+1]), meaning we might have found the peak or it’s to the left, so we move end = mid.
+•	
+    Why not use start as a reference?
+•	In a mountain array, the start value does not help determine the trend at the current mid position.
+•	The local trend (whether increasing or decreasing) depends only on mid, mid-1, and mid+1.
+
+*/
