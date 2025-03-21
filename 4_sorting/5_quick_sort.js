@@ -9,7 +9,7 @@ QuickSort
         a. Left half containing elements LESS THAN the pivot
         b. Right half containing elements GREATER THAN or equal to the pivot
         c. Remember that at this point, the order of the element in each half doesn't matter. What matters is that left < pivot > right half.
-    3. Recursively repeating step (1) on each half of the sub-array until sub-array has only one element or empty...ie, all elements becomes sorted, in their little pieces of subarrays [] [] []
+    3. Recursively repeat step (1) on each half of the sub-array until sub-array has only one element or empty...ie, all elements becomes sorted, in their little pieces of subarrays [] [] []
 
 - This is done IN-PLACE...ie, no extra memory is required
 
@@ -27,6 +27,7 @@ QuickSort
 Nb: Confusing but easy so interviwers like it...they like confusing algo :)
 
 */
+
 
 // Example: Arr = [3, 2, 6, -3, 0]
 
@@ -65,38 +66,76 @@ function quickSort(arr, leftPointer = 0, rightPointer = arr.length - 1){
 
     // base case required...since quick sort is recursive
     if(leftPointer >= rightPointer) {
-        return arr;
+        return;
     }
 
-    let pivotIndexPointer = pivotPartitionHelper(arr, leftPointer, rightPointer);  // [left....pivot-1, pivot, pivot+1...right]...then quickSort applied on each side of the pivot, excluding the pivot
+    let pivotIndexPointer = pivotPartitionHelper(arr, leftPointer, rightPointer);
 
-    // left
+    // Format: [left....pivot-1, pivot, pivot+1...right]...then apply quickSort to each side of the pivot, excluding the pivot itself
+    // left side = left to pivot-1
     quickSort(arr, leftPointer, pivotIndexPointer - 1);
-    // right
+    // right = pivot+1 to right
     quickSort(arr, pivotIndexPointer + 1, rightPointer);
     
     return arr;
 }
 
 console.log("quickSort1", quickSort([4, 6, 9, 1, 2, 5, 3]));
-console.log("quickSort3", quickSort([3, 2, 6, -3, 0]));
+console.log("quickSort3", quickSort([3, 2, 6, -3, 0, 2]));
 console.log("quickSort3", quickSort([2, 1, 5, 0, 10, -1, 3, -100, 4]));
 
 
+/*
 
-// NB:
-// Can't use (arr.length <= 1) as base condition since we're not creating new array from the original
-// or reducing the size of the original array
-// since same array is being modified, condition can be made w/ the pointers (leftPointer >= rightPointer)
+============ IMPORTANT NOTES... ==============
 
-// if L27 param is (pivotIndex-1) then (i <= rightPointer) in L5
+=== Base Case...
+- Ain't using empty/one-array-element (arr.length <= 1) as base condition because:
+...1. it's the same original array input used throughout and its length DOESN'T change 
+...2. new array is NOT created from the original while spliting unlike the Merge Sort
+...3. the elements are modified in-place, ie. the size of the original array stay the same
+
+- Thus, base condition has to be w/ the pointers movement, ie (leftPointer >= rightPointer)
+...implicitly meaning, the pointers are on the same element
+...explicitly meaning, that element is sorted
 
 
+=== Time Complexity...
+- Can depend on how pivot is selected
+
+- Worse Case => n^2
+...occurs when array is ALREADY or NEARLY SORTED 
+...during the partition made wrt to the pivot,
+...one half will be empty while the other half will be full n-1 elements
+...meaning, the PIVOT will be compared to all the other element except itself
+...ie, PIVOT compared to (N-1)...ie, 1 pivot element compared to n-1 elements, ie, 1 * (n-1)
+...also, by default/intutively, the pivot also get transitioned or moved each time to visit each element which is 'n'
+...so it becomes n(n) = n^2
+...FIX: To avoid this, it is often recommended to use a randomized pivot selection withing the array
+```
+    const randomPivotIndex = Math.floor(Math.random() * arr.length)
+    const pivotValue = arr[randomPivotIndex]
+```
+
+- Best Case, on the flipside, = (n log n) because
+...during partition, the PIVOT is being compared to only HALF of the array element, ie, 1 * logn
+...where the HALVING means 'divide and conquer', thus log n
+...ie, n * log n
+...so it becomes (n log n)
+
+- Average case = O(n log n), ==> for mixed data
+...which makes it an efficient sorting algorithm for large datasets.
+
+
+=== Space Complexity 
+...is o(log n) that makes it memory efficient than Merge sort which it o(n)
+
+*/
 
 
 ////////////// simplified - uses extra space ///////////////
 
-function quickieSort(arr){
+function quickieSortExtraMemory(arr){
     if (arr.length <= 1) {
         return arr;
     }
@@ -114,55 +153,9 @@ function quickieSort(arr){
         }
     }
 
-    return [...quickieSort(left), pivotEle, ...quickieSort(right)];
+    return [...quickieSortExtraMemory(left), pivotEle, ...quickieSortExtraMemory(right)];
 }
 
-console.log("x2", quickieSort([2,1,5,0, -1, 10, -1, -120, 3, 100, -100, 4]));
-console.log("y2", quickieSort([3,2,6,-3,0]));
+console.log("quickieSortExtraMemory1", quickieSortExtraMemory([3, 2, 6, -3, 0]));
 
 
-
-
-/*
-NB:
-
-=== Time Complexity
-- Can depend on how pivot is selected
-
-Worse-case 
-= O(n^2) ==> ALREADY sorted or NEARLY sorted, 
-cus the pivot element will always be the largest or smallest element in the array and the partitioning will result in subarrays of size n-1 and 1.
-eg. [2,3,4,5,6]
-there will not be any working partitioning, left element n right element, thus, not a n('log n') but n(n-1) = n^2
-To avoid this, it is often recommended to use a randomized pivot selection method
-```const pivot = arr[Math.floor(Math.random() * arr.length)];
-         pivote = arr[randomIndex]
-```
-
-Worse Case = n^2 because
-...on partially sorted array, when the partition is made wrt to the pivot,
-...one half will be empty while the other half will be full element
-...meaning, the PIVOT will be compared to all the other element except itself
-...ie, PIVOT compared to (N-1)...ie, 1 pivot element compared to n-1 elements, ie, 1 * (n-1)
-...also, by default/intutively, the pivot also get transitioned or moved each time to visit each element which is 'n'
-...so it becomes n(n) = n^2
-
-Best Case, on the flipside, = (n log n) because
-...during partition, the PIVOT is being compared to only HALF of the array element, ie, 1 * logn
-...where the HALVING means 'divide and conquer', thus log n
-...ie, n * log n
-...so it becomes (n log n)
-
-Average case = O(n log n), ==> for mixed data
-...which makes it an efficient sorting algorithm for large datasets.
-
-
-=== Space Complexity 
-    - o(log n) that makes it memory efficient than Merge sort which it o(n)
-
-
-
-----------------------
-VS Merge Sort
-- 
-*/
