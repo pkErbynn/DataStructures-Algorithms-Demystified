@@ -1,7 +1,9 @@
 /*
-all prev algos(bubble, selection, insertion sort) don't scale up
+All prev algos(bubble, selection, insertion sort) don't scale up
 they only works efficient on small data
 However, merge sort is much efficient even on large dataset 
+
+At High Level...
 
 Merge Sort consists of 
 - splitting
@@ -9,6 +11,21 @@ Merge Sort consists of
 
 Works by decomposing array into smaller arrays of 0 or 1 element 
 ...and then building newly sorted array
+
+-----
+
+At Low Level...
+
+Yes, MergeSort uses recursion.
+
+MergeSort is a classic divide-and-conquer algorithm. It works by:
+	1.	Dividing the array into two halves.
+	2.	Recursively sorting each half.
+	3.	Merging the two sorted halves into a single sorted array.
+
+Each recursive call breaks the array into smaller parts until you reach single-element arrays (which are trivially sorted), 
+...then merges them back together in sorted order.
+
 */
 
 //////////// Implementation
