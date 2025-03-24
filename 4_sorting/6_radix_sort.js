@@ -1,8 +1,25 @@
-// Radix Sort
-// mostly asked in interviews
-// It's not a Comparison sorting algorigthm
+/*
 
-const digitCount = (num) => (Math.abs(num) + "").length;
+Radix Sort
+- Mostly asked in interviews
+- It's not a Comparison sorting algorigthm
+- Efficient than comparison sort algos - Pivot n Merge Sort 
+
+
+How 
+1. Get the max number of digits in the number array
+    - Max([3243, 545, 2]) = 4
+    - This number determines the number iterations the algo loop will run
+2. Get a function that returns the digit in a number at a specified place value/index from the back 
+    - getDigit(12345, 0) = 5...getDigit(12345, 1) = 4
+
+*/
+
+// const digitCount = (num) => (Math.abs(num) + "").length; // Edge case when num = 0007
+const digitCount = function(num) {
+    if(num === 0) return 1;
+    return Math.floor(Math.log10(Math.abs(num))) + 1;
+}
 
 const maxDigitCount = function(nums){
     let maxDigit = 0;
