@@ -84,7 +84,6 @@ console.log("quickSort1", quickSort([4, 6, 9, 1, 2, 5, 3]));
 console.log("quickSort3", quickSort([3, 2, 6, -3, 0, 2]));
 console.log("quickSort3", quickSort([2, 1, 5, 0, 10, -1, 3, -100, 4]));
 
-
 /*
 
 ============ IMPORTANT NOTES... ==============
@@ -101,24 +100,10 @@ console.log("quickSort3", quickSort([2, 1, 5, 0, 10, -1, 3, -100, 4]));
 
 
 === Time Complexity...
-- Can depend on how pivot is selected
+- Can depend on how/where the pivot is selected
 
-- Worse Case => n^2
-...occurs when array is ALREADY or NEARLY SORTED 
-...during the partition made wrt to the pivot,
-...one half will be empty while the other half will be full n-1 elements
-...meaning, the PIVOT will be compared to all the other element except itself
-...ie, PIVOT compared to (N-1)...ie, 1 pivot element compared to n-1 elements, ie, 1 * (n-1)
-...also, by default/intutively, the pivot also get transitioned or moved each time to visit each element which is 'n'
-...so it becomes n(n) = n^2
-...FIX: To avoid this, it is often recommended to use a randomized pivot selection withing the array
-```
-    const randomPivotIndex = Math.floor(Math.random() * arr.length)
-    const pivotValue = arr[randomPivotIndex]
-```
-
-- Best Case, on the flipside, = (n log n) because
-...during partition, the PIVOT is being compared to only HALF of the array element, ie, 1 * logn
+- Best Case = (n log n) because
+...during partition, the PIVOT is being compared to only HALF of the array element, ie, n * logn
 ...where the HALVING means 'divide and conquer', thus log n
 ...ie, n * log n
 ...so it becomes (n log n)
@@ -126,6 +111,26 @@ console.log("quickSort3", quickSort([2, 1, 5, 0, 10, -1, 3, -100, 4]));
 - Average case = O(n log n), ==> for mixed data
 ...which makes it an efficient sorting algorithm for large datasets.
 
+- Worse Case => n^2
+...occurs when array is ALREADY or NEARLY SORTED 
+...during the partition made wrt to the pivot,
+...one half will be empty while the other half will be full n-1 elements
+...meaning, the PIVOT will be compared to all the other element except itself
+...ie, PIVOT compared to (N-1)...ie, 1 pivot element compared to n-1 elements
+...since it's not VERY UNBALANCED, the pivot splits the array into [1 element] + [n - 1 elements → O(n²)
+...also, by default/intutively, the pivot also get transitioned or moved each time to visit each element which is 'n'
+...we partition n elements and do n-1 comparisons to separate them, so it becomes n*(n) = n^2
+...FIX: To avoid this, it is often recommended to use a randomized pivot selection withing the array
+```
+    const randomPivotIndex = Math.floor(Math.random() * arr.length)
+    const pivotValue = arr[randomPivotIndex]
+```
+
+- In sum...
+In Quick Sort’s average case, the time complexity is O(n log n) because... 
+...the array is typically divided into two roughly equal halves (log n levels of recursion), and at each level, all n elements are processed during partitioning. 
+...so, the total work done is the number of levels (log n) multiplied by the work per level (n), resulting in O(n log n). 
+...This assumes a good pivot choice that leads to balanced splits, unlike the worst case where unbalanced splits cause O(n²) behavior.
 
 === Space Complexity 
 ...is o(log n) that makes it memory efficient than Merge sort which it o(n)
