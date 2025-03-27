@@ -101,35 +101,21 @@ function infixToPostfix(inputExpr){
     const operatorsStack = new StackLL();
 
     for (const char of inputExpr.split(' ')) {
+        // when char is a number...push to result list easily 
         if (isANumber(char))
             postfixResult.push(char)
 
+        // when char is an open ( operator...push to operator stack
         else if (char == "("){
             operatorsStack.push(char)
         }
 
-        // When character is operator 
-        // When using the "in" operator, if the property exists anywhere in the object's prototype chain/parent, it will return true, even if the property is not directly on the child object itself
-        else if (orderOfPrecedence.hasOwnProperty(char)){
-
-            // continually be removing existing high priority operator from stack
-            while(!operatorsStack.isEmpty() && 
-                operatorsStack.peek() !== "(" &&
-                orderOfPrecedence[operatorsStack.peek()] >= orderOfPrecedence[char]
-            ){
-                let higherPriorityOperator = operatorsStack.pop()
-                postfixResult.push(higherPriorityOperator)
-            }
-            // add to stack if incomming operator is higher
-            operatorsStack.push(char)
-        }
-
+        // when char is a close ) operator...
         else if (char == ")"){
 
             // Gather element between ()
             while (!operatorsStack.isEmpty() && 
-                operatorsStack.peek() !== "("
-            ){
+                operatorsStack.peek() !== "(" ){
                 let poppedChar = operatorsStack.pop();
                 postfixResult.push(poppedChar)
             }
@@ -137,6 +123,23 @@ function infixToPostfix(inputExpr){
                 operatorsStack.pop()    // Discard the "("
         }
 
+        // When character is in +, -, etc operators
+        // When using the "in" operator, if the property exists anywhere in the object's prototype chain/parent, it will return true, even if the property is not directly on the child object itself
+        else if (orderOfPrecedence.hasOwnProperty(char)){
+
+            // if incomming operator has higher precedence, add to stack 
+            if(orderOfPrecedence[char] > orderOfPrecedence[operatorsStack.peek()])
+                operatorsStack.push(char)
+            
+            // if has lower precedence, continually be removing existing high priority operator from stack and add them to the result list
+            while(!operatorsStack.isEmpty() && 
+                operatorsStack.peek() !== "(" &&
+                orderOfPrecedence[operatorsStack.peek()] >= orderOfPrecedence[char]
+            ){
+                let higherPriorityOperator = operatorsStack.pop()
+                postfixResult.push(higherPriorityOperator)
+            }
+        }
     }
 
     // append everything else left in stack to result list
