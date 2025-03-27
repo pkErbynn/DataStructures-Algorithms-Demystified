@@ -119,6 +119,7 @@ function infixToPostfix(inputExpr){
                 let poppedChar = operatorsStack.pop();
                 postfixResult.push(poppedChar)
             }
+            
             if (operatorsStack.peek() == "(")
                 operatorsStack.pop()    // Discard the "("
         }
