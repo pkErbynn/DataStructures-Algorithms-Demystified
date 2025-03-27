@@ -108,6 +108,7 @@ function infixToPostfix(inputExpr){
             operatorsStack.push(char)
         }
 
+        // When character is operator 
         // When using the "in" operator, if the property exists anywhere in the object's prototype chain/parent, it will return true, even if the property is not directly on the child object itself
         else if (orderOfPrecedence.hasOwnProperty(char)){
 
