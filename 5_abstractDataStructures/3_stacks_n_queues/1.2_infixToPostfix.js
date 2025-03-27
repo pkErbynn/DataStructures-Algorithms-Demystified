@@ -26,6 +26,7 @@ Actual Rules:
 3. Lowest priority operator can't be placed on top of highest priority operator, 
 ...if happens, pop the highest priority operand appending to list the after, place the lowest priority on stack
 4. All operators engulved in a "()" should be poped from the stack and appended to the list
+
 */
 
 
@@ -82,6 +83,7 @@ class StackLL {
 // ==== End of copy =====
 
 
+// Xplore: https://youtu.be/PAceaOSnxQs?si=l8YbhRj7lfV_Wy50
 
 function isANumber(char) {
     return !isNaN(Number(char));
@@ -153,3 +155,17 @@ console.log(infixToPostfix("100 * ( 2 + 12 ) / 14"));   // Output: "100 2 12 + *
 console.log(infixToPostfix("1 + ( 2 - 3 )"));           // Output: "1 2 3 - +"
 console.log(infixToPostfix("1 + 2 * 3 * 4"));           // Output: "1 2 3 * 4 * +"
 console.log(infixToPostfix("1 * ( ( 2 + 3 ) * 4 ) * ( 5 - 6 )"));   // Output: "1 2 3 + 4 * * 5 6 - *"
+
+/*
+
+Time Complexity: 
+- O(n), where n is the number of tokens and 
+- since does the conversion in only one pass from left to right
+
+Space Complexity:
+- O(n)
+- Output array (postfixResult): stores all operands and operators → O(n)
+- Operators stack: holds operators and parentheses → in worst case all tokens are operators/parentheses → O(n)
+- Thus, O(n + n) = O(2n), ignoring the contant is O(n)
+
+*/
