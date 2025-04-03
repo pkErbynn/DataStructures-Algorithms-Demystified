@@ -100,14 +100,14 @@ function infixToPostfix(inputExpr){
         '*': 2,
         '/': 2
     }
-    const postfixResult = []
+    const postfixResultList = []
 
     const operatorsStack = new StackLL();
 
     for (const char of inputExpr.split(' ')) {
         // 1) when char is a number...push to result list easily 
         if (isANumber(char))
-            postfixResult.push(char)
+            postfixResultList.push(char)
 
         // 2) when char is an open ( operator...push to operator stack
         else if (char == "("){
@@ -118,10 +118,9 @@ function infixToPostfix(inputExpr){
         else if (char == ")"){
 
             // Gather element between ()
-            while (!operatorsStack.isEmpty() && 
-                operatorsStack.peek() !== "(" ){
+            while (!operatorsStack.isEmpty() && operatorsStack.peek() !== "(" ){
                 let poppedChar = operatorsStack.pop();
-                postfixResult.push(poppedChar)
+                postfixResultList.push(poppedChar)
             }
             
             if (operatorsStack.peek() == "(")
@@ -138,12 +137,11 @@ function infixToPostfix(inputExpr){
                 operatorsStack.push(char)
             
             // if has lower precedence, continually be removing existing high priority operator from stack and add them to the result list
-            while(!operatorsStack.isEmpty() && 
-                operatorsStack.peek() !== "(" &&
+            while(!operatorsStack.isEmpty() && operatorsStack.peek() !== "(" &&
                 orderOfPrecedence[operatorsStack.peek()] >= orderOfPrecedence[char]
             ){
                 let higherPriorityOperator = operatorsStack.pop()
-                postfixResult.push(higherPriorityOperator)
+                postfixResultList.push(higherPriorityOperator)
             }
         }
     }
@@ -151,11 +149,11 @@ function infixToPostfix(inputExpr){
     // append everything else left in stack to result list
     while (!operatorsStack.isEmpty()) {
         let leftOvers = operatorsStack.pop()
-        postfixResult.push(leftOvers)
+        postfixResultList.push(leftOvers)
     }
 
 
-    return postfixResult.join(' ')
+    return postfixResultList.join(' ')
 }
 
 // Testing the function
@@ -174,7 +172,7 @@ Time Complexity:
 
 Space Complexity:
 - O(n)
-- Output array (postfixResult): stores all operands and operators → O(n)
+- Output array (postfixResultList): stores all operands and operators → O(n)
 - Operators stack: holds operators and parentheses → in worst case all tokens are operators/parentheses → O(n)
 - Thus, O(n + n) = O(2n), ignoring the contant is O(n)
 
