@@ -11,16 +11,20 @@ Priority 3 => ^   ...Right to Left...high
 Priority 3 => ()[]                ...highest
 
 
+Algorithm:
+
 1. Declare your priorities right for the operators
 1. Use two storage containers: Stack (for operators cus of precedence ordering), List (for operands, and serves at the return result container)
-2. Stack used cus want to keep of priority or ordering
+2. Stack used cus want to keep priority or ordering
 1. Higher priority operator after "(" is okay and can be pushed to stack
 3. If stack is closed with ")", pop all elements and append to stack until opening "(" is met
 2. "(" are ignored/discarded when adding to list
 4. Operators with same priority can't stay side-by-side, pop existing ones to the list cus of associativity rule from left to right order,
 ...assuming associativity was right to left, operands could be kept side-by-side
 
+
 Actual Rules:
+
 1. Know the priorities of operators
 2. No two operators of same priority can stay side-by-side together in stack, unless separated by opening "("
 3. Lowest priority operator can't be placed on top of highest priority operator, 
@@ -88,7 +92,7 @@ class StackLL {
 function isANumber(char) {
     return !isNaN(Number(char));
 }
-  
+
 function infixToPostfix(inputExpr){
     const orderOfPrecedence = {
         '+': 1,

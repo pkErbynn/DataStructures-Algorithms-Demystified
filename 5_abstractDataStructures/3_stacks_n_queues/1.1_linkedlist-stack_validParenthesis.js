@@ -27,16 +27,18 @@ class LLNode {
 
 class StackLL {
     top;
-    size
+    size;
 
     constructor(){
-        this.top = null
-        this.size = 0;
+        this.top = null;    // nothing on top by default
+        this.size = 0;      // height of stack is zero by default
     }
+    
     push(value){
         const newNode = new LLNode(value);
+
         if(this.top) {
-            newNode.next = this.top;
+            newNode.next = this.top;    // link new node down to the current top node, if top node exists
         }
         this.top = newNode; // marked as new top
         this.size++;
@@ -47,8 +49,9 @@ class StackLL {
             throw new Error("Stack is empty")
         }
         const poppedValue = this.top.value;
-        this.top = this.top.next;   // mark new top
+        this.top = this.top.next;   // mark the node beneath the topNode as new topNode
         this.size--;
+
         return poppedValue;
     }
 
