@@ -105,16 +105,16 @@ function infixToPostfix(inputExpr){
     const operatorsStack = new StackLL();
 
     for (const char of inputExpr.split(' ')) {
-        // when char is a number...push to result list easily 
+        // 1) when char is a number...push to result list easily 
         if (isANumber(char))
             postfixResult.push(char)
 
-        // when char is an open ( operator...push to operator stack
+        // 2) when char is an open ( operator...push to operator stack
         else if (char == "("){
             operatorsStack.push(char)
         }
 
-        // when char is a close ) operator...
+        // 3) when char is a close ) operator...
         else if (char == ")"){
 
             // Gather element between ()
@@ -128,7 +128,8 @@ function infixToPostfix(inputExpr){
                 operatorsStack.pop()    // Discard the "("
         }
 
-        // When character is in +, -, etc operators
+        // 4) when character is in +, -, etc operators
+        
         // When using the "in" operator, if the property exists anywhere in the object's prototype chain/parent, it will return true, even if the property is not directly on the child object itself
         else if (orderOfPrecedence.hasOwnProperty(char)){
 
