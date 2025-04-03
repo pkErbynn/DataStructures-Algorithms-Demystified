@@ -138,7 +138,7 @@ function infixToPostfix(inputExpr){
             
             // if has lower precedence, continually be removing existing high priority operator from stack and add them to the result list
             while(!operatorsStack.isEmpty() && operatorsStack.peek() !== "(" &&
-                orderOfPrecedence[operatorsStack.peek()] >= orderOfPrecedence[char]
+                orderOfPrecedence[char] <= orderOfPrecedence[operatorsStack.peek()] 
             ){
                 let higherPriorityOperator = operatorsStack.pop()
                 postfixResultList.push(higherPriorityOperator)
