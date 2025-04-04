@@ -33,7 +33,7 @@ class BinaryTree {
         // loop for entire tree
         while(queue.length > 0)
         {
-            let levels = [];
+            let levelNodes = [];    // unused
             let levelSum = 0;
 
             // loop for each level
