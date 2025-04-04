@@ -7,6 +7,9 @@
 - element with high priority are served before element with low priority
 - normally, low priority tag number means high priority
 - compares element based on priority only, no value
+- it's a wrapper around heap
+    - gives you access to heap operations but at higher level
+    - similar to how ArrayList abstracts traditional array operations
 
 - ** most importance element is the first one in the array
     - the order of the rest of the elements is not realy that important
@@ -76,7 +79,7 @@ class PriorityQueue {
                     [this.values[parentNodeIndex], this.values[newChildNodeIndex]];
     
                 // re-assign old parent becomes new child, new parent moved up
-                newChildNodeIndex = parentNodeIndex;    // a
+                newChildNodeIndex = parentNodeIndex;
 
                 parentNodeIndex = Math.floor((newChildNodeIndex - 1) / 2);
                 parentNode = this.values[parentNodeIndex];

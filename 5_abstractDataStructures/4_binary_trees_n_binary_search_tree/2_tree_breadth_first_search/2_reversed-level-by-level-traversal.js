@@ -23,8 +23,8 @@ class BinaryTree {
         queue.push(currentNode);
 
         while(queue.length >= 1){
-            let levelByLevelNodesCollector = [];
 
+            let levelByLevelNodesCollector = [];
             let levelSize = queue.length; // keep copy of queue lenght otherwise, using the original lenght will be updated when an item is pushed on the queue
             
             for(let i = 0; i < levelSize; i++){
@@ -40,6 +40,7 @@ class BinaryTree {
                 }
             }
 
+            // pushing to the array back will maintain the order BUT adding through the front reverses the order as expected
             reversedNodeResult.unshift(levelByLevelNodesCollector);
         }
 

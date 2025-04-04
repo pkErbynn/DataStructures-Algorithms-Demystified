@@ -14,7 +14,7 @@ We can use a Queue to efficiently traverse in BFS fashion. Here are the steps of
 1. Start by pushing the root node to the queue.
 2. Keep iterating until the queue is empty.
 3. In each iteration, first count the elements in the queue (let’s call it levelSize). We will have these many nodes in the current level.
-4. Next, remove levelSize nodes from the queue and push their value in an array to represent the current level.
+4. Next, remove levelSize nodes from the queue and push their values in an array to represent/store the current level's numbers/values.
 5. After removing each node from the queue, insert both of its children into the queue.
 6. If the queue is not empty, repeat from step 3 for the next level.
 
@@ -76,14 +76,15 @@ class BinaryTree {
         }
 
         let queue = [];
-        queue.push(currentNode);
+        queue.push(currentNode);    // remember that a node is considered visited only when it passes through the queue
 
-        // tree loop
+        // tree traversal
         while(queue.length > 0){
-            let levelSize = queue.length;   // take snapshot otherwise updated one will affect level loop
+            let levelSize = queue.length;   // take snapshot/copy of queue size otherwise when queus is updated, it will affect level loop and i can't get the exact number times i need to iterate at a particular level
             let nodesInCurrentLevel = [];
 
-            // level loop
+            // level iteration
+            // ...know that levelSize quarantees that i get the width of the current tree level cus, the queue deals with all the parent nodes(at say level 2) before these parent nodes remove their L&R leg nodes into the queue and jumping into/tackling children nodes(at level 3) 
             for(let i = 0; i < levelSize; i++){
                 currentNode = queue.shift();
                 nodesInCurrentLevel.push(currentNode.value);

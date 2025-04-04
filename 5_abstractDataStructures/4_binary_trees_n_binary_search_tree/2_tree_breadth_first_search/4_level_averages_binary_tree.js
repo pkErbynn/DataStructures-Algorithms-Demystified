@@ -1,6 +1,8 @@
 /*
+
 Question:
 Given a binary tree, populate an array to represent the averages of all of its levels.
+
 */
 
 class Node {
@@ -25,10 +27,11 @@ class BinaryTree {
 
         let queue = [];
         let currentNodePointer = this.rootNode;
-        queue.push(currentNodePointer);
+
+        queue.push(currentNodePointer); // node considered visited only when node passes throught the queue conduint 
 
         // loop for entire tree
-        while(queue.length >= 1)
+        while(queue.length > 0)
         {
             let levels = [];
             let levelSum = 0;
@@ -47,10 +50,11 @@ class BinaryTree {
                 if(node.right != null) {
                     queue.push(node.right);
                 }
-
             }
 
+            // sum of all the values of the nodes divided by the number of nodes available at the level
             let average = levelSum / levelLength;
+
             result.push(average);
         }
 

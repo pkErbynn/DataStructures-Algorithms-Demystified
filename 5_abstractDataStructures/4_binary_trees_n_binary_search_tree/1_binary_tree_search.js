@@ -24,9 +24,9 @@ class BST {
             return this;
         }
 
-        // IF @ NON-EMPTY TREE
+        // IF @ NON-EMPTY TREE, ie, HAS NODES
 
-        // start with root at parent
+        // start with root node as the parent
         let currentNode = this.root; // for traversing and tracking
 
         while(currentNode != null){
@@ -34,14 +34,14 @@ class BST {
             if(value === currentNode.value) return null;
 
             // if incomming value is less than current parent node
-            // then look left, for the insertion
+            // then go left, for the insertion
             if(value < currentNode.value){
-                // leaf node
+                // if current parent not is a leaf node, set its left node
                 if(currentNode.left === null){
                     currentNode.left = newNode;
                     return this;
                 }
-                // if currentNode is NOT a leaf node, then reset root/parent node to traverse further downwards
+                // otherwise, if currentNode is NOT a leaf node, then set the current left node as the new current parent node to traverse further downwards
                 currentNode = currentNode.left;
             }
             
@@ -53,7 +53,7 @@ class BST {
                     currentNode.right = newNode;
                     return this;
                 }
-                // if not a leaf node, reset current node to next right downward child node
+                // if not a leaf node, reset current parent node to the right downward child node
                 currentNode = currentNode.right;
             }
         }
@@ -99,7 +99,7 @@ class BST {
 
         let currentNode = this.root;
 
-        while(currentNode){
+        while(currentNode != null){     // or while(currentNode)
             if(value === currentNode.value){
                 return currentNode;
             }
@@ -149,17 +149,18 @@ class BST {
 
         // while there's something in the queue for processing...
         while(queue.length > 0){
-            let removedHeadNode = queue.shift();    // take from queu's front
+            let removedHeadNode = queue.shift();    // take from queue's front
 
             visitedResult.push(removedHeadNode.value);  // explore/process element from queue...when element leaves the queue, it's considered visited (likewise, when leaves a stack, it's considered visited)
 
             // once removed and put to visitedResult, push parent's leg children nodes to the end of the queue...this allows all parents to come out visited before their chidlren provided they have one
+            // this also allow the headNode no to vanish with it's legged nodes, knowing that they have some data
             if(removedHeadNode.left) 
                 queue.push(removedHeadNode.left);
             if(removedHeadNode.right) 
                 queue.push(removedHeadNode.right);
-
         }
+
         return visitedResult;
     }
 
@@ -173,10 +174,10 @@ class BST {
         let visitedResult = [];
 
         let currentNode = this.root;
-        stack.push(currentNode);    // stack initialised with root...node cano be considered visited only when it passes through the stack
+        stack.push(currentNode);    // stack initialised with root...node cannot be considered visited only when it passes through the stack
 
         // while there's something in the stack for processing...
-        while(stack.length){    // => (stack.length > 0) => while stack has an element...
+        while(stack.length > 0){    // => (stack.length) => while stack has an element...
             let removedNode = stack.pop();  // element considered visited/used when removed from Stack, similar to dsf with queue
             
             // process removed element n push to stack

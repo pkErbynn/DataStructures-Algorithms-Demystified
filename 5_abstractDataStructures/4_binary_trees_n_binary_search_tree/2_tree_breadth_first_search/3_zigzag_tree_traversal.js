@@ -11,7 +11,8 @@ Solution #
 
 This problem follows the Binary Tree Level Order Traversal pattern. We can follow the same BFS approach. 
 The only additional step we have to keep in mind is to alternate the level order traversal, 
-which means that for every other level, we will traverse similar to Reverse Level Order Traversal.
+which means that for every other level, we will traverse similar to Reverse Level Order Traversal question.
+
 */
 
 class Node {
@@ -36,22 +37,25 @@ class BinaryTree {
             return result;
         }
 
-        let depth = 0;
+        let depthCounter = 0;  // tracks what order it should take...left to right(for odd levels) or right to left(for even levels)
 
         let queue = [];
         queue.push(currentNode);
 
         while(queue.length >= 1){
-            let levelsNode = [];
-
+            let levelNodesCollector = [];
             let queueLenghtSnapshot = queue.length;
+
             for(let i = 0; i < queueLenghtSnapshot; i++) {
                 let node = queue.shift();
                 
-                if(depth % 2 == 0){
-                    levelsNode.push(node);
-                }else{
-                    levelsNode.unshift(node)
+                // if even, then normal order
+                if(depthCounter % 2 == 0){
+                    levelNodesCollector.push(node);
+                }
+                // if odd, then reverse order
+                else{
+                    levelNodesCollector.unshift(node)
                 }
 
                 if(node.left != null){
@@ -62,8 +66,8 @@ class BinaryTree {
                 }
             }
 
-            result.push(levelsNode);
-            depth++;
+            result.push(levelNodesCollector);
+            depthCounter++;
         }
 
         return result;
