@@ -225,32 +225,41 @@ class RunningMedian {
     addNumber(num) {
 
         // Step 1: Add the number to the appropriate heap
+        // if max heap is empty at first, drop the first incoming number to the maxheap...also, drop to the maxHeap if the incomming number is less than the max number in the maxheap, 
+        // eg. num = 4...maxHeap = [2, 6]...then drop num = 4 to the maxHeap...this allows to put all nums below the upper limit to the left maxHeap bucket
         if (this.maxHeap.values.length === 0 || num <= this.maxHeap.values[0]) {
             this.maxHeap.insert(num);
         } 
+        // otherwise drop to the right minHeap bucket
         else {
             this.minHeap.insert(num);
         }
 
         // Step 2: Balance the heaps
-        if (this.maxHeap.values.length > this.minHeap.values.length + 1) {
-            this.minHeap.insert(this.maxHeap.removeMax());
+        // The diff in the number of elements between left and right heaps should not be more than 1
+        // If diff is 2 or more, move element around to balance
+        if (this.maxHeap.values.length - this.minHeap.values.length > 1) { // or if(this.maxHeap.values.length > this.minHeap.values.length + 1)
+            let maxEle = this.maxHeap.removeMax()
+            this.minHeap.insert(maxEle);
         }
-        else if (this.minHeap.values.length > this.maxHeap.values.length) {
-            this.maxHeap.insert(this.minHeap.removeMin());
+        else if (this.minHeap.values.length - this.maxHeap.values.length > 1) {
+            let minEle = this.minHeap.removeMin()
+            this.maxHeap.insert(minEle);
         }
     }
 
     // Get the current median
     getMedian() {
+        // MaxHeap has more elements
         if (this.maxHeap.values.length > this.minHeap.values.length) {
-            return this.maxHeap.values[0]; // MaxHeap has more elements
+            return this.maxHeap.values[0];
         } 
+        // MinHeap has more elements
         else if (this.minHeap.values.length > this.maxHeap.values.length) {
-            return this.minHeap.values[0]; // MinHeap has more elements
+            return this.minHeap.values[0];
         } 
+        // Heaps are balanced, take the average of the roots
         else {
-            // Heaps are balanced, take the average of the roots
             return (this.maxHeap.values[0] + this.minHeap.values[0]) / 2;
         }
     }
@@ -267,3 +276,11 @@ numbers.forEach(num => {
 });
 
 console.log(`Running median: ${medians}`);
+
+// console.log( rm.addNumber(1));
+// console.log( rm.addNumber(2));
+// console.log( rm.getMedian());
+
+// Time Complexity:
+// Median: O(1)
+// Insert:  O(log n)
