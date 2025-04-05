@@ -33,18 +33,20 @@ class BinaryTree {
         queue.offer(root);
 
         boolean leftToRight = true; // Tracks the direction of traversal
+        
         while (!queue.isEmpty()) {
+
             int levelSize = queue.size();
             List<Integer> levelNodes = new ArrayList<>();
 
             for (int i = 0; i < levelSize; i++) {
                 Node node = queue.poll();
 
-                // If we are traversing left to right, add the node normally
+                // If we are traversing left to right, add the node normally at END
                 if (leftToRight) {
                     levelNodes.add(node.value);
                 } else {
-                    // If we are traversing right to left, add the node at the front
+                    // If we are traversing right to left, add the node at the FRONT
                     levelNodes.add(0, node.value);
                 }
 

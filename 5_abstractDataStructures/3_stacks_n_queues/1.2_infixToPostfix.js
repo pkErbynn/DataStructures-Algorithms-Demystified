@@ -10,6 +10,9 @@ Priority 2 => * / ...Left to Right...Medium
 Priority 3 => ^   ...Right to Left...high
 Priority 3 => ()[]                ...highest
 
+NB:
+- Operands/Numbers in list
+- Operators/+,-... in stack since has order
 
 Algorithm:
 
@@ -101,7 +104,6 @@ function infixToPostfix(inputExpr){
         '/': 2
     }
     const postfixResultList = []
-
     const operatorsStack = new StackLL();
 
     for (const char of inputExpr.split(' ')) {
@@ -117,14 +119,17 @@ function infixToPostfix(inputExpr){
         // 3) when char is a close ) operator...
         else if (char == ")"){
 
-            // Gather element between ()
+            // 3.1) Gather element between (...) brackets by
+            // ...taking all elements before ( and putting them in result list
             while (!operatorsStack.isEmpty() && operatorsStack.peek() !== "(" ){
                 let poppedChar = operatorsStack.pop();
                 postfixResultList.push(poppedChar)
             }
             
-            if (operatorsStack.peek() == "(")
-                operatorsStack.pop()    // Discard the "("
+            // Optional condition, will reach when loop breaks anyways
+            // After gethering all elements, discard the opening "(", to balance/cancel ) brackets in stack
+            if (operatorsStack.peek() == "(")  
+                operatorsStack.pop()
         }
 
         // 4) when character is in +, -, etc operators
@@ -132,11 +137,11 @@ function infixToPostfix(inputExpr){
         // When using the "in" operator, if the property exists anywhere in the object's prototype chain/parent, it will return true, even if the property is not directly on the child object itself
         else if (orderOfPrecedence.hasOwnProperty(char)){
 
-            // if incomming operator has higher precedence, add to stack 
+            // if incomming operator has higher precedence than existing operator, add to stack 
             if(orderOfPrecedence[char] > orderOfPrecedence[operatorsStack.peek()])
                 operatorsStack.push(char)
             
-            // if has lower precedence, continually be removing existing high priority operator from stack and add them to the result list
+            // if incomming operator has lower/equal precedence than existing operator, continually be removing existing high priority operator from stack and add them to the result list
             while(!operatorsStack.isEmpty() && operatorsStack.peek() !== "(" &&
                 orderOfPrecedence[char] <= orderOfPrecedence[operatorsStack.peek()] 
             ){
@@ -151,7 +156,6 @@ function infixToPostfix(inputExpr){
         let leftOvers = operatorsStack.pop()
         postfixResultList.push(leftOvers)
     }
-
 
     return postfixResultList.join(' ')
 }

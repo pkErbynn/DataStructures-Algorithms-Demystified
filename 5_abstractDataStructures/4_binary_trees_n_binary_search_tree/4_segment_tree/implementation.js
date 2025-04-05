@@ -1,6 +1,8 @@
 /*
- *  Used to perform fast range queries event in unsorted array data
- */
+
+- Used to perform fast range queries event in unsorted array data
+- Revisit to understand better
+*/
 
 class MyNode {
     data;

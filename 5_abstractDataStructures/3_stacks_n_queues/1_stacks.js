@@ -53,7 +53,7 @@ class CustomStackArr {
 
     constructor(size = null) {
         const stackSize = size || this.#DEFAULT_SIZE;
-        this.data = new Array(stackSize)
+        this.data = new Array(stackSize)    // here, picture stack as horizontal stack instead of vertical standing stack
         // this.data = [stackSize]
     }
 

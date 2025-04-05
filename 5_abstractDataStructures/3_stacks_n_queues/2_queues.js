@@ -174,7 +174,7 @@ class CustomQueueLL {
     }
 }
 
-let myqu = new CustomQueueLL();
+let myqu = new CustomQueueLL();     // similar to Java initialization, Stack<Node> stack = new LinkedList<>();
 
 
 //// Time Complexity

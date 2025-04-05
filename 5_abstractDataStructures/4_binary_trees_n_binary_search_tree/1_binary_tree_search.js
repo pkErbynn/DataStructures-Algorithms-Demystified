@@ -185,7 +185,7 @@ class BST {
 
             ///////// PreOrder pattern: parentNode-leftNode-RightNode
             // once removed and put to visitedResult, push their leg children nodes to the stack
-            // NB: took right first, left second because since it's LIFO, left node will be processed before the right, 
+            // NB: pushed RIGHT NODE first, BEFORE LEFT because since it's LIFO, LEFT NODE will be POPPED OUT and processed FIRST BEFORE THE RIGHT
             // that's why the right is put on the stack first
             if(removedNode.right)
                 stack.push(removedNode.right);

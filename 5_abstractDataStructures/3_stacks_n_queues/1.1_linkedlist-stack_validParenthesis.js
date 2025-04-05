@@ -1,4 +1,5 @@
 // STACK lINKED LIST IMPLEMENTATION
+// +  Valid Parenthesis Question
 
 /*
 Stack looks like this at horizontal view: 
@@ -26,7 +27,7 @@ class LLNode {
 }
 
 class StackLL {
-    top;
+    top;    // top when picturing a vertical standing stack and head when picturing horizontal lying stack
     size;
 
     constructor(){
@@ -69,7 +70,8 @@ class StackLL {
 }
 
 
-////// Valid Parenthesis ///////
+//////========= Question Valid Parenthesis ========== ///////
+
 function validParenthesis(input) {
     // guard condition
     if(input.length === 0 || input.length === 1) return false
@@ -77,20 +79,27 @@ function validParenthesis(input) {
     const stack = new StackLL();
 
     for (const character of input) {
+
+        // 1) Push openings freely unto stack
         if(character == "{" || character == "[" || character == "("){
             stack.push(character);
         }
         else {
+            // 2) Match closings with their openings...
+            // ...pop their openings from stack if matched
+            // ...return invalid if unmatched
             if(character == "}")
                 if(!stack.isEmpty() && stack.peek() == "{")
                     stack.pop()
                 else 
                     return false
+
             if(character == "]")
                 if(!stack.isEmpty() && stack.peek() == "[")
                     stack.pop()
                 else 
                     return false
+
             if(character == ")")
                 if(!stack.isEmpty() && stack.peek() == "(")
                     stack.pop()
@@ -98,6 +107,8 @@ function validParenthesis(input) {
                     return false
         }
     }
+
+    // valid input should have empty stack after matching/balancing out pairs
     return stack.isEmpty();
 }
 
