@@ -4,7 +4,7 @@ QuickSort
 
 - Popular sorting algorithm that uses a divide-and-conquer approach to sort an array of elements around a pivot element.
 - The algorithm works @ high level by... 
-    1. Selecting on of the elements as "Pivot"...Pivot can be at Start, Middle or End 
+    1. Selecting one of the elements as "Pivot"...Pivot can be at Start, Middle or End 
     2. Partitioning the array around the Pivot...ie, spliting into two sub-array
         a. Left half containing elements LESS THAN the pivot
         b. Right half containing elements GREATER THAN or equal to the pivot
@@ -14,10 +14,10 @@ QuickSort
 - This is done IN-PLACE...ie, no extra memory is required
 
 - Partition the array arount the Pivot: Algorithm @ low level
-    1. Choose the first element as the pivot
+    1. Choose the first element as the pivot.
     2. Store a copy of the current pivot possition/indx that will be used to keep track of where the pivot element should end up
     3. Iterate through the array from start+1 to the end
-        a. If current array elemnt in the loop is < the pivot element,
+        a. If current array element in the loop is < the pivot element,
             ...increament the stored pivot-pointer-copy to move forward by 1
             ...then swap the current smaller number with that increamented-pivot pointer index
     4. When the loop is done, the pivot-pointer-copy will fall at the correct place, 
@@ -31,9 +31,9 @@ Nb: Confusing but easy so interviwers like it...they like confusing algo :)
 
 // Example: Arr = [3, 2, 6, -3, 0]
 
-function pivotPartitionHelper(arr, startIndxPointer = 0, endIndxPointer = arr.length - 1){
+function getPivotPartitionIndex_Helper(arr, startIndxPointer = 0, endIndxPointer = arr.length - 1){
     let pivotElement = arr[startIndxPointer];   // pivot element as first element...eg: [3(pivot), 2, 6, -3, 0]
-    let pivotIndexForSwap = startIndxPointer;   // this keeps track of the position where the pivot element should end up / placed through swapping
+    let pivotIndexForSwap = startIndxPointer;   // this keeps track of the position where the pivot element should end up / be placed through swapping
 
     // loop through the rest of array elements till the end, thus i = start + 1
     for(let i = startIndxPointer + 1; i <= endIndxPointer; i++){     //...eg: [ 3(pivot), 2(i-index), 6, -3, 0 ]
@@ -69,7 +69,7 @@ function quickSort(arr, leftPointer = 0, rightPointer = arr.length - 1){
         return;
     }
 
-    let pivotIndexPointer = pivotPartitionHelper(arr, leftPointer, rightPointer);
+    let pivotIndexPointer = getPivotPartitionIndex_Helper(arr, leftPointer, rightPointer);
 
     // Format: [left....pivot-1, pivot, pivot+1...right]...then apply quickSort to each side of the pivot, excluding the pivot itself
     // left side = left to pivot-1
@@ -117,7 +117,7 @@ console.log("quickSort3", quickSort([2, 1, 5, 0, 10, -1, 3, -100, 4]));
 ...one half will be empty while the other half will be full n-1 elements
 ...meaning, the PIVOT will be compared to all the other element except itself
 ...ie, PIVOT compared to (N-1)...ie, 1 pivot element compared to n-1 elements
-...since it's not VERY UNBALANCED, the pivot splits the array into [1 element] + [n - 1 elements → O(n²)
+...since it's not VERY UNBALANCED, the pivot splits the array into [1 element] & [n - 1] elements → O(n²)
 ...also, by default/intutively, the pivot also get transitioned or moved each time to visit each element which is 'n'
 ...we partition n elements and do n-1 comparisons to separate them, so it becomes n*(n) = n^2
 ...FIX: To avoid this, it is often recommended to use a randomized pivot selection withing the array
