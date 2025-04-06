@@ -52,21 +52,20 @@ const maxDigitCount = function(nums) {
 // Eg: ...getEachDigitFromNum(1234, 0) => 4 at ones place
 // ...getEachDigitFromNum(1234, 1) => 3 at tense place
 // ...getEachDigitFromNum(1234, 2) => 2 at hundredths place
+
+/*
+Dry test run:
+(1234, 0) = 4 => 1234 % 10 = 4 
+(1234, 1) = 3 => 123 % 10 = 3...But 123 => 1234/10 = 123.4 => floor(123.4) = 123
+(1234, 2) = 2 => 12 % 10 = 3...But 12 => 1234/100 = 1234/10^2 = 12.34 => floor(12.34) = 12
+(1234, 3) = 1 => 1 % 10 = 1...But 1 => 1234/1000 = 1234/10^3 = 1.234 => floor(1.234) = 1
+*/
 const getEachDigitFromNum = function(num, index){        // given num = 1234, index = 2
     let result = Math.abs(num) / Math.pow(10, index);    // 1234 / 10^2 = 1234/100 = 12.34
     result = Math.floor(result) % 10;                    // 12.34 % 10 => 12 % 10 = 2
     return result;                                       // result: 2
 }
 
-/*
-
-Dry test run:
-(1234, 0) = 4 => 1234 % 10 = 4 
-(1234, 1) = 3 => 123 % 10 = 3...But 123 => 1234/10 = 123.4 => floor(123.4) = 123
-(1234, 2) = 2 => 12 % 10 = 3...But 12 => 1234/100 = 1234/10^2 = 12.34 => floor(12.34) = 12
-(1234, 3) = 1 => 1 % 10 = 1...But 1 => 1234/1000 = 1234/10^3 = 1.234 => floor(1.234) = 1
-
-*/
 
 function radixSort(nums){
     // max number of digit in the given array of numbers
