@@ -4,11 +4,13 @@
 
 function bubbleSort1(array) {
     //outer + inner loop starts at very begining
-    for (let i = 0; i < array.length; i++) {
-        for (let j = 0; j < array.length; j++) {
+    for (let i = 0; i < array.length - 1; i++) {
+
+        for (let j = 0; j < array.length - 1; j++) {
+
            if(array[j] > array[j+1]){
                 //swap
-                [array[j], array[j+1]] = [array[j+1], array[j]]; 
+                [array[j], array[j + 1]] = [array[j + 1], array[j]]; 
             }
         }
     }
@@ -20,8 +22,8 @@ console.log("bubbleSort1:", bubbleSort1([2, 3, 4, 1]))
 
 function findingLargestElementInUnsortedArrayUsingBubbleSort(array) {   // first iteration bubbles the largest element to the end
     //outer + inner loop starts at very begining
-    for (let i = 0; i < array.length; i++) {
-        for (let j = 0; j < array.length; j++) {
+    for (let i = 0; i < array.length - 1; i++) {
+        for (let j = 0; j < array.length - 1; j++) {
            if(array[j] > array[j+1]){
                 //swap
                 [array[j], array[j+1]] = [array[j+1], array[j]]; 
@@ -41,15 +43,16 @@ console.log("findingLargestElementInUnsortedArrayUsingBubbleSort:", findingLarge
 // use this impl
 
 function bubbleSortEfficient(array) { // ***
-    for (let i = 0; i < array.length; i++) {
+    for (let i = 0; i < array.length - 1; i++) {
         let isSwapped = false;  // no swap initially
 
         // j = 0...5, 0...4, 0...3, 0...2, 0... => deduction (-1) made by i => helps j forcus of unsorted area
         // can be up to `array.length - i - 1`
         for (let j = 0; j < array.length - i; j++) {    // targeting only the unsorted portion
+           
             // swap adjescent elements
-           if(array[j] > array[j+1]){
-               [array[j], array[j+1]] = [array[j+1], array[j]]; 
+           if(array[j] > array[j + 1]){
+               [array[j], array[j + 1]] = [array[j + 1], array[j]]; 
                isSwapped = true; // since swap is made
             }
         }
@@ -80,5 +83,6 @@ console.log("bubbleSortEfficient2:",bubbleSortEfficient([2,3,4,1]));
 // therefore, bubblesort algo can be used on nearly sorted algo
 
 
-// Purpose: 
-// The purpose of the isSwapped flag is to optimize the bubble sort algorithm by breaking out of the outer loop early if no swaps were made during a pass through the array. If no swaps are made in a pass, it means the array is already sorted, and further iterations are unnecessary.
+// Purpose of isSwapped flag: 
+// The purpose of the isSwapped flag is to optimize the bubble sort algorithm by breaking out of the outer loop early if no swaps were made during a pass through the array. 
+// If no swaps are made in a pass, it means the array is already sorted, and further iterations are unnecessary.

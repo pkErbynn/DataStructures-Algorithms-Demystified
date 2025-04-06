@@ -1,5 +1,13 @@
 // Read footnote before
 
+/* 
+
+Singly Linked List:
+
+   2 -> 3 -> 4 -> 1 -> 6 
+(head)               (tail)     
+
+*/
 class Node{
     constructor(value){
         this.value = value;
@@ -17,6 +25,7 @@ class SinglyLinkedList {
     // adding/inserting node to the end
     push(value){
         let newNode = new Node(value);
+
         if(this.length < 1 || !this.head){
             this.head = newNode;
             this.tail = newNode;
@@ -28,6 +37,7 @@ class SinglyLinkedList {
             this.tail = newNode;
         }
         this.length += 1;
+
         return this;
     }
 
@@ -249,7 +259,7 @@ class SinglyLinkedList {
     // reverse the linkedlist in place
     // a -> b -> c -> d
     reverse(){
-        if(!this.head) return null;
+        if(this.length === 0 || !this.head) return null;
         if(this.length === 1) return this.head;
         
         let penultimateOfCurrentNode = null
@@ -269,7 +279,7 @@ class SinglyLinkedList {
             currentNode = nextNode;
         }
         
-        // swap head and tail
+        // swap head and tail tags
         [this.head, this.tail] = [this.tail, this.head]
 
         return this;

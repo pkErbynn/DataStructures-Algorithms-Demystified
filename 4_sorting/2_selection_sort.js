@@ -12,12 +12,12 @@
 // In sum, SELECT the smallest/largest element and place it at the correct index
 
 function selectionSort(arr){    // **
-    for (let outerIndexPointer = 0; outerIndexPointer < arr.length; outerIndexPointer++) {
+    for (let outerIndexPointer = 0; outerIndexPointer < arr.length - 1; outerIndexPointer++) {
         let smallestIndex = outerIndexPointer;
         
         // if innerIndex start from 0, you will slip to compare with already sorted element
         // find smallest number(and track its possition) at rest of values on the right, comparing to current value (at current-to-fill slot) at left side
-        for (let innerIndexPointer = outerIndexPointer + 1; innerIndexPointer < arr.length; innerIndexPointer++) {
+        for (let innerIndexPointer = outerIndexPointer + 1; innerIndexPointer < arr.length - 1; innerIndexPointer++) {
             if(arr[innerIndexPointer] < arr[outerIndexPointer]){
                 // innerIndexPointer needed not the value, 
                 // in order to get access to the position even outside the loop
@@ -33,7 +33,7 @@ function selectionSort(arr){    // **
     return arr;
 }
 
-const result = selectionSort([3,6,4,1,8]);
+const result = selectionSort([3, 6, 4, 1, 8]);
 console.log("selectionSort:", result);
 
 
@@ -45,7 +45,7 @@ function selectionSortEfficient(arr){   // ****
     for (let outerIndex = 0; outerIndex < arr.length - 1; outerIndex++) {
         let smallestIndex = outerIndex;
         
-        for (let innerIndex = outerIndex + 1; innerIndex < arr.length; innerIndex++) {
+        for (let innerIndex = outerIndex + 1; innerIndex < arr.length - 1; innerIndex++) {
             if(arr[innerIndex] < arr[outerIndex]){
                 smallestIndex = innerIndex;
             }
@@ -67,7 +67,7 @@ function selectionSortEfficient(arr){   // ****
     return arr;
 }
 
-const x = selectionSortEfficient([3,6,4,1,8]);
+const x = selectionSortEfficient([3, 6, 4, 1, 8]);
 console.log("selectionSortEfficient:", x);
 
 

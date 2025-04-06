@@ -24,7 +24,7 @@ Tradoff
 - access: o(n)
 - search: o(n).....technically, search is O(n/2) but still o(n)
 
-#### In sum:
+#### In sum, SLL vs DLL:
 - singly linked list 
   ...better for start/end insertion operations
   ...doesn't eat memory, lol

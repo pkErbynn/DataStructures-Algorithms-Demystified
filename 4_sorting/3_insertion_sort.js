@@ -1,7 +1,7 @@
 // Insertion doesn't require SWAPPING unlike the other sorting algo,
 // Insertion requires SHIFTING of elements
-// Called 'insertion' cus it picks ANY FIRST ELEMENT from right-winged unsorted portion
-// ...and INSERT it in the CORRECT POSITION at left-winged sorted portion but SHIFTING
+// Called 'insertion' cus it picks ANY FIRST ELEMENT from right-winged unsorted portion(starting froom second element)
+// ...and INSERT it in the CORRECT POSITION at left-winged sorted portion but SHIFTING all elements on the left
 // ...used extra memory to keep the picked element
 
 // On the flip side, Selection carefully SELECT the smallest (from unsorted portion) on the right 
@@ -26,7 +26,7 @@ function insertionUsingWhileloop(arr){  // **
         // to one position ahead of their current position shifting them to create space
         while( (j >= 0) && (arr[j] > currentValue) ){   // if element is within range AND any previous left element is greater than the picked element
             arr[j + 1] = arr[j];    // create gap by pushing greater all elements forward
-            j--;    // reduce index to move to next element on left
+            j--;    // reduce index to move pointer to next element on left
         }
         
         // Place the current element at its correct position after all the shiftings are done to the right after the loop, greating a space for insertion
@@ -44,13 +44,13 @@ function insertionUsingWhileloopOptimized(arr) {     // ******
         let currentValue = arr[i];
         let j = i - 1;
 
-        // Skip unnecessary iterations if the element is already in the correct position
+        // Skip unnecessary iterations if the element is already in the correct position, ie, element value is on the left sorted side of my current pointer 
         if (arr[j] <= currentValue) continue;
 
-        // Use a while loop to find the correct position for currentValue
+        // Use a while loop to find the correct position for currentValue...while-loop cus can't determine beforehand the number of moves to be made
         while (j >= 0 && arr[j] > currentValue) {
             arr[j + 1] = arr[j]; // Shift elements to the right
-            j--; // Move to the previous element
+            j = j - 1; // Move to the previous element
         }
 
         // Insert currentValue at its correct position

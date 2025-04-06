@@ -1,3 +1,12 @@
+/* 
+
+Doubly Linked List:
+
+   2 <-> 3 <-> 4 <-> 1 <-> 6 
+(head)                   (tail)     
+
+*/
+
 class Node {
     constructor(value){
         this.value = value;
@@ -26,7 +35,7 @@ class DoublyLinkedList {
         this.tail.next = newNode;
         newNode.prev = this.tail;
 
-        // set new tail
+        // set new tail-tag
         this.tail = newNode;
         this.length += 1;
 
@@ -41,11 +50,11 @@ class DoublyLinkedList {
             const headTailSame = this.head;
             this.head = null;
             this.tail = null;
-            this.length - 1;
+            this.length -= 1;
             return headTailSame;
         }
-
-        // unlike singly linked list that need to be traversed, pendultimate node can be accessed directly from the tail in DoublyLinkedList's
+         
+        // unlike singly linked list that need to be traversed, penultimate node can be accessed directly from the tail in DoublyLinkedList
         let poppedtail = this.tail; // copy to return
         let prevNode = this.tail.prev;
         prevNode.next = null;
@@ -114,10 +123,10 @@ class DoublyLinkedList {
             return null;
         }
 
-        // work from start
+        // find node from the start/head
         if(index <= this.length/2){
             // console.log("from start");
-            
+
             let currentNode = this.head;
             let counter = 0;
     
@@ -130,8 +139,7 @@ class DoublyLinkedList {
             return currentNode;
         }
 
-        // else, work from end
-        // console.log("from end");
+        // else, find node from the tail/end
         let currentNode = this.tail;
         let counter = this.length - 1; // last element
 
