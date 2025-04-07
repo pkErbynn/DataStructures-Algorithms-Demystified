@@ -16,8 +16,7 @@ findThePostitionOfTarget  = function(arr, target) {
         end = start + (boxSize * 2); // new end streches starting from start position to doubled the size
     }
 
-    // binary search
-
+    // do binary search when the target is now contained in the box range, ie. target <= arr[end]...ie. start <= target <= end
     while (start <= end){
         let midIndex = Math.floor((end + start) / 2)
 
