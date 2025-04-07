@@ -86,7 +86,6 @@ For example, searching for 4 in [1, 2, 4, 5, 6]:
 	•	If arr[mid] = 5, you know 4 is in the left half, so you set end = mid - 1, excluding 5.
 
 Why end = mid - 1 works in the general case:
-
 	•	In exact match problems, when arr[mid] doesn’t equal the target, you can safely exclude mid because it has been checked and can’t be the solution.
 
 
@@ -97,7 +96,6 @@ This is a different type of problem:
 	•	The peak is guaranteed to exist in the range [start, end] throughout the search.
 
 Why end = mid works here:
-
 	•	When arr[mid] > arr[mid + 1], the peak is either:
 	•	At mid, or
 	•	Somewhere to the left of mid.
