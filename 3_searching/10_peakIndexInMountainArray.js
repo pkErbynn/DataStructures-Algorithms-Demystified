@@ -105,3 +105,15 @@ To ensure you don’t skip the peak, you must include mid in the search space. S
 Why end = mid - 1 fails here:
 	•	If you exclude mid (by setting end = mid - 1), you may skip the peak if mid is the actual peak.
 */
+
+
+// Brute force
+
+function findPeakIndex(arr) {
+  for (let i = 1; i < arr.length; i++) {
+    if (arr[i] < arr[i - 1]) {
+      return i - 1; // Peak index before it starts decreasing
+    }
+  }
+  return -1; // No decreasing part found
+}
