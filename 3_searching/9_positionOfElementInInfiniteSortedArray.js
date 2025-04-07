@@ -13,7 +13,7 @@ findThePostitionOfTarget  = function(arr, target) {
         let boxSize = (end - start) + 1
 
         start = end + 1;        // start moves behind end one-step 
-        end = start + (boxSize * 2); // new end streches starting from start position
+        end = start + (boxSize * 2); // new end streches starting from start position to doubled the size
     }
 
     // binary search
