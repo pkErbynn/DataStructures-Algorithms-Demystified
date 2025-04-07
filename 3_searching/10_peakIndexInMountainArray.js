@@ -105,6 +105,5 @@ Why end = mid works here:
 To ensure you don’t skip the peak, you must include mid in the search space. Setting end = mid achieves this.
 
 Why end = mid - 1 fails here:
-
 	•	If you exclude mid (by setting end = mid - 1), you may skip the peak if mid is the actual peak.
 */
