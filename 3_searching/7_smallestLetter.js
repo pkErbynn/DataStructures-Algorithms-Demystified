@@ -55,11 +55,13 @@ function binarySearch_nextGreatestLetter(letters, target){
         }
     }
 
-    // when the target is last element, then the next greatest letter goes round to the first element
+    // when start goes beyond the end of the array
+    // means the greatest next letter falls out of bound so you wrap around and return the first letter
     if(start == letters.length)
         return letters[0];
 
-    return letters[start];
+    return letters[start];   
+    // combined: return letters[start % letters.length];
 }
 
 console.log("binarySearch_nextGreatestLetter:", binarySearch_nextGreatestLetter(["c","f","j"], "a"));
