@@ -23,6 +23,15 @@
     - input array size is also 5
     - no repeated element
 
+- Tiime Complexity
+    - Worse case: When all elements are complexity unsorted, ie. each element is in its wrong index position.
+    - Eg: [3, 4, 5, 1, 2]
+    - Standing at index 0, elements will be swapped to their correct index positions without moving the index
+        - This means, (n - 1) swaps will be while pointer stand at index 0
+    - Once swaps are made, array will be iterated making sure each element is in its correct index position
+        - This takes, n iterations
+    - Thus, total operations, O(n) = (n - 1) + n = 2n - 1 => **n**
+
 - To determine if the Cyclic Sort pattern is suitable for a given problem, you can consider the following characteristics:
     1. Range of Elements: the array are within a specific range, typically from **(1 to n) or (0 to n-1)**, where n is the size of the array. 
         - If the elements fall within this range and 
@@ -31,5 +40,4 @@
     2. In-Place Sorting Algo: meaning it **doesn't require additional memory** or data structures. 
         - If you need to sort the elements in-place without using extra space, Cyclic Sort can be a suitable choice.
 
-- Watch
-    - Vid tut: https://www.youtube.com/watch?v=mkI_-m0x4U4&ab_channel=JeanTheCoder
+- Ref: https://www.youtube.com/watch?v=mkI_-m0x4U4&ab_channel=JeanTheCoder

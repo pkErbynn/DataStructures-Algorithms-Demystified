@@ -48,8 +48,7 @@ namespace seesharp
             //     currentNode = currentNode.Next;
             // }
 
-            
-            
+
             // after this while-loop: 
                 // currentNode is exactly on the start point, p (cus last iteration is: currentNode = currentNode.Next)
                 // previousNode is on the penultimate node of currentNode

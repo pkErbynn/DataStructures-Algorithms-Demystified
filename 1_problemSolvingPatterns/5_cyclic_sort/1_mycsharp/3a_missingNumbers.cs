@@ -29,21 +29,23 @@ class MissingNumbers
         while (startIndex < numbers.Length)
         {
             var currentNumber = numbers[startIndex];
+            var rightNumber = numbers[currentNumber - 1]
 
-            if(currentNumber != numbers[currentNumber - 1])     // (curNum - 1) as index since the lowest number in the array is 1 not 0
+            if(currentNumber !== rightNumber)     // (curNum - 1) as index since the lowest number in the array is 1 not 0
             {
                 // swap
                 var temp = numbers[startIndex];
                 numbers[startIndex] = numbers[currentNumber - 1];
                 numbers[currentNumber - 1] = temp;
             }
-            else
+            else    // else needed otherwise will swap move forward same time
             {
                 startIndex++;
             }
         }
         // numbers.ToList().ForEach(System.Console.WriteLine);
 
+        // Collecting missing numbers
         List<int> results = new List<int>();
         for (int i = 0; i < numbers.Length; i++)
         {

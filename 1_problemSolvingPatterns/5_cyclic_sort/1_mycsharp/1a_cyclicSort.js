@@ -44,7 +44,7 @@ const cyclicSort = (numbers) => {
             [numbers[startIndexPointer], numbers[currentNumber - 1]] = [numbers[currentNumber - 1], numbers[startIndexPointer]];
         }
         else{
-            startIndexPointer++; // move to next number if swap didn't happen, means the number is in its correct possition
+            startIndexPointer++; // move to next number only when swap didn't happen, means the number is in its correct possition
         }
     }
 

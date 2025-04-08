@@ -181,8 +181,9 @@ namespace _1_mycsharp
 			while (indexPointer < numbers.Length)
 			{
 				var correctValueIndex = numbers[indexPointer];
+				var rightValue = numbers[correctValueIndex - 1];
 
-				if (correctValueIndex != numbers[correctValueIndex - 1])
+				if (correctValueIndex !== rightValue)
 				{
 					// swap
 					var temp = numbers[indexPointer];

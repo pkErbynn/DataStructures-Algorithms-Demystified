@@ -39,7 +39,8 @@ const findMissingNumber = (numbers) => {
 
         if(currentNumber !== correctNumberThatShouldBeAtCorrectstartIndex && currentNumber < numbers.length){
             [numbers[startIndex], numbers[currentNumber]] = [numbers[currentNumber], numbers[startIndex]];    // [currentNumber, correctNumberThatShouldBeAtCorrectstartIndex] = [correctNumberThatShouldBeAtCorrectstartIndex, currentNumber]...using the values itself doesn't swap, unless startIndex is used 
-        }else {
+        }
+        else {
             startIndex += 1;
         }
     }
@@ -59,6 +60,7 @@ const findMissingNumber = (numbers) => {
 }
 
 console.log("R1:", findMissingNumber([4, 0, 2, 3, 1]));
+console.log("R2:", findMissingNumber([3, 0, 2, 1, 3]));
 
 /*
 

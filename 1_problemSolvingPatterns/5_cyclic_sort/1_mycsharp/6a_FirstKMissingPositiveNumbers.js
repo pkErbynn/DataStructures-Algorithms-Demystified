@@ -1,4 +1,5 @@
 /*
+
 [Hard but Starred]
 Given an unsorted array containing numbers and a number ‘k’, 
 find the first ‘k’ missing positive numbers in the array.
@@ -21,20 +22,20 @@ Example 3:
 Input: [-2, -3, 4], k=2
 Output: [1, 2]
 Explanation: The smallest missing positive numbers are 1 and 2.
+
 */
 
 
 
 const x = smallestKMissingPositiveNumbers = (arr, numOfTimes) => {
-    // cyclic sort
-    // go through the array from start to finish
+    // cyclic sort - go through the array from start to finish
     let index = 0;
 
     while (index < arr.length) {
         const curentNumber = arr[index];
         const correctNumber = arr[curentNumber - 1];
 
-        if(curentNumber > 0 && curentNumber < arr.length && curentNumber != correctNumber){    // considering only positive numbers in within range
+        if(curentNumber > 0 && curentNumber < arr.length && curentNumber !== correctNumber){    // considering only positive numbers in within range
             [arr[index], arr[curentNumber - 1]] = [arr[curentNumber - 1], arr[index]];
         }
         else {
@@ -42,8 +43,9 @@ const x = smallestKMissingPositiveNumbers = (arr, numOfTimes) => {
         }
     }
     
-    let missingValues = [];
+    let missingValues = [];     // can be Set
 
+    // Collecting missing numbers
     for (let index = 0; index < arr.length; index++) {
         if(arr[index] != (index + 1)){
             missingValues.push(index + 1)     // missing numbers implies INDEX
@@ -51,17 +53,14 @@ const x = smallestKMissingPositiveNumbers = (arr, numOfTimes) => {
     }
     console.log("missingValues:", missingValues);
 
-    // == adding extra array values to meet K size
-    let arrLength = arr.length;    // values beyond array to add at L#59
-    let increaseArrLengthValueBy1 = 1;
-
+    // Adding extra values beyond the array to meet K size
+    let nextValueToAdd = arr.length + 1;
     while(missingValues.length < numOfTimes)    // fill the result bucket with big numbers until it's up to the k size required
     {
-        let nextValueToAdd = arrLength + increaseArrLengthValueBy1;
         if(!arr.includes(nextValueToAdd)){   // add number that is not already in the original array
             missingValues.push(nextValueToAdd)
         }
-        increaseArrLengthValueBy1 ++;
+        nextValueToAdd++;
     }
 
     return missingValues;
