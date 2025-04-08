@@ -17,6 +17,8 @@ function binarySearch_iteration(sortedArr, target){
 
         if(target === sortedArr[midIndex]) return midIndex;
 
+        // arr = [2, 3, 4, 5, 6, 7, 8]...target = 7
+        //       (s)      (m)      (e)...target > m...hence, target falls on the right...hence, move s pointer further to the right
         if(target > sortedArr[midIndex]){
             start = midIndex + 1;
         } 
@@ -24,6 +26,10 @@ function binarySearch_iteration(sortedArr, target){
             end = midIndex - 1;
         }
     }
+
+    // pointer positions after loop termination, ie. start > end
+    // arr = [2,  3,  4,  5,  6,  7,  8]...target = 7
+    //                           (e) (s)
 
     return -1; 
 }

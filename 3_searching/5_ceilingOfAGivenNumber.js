@@ -6,16 +6,16 @@ Assume that the array is sorted in non-decreasing order. Write efficient functio
 Examples : 
 
 For example, let the input array be {1, 2, 8, 10, 10, 12, 19}
-For x = 1:    ceil  = 1
-For x = 5:    ceil  = 8
-For x = 0:    ceil  = 1
+For x = 1:    ceil = 1, at index 0
+For x = 5:    ceil = 8, at index 2
+For x = 0:    ceil = 1, at index 0
 For x = 20:   ceil doesn't exist in array, -1
 
 Explaination found in vid: https://youtu.be/W9QJ8HaRvJQ?list=PL9gnSGHSqcnr_DxHsP7AW9ftq0AtAyYqJ&t=839
-*/
 
-// returns index if found
-// returns -1 if not found
+returns index if found
+returns -1 if not found
+*/
 
 
 function binarySearch_ceiling(sortedArr, target){
@@ -34,21 +34,26 @@ function binarySearch_ceiling(sortedArr, target){
 
         if(target === sortedArr[midIndex]) return midIndex;
 
-        if(target < sortedArr[midIndex]){
-            end = midIndex - 1;
+        // arr = [2, 3, 4, 5, 6, 7, 8]...target = 7
+        //       (s)      (m)      (e)...target > m...hence, target falls on the right...hence, move s pointer further to the right
+        if(target > sortedArr[midIndex]){
+            start = midIndex + 1;
         }
         else {
-            start = midIndex + 1;
+            end = midIndex - 1;
         }
     }
 
-    return start;  // the index not value
+    // pointer positions after loop termination, ie. start > end
+    // arr = [2,  3,  4,  5,  6,  7,  8]...target = 7
+    //                           (e) (s)
+
+    return start;  // the index of the ceiling number
 }
 
-console.log("binarySearch_ceiling:", binarySearch_ceiling([1, 2, 8, 10, 10, 12, 19], 1));
-console.log("binarySearch_ceiling:", binarySearch_ceiling([1, 2, 8, 10, 10, 12, 19], 5));
-console.log("binarySearch_ceiling:", binarySearch_ceiling([1, 2, 8, 10, 10, 12, 19], 0));
-console.log("binarySearch_ceiling:", binarySearch_ceiling([1, 2, 8, 10, 10, 12, 19], 20));
+console.log("binarySearch_ceiling1:", binarySearch_ceiling([1, 2, 8, 10, 10, 12, 19], 1));
+console.log("binarySearch_ceiling2:", binarySearch_ceiling([1, 2, 8, 10, 10, 12, 19], 5));
+console.log("binarySearch_ceiling3:", binarySearch_ceiling([1, 2, 8, 10, 10, 12, 19], 0));
+console.log("binarySearch_ceiling4:", binarySearch_ceiling([1, 2, 8, 10, 10, 12, 19], 20));
 
-// Clue: 
-// 90% of "sorted array" questions are solved with BS
+// Clue: 90% of "sorted array" questions can be solved with BS

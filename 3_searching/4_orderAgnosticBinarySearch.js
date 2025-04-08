@@ -49,10 +49,11 @@ function agnostic_binary_search(arr, target){
             else {
                 end = mid - 1;
             }
-        } 
+        }
 
         if(!isAscending){
-            // if descending like [9, 8, 7, 6, 5, 4, 3, 2, 1]...bring endPointer closer to the left side because that is where the target will be found since target is bigger
+            // arr = [8, 7, 6, 5, 4, 3, 2]...target = 7
+            //       (s)      (m)      (e)...target > m...hence, target falls on the left...thus, move e pointer further to the left
             if(target > arr[mid]){
                 end = mid - 1;
             }
@@ -60,9 +61,12 @@ function agnostic_binary_search(arr, target){
                 start = mid + 1;
             }
         }
-
        
     }
+    
+    // For ascendin' array, pointer positions after loop termination, ie. start > end
+    // arr = [2,  3,  4,  5,  6,  7,  8]...target = 7
+    //                           (e) (s)
 }
 
 console.log("binarySearch_iteration", agnostic_binary_search([9,8,7,6,5,4,3,2,1], 3));  // wrong solution
