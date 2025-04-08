@@ -56,7 +56,7 @@ const rearrangeLinkedList = function(linkedListHead) {
     }
 
     // slowPointer gets to the middle, when the fastPointer gets to the end of the linkedlist
-    // console.log("MiddleNode:", slowPointer); // second half
+    // console.log("MiddleNode:", slowPointer); // second half: 8 -> 10 -> 12 -> null
 
     // reversed linkedListFromMiddle & Original half linkedList
     let secondHalf = reverseLinkedList(slowPointer);
@@ -73,14 +73,14 @@ const rearrangeLinkedList = function(linkedListHead) {
         firstHalf.next = secondHalf;
 
         let secondHalfNext = secondHalf.next;
-        secondHalf.next = firstHalf;
+        secondHalf.next = firstHalfNext;
 
         // move forward on step
         firstHalf = firstHalfNext;
         secondHalf = secondHalfNext;
     }
     
-    // terminate firstHalf list still has trailing data prevent data leakage
+    // terminate firstHalf list still has trailing data prevent data leakage...cus in regular ll reversal, first pointer should end up as 'null' as it goes beyond the array
     if (firstHalf) {
         firstHalf.next = null;
     }
@@ -118,7 +118,7 @@ linkedListHead.next.next.next.next.next = new Node(12);
 console.log("rearrangeLinkedList:", rearrangeLinkedList(linkedListHead));
 
 
-
+//////// W/out comments
 const rearrangingList2 = (linkedListHead) => {
     if(!linkedListHead) return null;
 
@@ -135,13 +135,14 @@ const rearrangingList2 = (linkedListHead) => {
 
     while(listList1stHalf && listList2ndHalf)
     {   
-        let n1 = listList1stHalf.next;
-        let n2 = listList2ndHalf.next;
-        listList1stHalf.next = listList2ndHalf;
-        listList2ndHalf.next = listList2ndHalf;
+        let listList1stHalfNext = listList1stHalf.next;
+        let listList2ndHalfNext = listList2ndHalf.next;
 
-        listList1stHalf = n1;
-        listList2ndHalf = n2;
+        listList1stHalf.next = listList2ndHalf;
+        listList2ndHalf.next = listList2ndHalfNext;
+
+        listList1stHalf = listList1stHalfNext;
+        listList2ndHalf = listList2ndHalfNext;
     }
 
     if(listList1stHalf){
@@ -151,7 +152,7 @@ const rearrangingList2 = (linkedListHead) => {
     return linkedListHead;
 }
 
-// console.log("rearrangeLinkedList22:", rearrangingList2(linkedListHead));
+// console.log("rearrangingList2:", rearrangingList2(linkedListHead));
 
 
 /*

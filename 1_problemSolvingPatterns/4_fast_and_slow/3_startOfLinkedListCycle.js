@@ -95,7 +95,7 @@ const lengthOfLinkedListCycle = function(head) {
 
         if(fastPointer === slowPointer){
             let counterPointer = fastPointer; // or can point to slowPointer
-            let stepCounter = 0;
+            let stepCounter = 0;    // tracks the number of times counterPointer meets fastPointer again
 
             while(counterPointer.next){
                 counterPointer = counterPointer.next;

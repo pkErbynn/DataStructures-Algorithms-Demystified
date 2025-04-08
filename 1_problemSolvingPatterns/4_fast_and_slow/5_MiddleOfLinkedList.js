@@ -51,7 +51,8 @@ const middleOfLinkedlist = function(head) {
         fastPointer = fastPointer.next.next;
     }
 
-    return slowPointer; // return the last slow pointer as soon as the fast pointer falls off (either node or next node is null)
+    // the last slow pointer will be at the middle when the fast pointer is at the last node element
+    return slowPointer;
 }
 
 

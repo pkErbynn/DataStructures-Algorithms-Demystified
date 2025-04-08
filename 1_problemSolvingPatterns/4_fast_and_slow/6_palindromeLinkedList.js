@@ -17,8 +17,8 @@ Input: 2 -> 4 -> 6 -> 4 -> 2 -> 2 -> null
 Output: false
 
 
-
 Solution #
+
 - A palindrome LinkedList will have nodes values that read the same backward or forward. This means that if we divide the LinkedList into two halves, 
 the node values of the first half in the forward direction should be similar to the node values of the second half in the backward direction. 
 - Given a Singly LinkedList, we can’t move in the backward direction. To handle this, we will perform the following steps:
@@ -37,7 +37,6 @@ the node values of the first half in the forward direction should be similar to 
     // linkedlist can only traverse from head node, thus no random element access
 // reverse the right half
 // compare elements 
-// reverse left half to its original state
 
 
 'use strict';   // strict mode activated
