@@ -1,5 +1,11 @@
-// ========= Finding target element in a rotated array ========
-// ***
+// ========= Finding target element in a rotated array ** ========
+/*
+
+Given array = [4, 5, 6, 7, 0, 1, 2]
+Target = 7
+Answer = 3
+
+*/
 
 // 1. Find the Pivot position in a rotated array
 function findPivot(arr){
@@ -50,7 +56,7 @@ console.log("Pivot3:", findPivot([7, 0, 1, 2, 4, 6]));
 console.log("Pivot3:", findPivot([0, 1, 2, 4, 6, 7]));
 
 
-// 2. Once Pivot is fount, search in right and left halves
+// 2. Once Pivot is found, search in right and left halves
 function binarySearch(arr, target, start, end){
 
     while (start <= end) {
@@ -76,7 +82,7 @@ function findTargetInRotatedArray(arr, target){
 
     let pivot = findPivot(arr);
 
-    // if array is not a rotated
+    // if no pivot exists, means array input is not rotated....thus, do a normal binary search on the input array to find the target element
     if(pivot === -1){
         return binarySearch(arr, target, 0, arr.length - 1);
     }
@@ -88,9 +94,8 @@ function findTargetInRotatedArray(arr, target){
 
     // If target is in the left half
     /*
-    The elements to the left of the pivot are in ascending order, starting from arr[0].
-    The elements to the right of the pivot are also in ascending order but are smaller than arr[0].
-    
+        The elements to the left of the pivot are in ascending order, starting from arr[0].
+        The elements to the right of the pivot are also in ascending order but are smaller than arr[0].
     */
     if(target >= arr[0]){    // not if(target < arr[pivot]){...cus If the target is less than the pivot value (arr[pivot]), it could be in the left half if it lies between arr[0] and arr[pivot] or the right half
         return binarySearch(arr, target, 0, pivot - 1)
@@ -100,11 +105,46 @@ function findTargetInRotatedArray(arr, target){
     return binarySearch(arr, target, pivot + 1, arr.length - 1);
 }
 
-
-
 console.log("findTargetInRotatedArray1:", findTargetInRotatedArray([4, 5, 6, 7, 0, 1, 2], 7));
 console.log("findTargetInRotatedArray2:", findTargetInRotatedArray([0, 1, 2, 4, 6, 7], 7));
 console.log("findTargetInRotatedArray3:", findTargetInRotatedArray([4, 5, 6, 7, 0, 1, 2], 5));
 console.log("findTargetInRotatedArray4:", findTargetInRotatedArray([4, 5, 6, 7, 0, 1, 2], 1));
 
 
+
+function searchInRotatedArray(nums, target) {
+    let start = 0;
+    let end = nums.length - 1;
+
+    while (start <= end) {
+        let mid = Math.floor(start + (end - start) / 2);
+
+        if (nums[mid] === target) {
+            return mid;
+        }
+
+        // Left part is sorted
+        if (nums[start] <= nums[mid]) {
+            if (target >= nums[start] && target < nums[mid]) {
+                end = mid - 1;
+            } else {
+                start = mid + 1;
+            }
+        }
+        // Right part is sorted
+        else {
+            if (target > nums[mid] && target <= nums[end]) {
+                start = mid + 1;
+            } else {
+                end = mid - 1;
+            }
+        }
+    }
+
+    return -1; // not found
+}
+
+console.log("searchInRotatedArray:", searchInRotatedArray([4, 5, 6, 7, 0, 1, 2], 7));
+console.log("searchInRotatedArray2:", searchInRotatedArray([0, 1, 2, 4, 6, 7], 7));
+console.log("searchInRotatedArray3:", searchInRotatedArray([4, 5, 6, 7, 0, 1, 2], 5));
+console.log("searchInRotatedArray4:", searchInRotatedArray([4, 5, 6, 7, 0, 1, 2], 1));

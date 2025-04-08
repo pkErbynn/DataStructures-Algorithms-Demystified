@@ -28,7 +28,9 @@ Explanation: There are no characters in letters that is lexicographically greate
 
 ==== 
 
-NB: HERE, "element greater than target" falls beyond the TARGET EQUALITY, ie. target == mid
+NB:
+- New Phase of Questions where target is not returned earlier or at all or target blocks not considered 
+- HERE, "element greater than target" falls beyond the TARGET EQUALITY, ie. target == mid
 
 Same answer code as previous with these observations:
 
@@ -36,7 +38,7 @@ Same answer code as previous with these observations:
 2. Ignore target equality check cus question said 'GREATER', not 'equal to' or 'greater or equal to'
 3. Letters wrap around
 
-When Binary Search is left to iterate throughout w/out mid equality termination restriction, the start and end pointers converge at the target
+When Binary Search is left to iterate throughout w/out mid equality termination restriction, the start and end pointers converge at the target, if target is duplicate, they converge at the far-right one by default
     Pointer positions after loop termination, ie. start > end
     arr = ['c', 'f', 'f', 'f', 'j']...target = 'f'
                           (e)  (s)

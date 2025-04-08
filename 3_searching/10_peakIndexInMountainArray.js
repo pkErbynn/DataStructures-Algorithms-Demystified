@@ -1,15 +1,34 @@
 // find the index where the increasing part of the array stops and decereases
 // Hint: input array are sorted + search goal thus, apply binary search
+// TODO: Whiteboard Dry Test Run
+
+/*
+New Phase of questions: No Target
+- So can't move 'start' and 'end' pointers (+1, -1) with 'mid' on the 'target' equality
+- ...since no target involved, and only moves pointers based on the increasing and decreasing part, 
+- ...then move pointers to the greater value
+- ...eg: 
+        if(arr[mid + 1] > arr[mid]){
+            start = mid + 1     // since arr[mid + 1] is greater
+        }
+        else if(arr[mid] > arr[mid + 1]) 
+        {        
+            end = mid   // since arr[mid] is greater, on the contrary
+        }
+
+*/
 
 
-function peakIndexInMountainArray2(arr) {
+function peakIndexInMountainArray2(arr) { // *
     let start = 0;
     let end = arr.length - 1;
 
+    // maintaining regular BS pointers conditional statement
     while (start <= end) {
         let mid = Math.floor( start + ((end - start) / 2) )
         
-        // if both points to same index/value, means that's the peak meak
+        // if both points to same index/value, means that's the peak
+        // cus 'start' and 'end' all move to the biggest element so where they meet then means that is the biggest number as peek
         if(start == end) return start
         
         // if mid is the peak...(p-1), p, (p-1)...3, 4, 3
@@ -21,26 +40,26 @@ function peakIndexInMountainArray2(arr) {
         if(arr[mid + 1] > arr[mid]){
             start = mid + 1
         }
+
         // at the decreasing part.... "==" not an option cus that's the loops breaking point
         else 
         {        
             // setting end = mid - 1, might skip the peak value if mid is the peak value
             // this mid may is a possible answer but look at left, by pinning this mid as end, and finding newMid (at line 10) to compare with this if that is greater or not
-            end = mid
+            end = mid - 1
         }
     }
 
     return -1;
 }
 
-console.log("Peak11", peakIndexInMountainArray2([1, 2, 3, 5, 9, 7, 5, 1]))
-console.log("Peak22", peakIndexInMountainArray2([3, 5, 9, 1, 0]))
-console.log("Peak33", peakIndexInMountainArray2([3, 9, 8, 7, 5, 6, 4, 3, 2, 1, 0 ]))
+console.log("Peak1", peakIndexInMountainArray2([1, 2, 3, 5, 9, 7, 5, 1]))
+console.log("Peak2", peakIndexInMountainArray2([3, 5, 9, 1, 0]))
+console.log("Peak3", peakIndexInMountainArray2([3, 9, 8, 7, 5, 4, 3, 2, 1, 0 ]))
+console.log("Peak4", peakIndexInMountainArray2([9, 8, 7, 5, 4, 3, 2, 1, 0 ]))
 
 
-
-
-/////// Alternative
+/////// Alternative  ***
 function peakIndexInMountainArray(arr) {
     let start = 0;
     let end = arr.length - 1;
@@ -50,7 +69,48 @@ function peakIndexInMountainArray(arr) {
         
         // at the increasing part, move start pointer forward to the next bigger value
         if(arr[mid + 1] > arr[mid]){
-            start = mid + 1
+            start = mid + 1     // since arr[mid + 1] is greater
+        }
+
+        // at the decreasing part.... "==" not an option cus that's the loops breaking point
+        else if(arr[mid + 1] <= arr[mid]) 
+        {        
+            // setting end = mid - 1, might skip the peak value if mid is the peak value
+            // this mid may is a possible answer but look at left, by pinning this mid as end, and finding newMid (at line 10) to compare with this if that is greater or not
+            end = mid   // since arr[mid] is greater, on the contrary
+        }
+
+        // // ======= Flat mountain check: When flat mountain input(1,2,3,3,2,1) is NOT ALLOWED
+        // else if(arr[mid + 1] < arr[mid]) 
+        // {        
+        //     end = mid
+        // }
+        // else {
+        //     throw new Error("Invalid mountain array — contains plateau or flat region.");
+        // }
+    }
+
+    // start === end, means that value is the largest
+    return start;  
+}
+console.log("Peak11", peakIndexInMountainArray3([1, 2, 3, 5, 9, 7, 5, 1]))
+console.log("Peak22", peakIndexInMountainArray3([3, 5, 9, 1, 0]))
+console.log("Peak33", peakIndexInMountainArray3([3, 9, 8, 7, 5, 6, 4, 3, 2, 1, 0 ]))
+console.log("Peak33", peakIndexInMountainArray3([1,2,3,3,2,1]))
+
+
+
+/////// Alternative: with open else
+function peakIndexInMountainArray3(arr) {
+    let start = 0;
+    let end = arr.length - 1;
+
+    while (start < end) {
+        let mid = Math.floor( start + ((end - start) / 2) )
+        
+        // at the increasing part, move start pointer forward to the next bigger value
+        if(arr[mid + 1] > arr[mid]){
+            start = mid + 1     // since arr[mid + 1] is greater
         }
 
         // at the decreasing part.... "==" not an option cus that's the loops breaking point
@@ -58,16 +118,17 @@ function peakIndexInMountainArray(arr) {
         {        
             // setting end = mid - 1, might skip the peak value if mid is the peak value
             // this mid may is a possible answer but look at left, by pinning this mid as end, and finding newMid (at line 10) to compare with this if that is greater or not
-            end = mid
+            end = mid   // since arr[mid] is greater, on the contrary
         }
     }
 
-    return start;   // if both points to value, means that value is the largest
+    // start === end, means that value is the largest
+    return start;   
 }
 
-console.log("Peak1", peakIndexInMountainArray([1, 2, 3, 5, 9, 7, 5, 1]))
-console.log("Peak2", peakIndexInMountainArray([3, 5, 9, 1, 0]))
-console.log("Peak3", peakIndexInMountainArray([3, 9, 8, 7, 5, 6, 4, 3, 2, 1, 0 ]))
+console.log("Peak111", peakIndexInMountainArray3([1, 2, 3, 5, 9, 7, 5, 1]))
+console.log("Peak222", peakIndexInMountainArray3([3, 5, 9, 1, 0]))
+console.log("Peak333", peakIndexInMountainArray3([3, 9, 8, 7, 5, 6, 4, 3, 2, 1, 0 ]))
 
 
 //NB
@@ -117,3 +178,6 @@ function findPeakIndex(arr) {
   }
   return -1; // No decreasing part found
 }
+
+
+// This question can also be refined to: from decreasing for increasing. Example: [5, 4, 3, 2, 10, 11], Output: 3

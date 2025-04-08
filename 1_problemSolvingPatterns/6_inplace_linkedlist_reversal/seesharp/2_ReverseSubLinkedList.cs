@@ -30,13 +30,13 @@ namespace seesharp
             Node currentNode = head;
             Node previousNode = null;
 
-            // move current forward to get to the start point, p
+            // move currentNode pointer forward to get to the start point, p
             while (currentNode != null)
             {
                 previousNode = currentNode;
                 currentNode = currentNode.Next;
 
-                if(currentNode.Value == start) break;   // at the right node
+                if(currentNode.Value == start) break;   // at the right node position
             }
 
             // alternatively: 
