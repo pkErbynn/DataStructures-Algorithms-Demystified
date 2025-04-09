@@ -32,10 +32,11 @@ function countUniqueValues(sortedArray){
         if(sortedArray[leftIndex] !== sortedArray[rightIndex]){
             leftIndex++;    // shift left position pointer forward to new position so that it can can place the unique value to the new position
             sortedArray[leftIndex] = sortedArray[rightIndex];   // ...move current right pointer value to left pointer position shifted to
+            // sortedArray[++leftIndex] = sortedArray[rightIndex];  // self-contained
         }
     }
 
-    return leftIndex + 1;   // +1, since index started from 0
+    return leftIndex + 1;   // +1, since index started from 0...can print the values from 0 to the (leftIndex + 1)
 }
 
 console.log(countUniqueValues([1,1,1,2,2,2]));

@@ -1,7 +1,5 @@
 // improve using Frequency Counter Pattern
 
-
-
 function anagram(str1, str2){
     if(str1.length !== str2.length){
         return false;
@@ -57,20 +55,18 @@ console.log(anagram('cinema', 'iceman'));
 // Time Complexity = O(n)
 
 
-// ======================
-
+// ============== Solution 2
 
 // using Frequency Counter Pattern
 // Improve solution with reduced sibling loops...from 3 loops to 2
 // ...creating object for just one string, instead of two, reducing space complexity
 
-
-function anagram(str1, str2){
+function anagram2(str1, str2){
     if(str1.length !== str2.length){
         return false;
     }
 
-    let frequencyCounterStr1 = {};
+    let frequencyCounterStr1 = {};  //eg: { a: 3, n: 1}
     
     for(let value of str1){
         frequencyCounterStr1[value] ? 
@@ -99,14 +95,14 @@ function anagram(str1, str2){
     return true;
 }
 
-console.log(anagram('anagram', 'nagaram'));
-console.log(anagram('rat', 'car'));
-console.log(anagram('see', 'ees'));
-console.log(anagram('seee', 'eess'));
-// console.log(anagram('awesome', 'awesom'));
-// console.log(anagram('qwerty', 'qeywrt'));
-// console.log(anagram('seee', 'eess'));
-// console.log(anagram('cinema', 'iceman'));
+console.log(anagram2('anagram', 'nagaram'));
+console.log(anagram2('rat', 'car'));
+console.log(anagram2('see', 'ees'));
+console.log(anagram2('seee', 'eess'));
+// console.log(anagram2('awesome', 'awesom'));
+// console.log(anagram2('qwerty', 'qeywrt'));
+// console.log(anagram2('seee', 'eess'));
+// console.log(anagram2('cinema', 'iceman'));
 
 
 // Time Complexity = O(n)

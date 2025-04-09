@@ -1,8 +1,8 @@
 /*
 
-Problem Statement #
-Given an array containing 0s, 1s and 2s, sort the array in-place. You should treat numbers of the array as objects, hence, we can’t count 0s, 1s, and 2s to recreate the array.
-
+Problem Statement (Easy) #
+Given an array containing 0s, 1s and 2s, sort the array in-place. 
+You should treat numbers of the array as objects, hence, we can’t count 0s, 1s, and 2s to recreate the array.
 The flag of the Netherlands consists of three colors: red, white and blue; and since our input array also consists of three different numbers that is why it is called Dutch National Flag problem.
 
 Example 1:
@@ -19,7 +19,7 @@ Output: [0 0 1 2 2 2 ]
 ===== Brute Forces
 
 1st Approach: using a merge sort algo
-    - TC: O(nlogn)
+    - TC: O(n log n)
     - SC: O(1)
     - can be better? yes
 
@@ -43,7 +43,7 @@ const sortArrayElements = (numbers) => {
 
     while (midPointer <= rightPointer) {    // midPointer is the reference pointer so should be adjusted under all conditions
         if(numbers[midPointer] === 0){
-            [numbers[leftPointer], numbers[midPointer]] = [numbers[midPointer], numbers[leftPointer]];  // swap values and increase indexes
+            [numbers[leftPointer], numbers[midPointer]] = [numbers[midPointer], numbers[leftPointer]];  // swap values (cus 0's should fall at the beginning not mid) and increase indexes
             leftPointer++;  // index filled with correct value(0), so pointer should move forward
             midPointer++;
         }
@@ -51,7 +51,7 @@ const sortArrayElements = (numbers) => {
             midPointer++;   // pointer should not swap, maintain value, skip and move pointer forward...since 1's are supposed to fall in the middle
         }
         else if(numbers[midPointer] === 2){
-            [numbers[midPointer], numbers[rightPointer]] = [numbers[rightPointer], numbers[midPointer]];
+            [numbers[midPointer], numbers[rightPointer]] = [numbers[rightPointer], numbers[midPointer]];    // swap with rightPointer cus 2's should fall on the right side
             rightPointer--; // index filled with correct value, so pointer should move backwards
             midPointer++; // don't need to cus it will break the look prematurelly
         }
