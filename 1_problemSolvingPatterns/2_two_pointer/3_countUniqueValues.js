@@ -20,17 +20,18 @@ nb: if the array was unsorted like this [1,2,1,2,2,2], the unique count will be 
     - but since the array input is always sorted, it can be the case
 */
 
-function countUniqueValues(arr){
-    if(arr.length === 0){
+function countUniqueValues(sortedArray){
+    if(sortedArray.length === 0){
         return 0;
     }
 
     let leftIndex = 0;
    
-    for (let rightIndex = 1; rightIndex < arr.length; rightIndex++) {
-        if(arr[leftIndex] !== arr[rightIndex]){
-            leftIndex++;    // shift left position pointer to forward
-            arr[leftIndex] = arr[rightIndex];   // ...move current right pointer value to left pointer position shifted to
+    for (let rightIndex = 1; rightIndex < sortedArray.length; rightIndex++) {
+
+        if(sortedArray[leftIndex] !== sortedArray[rightIndex]){
+            leftIndex++;    // shift left position pointer forward to new position so that it can can place the unique value to the new position
+            sortedArray[leftIndex] = sortedArray[rightIndex];   // ...move current right pointer value to left pointer position shifted to
         }
     }
 

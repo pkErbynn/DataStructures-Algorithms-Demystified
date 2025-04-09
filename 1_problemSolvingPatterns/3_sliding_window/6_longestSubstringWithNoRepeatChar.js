@@ -1,4 +1,5 @@
 /*
+
 Problem Statement #
 Given a string, find the length of the longest substring which has no repeating characters.
 
@@ -7,11 +8,13 @@ Example 1:
 Input: String="aabccbb"
 Output: 3
 Explanation: The longest substring without any repeating characters is "abc".
+
 Example 2:
 
 Input: String="abbbb"
 Output: 2
 Explanation: The longest substring without any repeating characters is "ab".
+
 Example 3:
 
 Input: String="abccde"
@@ -20,26 +23,28 @@ Explanation: Longest substrings without any repeating characters are "abc" & "cd
 
 
 HINT #
-This problem follows the Sliding Window pattern and we can use a similar dynamic sliding window strategy as discussed in Longest Substring with K Distinct Characters. 
-We can use a HashMap to remember the last index of each character we have processed. 
-Whenever we get a repeating character we will shrink our sliding window to ensure that we always have distinct characters in the sliding window
+- This problem follows the Sliding Window pattern and we can use a similar dynamic sliding window strategy as discussed in Longest Substring with K Distinct Characters. 
+- We can use a HashMap to remember the last index of each character we have processed. 
+- Whenever we get a repeating character we will shrink our sliding window to ensure that we always have distinct characters in the sliding window
 
 */
 
 
-function lengthOfLongestSubstringWithNoCharRepeat(str){
+function lengthOfLongestSubstringWithNoCharRepeat(strInput){
     let windowStartIndex = 0;
     let maxLength = 0;
     let charIndexMap = {};  // keeps track of the last-seen index of each char
 
     // Input: String="abccde"
 
-    for (let windowEndIndex = 0; windowEndIndex < str.length; windowEndIndex++) {
-        const currentChar = str[windowEndIndex];
+    for (let windowEndIndex = 0; windowEndIndex < strInput.length; windowEndIndex++) {
+        const currentChar = strInput[windowEndIndex];
 
         // If the character is seen again, jump the windowStart to the next index after the previous occurrence, using the mapObject {}
-        if(currentChar in charIndexMap){  // (charIndexMap[currentChar]) is wrong cus if index is 0, it will evaluate to 'false' instead of 'true'
-            windowStartIndex = Math.max(windowStartIndex, charIndexMap[currentChar]  + 1); // move to jump the window startPointer ref forward to (currentIndx + 1) when characters repeat.
+        if(currentChar in charIndexMap){    // (charIndexMap[currentChar]) is wrong cus if index is 0, it will evaluate to 'false' instead of 'true'
+            windowStartIndex = Math.max(windowStartIndex, charIndexMap[currentChar] + 1);   // move to jump the window startPointer ref forward to (currentIndx + 1) when characters repeat.
+            
+            // windowStartIndex = charIndexMap[currentChar] + 1;  // when the currentChar has been seen before, adjust the window start to the next index and start and new window
         }
 
         // Update the last seen index of the character

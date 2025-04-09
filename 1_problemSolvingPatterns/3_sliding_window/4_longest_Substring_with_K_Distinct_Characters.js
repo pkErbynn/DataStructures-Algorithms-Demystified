@@ -33,20 +33,20 @@ Algo:
 ...can find the len of that block and compare to prev for the max 
 ...also, need to keep track of the number of occurences i have in that window 
 ...thus, hashmap serves these purpose, where keys will be the #(distinct elements) ans values as occurences 
-...with this, when shrinkage is happens on the left, need to update the map's key and value occurence accordingly 
+...with this, when shrinkage is happens on the left, then need to update the map's key and value occurence accordingly 
 
 */
 
 // Str="araaci", K=2
 
-function longest_Substring_with_K_Distinct_Characters(str, k){
+function longest_Substring_with_K_Distinct_Characters(strInput, k){
   let maxLength = Number.NEGATIVE_INFINITY;   // give -ve while looking for max positive
 
   let charFrequency = {}; // keeps track of the window counters...map/object used cus keys are distinct, which can help find distinct chars's length
   let windowStart = 0;  // 0
 
-  for (let windowEnd = 0; windowEnd < str.length; windowEnd++) {
-    const windowEndValue = str[windowEnd];
+  for (let windowEnd = 0; windowEnd < strInput.length; windowEnd++) {
+    const windowEndValue = strInput[windowEnd];
     // populates frequency counter {}
     charFrequency[windowEndValue] = !charFrequency[windowEndValue] ? 1 : charFrequency[windowEndValue] + 1; // charFrequency = { "a": 2, c: 1 };
 
@@ -54,7 +54,7 @@ function longest_Substring_with_K_Distinct_Characters(str, k){
     // used to ensure that whenever the number of diff/unique letters is more than the k, then remove the firstEle from the window block to resize it 
     while (Object.keys(charFrequency).length > k) {
       
-      const currentWindowStartValue = str[windowStart];
+      const currentWindowStartValue = strInput[windowStart];
       
       // update map counter by decreasing its value or remove the key when counter is zero or 1
       if(charFrequency[currentWindowStartValue] >= 2){  // > 1

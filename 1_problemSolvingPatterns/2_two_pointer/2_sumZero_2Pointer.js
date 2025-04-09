@@ -37,10 +37,8 @@ function sumZero(sortedArray){
     }
 }
 
-
-// sumZero([-2, -1, 0, 1, 2])
-console.log(sumZero([-2, -1, 0, 1, 2]))
-// sumZero([-2, 0, 1, 3])
+console.log("sumZero:", sumZero([-2, -1, 0, 1, 2]))
+console.log("sumZero2:", sumZero([-2, 0, 1, 3]))
 
 
 // For this, 
