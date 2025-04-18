@@ -3,9 +3,83 @@
 Unlike Arrays where items are key-value pairs    
 - where key are strictly numbers
 - and the keys are ordered / indexed from 0
+- eg. 
+```
+let fruits = ["apple", "banana", "cherry"];
+index/key -> value
+0         -> apple
+1         -> banana
+2         -> cherry
+```
+- Keys/Indexes are always numbered from 0
+- _Order means_ the indexes (keys) are in a defined, sequential order — starting from 0, then 1, 2, and so on...and the values are just placed at those positions, so their "**order" is only meaningful because the indexes are ordered**.
+    - Order of the value is always maintained by the keys pattern from 0 -> 1 -> 2 so that anytime i get a particular index i can have same value, 
+    - and when I the values even mix up in the array, the access pattern is still ordered from 0 -> 1 -> 2,..., (because i can't do random index access 5 -> 8) but for different values will be accessed
+    - so bassically, so form of Order is maintained — that’s the whole point of arrays! and the values are stored in memory based on their index: 0 → 1 → 2 → ...and so if the values don't change, accessing array[1] will always return the same value every time.
 
-HashTables also a DS that store key-value pairs in large array, and works by hashing the keys
+
+**HashTables** also a DS that store key-value pairs in large array, and works by hashing the keys
 - but the keys are not ordered/indexed
+- eg:
+```
+let user = {
+  "name": "Kwesi",
+  "age": 26,
+  "country": "Ghana"
+};
+
+key   -> value
+"name"      -> kwesi
+"age"       -> 26
+"country"   -> Ghana
+```
+- Internally, a hash function converts these keys into array positions (not visible to us):
+```
+hashed key   -> value
+hash("name")      -> apple
+hash("age")       -> banana
+hash("country")   -> cherry
+```
+- Keys can be any data type (string, number index, or even an object)
+- Order is not guarandeed 
+
+---
+
+#### *Deep-Diving: 'the order'*
+
+In arrays, the term “ordered” refers to the fact that the keys (indexes) are always strictly sequential — starting from `0` and increasing step-by-step as `1, 2, 3, 4....` This sequential structure ensures that when you access `array[2]`, for instance, it consistently returns the value stored at index 2 — as long as the data hasn’t been modified.
+
+Now, even if you reshuffle or reorder the values within the array, the array still maintains its sequential index structure — `0 → 1 → 2 → 3...`. The actual values might have changed positions, which means that accessing `array[2]` could now return a different value than before, but the indexing pattern itself is guaranteed and preserved.
+
+So:
+
+> The index-driven structure is fixed, while the values may change.
+The order of access is always in sequence — from index `0` onward — even if the value order has changed due to reshuffling.
+
+
+<br>
+In contrast, with hash tables, even though the data is also stored in an underlying array-like structure, the keys are not ordered or sequential. Instead, each key (like "name" or "country") is passed through a hash function that transforms it into a numeric value used to determine the bucket index in the internal structure.
+
+However, this index isn't something you control or rely on directly — it could be something like `3`, `7`, `9`, `2`, etc., and it won’t follow a clean `0 → 1 → 2...` sequence like an array. What’s important is not the order of the keys, but that the same key always hashes to the same bucket, allowing consistent access to the associated value.
+
+The major benefit here is abstraction:
+
+- You don’t have to remember any numeric index at all.
+- Instead, you use a simple, meaningful keyword (like "email"), which acts as a human-readable alias for the actual bucket location.
+- This avoids the mental overhead of remembering or depending on index positions — which becomes even more helpful if values are added, removed, or shifted internally.
+
+Final Thought:
+> - Arrays are ordered in the sense that their keys (indexes) are strictly sequential, and accessing them relies on knowing the index.
+>
+> - Hash tables, on the other hand, are unordered, and you access values using descriptive keys (and not position) — the internal index is handled for you via hashing.
+
+---
+
+### Key Differences
+- Key Types: Array is number index | HashTable is any type but usually string
+- Order: Array is ordered from index 0 | HashTable is unordered, depends on the hash function
+- Access pattern: Array is via index | HashTable is via key
+
 - they **fast in all operations**
     - finding element
     - adding element

@@ -28,7 +28,7 @@ This can be done if we start with the second letter: ['B', 'C', 'B', 'B', 'C']
 TIP:
 - "start with any tree, but once you have started you can’t skip a tree" => contiguous
 - similar to previous question
-- In simple terms, the quetion is askin' to find the maximum continuous subarray that contains only two distinct characters/fruit types
+- In simple terms, the question is askin' to find the maximum continuous subarray that contains only two distinct characters/fruit types
 
 */
 
