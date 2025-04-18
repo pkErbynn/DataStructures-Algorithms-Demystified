@@ -55,7 +55,6 @@ class SnapshotArray {
 }
 
 // Example usage:
-
 const sa = new SnapshotArray(3); // [0, 0, 0]
 sa.set(0, 5);                    // [5, 0, 0]
 const id1 = sa.snap();           // id1 = 0, snapshot saved: [5,0,0]
