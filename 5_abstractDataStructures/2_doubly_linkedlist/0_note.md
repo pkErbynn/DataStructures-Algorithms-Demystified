@@ -22,21 +22,21 @@ Tradoff
 - insertion: O(1)
 - deletion: depends...start/end: O(1)...middle: o(n)
 - access: o(n)
-- search: o(n).....technically, search is O(n/2) but still o(n)
+- search: o(n)...technically, search is O(n/2) but still o(n)
 
 #### In sum, SLL vs DLL:
 - singly linked list 
-  ...better for start/end insertion operations
-  ...doesn't eat memory, lol
+  - ...better for start/end insertion operations
+  - ...doesn't eat memory, lol
 - doubly linked list
-  ...better for start/end insertion/deletion operations
-  ...better for finding node cus can be done in half the time
-  ...takes up MORE MEMORY considering the extra pointer
-  ...USE-CASE
-     ...navigating back and forth with browser history
-     ...since prev and next history is stored in pointer
+  - ...better for start/end insertion/deletion operations
+  - ...better for finding node cus can be done in half the time
+  - ...takes up MORE MEMORY considering the extra pointer
+  - ...USE-CASE
+     - ...navigating back and forth with browser history
+     - ...since prev and next history is stored in pointer
 
-##### what is the time complexity for node removal in doubly linked list
+##### What is the time complexity for node removal in doubly linked list
 
 The time complexity for node removal in a doubly linked list depends on the position of the node being removed.
 
