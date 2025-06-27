@@ -65,7 +65,7 @@ function countUniqueValues_optimized(arr){
    
     for (let rightIndex = 1; rightIndex < arr.length; rightIndex++) {
         if(arr[leftIndex] !== arr[rightIndex]){
-            leftIndex++;    // shift left position pointer to forward
+            leftIndex++;    // shift left position pointer to forward in order not to override existing
             
             // Opmized: when both pointers on same value no need to set value again
             if(leftIndex == rightIndex) 

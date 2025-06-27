@@ -23,8 +23,8 @@ function search(arr, targetValue){
 console.log(search([1,2,4,5], 4));
 
 
-// o(log n)
+// O(log n)
 
-// if while-loop can replace for-loop, Why not use for-loop.
+// if while-loop can replace for-loop, Why not use for-loop?
 // a While-loop would be suitable in this case, 
-//because you should update the values of left(start), right(end) and middle indexes inside the loop.
+// ...because you should update the values of left(start), right(end) and middle indexes inside the loop.

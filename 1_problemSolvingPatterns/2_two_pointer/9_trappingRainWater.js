@@ -19,37 +19,37 @@ function trapRainWater(heights) {
     let leftPointer = 0;    // pointers
     let rightPointer = heights.length - 1;
 
-    let leftMax = 0;    // max trackers
-    let rightMax = 0;
+    let leftMaxHeightValue = 0;    // max trackers
+    let rightMaxHeightValue = 0;
 
     let waterTappings = 0;
 
     // Use the two-pointer approach to traverse the array from both ends towards the center
     while (leftPointer <= rightPointer) {
         
-        // If the height at the left pointer is smaller than the height at the right pointer, means water falls on the left side
+        // If the height value at the left pointer is smaller than the height at the right pointer, means water falls on the left side
         if(heights[leftPointer] <= heights[rightPointer]){
 
-            // If the current max bar at 'left' is shorter than leftMax, calculate trapped water
-            if(leftMax > heights[leftPointer]){
-                waterTappings += (leftMax - heights[leftPointer]);
+            // If the current max bar at 'left' is shorter than leftMaxHeightValue tracker, calculate trapped water
+            if(leftMaxHeightValue > heights[leftPointer]){
+                waterTappings += (leftMaxHeightValue - heights[leftPointer]);
             }
             
-            // update leftMax
-            else if(leftMax <= heights[leftPointer]){
-                leftMax = heights[leftPointer];
+            // update leftMaxHeightValue
+            else if(leftMaxHeightValue <= heights[leftPointer]){
+                leftMaxHeightValue = heights[leftPointer];     // record height value as current max left val
             }
 
             leftPointer++
         }
 
         else if(heights[leftPointer] > heights[rightPointer]) {
-            if(rightMax > heights[rightPointer]){
-                waterTappings += (rightMax - heights[rightPointer])
+            if(rightMaxHeightValue > heights[rightPointer]){
+                waterTappings += (rightMaxHeightValue - heights[rightPointer])
             }
 
-            else if(rightMax < heights[rightPointer]){
-                rightMax = heights[rightPointer]
+            else if(rightMaxHeightValue < heights[rightPointer]){
+                rightMaxHeightValue = heights[rightPointer]     // record current highest height at right
             }
 
             rightPointer--;

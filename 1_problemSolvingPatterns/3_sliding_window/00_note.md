@@ -8,7 +8,11 @@
 
 
 ##### Note
-The sliding window approach is commonly used in data structure questions that involve finding a maximum or minimum value, a subarray with a certain property, or a substring with a certain property.
+The sliding window approach is commonly used in data structure questions that involves: 
+    
+    - finding a maximum or minimum value k-length subarray, 
+    - finding a subarray with a certain property, or 
+    - finding a substring with a certain property.
 
 - Useful when you are given an array, string, or some other sequence, and you need to find a subsequence or substring that satisfies certain constraints. The basic idea behind the sliding window approach is to maintain a window of elements from the sequence that satisfies the given constraints, and to slide the window over the sequence to find the optimal subsequence or substring.
 
@@ -23,7 +27,7 @@ This may not be entirely true but so far this is my relization:
 - Realized FC, 
     - inputs: unsorted inputs(arrays, string)
 
-- Realized 2P, pointer one starts from 0 and pointer two starts from 1 (i,e. next index) || left = 0, right = length - 1 (ie. last index)
+- Realized 2P, pointer one starts from 0 and pointer two starts from 1 (i,e. next index) or left = 0, right = length - 1 (ie. last index)
     - inputs: mostly for sorted inputs(arrays, linkedList) + ordered string
     - pointers move towards, right or middle
     - sorted/ordered input so that pointers can move towards the middle

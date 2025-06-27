@@ -30,7 +30,7 @@ function same(array1, array2) {
     for(let key in frequencyCounter1){
         let squaredKey = key ** 2;
 
-        // value check
+        // keys check
         if(!(squaredKey in frequencyCounter2)){ // squared of key1 not available in freq2
             return false;
         }
@@ -38,7 +38,7 @@ function same(array1, array2) {
         //     return false;
         // }
 
-        // frequency check
+        // value frequency check
         if(frequencyCounter1[key] !== frequencyCounter2[squaredKey]){   // - checking occurence of the values
             return false;
         }

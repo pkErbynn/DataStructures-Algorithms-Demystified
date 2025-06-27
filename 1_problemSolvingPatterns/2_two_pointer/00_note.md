@@ -6,7 +6,7 @@
 - OUTPUT: pair of positions/indexes or element
 
 ### When to use
-> Leverage Two-Pointers  when dealing with problems having with **sorted arrays** (or LinkedLists) 
+> Leverage Two-Pointers when dealing with problems having with **sorted arrays** (or LinkedLists) 
 and need to find a **set of elements that fulfill certain constraints**. The set of elements could be a pair, a triplet or even a subarray.
 
 

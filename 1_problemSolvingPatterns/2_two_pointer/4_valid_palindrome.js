@@ -10,9 +10,9 @@ Write a function that takes a string s as input and checks whether it’s a pali
 
 function isPalindrome(s) { // **
     let startIndex = 0;
-    let endIndex = s.length-1;  // -1 cus of zero-based index
+    let endIndex = s.length - 1;  // -1 cus of zero-based index
 
-    while(startIndex <= endIndex){
+    while(startIndex <= endIndex){      // '<=' cus single char can be palindrome
         if(s[startIndex] != s[endIndex]){
             return false;
         }
@@ -39,12 +39,14 @@ console.log("Result3:", isPalindrome("javascript"));
 ////// using for-loop
 function isPalindrome_forloop(s) {
     let endIndex = s.length - 1;
-    for(let startIndex=0; startIndex<=endIndex; startIndex++){
+
+    for(let startIndex = 0; startIndex <= endIndex; startIndex++){
         if(s[startIndex] != s[endIndex]){
             return false;
         }
         endIndex--;
     }
+    
     return true;
 }
 console.log("Result_forloop:", isPalindrome_forloop("madam"));

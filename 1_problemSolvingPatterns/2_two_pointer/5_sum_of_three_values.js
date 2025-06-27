@@ -5,7 +5,7 @@ function findSumOfThree(nums, target) {
         let leftIndexPointer = currentIndexPointer + 1;
         let rightIndexPointer = nums.length - 1;
 
-        while(leftIndexPointer < rightIndexPointer){
+        while(leftIndexPointer < rightIndexPointer){    // 'currentIndexPointer' not used here sake of its auto increament...nb: seems only pointers are used while-loop
             let sum = nums[currentIndexPointer] + nums[leftIndexPointer] + nums[rightIndexPointer];
             if(sum === target) {
                 console.log("numbers:", [nums[currentIndexPointer], nums[leftIndexPointer], nums[rightIndexPointer]]);
@@ -13,7 +13,7 @@ function findSumOfThree(nums, target) {
             }
 
             if(sum < target) {
-                leftIndexPointer++; // move to point to bigger values to meet target, since below target
+                leftIndexPointer++; // move pointer to the right to bigger values to meet target, since below target
             }
             else if(sum > target) {
                 rightIndexPointer--;    // since over target, move pointer down to smaller values 

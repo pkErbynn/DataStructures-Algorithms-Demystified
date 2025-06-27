@@ -48,7 +48,7 @@ function reverseSentence(sentence) {    // **
     let leftPointer = 0;
     let rightPointer = wordsArray.length - 1;
 
-    while (leftPointer < rightPointer) {
+    while (leftPointer < rightPointer) {    // not '<=' cus need to swap diff values and can't swap same value if '='
         [wordsArray[leftPointer], wordsArray[rightPointer]] = [wordsArray[rightPointer], wordsArray[leftPointer]];
         leftPointer ++;
         rightPointer --;

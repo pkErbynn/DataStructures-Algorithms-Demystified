@@ -32,15 +32,15 @@ Algo:
 ...if it does, we need to find a way to reduce the number of distinct elements during shrinkage 
 ...can find the len of that block and compare to prev for the max 
 ...also, need to keep track of the number of occurences i have in that window 
-...thus, hashmap serves these purpose, where keys will be the #(distinct elements) ans values as occurences 
-...with this, when shrinkage is happens on the left, then need to update the map's key and value occurence accordingly 
+...thus, hashmap serves these purpose, where keys will be the #(distinct elements) and values as occurences 
+...with this, when shrinkage happens on the left, then need to update the map's key and value occurence accordingly 
 
 */
 
 // Str="araaci", K=2
 
 function longest_Substring_with_K_Distinct_Characters(strInput, k){
-  let maxLength = Number.NEGATIVE_INFINITY;   // give -ve while looking for max positive
+  let maxLength = Number.NEGATIVE_INFINITY;   // set smallest -ve as default while looking for max positive
 
   let charFrequency = {}; // keeps track of the window counters...map/object used cus keys are distinct, which can help find distinct chars's length
   let windowStart = 0;  // 0

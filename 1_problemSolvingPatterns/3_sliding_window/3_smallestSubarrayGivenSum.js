@@ -47,7 +47,7 @@ There is one different:
 function smallest_subarray_given_sum(arr, sum){
     let windowStartIndex = 0;   // current startIndex(pointer one) at 0...// Start of the sliding window
     let windowSum = 0;  // initial sum as no slide has occurred for reculculation....// Sum of the current window
-    let windowMinLength = Infinity; // // Smallest subarray length right now
+    let windowMinLength = Infinity; // set smallest subarray length right now to biggest number
 
     // slide windowEndIndex(pointer two) to the right...stretch window to the right until 'windowSum' becomes equal/more than input 'sum'
     for(let windowEndIndex = 0; windowEndIndex < arr.length; windowEndIndex++){
@@ -62,8 +62,8 @@ function smallest_subarray_given_sum(arr, sum){
             const currentWindowLength = (windowEndIndex - windowStartIndex) + 1; // +1 since it's 0-indexed, and need +1 to get actual size
             windowMinLength = Math.min(windowMinLength, currentWindowLength);
 
-            // reduce windowSum by removing start/begining element from current windowsum until less than sum 
-            // + move start pointer forward after each windowSum reduction, to recalculate current minLength
+            // reduce windowSum by removing start/begining element from current windowsum
+            // then move start pointer forward after each windowSum reduction, to recalculate current minLength
             windowSum = windowSum - arr[windowStartIndex];
             windowStartIndex++;
         }
