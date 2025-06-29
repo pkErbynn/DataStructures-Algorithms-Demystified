@@ -74,6 +74,17 @@ function longest_Substring_with_K_Distinct_Characters(strInput, k){
         // updating the "Object.keys(charFrequency).length"
           delete charFrequency[currentWindowStartValue];
       }
+      
+      /*
+      
+      const windowStartValue = strInput[windowStart];
+      charFrequency[windowStartValue]--;
+
+      if (charFrequency[windowStartValue] === 0) {
+        delete charFrequency[windowStartValue];
+      }
+      
+      */
 
       // move windowStart forward, after updating the Object{}
       windowStart++;
