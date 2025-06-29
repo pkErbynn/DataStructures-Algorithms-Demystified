@@ -25,6 +25,12 @@ Hint:
 - Simply put, find the longest subarray chunk/block/window that contains only 2(ie. k) different letters 
 - This problem follows the Sliding Window pattern and similar dynamic sliding window strategy can be used
 
+What the Code Does:
+- The function longest_Substring_with_K_Distinct_Characters calculates the length of the longest substring containing at most ( K ) distinct characters in a given string.
+- It uses a sliding window approach with two pointers (windowStart and windowEnd) to dynamically adjust the size of the window while iterating through the string.
+- A hashmap (charFrequency) is used to keep track of the frequency of characters within the current window.
+- If the number of distinct characters in the window exceeds ( K ), the window is shrunk from the left by adjusting windowStart and updating the hashmap.
+
 Algo:
 - start sliding from start pointer
 - Keep sliding until we get more then K diff unique letters 
