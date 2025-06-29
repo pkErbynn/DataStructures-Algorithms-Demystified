@@ -78,6 +78,7 @@ function longest_Substring_with_K_Distinct_Characters(strInput, k){
       // move windowStart forward, after updating the Object{}
       windowStart++;
       
+      // Update maxLength after adjusting the window
       // calc length once the number of distinct exceeds k
       const windowLength = (windowEnd - windowStart) + 1;
       maxLength = Math.max(maxLength, windowLength);  // after dealing with {} calc length
