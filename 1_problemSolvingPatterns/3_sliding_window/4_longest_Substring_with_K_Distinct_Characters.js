@@ -46,6 +46,9 @@ Algo:
 // Str="araaci", K=2
 
 function longest_Substring_with_K_Distinct_Characters(strInput, k){
+  // guard clause handling edge case
+  if (!strInput || k <= 0) return 0;
+  
   let maxLength = Number.NEGATIVE_INFINITY;   // set smallest -ve as default while looking for max positive
 
   let charFrequency = {}; // keeps track of the window counters...map/object used cus keys are distinct, which can help find distinct chars's length
