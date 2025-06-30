@@ -1,5 +1,5 @@
 ###### The Fast & Slow pointer approach, also known as the Hare & Tortoise algorithm, 
-- a pointer algorithm that uses two pointers which move through the array (or sequence/LinkedList) at different speeds
+- a pointer algorithm that uses two pointers which move through the array (or sequence/LinkedList) at different speeds or pase
 - useful when dealing with cyclic LinkedLists or arrays.
 - To find Middle element of a LinkedList(not cyclic)
 
