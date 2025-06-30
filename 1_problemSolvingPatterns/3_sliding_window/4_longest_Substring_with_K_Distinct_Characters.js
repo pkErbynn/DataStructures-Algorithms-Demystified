@@ -51,28 +51,28 @@ function longest_Substring_with_K_Distinct_Characters(strInput, k){
   
   let maxLength = Number.NEGATIVE_INFINITY;   // set smallest -ve as default while looking for max positive
 
-  let charFrequency = {}; // keeps track of the window counters...map/object used cus keys are distinct, which can help find distinct chars's length
-  let windowStart = 0;  // 0
+  let charFrequency = {};   // keeps track of the window counters...map/object used cus keys are distinct, which can help find distinct chars's length
+  let windowStart = 0;    // 0
 
   for (let windowEnd = 0; windowEnd < strInput.length; windowEnd++) {
     const windowEndValue = strInput[windowEnd];
     // populates frequency counter {}
     charFrequency[windowEndValue] = !charFrequency[windowEndValue] ? 1 : charFrequency[windowEndValue] + 1; // charFrequency = { "a": 2, c: 1 };
-
+    //{a: 2, r: 1, c: 1}
     // convert object to map to get access to key length which represent the length of distinct letters 
     // used to ensure that whenever the number of diff/unique letters is more than the k, then remove the firstEle from the window block to resize it 
     while (Object.keys(charFrequency).length > k) {
-      
+      // when num of keys bigger than k, shrink the window block in from the start element
       const currentWindowStartValue = strInput[windowStart];
       
-      // update map counter by decreasing its value or remove the key when counter is zero or 1
+      // update map counter accordingly to match the block by decreasing its value or remove the key when counter value is zero or 1
       if(charFrequency[currentWindowStartValue] >= 2){  // > 1
-          charFrequency[currentWindowStartValue] = charFrequency[currentWindowStartValue] - 1;
+        charFrequency[currentWindowStartValue] = charFrequency[currentWindowStartValue] - 1;
       } 
       else {
         // if count = 0 or 1, delete key-value pair from object entirely
         // updating the "Object.keys(charFrequency).length"
-          delete charFrequency[currentWindowStartValue];
+        delete charFrequency[currentWindowStartValue];
       }
       
       /*
@@ -104,4 +104,4 @@ function longest_Substring_with_K_Distinct_Characters(strInput, k){
 console.log(longest_Substring_with_K_Distinct_Characters("araaci", 2)); // Output: 4
 console.log(longest_Substring_with_K_Distinct_Characters("araaci", 1)); // Output: 2
 console.log(longest_Substring_with_K_Distinct_Characters("cbbebi", 3)); // Output: 5
-                                                                                                                                      
+                                                                                                                                   
