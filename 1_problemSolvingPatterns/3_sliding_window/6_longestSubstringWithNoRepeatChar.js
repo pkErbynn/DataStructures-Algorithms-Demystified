@@ -44,7 +44,7 @@ function lengthOfLongestSubstringWithNoCharRepeat(strInput){
         if(currentChar in charIndexMap){    // (charIndexMap[currentChar]) is wrong cus if index is 0, it will evaluate to 'false' instead of 'true'
             windowStartIndex = Math.max(windowStartIndex, charIndexMap[currentChar] + 1);   // move to jump the window startPointer ref forward to (currentIndx + 1) when characters repeat.
             
-            // windowStartIndex = charIndexMap[currentChar] + 1;  // when the currentChar has been seen before, adjust the window start to the next index and start and new window
+            // windowStartIndex = charIndexMap[currentChar] + 1;  // when the currentChar has been seen before, adjust the window start to the next index and start a new window
         }
 
         // Update the last seen index of the character

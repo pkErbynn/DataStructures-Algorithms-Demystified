@@ -4,7 +4,7 @@
 - To find Middle element of a LinkedList(not cyclic)
 
 ###### How?
-- By moving at different speeds (say, in a cyclic LinkedList), the algorithm proves that the two pointers are bound to meet. 
+- By moving at different speeds (say, in a cyclic LinkedList), the algorithm proves that the two pointers are bound to meet.
 - The fast pointer should eventually catch the slow pointer at some point, once both the pointers are within a cyclic loop.
 
 - One of the famous problems solved using this technique was Finding a cycle in a LinkedList. 

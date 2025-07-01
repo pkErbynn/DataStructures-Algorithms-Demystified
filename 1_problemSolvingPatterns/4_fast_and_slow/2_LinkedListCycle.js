@@ -48,7 +48,7 @@ const isLinkedListCyclic = function(head) {
     let slowPointer = head;
     let fastPointer = head;
 
-    while((fastPointer != null) && fastPointer.next){   // fastpointer not-null() check before it's .next check...look-ahead check with fastpointer as it is at forward
+    while(fastPointer != null && fastPointer.next != null){   // fastpointer not-null check before its .next check...look-ahead check with fastpointer as it is at forward
         slowPointer = slowPointer.next;
         fastPointer = fastPointer.next.next;
 
@@ -117,12 +117,12 @@ const findCycleLength = function(head) {
         if(slowPointer === fastPointer){
             // pin on to where they meet, as point reference
             // and make a single round-cicle move with another pointer, "counterPointer", counting each step
-            let countPointer = slowPointer;
-            while(countPointer.next){
-                countPointer = countPointer.next;
+            let stepCountPointer = slowPointer;
+            while(stepCountPointer.next){
+                stepCountPointer = stepCountPointer.next;
                 cycleLength += 1;
 
-                if(countPointer === slowPointer){
+                if(stepCountPointer === slowPointer){
                     return cycleLength;
                 }
             }
@@ -139,23 +139,23 @@ const findCycleLength_withBreak = function(head) {
     let slowPointer = head;
     let fastPointer = head;
     let cycleLength = 0;
-    let countPointer = slowPointer;
+    let stepCountPointer = slowPointer;
 
     while(fastPointer && fastPointer.next){
         slowPointer = slowPointer.next;
         fastPointer = fastPointer.next.next;
 
         if(slowPointer === fastPointer){
-            countPointer = slowPointer;
+            stepCountPointer = slowPointer;
             break;
         }
     }
 
-    while(countPointer.next){
-        countPointer = countPointer.next;
+    while(stepCountPointer.next){
+        stepCountPointer = stepCountPointer.next;
         cycleLength += 1;
 
-        if(countPointer === slowPointer){
+        if(stepCountPointer === slowPointer){
             return cycleLength;
         }
     }
