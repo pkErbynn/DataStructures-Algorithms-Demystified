@@ -113,7 +113,7 @@ const calculateSumOfDigitSquare = function(num){
         let digitSquared = lastDigit * lastDigit;
         sum = sum + digitSquared;
 
-        num = Math.floor(num / 10); // update num to keep loop updateed...23 -> 2.3 -> 2...cut the last processed digit off...
+        num = Math.floor(num / 10); // update num to keep loop updateed...23 -> 2.3 -> 2...cuts the last processed digit off
     }
 
     return sum;
