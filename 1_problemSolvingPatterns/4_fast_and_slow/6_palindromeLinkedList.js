@@ -33,7 +33,7 @@ the node values of the first half in the forward direction should be similar to 
 
 // ==== Algo:
 // find the middle element using fast-slow pointers
-    // unlike array, that could have pointers from start and end moving towards eachother while comparing the elements, 
+    // unlike array, that could have pointers from start and end moving towards each other while comparing the elements, 
     // linkedlist can only traverse from head node, thus no random element access
 // reverse the right half
 // compare elements 

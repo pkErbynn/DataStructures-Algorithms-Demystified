@@ -29,9 +29,9 @@ class MissingNumbers
         while (startIndex < numbers.Length)
         {
             var currentNumber = numbers[startIndex];
-            var rightNumber = numbers[currentNumber - 1]
+            var rightNumber = numbers[currentNumber - 1];
 
-            if(currentNumber !== rightNumber)     // (curNum - 1) as index since the lowest number in the array is 1 not 0
+            if(currentNumber != rightNumber)     // (curNum - 1) as index since the lowest number in the array is 1 not 0
             {
                 // swap
                 var temp = numbers[startIndex];
@@ -47,6 +47,7 @@ class MissingNumbers
 
         // Collecting missing numbers
         List<int> results = new List<int>();
+
         for (int i = 0; i < numbers.Length; i++)
         {
             if (numbers[i] != (i + 1))  // compured to (i + 1) cus input array values starts from 1
@@ -74,6 +75,6 @@ Complexity:
 
 Basic Core Algo Concepts: 
 1. Swap numbers to sort them
-2. Then, loop through to get misplaced element/index
+2. Then, loop through to get misplaced elements/indexes
 
 */
