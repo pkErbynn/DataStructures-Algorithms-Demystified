@@ -38,6 +38,7 @@ const findMissingNumber = (numbers) => {
         // }
 
         if(currentNumber !== correctNumberThatShouldBeAtCorrectstartIndex && currentNumber < numbers.length){
+            // swap
             [numbers[startIndex], numbers[currentNumber]] = [numbers[currentNumber], numbers[startIndex]];    // [currentNumber, correctNumberThatShouldBeAtCorrectstartIndex] = [correctNumberThatShouldBeAtCorrectstartIndex, currentNumber]...using the values itself doesn't swap, unless startIndex is used 
         }
         else {
@@ -55,7 +56,7 @@ const findMissingNumber = (numbers) => {
     }
 
     // Case where all elements sorted, missing element is the next element outside the array, since startIndex starts from "i", next missing number is array.length
-    // Also, Case where missing number is not found in array [1, 0, 3, 2] = [0, 1, 2,3]...means 4 is missing so return the array length
+    // Also, Case where missing number is not found in array [1, 0, 3, 2] = [0, 1, 2, 3]...means, 4 is missing so return the array length
     return numbers.length;
 }
 

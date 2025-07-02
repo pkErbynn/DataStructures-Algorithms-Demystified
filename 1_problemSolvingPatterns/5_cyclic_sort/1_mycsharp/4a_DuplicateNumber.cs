@@ -42,18 +42,12 @@ namespace _1_mycsharp
 			int startIndex = 0;
 			while (startIndex < numbers.Length)
 			{
-				// optimization layer: Guick check if duplicate occure at the first two elements
-				int indexPointer2 = startIndex + 1;	// pointer ahead by one
-				if ( (numbers[startIndex] == numbers[indexPointer2]) && (indexPointer2 < numbers.Length) && (startIndex < numbers.Length) )
-				{
-					Console.WriteLine("Duplicate Number quick: " + numbers[startIndex]);
-					return numbers[startIndex];
-				}
-
-				// if duplicate occure at any part
 				int currentNumber = numbers[startIndex];
-				if (currentNumber != numbers[currentNumber - 1])
+				int rightNumber = numbers[currentNumber - 1];
+
+				if (currentNumber != rightNumber)
 				{
+					// swap
 					var temp = numbers[startIndex];
 					numbers[startIndex] = numbers[currentNumber - 1];
 					numbers[currentNumber - 1] = temp;
@@ -100,16 +94,19 @@ namespace _1_mycsharp
             while (startIndex < numbers.Length)
             {
                 int currentNumber = numbers[startIndex];
-                if (currentNumber != numbers[currentNumber - 1])
-                {
-                    var temp = numbers[startIndex];
-                    numbers[startIndex] = numbers[currentNumber - 1];
-                    numbers[currentNumber - 1] = temp;
-                }
-                else
-                {
-                    startIndex++;
-                }
+				int rightNumber = numbers[startIndex - 1];
+
+                if (currentNumber != rightNumber)
+				{	
+					// swap
+					var temp = numbers[startIndex];
+					numbers[startIndex] = numbers[currentNumber - 1];
+					numbers[currentNumber - 1] = temp;
+				}
+				else
+				{
+					startIndex++;
+				}
 
             }
 
@@ -180,15 +177,15 @@ namespace _1_mycsharp
 			int indexPointer = 0;
 			while (indexPointer < numbers.Length)
 			{
-				var correctValueIndex = numbers[indexPointer];
-				var rightValue = numbers[correctValueIndex - 1];
+				var currentValue = numbers[indexPointer];
+				var rightValue = numbers[currentValue - 1];
 
-				if (correctValueIndex !== rightValue)
+				if (currentValue != rightValue)
 				{
 					// swap
 					var temp = numbers[indexPointer];
-					numbers[indexPointer] = numbers[correctValueIndex - 1];
-					numbers[correctValueIndex - 1] = temp;
+					numbers[indexPointer] = numbers[currentValue - 1];
+					numbers[currentValue - 1] = temp;
 				}
 				else
 				{
@@ -207,10 +204,7 @@ namespace _1_mycsharp
 			}
 		}
     }
-
 }
-
-
 
 
 
@@ -226,3 +220,4 @@ Basic Core Algo:
 2. Then, loop through to get misplaced element/index
 
 
+*/
