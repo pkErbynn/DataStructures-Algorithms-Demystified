@@ -30,7 +30,7 @@ namespace seesharp
             Node currentNode = head;
             Node previousNode = null;
 
-            // move currentNode pointer forward to get to the start point, p
+            // move currentNode pointer forward to get to the start point, p...pointers does no reversal yet, just movement
             while (currentNode != null)
             {
                 previousNode = currentNode;
@@ -71,6 +71,7 @@ namespace seesharp
                 // move pointers 1-step forward
                 previousNode = currentNode;
                 currentNode = nextNode;
+
                 start = start + 1;
             }
             
@@ -88,7 +89,7 @@ namespace seesharp
                 // further means, linkedlist didn't enter first while loop, thus previousNode will be null
             // then head has to start from prevNode, which is the startNode of the reversedSubList
             
-            if (nodeBeforeSubList == null)  // not currentNode because current node pointer will always point outside the listlist. With this problem, it will point beyond the 'end'
+            if (nodeBeforeSubList == null)  // not currentNode because current node pointer will always point outside the linkedlist. With this problem, it will point beyond the 'end'
             {
                 head = previousNode;
             }
