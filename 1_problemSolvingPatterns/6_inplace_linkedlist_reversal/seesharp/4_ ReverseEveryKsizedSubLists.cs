@@ -35,7 +35,7 @@ namespace seesharp
 
                 int count = 0;
 
-                // Traverse and reverse the k-sized sub-list
+                // Traverse and reverse up to the k-sized sub-list
                 while (currentNode != null && count < k)
                 {
                     Node nextNode = currentNode.Next;
