@@ -15,20 +15,20 @@ namespace seesharp
 				return null;
 			}
 
-			Node previousNode = null;
-			Node currentNode = head;
+			Node previousNodePtr = null;
+			Node currentNodePtr = head;
 
-			while (currentNode != null)	// while valid
+			while (currentNodePtr != null)	// while valid
 			{
-				Node nextNode = currentNode.Next;
-				currentNode.Next = previousNode;	// point in reverse
+				Node nextNode = currentNodePtr.Next;
+				currentNodePtr.Next = previousNodePtr;	// point in reverse
 
 				// push/move pointers forward
-				previousNode = currentNode;
-				currentNode = nextNode;
+				previousNodePtr = currentNodePtr;
+				currentNodePtr = nextNode;
 			}
 
-			return previousNode;
+			return previousNodePtr;
 		}
 
 		public static void PrintReversedLinkedList(Node head)
@@ -36,11 +36,11 @@ namespace seesharp
             Console.WriteLine("OriginalLinkedList:");
 
             // print linkedlist before
-            var currentNode = head;
-            while (currentNode != null)
+            var currentNodePtr = head;
+            while (currentNodePtr != null)
             {
-                Console.Write(currentNode.Value + " -> ");
-                currentNode = currentNode.Next;
+                Console.Write(currentNodePtr.Value + " -> ");
+                currentNodePtr = currentNodePtr.Next;
 			}
 			Console.WriteLine(); // separate before and after line
 

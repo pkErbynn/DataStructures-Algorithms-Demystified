@@ -19,6 +19,7 @@ namespace seesharp
                 // Move pointers 1-step forward
                 previousNode = currentNode;
                 currentNode = nextNode;
+                
                 counter = counter + 1;
             }
 
