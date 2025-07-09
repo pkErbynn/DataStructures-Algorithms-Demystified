@@ -7,34 +7,34 @@ namespace seesharp
         { 
             if(head == null || head.Next == null || k < 2) return;
 
-            Node currentNode = head;
-            Node previousNode = null;
+            Node currentNodePtr = head;
+            Node previousNodePtr = null;
 
             // reverse the first k block
             int counter = 1;
-            while(currentNode != null && counter <= k){
-                Node nextNode = currentNode.Next;
-                currentNode.Next = previousNode;
+            while(currentNodePtr != null && counter <= k){
+                Node nextNode = currentNodePtr.Next;
+                currentNodePtr.Next = previousNodePtr;
 
                 // Move pointers 1-step forward
-                previousNode = currentNode;
-                currentNode = nextNode;
-                
+                previousNodePtr = currentNodePtr;
+                currentNodePtr = nextNode;
+
                 counter = counter + 1;
             }
 
-            // connect last tail element of the k-block to currentNode, which now points one node ahead of k, ie, currentNode points to k+1
+            // connect last tail element of the k-block to currentNodePtr, which now points one node ahead of k, ie, currentNodePtr points to k+1
             // since the sublist is reversed, head is now the tail of the sub
-            head.Next = currentNode;
+            head.Next = currentNodePtr;
 
             // re-tag new head
-            head = previousNode;
+            head = previousNodePtr;
             
             // print
-            Node currentNodeToPrint = head;
-            while(currentNodeToPrint != null){
-                Console.Write(currentNodeToPrint.Value + " -> ");
-                currentNodeToPrint = currentNodeToPrint.Next;
+            Node currentNodePtrToPrint = head;
+            while(currentNodePtrToPrint != null){
+                Console.Write(currentNodePtrToPrint.Value + " -> ");
+                currentNodePtrToPrint = currentNodePtrToPrint.Next;
             }
             Console.WriteLine("done");
         }

@@ -12,15 +12,13 @@ Does it matter if the element is sorted in ascending or descending order ?
 Binary Search in Ascending Order
 => The implementation provided earlier assumes that the array is sorted in ascending order. 
 => If the array is sorted in ascending order, the algorithm compares the target value to the middle element and then determines which half of the array to search next:
-
-=> If the target is greater than the middle element, the algorithm searches the right half.
-=> If the target is less than the middle element, the algorithm searches the left half.
+    => If the target is greater than the middle element, the algorithm searches the right half.
+    => If the target is less than the middle element, the algorithm searches the left half.
 
 Binary Search in Descending Order
 => If the array is sorted in descending order, the comparison logic needs to be adjusted accordingly:
-
-=> If the target is greater than the middle element, the algorithm should search the left half.
-=> If the target is less than the middle element, the algorithm should search the right half.
+    => If the target is greater than the middle element, the algorithm should search the left half.
+    => If the target is less than the middle element, the algorithm should search the right half.
 
 */
 
@@ -36,7 +34,7 @@ function agnostic_binary_search(arr, target){
         isAscending = false;
     }
     
-    while (start <= end){   // uses the index so doesn't affect the order (when in ascending/descending)
+    while (start <= end){   // uses the index so doesn't affect the order (whether in ascending/descending)
 
         let mid = Math.floor( start + (end - start) / 2 );  
 
@@ -76,6 +74,7 @@ console.log("binarySearch_iteration", agnostic_binary_search([1,2,3,4,5,6,7,8,9]
 /*
 
 WHEN TO APPLY BINARY SEARCH 
-- When given sorted array, BS works in most problems
+- When given sorted array and doing search, BS works 90% in such problems
 - Given sequence of sorted numbers 
+
 */

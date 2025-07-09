@@ -25,42 +25,42 @@ namespace seesharp
 
             if (head == null || head.Next == null || k <= 1) return;    // guard clause: invalid list or k
 
-            Node currentNode = head;
-            Node previousNode = null;
+            Node currentNodePointer = head;
+            Node previousNodePointer = null;
 
-            while (currentNode != null)
+            while (currentNodePointer != null)
             {
-                Node startNode = currentNode;   // Start of the k-sized sub-list
-                Node prevSubListEnd = previousNode; // Previous sub-list's end (for connection)
+                Node startNode = currentNodePointer;   // Start of the k-sized sub-list
+                Node prevSubListEnd = previousNodePointer; // Previous sub-list's end (for connection)
 
                 int count = 0;
 
                 // Traverse and reverse up to the k-sized sub-list
-                while (currentNode != null && count < k)
+                while (currentNodePointer != null && count < k)
                 {
-                    Node nextNode = currentNode.Next;
-                    currentNode.Next = previousNode;
+                    Node nextNode = currentNodePointer.Next;
+                    currentNodePointer.Next = previousNodePointer;
 
                     // Move pointers 1-step forward
-                    previousNode = currentNode;
-                    currentNode = nextNode;
+                    previousNodePointer = currentNodePointer;
+                    currentNodePointer = nextNode;
                     count++;
                 }
 
                 // Connect previous sub-list's end to the new start of reversed sub-list
                 if (prevSubListEnd != null)
                 {
-                    prevSubListEnd.Next = previousNode;
+                    prevSubListEnd.Next = previousNodePointer;
                 }
                 else
                 {
-                    head = previousNode; // If it's the first sub-list (ie, with prevSubListEnd = null), update the head
+                    head = previousNodePointer; // If it's the first sub-list (ie, with prevSubListEnd = null), update the head
                 }
 
-                startNode.Next = currentNode; // Connect the end of reversed sub-list to the next node
+                startNode.Next = currentNodePointer; // Connect the end of reversed sub-list to the next node
 
-                // Move previousNode to the end of the reversed sub-list for the next iteration
-                previousNode = startNode;
+                // Move previousNodePointer to the end of the reversed sub-list for the next iteration
+                previousNodePointer = startNode;
             }
 
 

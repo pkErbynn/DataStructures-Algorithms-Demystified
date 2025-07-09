@@ -7,11 +7,11 @@ function binarySearch_iteration(sortedArr, target){
     let start = 0;
     let end = sortedArr.length - 1;
 
-    // only (start < end) will exempt mid value when start and end point to same midpoint
+    // use (start < end) when wanna exempt middle value, and it occurs start and end point to same midpoint to break the loop
     while(start <= end){
         // .floor() rounds down thus removing decimal points 
 
-        // let midIndex = Math.floor((start + end) / 2); // might be possible that (start + end) exceeds data type range even before it get divided  by 2
+        // let midIndex = Math.floor((start + end) / 2); // might be possible that (start + end) exceeds data type range even before it get divided by 2
 
         let midIndex = Math.floor(start + (end - start) / 2);
 
@@ -20,7 +20,7 @@ function binarySearch_iteration(sortedArr, target){
         // arr = [2, 3, 4, 5, 6, 7, 8]...target = 7
         //       (s)      (m)      (e)...target > m...hence, target falls on the right...hence, move s pointer further to the right
         if(target > sortedArr[midIndex]){
-            start = midIndex + 1;
+            start = midIndex + 1;   // Not 'start = midIndex' because the middle value has been checkecked already by the first if-condition to the start pointer should move forward to next element and not assigned to the same mid value
         } 
         else {
             end = midIndex - 1;
@@ -53,9 +53,9 @@ function binarySearch_recursion(sortedArr, target, start, end){
 
     if(sortedArr[midpoint] < target) {
         // return the call
-        return binarySearch_recursion(sortedArr, target, midpoint+1, end)
+        return binarySearch_recursion(sortedArr, target, midpoint + 1, end)
     } else{
-        return binarySearch_recursion(sortedArr, target, start, midpoint-1);
+        return binarySearch_recursion(sortedArr, target, start, midpoint - 1);
     }
 }
 
