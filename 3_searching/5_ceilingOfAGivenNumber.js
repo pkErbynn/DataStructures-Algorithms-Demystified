@@ -11,7 +11,7 @@ For x = 5:    ceil = 8, at index 2
 For x = 0:    ceil = 1, at index 0
 For x = 20:   ceil doesn't exist in array, -1
 
-Explaination found in vid: https://youtu.be/W9QJ8HaRvJQ?list=PL9gnSGHSqcnr_DxHsP7AW9ftq0AtAyYqJ&t=839
+Further explanation: https://youtu.be/W9QJ8HaRvJQ?list=PL9gnSGHSqcnr_DxHsP7AW9ftq0AtAyYqJ&t=839
 
 returns index if found
 returns -1 if not found
@@ -44,8 +44,8 @@ function binarySearch_ceiling(sortedArr, target){
         }
     }
 
-    // pointer positions after loop termination, ie. start > end
-    // arr = [2,  3,  4,  5,  6,  7,  8]...target = 7
+    // pointer positions after loop termination as it didn't find target, ie. start > end
+    // arr = [2,  3,  4,  5,  6,  7,  9]...target = 8, Result: 9 cus target is not found and ceil of 8 is 9  || target 7.5, Result: 8
     //                           (e) (s)
 
     return start;  // the index of the ceiling number

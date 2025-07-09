@@ -36,8 +36,8 @@ function binarySearch_floor(sortedArr, target){
         }
     }
 
-    // pointer positions after loop termination, ie. start > end
-    // arr = [2,  3,  4,  5,  6,  7,  8]...target = 7
+    // pointer positions after loop termination cus didn't find target, ie. start > end
+    // arr = [2,  3,  4,  5,  6,  7,  9]...target = 8, result = 7 value cus that's the floor value of 9
     //                           (e) (s)
 
     return end;  // the index of the floored number

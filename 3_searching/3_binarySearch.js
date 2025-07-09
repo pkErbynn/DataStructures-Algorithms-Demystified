@@ -15,7 +15,7 @@ function binarySearch_iteration(sortedArr, target){
 
         let midIndex = Math.floor(start + (end - start) / 2);
 
-        if(target === sortedArr[midIndex]) return midIndex;
+        if(target === sortedArr[midIndex]) return midIndex; // while condition 'start <= end' makes this equality condition check possible 
 
         // arr = [2, 3, 4, 5, 6, 7, 8]...target = 7
         //       (s)      (m)      (e)...target > m...hence, target falls on the right...hence, move s pointer further to the right
