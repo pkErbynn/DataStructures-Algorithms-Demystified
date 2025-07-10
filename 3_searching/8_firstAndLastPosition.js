@@ -45,13 +45,16 @@ function search(nums, target, isFindingStartIndex) {
             start = mid + 1;    // move towards the end
         }
         else {
-            ans = mid;  // potential ans...cus other ans might exist either left or right
+            ans = mid;  // potential ans...cus other ans might exist either left or right...so basically keeping copy of found element, and looking left and right side for matching element
+            // once, return index, you terminate execution and can't look around
 
             // if true flag, then move pointer to search at left side
             if(isFindingStartIndex){
                 end = mid - 1;
             }
             // if false flag, then move pointer to search towards the right
+            // ...meaning, else by default, binary searh will move to find element on the right side
+            // ...eg, 1,2,2,3 => default to index 2 instead of 1
             else {
                 start = mid + 1;
             }
