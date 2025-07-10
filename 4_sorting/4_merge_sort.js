@@ -44,12 +44,12 @@ function merge_sort_with_spliting(arr){
 
     // split, by shallow copy, to divide array into 2 halves
     let midIndex = Math.floor(arr.length / 2);  // taking floor skews index to left, and since index starts from 0 and not 1, it's okay
-    let leftHalf = arr.slice(0, midIndex);  // can't use split() cus it applies on string...slice is immutable...0 to n-1
+    let leftHalf = arr.slice(0, midIndex);  // can't use split() cus it applies on string...slice is immutable...0 to n-1 format
     let rightHalf = arr.slice(midIndex, arr.length); // 
     console.log(leftHalf, rightHalf);
 
     // split further by recursion to achieve single/zero element, that are considered sorted
-    let splitedLefttHalf = merge_sort_with_spliting(leftHalf); //remember, with will tackle all split and merge (on-sided) on the left side completely before starting the right side on the next line, then merge the two results
+    let splitedLefttHalf = merge_sort_with_spliting(leftHalf);  // remember, this will tackle all split and merge on the left side completely before starting the right side on the next line, then merge the two results
     let splitedRightHalf = merge_sort_with_spliting(rightHalf);
 
     // merge the two further splited (sorted) halves, after all inner let, and right sides are handled, with merge having only two sides (left, and right) as input, being sorted into one big result array
@@ -66,8 +66,8 @@ console.log('sorted:', sortedArray);
 /*
 2. function to MERGE two sorted arrays and return a newly sorted array
 ...shouldn't modify the input sorted params
-...timeComplexit = O(n+m)
-...cus visiting reach elment in each array once
+...timeComplexit of only Merge = O(n)
+...cus visiting reach element in each array once
 
 nb: very important for interviews 
 */
@@ -95,7 +95,7 @@ function merge(arr1, arr2) {
 
     // when one side ends its movement
     // ...but the other side got some data left
-    // ...just pust the remaining into the result array
+    // ...just push the remaining into the result array
     // ...cus the two input data are already sorted at both sides
     // ...eg; [1,3,5,7], [2,4]
     while (i < arr1.length) {

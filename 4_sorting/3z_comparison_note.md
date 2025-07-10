@@ -44,7 +44,7 @@ Insertion sort is a simple sorting algorithm that iteratively inserts each eleme
 TIME COMPLEXITIES
 
 - Bubble sort
-    - Best case: o(n)
+    - Best case: o(n)   // partially sorted
     - Worse case: o(n^2)
 
 - Selection sort

@@ -19,12 +19,12 @@ function insertionUsingWhileloop(arr){  // **
     for(let i = 1; i < arr.length; i++){
         let currentValue = arr[i];
 
-        let j = i - 1;  // 'var' is function scoped, while 'let' is block scoped
+        let j = i - 1;  // get previous element... 'var' is function scoped, while 'let' is block scoped
 
         // Compare backwardly
         // Move elements of array[0..i-1], that are greater than current,
         // to one position ahead of their current position shifting them to create space
-        while( (j >= 0) && (arr[j] > currentValue) ){   // if element is within range AND any previous left element is greater than the picked element
+        while( (j >= 0) && (currentValue < arr[j]) ){   // if element is within range AND any previous left element is greater than the picked element (or handpicked being smaller than left side element)
             arr[j + 1] = arr[j];    // create gap by pushing greater all elements forward
             j--;    // reduce index to move pointer to next element on left
         }
@@ -79,7 +79,7 @@ function insertionOptimized(arr){
         // Therefore, there's no need to perform any insertion or further iterations in this case thus improving performance
         if(arr[j] <= currentValue) continue;
 
-        for(j; j >= 0 && arr[j] > currentValue;j--){
+        for(j; j >= 0 && arr[j] > currentValue; j--){
             arr[j + 1] = arr[j];
         }
 
@@ -119,7 +119,7 @@ console.log("insertionUsingForloop:", insertionUsingForloop([8, -1, 5, 0, -2, 3,
 
 
 // Time Complexity
-// Best case: o(n)...nearly sorted
+// Best case: o(n)...nearly/partially sorted
 // Worse case: o(n^2)
 
 

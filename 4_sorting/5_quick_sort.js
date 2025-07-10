@@ -24,12 +24,13 @@ QuickSort
         ...so just swap the original start-pivot pointer with the copy-version
     5. Then return the correct pivot element's position/indx
 
-Nb: Confusing but easy so interviwers like it...they like confusing algo :)
+Nb: Confusing but easy, so interviwers like it...they like confusing algo :)
 
 */
 
 
 // Example: Arr = [3, 2, 6, -3, 0]
+
 
 function getPivotPartitionIndex_Helper(arr, startIndxPointer = 0, endIndxPointer = arr.length - 1){
     let pivotElement = arr[startIndxPointer];   // pivot element as first element...eg: [3(pivot), 2, 6, -3, 0]
@@ -40,7 +41,7 @@ function getPivotPartitionIndex_Helper(arr, startIndxPointer = 0, endIndxPointer
 
         // compare current element with the pivot element
         // if current element is less than the pivot element, it should fall at far left side
-        // ...nb: at this time, smaller elements are not placed at left side of the pivot because pivot is still the first element(at left corner) and can't be moved to the correct place/position/index until the loop is done
+        // ...nb: at this time, smaller elements are not placed at left side of the pivot because pivot is still the first element(at left corner) and can't be moved to the correct place/position/index until the loop is terminated
         if(arr[i] < pivotElement){      // ...eg: [ 3(pivot), 2(i-index), 6, -3, 0 ]...2 is < 3(pivot)...so should be placed further right
 
             // move pivot pointer forward to place the smaller element there through swap...moved forward so that current pivot pointer's value doesn't get overridden by the smaller element
@@ -54,7 +55,7 @@ function getPivotPartitionIndex_Helper(arr, startIndxPointer = 0, endIndxPointer
         }
     }
 
-    // finally, place the pivot element at its correct position/index in the array
+    // finally, after all swapping then the pivot elementis placed at its correct position/index in the array
     // ...this is made possible because while the 'pivotIndexForSwap' counter was used for inner swapping, it was tracking the number of all elements less than the pivot value through the inner-swapping process
     [arr[startIndxPointer], arr[pivotIndexForSwap]] = [arr[pivotIndexForSwap], arr[startIndxPointer]];
 
