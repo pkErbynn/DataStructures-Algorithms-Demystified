@@ -1,8 +1,10 @@
-// find the index where the increasing part of the array stops and decereases
-// Hint: input array are sorted + search goal thus, apply binary search
-// TODO: Whiteboard Dry Test Run
-
 /*
+
+Find the index where the increasing part of the array stops and decereases
+Hint: input array are sorted + search goal thus, apply binary search
+TODO: Whiteboard Dry Test Run
+
+
 New Phase of questions: No Target
 - So can't move 'start' and 'end' pointers (+1, -1) with 'mid' on the 'target' equality
 - ...since no target involved, and only moves pointers based on the increasing and decreasing part, 
@@ -19,7 +21,11 @@ New Phase of questions: No Target
 */
 
 
-function peakIndexInMountainArray2(arr) { // *
+function peakIndexInMountainArray2(arr) {
+
+    // guard clause
+    if (!arr || arr.length < 3) return -1;
+
     let start = 0;
     let end = arr.length - 1;
 
@@ -28,7 +34,7 @@ function peakIndexInMountainArray2(arr) { // *
         let mid = Math.floor( start + ((end - start) / 2) )
         
         // if both points to same index/value, means that's the peak
-        // cus 'start' and 'end' all move to the biggest element so where they meet then means that is the biggest number as peek
+        // cus 'start' and 'end' all move to the biggest element so where they meet means that is the biggest number at peek
         if(start == end) return start
         
         // if mid is the peak...(p-1), p, (p-1)...3, 4, 3
@@ -41,11 +47,10 @@ function peakIndexInMountainArray2(arr) { // *
             start = mid + 1
         }
 
-        // at the decreasing part.... "==" not an option cus that's the loops breaking point
-        else 
+        // at the decreasing part...(arr[mid + 1] <= arr[mid])
+        else if(arr[mid + 1] <= arr[mid])
         {        
-            // setting end = mid - 1, might skip the peak value if mid is the peak value
-            // this mid may is a possible answer but look at left, by pinning this mid as end, and finding newMid (at line 10) to compare with this if that is greater or not
+            // setting end = mid - 1, will NOT skip the peak value if mid is the peak value
             end = mid - 1
         }
     }
@@ -53,10 +58,19 @@ function peakIndexInMountainArray2(arr) { // *
     return -1;
 }
 
+
 console.log("Peak1", peakIndexInMountainArray2([1, 2, 3, 5, 9, 7, 5, 1]))
 console.log("Peak2", peakIndexInMountainArray2([3, 5, 9, 1, 0]))
 console.log("Peak3", peakIndexInMountainArray2([3, 9, 8, 7, 5, 4, 3, 2, 1, 0 ]))
-console.log("Peak4", peakIndexInMountainArray2([9, 8, 7, 5, 4, 3, 2, 1, 0 ]))
+
+// no decreasing slope, so it violates the mountain definition.
+console.log("== Peak003", peakIndexInMountainArray2([]))
+console.log("== Peak001", peakIndexInMountainArray2([1]))
+console.log("== Peak002", peakIndexInMountainArray2([1, 2]))
+console.log("== Peak004", peakIndexInMountainArray2([1, 3, 7, 9])) 
+console.log("== Peak005", peakIndexInMountainArray2([9, 8, 7, 5, 4, 3, 2, 1, 0 ]))
+// TODO: Some invalid cases pass so implementation has to be fixed
+
 
 
 /////// Alternative  ***
