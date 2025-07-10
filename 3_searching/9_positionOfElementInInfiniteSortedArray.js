@@ -18,18 +18,19 @@ Explaination: https://youtu.be/W9QJ8HaRvJQ?list=PL9gnSGHSqcnr_DxHsP7AW9ftq0AtAyY
 
 */
 
+
 findThePostitionOfTarget  = function(arr, target) {
 
     // start with box size of 2
     let start = 0;
-    let end = 1;
+    let end = 1;    // can't do "nums.length - 1" cus the end is infinite/unknown, so up to two elements thus index 1
 
-    // keep expanding the box size to engulf the target value
-    // so that binary search can be used to find the target value
-    while (target > arr[end]) {
-        let boxSize = (end - start) + 1
+    // keep expanding the box size until it can engulf the target value
+    // ...so that binary search can be used to find the target value
+    while (target > arr[end]) {     // failed condition means, target falls within so use that box window
+        let boxSize = (end - start) + 1;
 
-        start = end + 1;        // start moves behind end one-step 
+        start = end + 1;        // start moves forward of end one-step...nb; start doesn't has to stay at first element
         end = start + (boxSize * 2); // new end streches starting from start position to doubled the size
     }
 
