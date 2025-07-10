@@ -1,7 +1,7 @@
 // TipGist:
 // Unlike Bubble, swapping adjascent elements, and placing BIG values to far RIGHT,
 // Selection places SMALL values to the LEFT end
-// ...sort of opposite to Bubble Sort
+// ...seen as the opposite to Bubble Sort
 // ...compare through the entire array to SELECT the SMALLEST element and place it at beginning of unsorted array BY SWAPPING
 // ...Selection select first element (temp smallest from unsorted portion) with the smallest element in the rest (n-1) of the unsorted array, if found smallest
 // ...Swapping is done using Index position

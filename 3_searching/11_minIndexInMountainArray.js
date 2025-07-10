@@ -21,11 +21,11 @@ Explanation: 3 does not exist in the array, so we return -1.
 
 function findMinimumTargetIndexInMountainArray(inputArray, targetValue){
     let peakIndexPointer = findPeakIndex(inputArray);
-    let targetIndex = agnosticBinarySearch(inputArray, targetValue, 0, peakIndexPointer)
+    let targetIndex = findTargetIndexInAgnosticBinarySearch(inputArray, targetValue, 0, peakIndexPointer)
 
     // search the other right half if targetValue not found at left side, then min index will fall at right side
     if(targetIndex == -1){
-        targetIndex = agnosticBinarySearch(inputArray, targetValue, peakIndexPointer + 1, inputArray.length)
+        targetIndex = findTargetIndexInAgnosticBinarySearch(inputArray, targetValue, peakIndexPointer + 1, inputArray.length)
     }
 
     return targetIndex;
@@ -49,7 +49,7 @@ function findPeakIndex(inputArray){
         }
         // decreasing
         else if(inputArray[midPointer + 1] <= inputArray[midPointer]) {     // if mountain can be flat, eg: [1,2,3,3,2,1]
-            endPointer = midPointer
+            endPointer = midPointer // not mid - 1 cus its condition includes equality '=' checking 
         }
         
         //// ======= Flat mountain check: When flat mountain input(1,2,3,3,2,1) is NOT ALLOWED
@@ -66,7 +66,7 @@ function findPeakIndex(inputArray){
 }
 
 // agnostic => unknown sorted order, whether ascending/descending
-function agnosticBinarySearch(array, target, startPointer, endPointer) {
+function findTargetIndexInAgnosticBinarySearch(array, target, startPointer, endPointer) {
     let isAscending = true;
 
     if(array[startPointer] > array[endPointer]){

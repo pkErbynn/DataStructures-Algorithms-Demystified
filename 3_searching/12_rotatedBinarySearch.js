@@ -5,6 +5,8 @@ Given array = [4, 5, 6, 7, 0, 1, 2]
 Target = 7
 Answer = 3
 
+NB: Input does NOT increase and decrease forever, but increases and decreases down then start to increase
+
 */
 
 // 1. Find the Pivot position in a rotated array
