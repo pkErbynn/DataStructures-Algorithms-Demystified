@@ -32,13 +32,14 @@ NB:
 - New Phase of Questions where target is not returned earlier or at all or target blocks not considered 
 - HERE, "element greater than target" falls beyond the TARGET EQUALITY, ie. target == mid
 
-Same answer code as previous with these observations:
+Same answer code as previous but with these observations:
 
 1. Exact same approach or ceiling of number
 2. Ignore target equality check cus question said 'GREATER', not 'equal to' or 'greater or equal to'
 3. Letters wrap around
 
-When Binary Search is left to iterate throughout w/out mid equality termination restriction, the start and end pointers converge at the target, if target is duplicate, they converge at the far-right one by default
+When Binary Search is left to iterate throughout w/out mid equality termination restriction, the start and end pointers converge at the target
+...if target is duplicate, they converge at the far-right one by default (prove with one dry test example)
     Pointer positions after loop termination, ie. start > end
     arr = ['c', 'f', 'f', 'f', 'j']...target = 'f'
                           (e)  (s)
@@ -54,15 +55,15 @@ function binarySearch_nextGreatestLetter(letters, target){
         let midIndex = Math.floor(start + (end - start) / 2);
 
         /*
-            Not needed cus actual goal, is to 'Find the smallest letter in the array that is strictly greater than target.'
-            This is not a standard binary search where you return the index of an exact match.
-            This wrong: You’re not looking for the letter that equals target — you’re looking for the next greater letter.
-	            If target === letters[midIndex], it doesn’t tell you anything about the next greater letter, cus greater letter SHOULD BE OUT OF TARGET.
+        Not needed cus actual goal, is to 'Find the smallest letter in the array that is strictly greater than target.'
+        This is not a standard binary search where you return the index of an exact match.
+        This wrong: You’re not looking for the letter that equals target — you’re looking for the next greater letter.
+            If target === letters[midIndex], it doesn’t tell you anything about the next greater letter, cus greater letter SHOULD BE OUT OF TARGET.
         */
         // if(target === letters[midIndex]) return midIndex;
 
         /*
-            What be done instead?
+            What to be done instead?
             Binary search in this case should:
                 •	Keep moving right (start = mid + 1) when target >= letters[mid]
                 •	Keep moving left (end = mid - 1) when target < letters[mid]
