@@ -1,11 +1,13 @@
 /* 
+
 Unlike binary search tree implemented using a node class,
 Max Binary Heap can be implemented simply using ARRAY
 It is usually implemented using AN ARRAY
 
-WHY ?
+WHY?
 - 1. cus heap can be flattened into an Array
-- 2. the positions of values of parent and children nodes can be calculated directly within the array indexes
+- 2. the positions of values of parent and children nodes can 
+        be calculated directly within the array indexes
     - Finding children nodes, while having parent
         - left node position: (2n + 1)
         - right: (2n + 2)
@@ -108,7 +110,7 @@ class MaxBinaryHeap{
             let rightChildIndex = 2 * rootIndex + 2;
             let rightChildValue = this.values[rightChildIndex];
 
-            // checking for children within range
+            // checking for children to be within range
             if(leftChildIndex >= this.values.length || rightChildIndex >= this.values.length) {
                 break;
             }
@@ -237,13 +239,14 @@ class MinBinaryHeap {
     
             // Swap if the new element is smaller than the parent
             if (elementValue < parentValue) {
-            [this.values[elementIndex], this.values[parentIndex]] = 
-            [this.values[parentIndex], this.values[elementIndex]];
-    
-            // Move up to the parent's position
-            elementIndex = parentIndex;
-            } else {
-            break; // The element is in the correct position
+                [this.values[elementIndex], this.values[parentIndex]] = 
+                [this.values[parentIndex], this.values[elementIndex]];
+        
+                // Move up to the parent's position
+                elementIndex = parentIndex;
+            } 
+            else {
+                break; // The element is in the correct position
             }
         }
     
@@ -279,15 +282,16 @@ class MinBinaryHeap {
     
             // Check if the left child exists and is smaller than the root
             if (leftChildIndex < this.values.length && this.values[leftChildIndex] < rootValue) {
-            swapIndex = leftChildIndex;
+                swapIndex = leftChildIndex;
             }
     
             // Check if the right child exists and is smaller than both the root and left child
             if (
-            rightChildIndex < this.values.length &&
-            this.values[rightChildIndex] < (swapIndex === null ? rootValue : this.values[leftChildIndex])
-            ) {
-            swapIndex = rightChildIndex;
+                rightChildIndex < this.values.length &&
+                this.values[rightChildIndex] < (swapIndex === null ? rootValue : this.values[leftChildIndex])
+            ) 
+            {
+                ßswapIndex = rightChildIndex;
             }
     
             // If no swaps are needed, the root is in the correct position

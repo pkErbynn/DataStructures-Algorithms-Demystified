@@ -25,7 +25,7 @@ class BinaryTree {
         while(queue.length >= 1){
 
             let levelByLevelNodesCollector = [];
-            let levelSize = queue.length; // keep copy of queue lenght otherwise, using the original lenght will be updated when an item is pushed on the queue
+            let levelSize = queue.length; // keep copy of current queue length otherwise, using the original lenght will be updated when an item is pushed on the queue
             
             for(let i = 0; i < levelSize; i++){
                 currentNode = queue.shift();

@@ -12,7 +12,7 @@
     - like left node should be smaller than the right
     - naa, nothing like that exists in heaps, cus we're only interested in the current parent(min/max) on top
 - left nodes are FILLED FIRST before right node
-- similar to Binary Search Tree but with different rules
+- similar to Binary Search Tree but with different rules as stated above
 - In OOP lang like Java, 
     - Max n Min Heap is abstracted/wrapped into PriorityQueue
     - So you will have to interact with PriorityQueue instead of the lowlevel heap array 

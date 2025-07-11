@@ -1,7 +1,13 @@
 /*
 
-- Used to perform fast range queries event in unsorted array data
+- Used to perform fast query operation within a RANGE in an unsorted array data in an O(log n) time
+    - example: find the max number between 0 and 5
+    - example 2: find the sum of numbers between 0 and 5
+    - example 3: find the average number between 0 and 5
 - Revisit to understand better
+
+- Vid: https://www.youtube.com/watch?v=ciHThtTVNto&t=1733s
+
 */
 
 class MyNode {
