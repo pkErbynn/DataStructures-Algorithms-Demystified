@@ -38,7 +38,6 @@ Example 2:
 Input: n = 6, k = 5
 Output: 1
 Explanation: The friends leave in this order: 5, 4, 6, 2, 3. The winner is friend 1.
- 
 
 */
 
@@ -47,6 +46,7 @@ function getWinnerInTheCircle(n, k) {
     
     // Initialize an array representing the friends in the circle
     let friendsCircularArr = [];
+    
     for(let i = 0; i < n; i++){
         friendsCircularArr.push(i + 1)  // We create the circle by adding each friend (1 through n)
     }

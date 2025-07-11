@@ -21,6 +21,8 @@ Pseudocode
         - ...eg. 123 placed in 2's buck based on its tense place(ie index 1 from the back)
 5. Replace existing array numbers with the ordered bucket numbers values
 
+Explanation: https://www.youtube.com/watch?v=6du1LrLbDpA
+
 */
 
 // const digitCount = (num) => (Math.abs(num) + "").length; // Edge case when num = 0007
@@ -130,20 +132,24 @@ console.log("radixSort_WithInnerBucket:", radixSort_WithInnerBucket([32, 3, 444,
 
 /*
 
+If input array is binary, k or backet size will be 2...0 to 1
+If input array is octal, then k or backet size will be 8...0 to 7
+
 === Time Complexity
 
-- Best: O(nk)
+- Best: O(nk) => O(n) cus k is constant
 ...where n = number of numbers in the array to be sorted and 
-...k = number of digits, ie. size of max digits
+...k = max number of digits, ie. size of max digits which is contant
 
-- Average: O(nk)
+- Average: O(nk) => o(n)
 
-- Worse: O(nk)
+- Worse: O(nk) 
+....
 ...Downside is when a number is very loong, ie, 100000000000000000000000000
 
 
 === Space Complexity
 
-- 0(n + k)
+- 0(n + k) => O(n) where n is the number of elements
 
 */

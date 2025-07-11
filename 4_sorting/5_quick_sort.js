@@ -26,6 +26,7 @@ QuickSort
 
 Nb: Confusing but easy, so interviwers like it...they like confusing algo :)
 
+Explainaiton: https://www.youtube.com/watch?v=7h1s2SojIRw
 */
 
 

@@ -10,7 +10,7 @@
 
 ### Why use
 - efficient insertion and deletion of elements at the beginning of the list, 
-    - or at any position if the pointer to the node preceding the position of insertion or deletion is available. 
+    - or at any position if the pointer to the node preceding the position of insertion or deletion is available/known. 
 
 ### When not to use
 - accessing an element in the list requires traversing the list from the HEAD until the desired element is reached, which can be time-consuming for large lists.
@@ -20,7 +20,7 @@
     - List is not inexed
 - In arrays, accessing item is super fast **
     - In List, individual item access is expensive cus need to traverse through all elements...eg: elevator can't skip some floors straight to a particular floor
-- In Arrays, insertion or Deletion is super expensive, ripple effect of reindexing
+- In Arrays, insertion or Deletion is super expensive, cus of the ripple effect of reindexing
     - Insertion and deletion gave birth to List **
 - Array: Better for Write less, Read many operations
     - LinkedList: Better for Write many, Read less operations (at start)

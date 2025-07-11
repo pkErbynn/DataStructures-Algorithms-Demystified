@@ -15,10 +15,10 @@ function encodeString(str) {
         
         // If the current character is different from the previous one, it means the sequence has ended.
         else{
-            encodedStr.push(str[i - 1])     // Add the previous character to the encoded string.
+            encodedStr.push(str[i - 1])     // Add the previous character to the encoded string...cus in this else block, str[i] != str[i-1]
 
             if(count > 1) {
-                encodedStr.push(count)      // If the count is greater than 1, append the count next to the character.
+                encodedStr.push(count)      // If the count is greater than 1, append the count next to the character...cus abb => ab2, not a1b2
             }
 
             count = 1;  // Reset the count to 1 because we're starting a new sequence.
