@@ -28,14 +28,14 @@ let user = {
   "country": "Ghana"
 };
 
-key   -> value
+key         -> value
 "name"      -> kwesi
 "age"       -> 26
 "country"   -> Ghana
 ```
 - Internally, a hash function converts these keys into array positions (not visible to us):
 ```
-hashed key   -> value
+hashed key        -> value
 hash("name")      -> apple
 hash("age")       -> banana
 hash("country")   -> cherry
@@ -71,7 +71,7 @@ The major benefit here is abstraction:
 Final Thought:
 > - Arrays are ordered in the sense that their keys (indexes) are strictly sequential, and accessing them relies on knowing the index.
 >
-> - Hash tables, on the other hand, are unordered, and you access values using descriptive keys (and not position) — the internal index is handled for you via hashing.
+> - Hash tables, on the other hand, are unordered, and you access values using descriptive keys (and not position/index) — the internal index is handled for you via hashing.
 
 ---
 
@@ -80,7 +80,7 @@ Final Thought:
 - Order: Array is ordered from index 0 | HashTable is unordered, depends on the hash function
 - Access pattern: Array is via index | HashTable is via key
 
-- they **fast in all operations**
+- HashTable is **fast in all operations**
     - finding element
     - adding element
     - removing element

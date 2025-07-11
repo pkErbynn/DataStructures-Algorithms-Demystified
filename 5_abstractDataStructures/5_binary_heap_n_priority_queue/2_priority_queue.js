@@ -44,7 +44,7 @@ People confuse Heap with Prioriy Queue. KNOW THAT:
 class Node {
     constructor(value, priority){
         this.value = value; // can be a string type
-        this.priority = priority;
+        this.priority = priority;   // determins value instead of intrinsic value in tradition binary heap
     }
     // nb: uses class node this time around
 }
@@ -83,7 +83,8 @@ class PriorityQueue {
 
                 parentNodeIndex = Math.floor((newChildNodeIndex - 1) / 2);
                 parentNode = this.values[parentNodeIndex];
-            } else{
+            } 
+            else{
                 break;
             }
         }

@@ -211,7 +211,8 @@ class MinBinaryHeap {
   
 
 
-// =========  running median using a max heap and min heap 
+// ========= Question: running median using a max heap and min heap 
+// Vid: https://www.youtube.com/watch?v=itmhHWaHupI
 class RunningMedian {
     constructor() {
         this.maxHeap = new MaxBinaryHeap(); // Left half (smaller numbers)
@@ -237,7 +238,7 @@ class RunningMedian {
 
         // Step 2: Balance the heaps
         // The diff in the number of elements between left and right heaps should not be more than 1
-        // If diff is 2 or more, move element around to balance
+        // If diff is 2 or more, move elements around to balance
         if (this.maxHeap.values.length - this.minHeap.values.length > 1) { // or if(this.maxHeap.values.length > this.minHeap.values.length + 1)
             let maxEle = this.maxHeap.removeMax()
             this.minHeap.insert(maxEle);
@@ -260,7 +261,8 @@ class RunningMedian {
         } 
         // Heaps are balanced, take the average of the roots
         else {
-            return (this.maxHeap.values[0] + this.minHeap.values[0]) / 2;
+            let median = (this.maxHeap.values[0] + this.minHeap.values[0]) / 2;
+            return median;
         }
     }
 }

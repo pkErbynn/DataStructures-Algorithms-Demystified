@@ -129,13 +129,13 @@ class HashTable {
     // }
     
     set(key, value){
-        let index = this._hash(key);  // index = hashcode
-        if(!this.keyMapData[index]){
-            this.keyMapData[index] = [];  // initializes the index with empty array to prepare for pushing of element
+        let hashcodeIndex = this._hash(key);  // hashcodeIndex = 
+        if(!this.keyMapData[hashcodeIndex]){
+            this.keyMapData[hashcodeIndex] = [];  // initializes the hashcodeIndex with empty array to prepare for pushing of element
         }
        
-        // key already exists, update it
-        let keyValueData = this.keyMapData[index];
+        // if key already exists, update it
+        let keyValueData = this.keyMapData[hashcodeIndex];  // [k, v]
 
         for(let i = 0; i < keyValueData.length; i++){
             if(keyValueData[i][0] === key){
@@ -144,8 +144,8 @@ class HashTable {
             }
         }
 
-        // if key doesn't exist
-        this.keyMapData[index].push([key, value]);  // this.keyMapData[index][key] = value; won't work
+        // if key doesn't exist, add new key-value item pair
+        this.keyMapData[hashcodeIndex].push([key, value]);  // this.keyMapData[hashcodeIndex][key] = value; won't work
     }
 
     get(key){

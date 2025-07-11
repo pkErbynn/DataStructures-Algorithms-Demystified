@@ -44,7 +44,7 @@ class SnapshotArray {
     }
 
     snap() {
-        this.historySnapshots[this.snapId] = [...this.currentDataArray] // [[a, b]] => [a, b]
+        this.historySnapshots[this.snapId] = [...this.currentDataArray] // [[a, b]] => [...[a, b]] => [a, b]
         this.snapId++;  // next snap comes with its different id
         return this.snapId;
     }
