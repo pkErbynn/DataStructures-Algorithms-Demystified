@@ -30,7 +30,7 @@ Tradoff
   - ...doesn't eat memory, lol
 - doubly linked list
   - ...better for start/end insertion/deletion operations
-  - ...better for finding node cus can be done in half the time
+  - ...AND better for finding node cus can be done in half the time
   - ...takes up MORE MEMORY considering the extra pointer
   - ...USE-CASE
      - ...navigating back and forth with browser history

@@ -59,7 +59,7 @@ class DoublyLinkedList {
         let prevNode = this.tail.prev;
         prevNode.next = null;
 
-        this.tail.prev = null; // break chain to prevent leaks
+        this.tail.prev = null; // break chain to prevent data leak
 
         // set new tail and decrement length
         this.tail = prevNode;

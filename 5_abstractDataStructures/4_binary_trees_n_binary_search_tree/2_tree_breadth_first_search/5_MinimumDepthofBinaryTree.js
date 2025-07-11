@@ -53,7 +53,7 @@ class BinaryTree {
         while(queue.length > 0){
             
             let levelLength = queue.length;
-            depthLength = depthLength + 1;
+            depthLength = depthLength + 1;  // depth number recorded before it even start to loop that level
 
             // level-based loop
             for (let index = 0; index < levelLength; index++) {

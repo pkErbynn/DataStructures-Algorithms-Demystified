@@ -1,5 +1,4 @@
 /*
-
 ====== Q1 ====== 2p
 Use a linked list to implement the addition on two polynomials. If polynomials have m
 and n terms respectively, what is the time complexity of your program? Provide pseudo code and

@@ -86,7 +86,9 @@ root.right.left.left = new Node(11);
 
 let bt = new BinaryTree(root);
 let nodeTarget =  new Node(4);
+let nodeTarget2 =  new Node(5);
 console.log("Result SucdessorNode: ", bt.getSuccessorNode(nodeTarget))
+console.log("Result SucdessorNode2: ", bt.getSuccessorNode(nodeTarget2))
 
 
 

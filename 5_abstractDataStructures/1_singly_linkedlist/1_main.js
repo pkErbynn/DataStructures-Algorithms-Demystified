@@ -26,7 +26,7 @@ class SinglyLinkedList {
     push(value){
         let newNode = new Node(value);
 
-        if(this.length < 1 || !this.head){
+        if(this.length == 0 || !this.head){
             this.head = newNode;
             this.tail = newNode;
         }
@@ -114,7 +114,7 @@ class SinglyLinkedList {
         //     // head not set to null cus it will be set when this.head.next is null
         // }
 
-        currentHeadToRemove.next = null;    // strip/terminate its chain
+        currentHeadToRemove.next = null;    // strip/terminate its chain to prevent data leak
         return currentHeadToRemove;
     }
 
@@ -187,7 +187,7 @@ class SinglyLinkedList {
         }
 
         // if at middle
-        let penultimateNode = this.get(index-1); // access to penultimateNode gives info about its forward node, hence accessing penultimateNode
+        let penultimateNode = this.get(index - 1); // access to penultimateNode gives info about its forward node, hence accessing penultimateNode
         let removedNodeMiddle = penultimateNode.next;
         penultimateNode.next = penultimateNode.next.next;   // rejoin after node removal
         this.length -= 1;
@@ -371,7 +371,7 @@ Time Complexity
 - Insertion: O(1) / O(n) depending on position
 ...@ head/beginning => 0(1)..it doesn't matter the number of items in the list
 ...@ tail/end => O(1), if tail pointer EXISTS, as can directly access the tail node and append the new node in constant time. 
-...@ tail/end => O(n), if NO tail pointer exists, need to traverse entire list in 'n' time. 
+...@ tail/end => O(n), if NO tail pointer exists, need to traverse entire list in O(n) time. 
 ...@ middle/anywhere => O(n)
 ...for arrays
      ...O(n) => all item needs to be shifted if added to end or middle, ie. O(n)

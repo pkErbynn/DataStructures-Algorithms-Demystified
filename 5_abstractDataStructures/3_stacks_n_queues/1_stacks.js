@@ -138,7 +138,7 @@ class DynamicCustomStackArr extends CustomStackArr {
                 doubledSizedData[index] = this.data[index];
             }
 
-            // set with big size
+            // set new big size
             this.data = doubledSizedData;
         }
 

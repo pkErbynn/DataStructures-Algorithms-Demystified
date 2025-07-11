@@ -11,8 +11,8 @@ Priority 3 => ^   ...Right to Left...high
 Priority 3 => ()[]                ...highest
 
 NB:
-- Operands/Numbers in list
-- Operators/+,-... in stack since has order
+- Operands/Numbers are placed in list
+- Operators/+,-,etc placed in stack since has order
 
 Algorithm:
 
@@ -31,7 +31,7 @@ Actual Rules:
 1. Know the priorities of operators
 2. No two operators of same priority can stay side-by-side together in stack, unless separated by opening "("
 3. Lowest priority operator can't be placed on top of highest priority operator, 
-...if happens, pop the highest priority operand appending to list the after, place the lowest priority on stack
+...if happens, pop the highest priority operand appending to list then after, place the lowest priority on stack
 4. All operators engulved in a "()" should be poped from the stack and appended to the list
 
 */

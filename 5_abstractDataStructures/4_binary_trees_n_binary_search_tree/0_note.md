@@ -40,7 +40,7 @@
     - both average and worst-case scenarios: time complexity of O(log n)
 - for efficient INSERTION, DELETION [modification]
 - for efficient TRAVERSAL(pre and post-order) operations [sorting]
-- issue: when tree is unbalanced and leans towards on side forming like a linkedlist 
+- issue: when tree is unbalanced and leans towards one side, it becomes linear forming sth like a linkedlist 
 
 
 #### TRAVERSAL

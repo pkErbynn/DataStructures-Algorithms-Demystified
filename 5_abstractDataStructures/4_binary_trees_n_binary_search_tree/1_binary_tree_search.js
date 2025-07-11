@@ -37,7 +37,7 @@ class BST {
             // then go left, for the insertion
             if(value < currentNode.value){
                 // if current parent not is a leaf node, set its left node
-                if(currentNode.left === null){
+                if(currentNode.left === null){  // null check
                     currentNode.left = newNode;
                     return this;
                 }
@@ -94,7 +94,7 @@ class BST {
 
 
     // search a node
-    search(value){ // **
+    search(value){ // ***
         if(!this.root || !value) return null;
 
         let currentNode = this.root;
@@ -119,7 +119,7 @@ class BST {
 
     // value => search value input
     // troot => new root value re-assignment
-    search_recursive(value, troot=this.root){ // **
+    search_recursive(value, troot = this.root){ // **
         // if(!this.root || !value) return null;
 
         let currentNode = troot;
@@ -153,8 +153,8 @@ class BST {
 
             visitedResult.push(removedHeadNode.value);  // explore/process element from queue...when element leaves the queue, it's considered visited (likewise, when leaves a stack, it's considered visited)
 
-            // once removed and put to visitedResult, push parent's leg children nodes to the end of the queue...this allows all parents to come out visited before their chidlren provided they have one
-            // this also allow the headNode no to vanish with it's legged nodes, knowing that they have some data
+            // once removed and put to visitedResult, push parent's leg children nodes to the end of the queue...this allows all parents to come out visited before their chiLdren provided they have one
+            // this also allow the node not to vanish with it's legged nodes, knowing that they have some data
             if(removedHeadNode.left) 
                 queue.push(removedHeadNode.left);
             if(removedHeadNode.right) 
@@ -174,7 +174,7 @@ class BST {
         let visitedResult = [];
 
         let currentNode = this.root;
-        stack.push(currentNode);    // stack initialised with root...node cannot be considered visited only when it passes through the stack
+        stack.push(currentNode);    // stack initialised with root...node can only be considered visited when it passes through the stack
 
         // while there's something in the stack for processing...
         while(stack.length > 0){    // => (stack.length) => while stack has an element...

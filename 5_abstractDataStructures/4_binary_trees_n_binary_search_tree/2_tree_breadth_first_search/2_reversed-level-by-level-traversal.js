@@ -11,7 +11,7 @@ class BinaryTree {
         this.root = rootNode;
     }
 
-    reversedLevelOrderTraversal(){
+    reversedLevelOrderTraversal(){      // from buttom to top instead of top to buttom
         let reversedNodeResult = [];
 
         let currentNode = this.root;
@@ -64,4 +64,4 @@ root.right.right = new Node(18);
 
 const bt = new BinaryTree(root);
 const res = bt.reversedLevelOrderTraversal();
-console.log("Result: ", res);
+console.log("Result: ", res);   // [ [ 2, 8, 12, 18 ], [ 5, 15 ], [ 10 ] ]

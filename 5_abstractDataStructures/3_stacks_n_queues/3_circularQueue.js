@@ -43,7 +43,7 @@ class CircularQueue {
         let removedItem = this.data[this.startPointer];
         this.startPointer++;    // move start pointer forward since prev start pointer will be removed
 
-        this.startPointer = this.startPointer % this.data.length;   // keep startPointer within the data array when it goes out-of-boundary to wrap around
+        this.startPointer = this.startPointer % this.data.length;   // keep startPointer within the data array when it goes out-of-boundary to wrap around...can add condition of if(pointer > this.data.length) then do the modulo, prior to this line
         this.queueTotalItems --;
 
         return removedItem;

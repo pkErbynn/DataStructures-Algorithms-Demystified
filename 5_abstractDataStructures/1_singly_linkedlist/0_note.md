@@ -22,7 +22,7 @@
     - In List, individual item access is expensive cus need to traverse through all elements...eg: elevator can't skip some floors straight to a particular floor
 - In Arrays, insertion or Deletion is super expensive, cus of the ripple effect of reindexing
     - Insertion and deletion gave birth to List **
-- Array: Better for Write less, Read many operations
+- Array: Better for 'Write less, Read' many operations
     - LinkedList: Better for Write many, Read less operations (at start)
     - Write => Insert, Delete (Delete at end is not efficient in Linkedlist, unless Doubly)
 
@@ -38,7 +38,7 @@
 - A singly linked list is a linear data structure consisting of a sequence of nodes, where each node stores a data element and a reference (or pointer) to the next node in the list.
 - In contrast, List<> is a dynamic array-like data structure in C# that stores elements in a contiguous block of memory. It provides random access to elements by index and supports dynamic resizing, insertion, and deletion of elements. Unlike a singly linked list, List<> does not have pointers or references to other elements in the list.
     - List<> = [a, b, c]    // simlar to array 
-- Insertion or deletion of an element in the middle of an ArrayList requires shifting all the subsequent elements, which can be a time-consuming operation for large lists. In a case When a new element is added to the end of an array in JavaScript using the push() method, the new element is simply appended to the end of the array without any shifting of existing elements.
+- Insertion or deletion of an element in the middle of an ArrayList requires shifting all the subsequent elements, which can be a time-consuming operation for large dataset. In a case where a new element is added to the end of an array in JavaScript using the push() method, the new element is simply appended to the end of the array without any shifting of existing elements.
 
 
 #### Demo
@@ -68,7 +68,7 @@ console.log(myArray); // output: [0, 1, "two", 2, 3]
 #### what is the time complexity for node removal in linked list?
 The time complexity for node removal in a linked list depends on the position of the node being removed.
 
-- If the node to be removed is at the beginning of the linked list (i.e., the head node), then the time complexity is O(1) since no traversal of the list is required.
+- If the node to be removed is at the beginning of the linked list (i.e., the head node), then the time complexity is O(1) since NO traversal of the list is required.
 
 - If the node to be removed is at the end of the linked list (i.e., the tail node), then the time complexity is O(n), where n is the number of nodes in the linked list. This is because we need to traverse the entire list to find the second-to-last node in order to update its next pointer to NULL.
 

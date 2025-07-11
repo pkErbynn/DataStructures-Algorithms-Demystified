@@ -47,9 +47,9 @@ class BinaryTree {
         // since i don't know the size of array ahead of time, will use while loop
         while(queue.length >= 1){
             let levelNodesCollector = [];
-            let levelSize = queue.length;   // take snapshot of the size of level at that moment so that when the queue get updated, it doesn't give get modified
+            let levelSize = queue.length;   // take snapshot of the current size of level at that moment so that when the queue get updated, it doesn't get modified
 
-            for(let i = 1; i <= levelSize; i++){
+            for(let i = 0; i < levelSize; i++){
                 currentNode = queue.shift();
                 levelNodesCollector.push(currentNode.value);
 
@@ -80,14 +80,14 @@ class BinaryTree {
 
         // tree traversal
         while(queue.length > 0){
-            let levelSize = queue.length;   // take snapshot/copy of queue size otherwise when queus is updated, it will affect level loop and i can't get the exact number times i need to iterate at a particular level
-            let nodesInCurrentLevel = [];
+            let levelSize = queue.length;   // take snapshot/copy of queue size otherwise when queue is updated, it will affect level loop and i can't get the exact number times i need to iterate at a particular level
+            let nodesAtCurrentLevel = [];
 
             // level iteration
             // ...know that levelSize quarantees that i get the width of the current tree level cus, the queue deals with all the parent nodes(at say level 2) before these parent nodes remove their L&R leg nodes into the queue and jumping into/tackling children nodes(at level 3) 
             for(let i = 0; i < levelSize; i++){
                 currentNode = queue.shift();
-                nodesInCurrentLevel.push(currentNode.value);
+                nodesAtCurrentLevel.push(currentNode.value);
 
                 if(currentNode.left != null){
                     queue.push(currentNode.left);
@@ -98,7 +98,7 @@ class BinaryTree {
                 }
             }
 
-            result.push(nodesInCurrentLevel);
+            result.push(nodesAtCurrentLevel);
         }
 
         return result;
