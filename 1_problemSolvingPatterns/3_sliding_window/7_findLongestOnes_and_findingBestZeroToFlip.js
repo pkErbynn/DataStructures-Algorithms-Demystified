@@ -25,7 +25,8 @@ function findLongestOnesSlidingWindow(nums) {
         } 
         else {
             // Update maxWindowLen as we move the rightPointer pointer
-            maxWindowLen = Math.max(maxWindowLen, rightPointer - leftPointer + 1);
+            let currentWindowSize = rightPointer - leftPointer + 1;
+            maxWindowLen = Math.max(maxWindowLen, currentWindowSize);
         }
     }
 
@@ -34,14 +35,14 @@ function findLongestOnesSlidingWindow(nums) {
 
 // Alternatively, Without sliding window
 function findLongestOnes(nums) {
-    let maxWindowLength = 0; // Tracks the maximum sequence length
-    let currentCount = 0; // Tracks the current sequence length
+    let maxWindowLength = 0;    // Tracks the maximum sequence length
+    let currentCount = 0;       // Tracks the current sequence length
 
     for (const num of nums) {
         if (num === 1) {
-            currentCount++; // Continue the streak
-            maxWindowLength = Math.max(maxWindowLength, currentCount); // Update max if needed
-        } 
+            currentCount++;     // Continue the streak
+            maxWindowLength = Math.max(maxWindowLength, currentCount);  // Update max if needed
+        }
         else {
             currentCount = 0; // Reset when a 0 is encountered
         }
@@ -108,5 +109,3 @@ const input2 = [0, 1, 1, 0, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 0];
 console.log("Index to flip:", findBestZeroToFlip(input2)); // Expected: 10
 const input3 = [0, 1, 1, 1, 0, 0, 1, 0, 1, 1, 0, 0]
 console.log("Index to flip2:", findBestZeroToFlip(input3)); // Expected: 0
-
-

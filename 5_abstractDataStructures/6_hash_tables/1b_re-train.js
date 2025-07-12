@@ -34,14 +34,13 @@ class HashTable {
                 if(element[0] == key){
                     return element[1];
                 }
-                
             }
         }
 
         return null;
     }
 
-    delete(key) {
+    delete(key){
         let index = this._hash(key);
 
         if (this.keyMap[index]) {
@@ -58,7 +57,7 @@ class HashTable {
         }
         
         return null;
-      }
+    }
 
     getKeys(){
         return this.keyMapData.flat().map(d => d[0]);
