@@ -17,6 +17,52 @@ Return true if there exists a circle (i.e., the robot stays within a bounded pat
 Otherwise, return false.
 
 
+Example:
+Input: instructions = "GGLLGG"
+Output: true
+
+Explanation:
+Step 1: G → (0, 1), facing North  
+Step 2: G → (0, 2), facing North  
+Step 3: L → (0, 2), facing West  
+Step 4: L → (0, 2), facing South  
+Step 5: G → (0, 1), facing South  
+Step 6: G → (0, 0), facing South  
+
+Back at the origin, now facing South.
+Repeating the instructions, the robot enters a cycle.
+
+
+Example 2:
+Input: instructions = "GG"
+Output: false
+
+Explanation:
+Step 1: G → (0, 1), facing North  
+Step 2: G → (0, 2), facing North  
+
+Still moving straight, facing North.
+It will never return or loop — unbounded.
+
+
+Example 3:
+Input: instructions = "GL"
+Output: true
+
+Explanation:
+Step 1: G → (0, 1), facing North  
+Step 2: L → (0, 1), facing West  
+
+Repeating:  
+G → (-1, 1), facing West  
+L → (-1, 1), facing South  
+G → (-1, 0), facing South  
+L → (-1, 0), facing East  
+G → (0, 0), facing East  
+L → (0, 0), facing North  
+
+Eventually returns to the origin and enters a loop.
+
 */
 
 
