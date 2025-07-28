@@ -33,21 +33,21 @@ result in the product of all numbers except that number at that index...but ques
     - full context: https://www.youtube.com/watch?v=bNvIQI2wAjk&ab_channel=NeetCode
 */
 
-const productExceptSelf = function(input) {
+const productExceptSelf = function(nums) {
     const result = [];
 
     // forward pass...calculating and shifting baseProduct forward in result
     let baseProduct = 1
     result[0] = baseProduct;    // first baseProduct shift inside result
-    for (let i = 0; i < input.length - 1; i++) {    // input.length - 1 cus index starts from 0
-        baseProduct = baseProduct * input[i];
+    for (let i = 0; i < nums.length - 1; i++) {    // nums.length - 1 cus index starts from 0
+        baseProduct = baseProduct * nums[i];
         result[i + 1] = baseProduct;
     }
 
     // backward pass...calculating and shifting baseProduct backwards in result for overide after multiplied w/ existing data
     baseProduct = 1
-    for (let i = input.length - 1; i > 0; i--) {
-        baseProduct = baseProduct * input[i]
+    for (let i = nums.length - 1; i > 0; i--) {
+        baseProduct = baseProduct * nums[i]
         result[i - 1] = result[i - 1] * baseProduct;
     }
 
@@ -56,7 +56,36 @@ const productExceptSelf = function(input) {
 }
 
 console.log("productExceptSelf1: ", productExceptSelf([1, 2, 3, 4]));
+console.log("productExceptSelf2: ", productExceptSelf([-1, 1, 0, -3, 3]));
 
 
 // TC: O(n)...done in-place
 // SC: O(n)
+
+
+// Alt
+const productExceptSelf_ = function(nums) {
+    const result = [];
+
+    // forward pass...calculating and shifting baseProduct forward in result
+    let baseProduct = 1
+    result[0] = baseProduct;    // first baseProduct shift inside result
+    for (let i = 1; i < nums.length; i++) {
+        result[i] = baseProduct;    // put previous product value to current index
+        baseProduct = baseProduct * nums[i];    // recompute prod again
+    }
+
+    // backward pass...calculating and shifting baseProduct backwards in result for overide after multiplied w/ existing data
+    baseProduct = 1
+    for (let i = nums.length - 1; i >= 0; i--) {
+        result[i] = result[i] * baseProduct;
+        baseProduct = baseProduct * nums[i]
+    }
+
+    return result
+
+}
+
+console.log("productExceptSelf1_: ", productExceptSelf_([1, 2, 3, 4]));
+console.log("productExceptSelf2_: ", productExceptSelf_([-1, 1, 0, -3, 3]));
+
