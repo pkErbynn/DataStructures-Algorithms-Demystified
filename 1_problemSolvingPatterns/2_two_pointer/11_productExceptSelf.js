@@ -30,6 +30,7 @@ as extra space for space complexity analysis.)
 result in the product of all numbers except that number at that index...but question says don't use division
 - 3nd Option: two array containers could be used to hold prefix n postfix, then multiplied...Good as it result in O(n) TC but O(n) SC
 - 4th Option: make two passes, first in-forward, second in-reverse, to compute products in-place...GREAT cus of O(n) TC but O(1) SC (as result space not considered as extra space)
+    - full context: https://www.youtube.com/watch?v=bNvIQI2wAjk&ab_channel=NeetCode
 */
 
 const productExceptSelf = function(input) {
