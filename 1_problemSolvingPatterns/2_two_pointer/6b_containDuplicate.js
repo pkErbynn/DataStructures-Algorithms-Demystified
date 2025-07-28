@@ -77,5 +77,6 @@ const containsDublicate = function(input) {
     return false;
 }
 
-console.log("containsDublicate1: ", containsDublicate([1,2,3,1]));
-console.log("containsDublicate2: ", containsDublicate([1,2,3,5]));
+console.log("containsDublicate1: ", containsDublicate([1, 2, 3, 1]));
+console.log("containsDublicate2: ", containsDublicate([1, 2, 3, 5]));
+
