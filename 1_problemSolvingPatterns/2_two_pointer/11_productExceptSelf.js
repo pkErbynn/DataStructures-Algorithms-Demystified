@@ -1,6 +1,7 @@
 /*
  
-Given an integer array nums, return an array answer such that answer[i] is equal to the product of all the elements of nums except nums[i].
+Given an integer array nums, return an array answer such that answer[i] is equal to the product 
+of all the elements of nums except nums[i].
 The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer.
 You must write an algorithm that runs in O(n) time and without using the division operation.
 
@@ -15,10 +16,21 @@ Example 2:
 Input: nums = [-1,1,0,-3,3]
 Output: [0,0,9,0,0]
 
+Follow up: Can you solve the problem in O(1) extra space complexity? (The output array does not count
+as extra space for space complexity analysis.)
+
 */
 
 
-// Hint: make two passes, first in-forward, second in-reverse, to compute products
+/* 
+
+=== Brainstorming
+- 1st Option: nested loop could be use to solve this but will result in O(n^2) TC...meanwhile question says in O(n)
+- 2nd Option: if total product of numbers in array is divided by a current number at a particular index, it will 
+result in the product of all numbers except that number at that index...but question says don't use division
+- 3nd Option: two array containers could be used to hold prefix n postfix, then multiplied...Good as it result in O(n) TC but O(n) SC
+- 4th Option: make two passes, first in-forward, second in-reverse, to compute products in-place...GREAT cus of O(n) TC but O(1) SC (as result space not considered as extra space)
+*/
 
 const productExceptSelf = function(input) {
     const result = [];
