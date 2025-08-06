@@ -20,13 +20,13 @@ function findPivot(arr){
         let mid = start + Math.floor((end - start) / 2)
 
         // case 1: If mid is the pivot
-        // [4, 5, 6, 7, 0, 1, 2, 3]...if 7(that is the mid) > 0 then 4 is the pivot value cus it's steping down
-        if ( arr[mid + 1] < arr[mid] ){     // boundary check if ( mid < end && arr[mid] > arr[mid + 1])
+        // [4, 5, 6, 7, 0, 1, 2, 3]...if 7(mid) > 0(mid+1) then 7 is the pivot value cus it decreased/stepped down
+        if ( arr[mid] < arr[mid + 1] ){     // boundary check if ( mid < end && arr[mid] > arr[mid + 1])
             return mid;
         }
 
         // case 2: If mid-1 is the pivot 
-        // [4, 5, 6, 7, 0, 1, 2, 3]...if value 0(mid) < 7 then 4 is the pivot value cus it's steping down
+        // [4, 5, 6, 7, 0, 1, 2, 3]...if value 7(mid-1) > 0(mid) then 7 is the pivot value cus it's steping down
         if ( arr[mid - 1] > arr[mid]){     // add boundary check upfront (mid > start)
             return mid - 1;
         }

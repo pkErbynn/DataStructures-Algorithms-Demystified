@@ -71,3 +71,46 @@ const minRotatedSortedValue = function(array) {
 console.log("minRotatedSortedValue:", minRotatedSortedValue([3, 4, 5, 1, 2]));
 console.log("minRotatedSortedValue2:", minRotatedSortedValue([4, 5, 6, 7, 0, 1, 2]));
 console.log("minRotatedSortedValue3:", minRotatedSortedValue([0, 1, 2, 3, 4]));
+
+
+/////////// ======= Finding Max value in rotated search array => finding Pivot
+
+const findPiiiivot = function(array) {
+    
+    let maxValue = Number.MIN_VALUE;
+    let leftPtr = 0;
+    let rightPtr = array.length - 1;
+
+    while (leftPtr <= rightPtr) {
+        
+        let midPtr = Math.floor((leftPtr + rightPtr) / 2);
+
+        // optimization: for fully sorted array, first value is simply the min
+        // if(array[leftPtr] <= array[rightPtr]){
+        //     return array[leftPtr]
+        // }
+        if(array[leftPtr] <= array[rightPtr]){
+            maxValue = Math.max(maxValue, array[rightPtr])
+            break
+        }
+
+        if(array[leftPtr] <= array[midPtr]){
+            maxValue = Math.max(maxValue, array[midPtr])
+            leftPtr = midPtr + 1;
+        }
+
+        else {
+            maxValue = Math.max(maxValue, array[leftPtr])
+            rightPtr = midPtr - 1;
+        }
+    }
+
+    return maxValue;
+}
+
+console.log("findPiiiivot1:", findPiiiivot([4, 5, 6, 7, 0, 1, 2]));
+console.log("findPiiiivot2:", findPiiiivot([6, 7, 0, 1, 2, 4]));
+console.log("findPiiiivot3:", findPiiiivot([7, 0, 1, 2, 4, 6]));
+console.log("findPiiiivot4:", findPiiiivot([0, 1, 2, 4, 6, 7]));
+
+
