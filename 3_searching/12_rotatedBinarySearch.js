@@ -85,6 +85,7 @@ function findTargetInRotatedArray(arr, target){
     let pivot = findPivot(arr);
 
     // if no pivot exists, means array input is not rotated....thus, do a normal binary search on the input array to find the target element
+    // also left pointer is less than right it means that it's fully sorted and no pivot, thus, apply regular binary sort
     if(pivot === -1){
         return binarySearch(arr, target, 0, arr.length - 1);
     }
@@ -128,17 +129,24 @@ function searchInRotatedArray(nums, target) {
 
         // Left part is sorted
         if (nums[start] <= nums[mid]) {
-            if (target >= nums[start] && target < nums[mid]) {
+            // if target is within the left sorted half
+            if (target >= nums[start] && target <= nums[mid]) {
                 end = mid - 1;
-            } else {
+            } 
+            // if target is outside the sorted half...means target < nums[start] or target > nums[mid]
+            else {
                 start = mid + 1;
             }
         }
+
         // Right part is sorted
         else {
-            if (target > nums[mid] && target <= nums[end]) {
+            // if target is within right sorted half
+            if (target >= nums[mid] && target <= nums[end]) {
                 start = mid + 1;
-            } else {
+            }
+            // if target falls outside of its rigt sorted half due to its rotation nature
+            else {
                 end = mid - 1;
             }
         }
