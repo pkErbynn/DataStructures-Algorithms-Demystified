@@ -115,7 +115,8 @@ console.log("findTargetInRotatedArray4:", findTargetInRotatedArray([4, 5, 6, 7, 
 
 
 
-// Alternative solution
+// Alternative solution, shorter and more logical **
+// vid: https://www.youtube.com/watch?v=5qGrJbHhqFs
 function searchInRotatedArray(nums, target) {
     let start = 0;
     let end = nums.length - 1;
