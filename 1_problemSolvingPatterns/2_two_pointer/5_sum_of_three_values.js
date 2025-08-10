@@ -1,3 +1,5 @@
+// Input with no duplicates
+
 function findSumOfThree(nums, target) {
     nums = nums.sort((a, b) => a - b);  // sorted in order
 
