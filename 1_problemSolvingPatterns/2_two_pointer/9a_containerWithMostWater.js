@@ -1,4 +1,14 @@
+/*
 
+11. Container With Most Water
+
+You are given an integer array height of length n. There are n vertical lines drawn such that the two endpoints of the ith line are (i, 0) and (i, height[i]).
+Find two lines that together with the x-axis form a container, such that the container contains the most water.
+Return the maximum amount of water a container can store.
+
+Notice that you may not slant the container.
+
+*/
 
 
 const mostWater_BruteForce = function(input) {
@@ -16,7 +26,8 @@ const mostWater_BruteForce = function(input) {
     return maxWaterResult;
 }
 
-console.log("mostWater_BruteForce:", mostWater_BruteForce([1, 8, 6, 2, 5, 4, 8, 3, 7]));
+console.log("mostWater_BruteForce1:", mostWater_BruteForce([1, 8, 6, 2, 5, 4, 8, 3, 7]));
+console.log("mostWater_BruteForce2:", mostWater_BruteForce([1, 1, 1]));
 
 // TC: O(n^2)
 
@@ -58,6 +69,7 @@ const mostWater_Optimized = function(input) {
     return maxAreaWater;
 }
 
-console.log("mostWater_Optimized:", mostWater_Optimized([1, 8, 6, 2, 5, 4, 8, 3, 7]));
+console.log("mostWater_Optimized1:", mostWater_Optimized([1, 8, 6, 2, 5, 4, 8, 3, 7]));
+console.log("mostWater_Optimized2:", mostWater_Optimized([1, 1, 1]));
 
 // TC: O(n)
