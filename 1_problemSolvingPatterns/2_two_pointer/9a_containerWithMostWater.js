@@ -10,7 +10,7 @@ Notice that you may not slant the container.
 
 */
 
-
+// Eg: https://youtu.be/UuiTKBwPgAo?si=7bxwVqEuaYQeqAfl
 const mostWater_BruteForce = function(input) {
     let maxWaterResult = 0;
 
@@ -30,11 +30,15 @@ console.log("mostWater_BruteForce1:", mostWater_BruteForce([1, 8, 6, 2, 5, 4, 8,
 console.log("mostWater_BruteForce2:", mostWater_BruteForce([1, 1, 1]));
 
 // TC: O(n^2)
+// SP: O(1)
 
 
 //////////////////
 
+// Exp: https://youtu.be/w7ftYsZtIbs?si=_TCFoNrIbBdPm5cc
+// Ex: 
 const mostWater_Optimized = function(input) {
+    // Need to start from the ends cus wanna find the max area
     let leftPtr = 0;
     let rightPtr = input.length - 1;
 
@@ -73,3 +77,4 @@ console.log("mostWater_Optimized1:", mostWater_Optimized([1, 8, 6, 2, 5, 4, 8, 3
 console.log("mostWater_Optimized2:", mostWater_Optimized([1, 1, 1]));
 
 // TC: O(n)
+// SP: O(1)
