@@ -73,7 +73,7 @@ console.log("minRotatedSortedValue2:", minRotatedSortedValue([4, 5, 6, 7, 0, 1, 
 console.log("minRotatedSortedValue3:", minRotatedSortedValue([0, 1, 2, 3, 4]));
 
 
-/////////// ======= Finding Max value in rotated search array => finding Pivot
+/////////// ======= Next Question: Finding Max value in rotated search array => finding Pivot
 
 const findPiiiivot = function(array) {
     
