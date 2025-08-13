@@ -22,12 +22,12 @@ Output: [0]
 class MyNode {
     constructor(value){
         this.value = value;
-        this.next = null; // pointer reference to next node
+        this.next = null;
     }
 }
 
 const mergeTwoLists = function(list1, list2) {
-    let defaultStartNode = new MyNode(-1);
+    let defaultStartNode = new MyNode(-1);  // uses the dummy-node technique
 
     let resultNodePtr = defaultStartNode;
     let l1Ptr = list1;

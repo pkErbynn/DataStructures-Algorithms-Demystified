@@ -52,12 +52,21 @@ const mergeKList = function(lists) {
     for (let i = 0; i + interval < lists.length; i += interval * 2) {
       lists[i] = mergeTwoLists(lists[i], lists[i + interval])   // in-place
     }
-    interval = interval * 2;
+
+    interval = interval * 2;  // moved by 2, 4, 8, 16, etc
   }
 
-  return lists[0]
+  let prettyPrint = printList(lists[0]);
+
+  return prettyPrint;
 }
 
+class MyNode {
+    constructor(value){
+        this.value = value;
+        this.next = null; // pointer reference to next node
+    }
+}
 
 const mergeTwoLists = function(list1, list2) {
   let defaultStartNode = new MyNode(-1);
@@ -91,8 +100,39 @@ const mergeTwoLists = function(list1, list2) {
   return defaultStartNode.next;
 }
 
+const makeListlistFromArray = function(array) {
+  let head = new MyNode(array[0]);
+  let currentPtr = head;
+
+  for (let i = 1; i < array.length; i++) {
+    let newNode = new MyNode(array[i])
+    currentPtr.next = newNode;
+    currentPtr = currentPtr.next;
+  }
+  
+  return head;
+}
+
+const printList = function(head) {
+    let arr = [];
+    while (head) {
+        arr.push(head.value + " -> ");
+        head = head.next;
+    }
+    return arr;
+}
+
+
+const l1 = makeListlistFromArray([1, 4, 5]);
+const l2 = makeListlistFromArray([1, 3, 4]);
+const l3 = makeListlistFromArray([2, 6]);
+
+console.log(mergeKList([l1, l2, l3]));
+
 
 // TC: O(n log k)
 // O(log k) work done....and merge take O(n)
 
 // SC: O(i) because it’s done in-place, only using pointers.
+
+
