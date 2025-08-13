@@ -81,7 +81,7 @@ printLinkedlist(RemoveNthNodeFromEndofList(list1, 1));
 printLinkedlist(RemoveNthNodeFromEndofList(list1, 7));  
 
 
-/// ========== Fix for edge case using Dummy Node
+/// ========== Fix for edge case using Dummy Node ======== ****
 
 const RemoveNthNodeFromEndofList_Fixed = function(llHead, nth) {
     // guards
@@ -130,8 +130,6 @@ console.log("=== fixed solution ====");
 // printLinkedlist(RemoveNthNodeFromEndofList_Fixed(list2, 1));
 printLinkedlist(RemoveNthNodeFromEndofList_Fixed(list2, 7));  
 printLinkedlist(RemoveNthNodeFromEndofList_Fixed(list2, 8));    // another edge case, nothing removed
-
-
 
 
 // Complexity
