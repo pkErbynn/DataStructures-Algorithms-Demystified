@@ -135,4 +135,14 @@ console.log(mergeKList([l1, l2, l3]));
 
 // SC: O(i) because it’s done in-place, only using pointers.
 
+/*
 
+ Practical Examples
+	1.	Search Engines
+	•	Merging sorted lists of search results from multiple servers or shards into a single ranked result list.
+	2.	Social Media Feeds
+	•	Combining posts from multiple friends’ timelines (each already sorted by time) into a single feed.
+	3.	Database Query Merging
+	•	Merging results from parallel queries across distributed databases.
+
+*/
