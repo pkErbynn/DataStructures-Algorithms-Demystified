@@ -61,6 +61,7 @@ const printLinkedlist = function(head) {
         arr.push(head.value);
         head = head.next;
     }
+    arr.push("null");
     console.log(arr);
 }
 

@@ -113,14 +113,7 @@ const makeListlistFromArray = function(array) {
   return head;
 }
 
-const printList = function(head) {
-    let arr = [];
-    while (head) {
-        arr.push(head.value + " -> ");
-        head = head.next;
-    }
-    return arr;
-}
+
 
 
 const l1 = makeListlistFromArray([1, 4, 5]);
