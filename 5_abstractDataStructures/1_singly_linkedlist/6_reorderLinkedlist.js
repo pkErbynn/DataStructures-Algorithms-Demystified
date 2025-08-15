@@ -109,7 +109,6 @@ list2.next.next.next.next = new MyNode(5);
 reorderLinkedlist(list2);
 
 
-
 /*
 
 Real use-case
