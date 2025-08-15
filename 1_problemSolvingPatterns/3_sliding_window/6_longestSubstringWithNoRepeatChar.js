@@ -27,6 +27,7 @@ HINT #
 - We can use a HashMap to remember the last index of each character we have processed. 
 - Whenever we get a repeating character we will shrink our sliding window to ensure that we always have distinct characters in the sliding window
 
+- Vid: https://www.youtube.com/watch?v=-zSxTJkcdAo
 */
 
 
@@ -42,17 +43,16 @@ function lengthOfLongestSubstringWithNoCharRepeat(strInput){
 
         // If the character is seen again, jump the windowStart to the next index after the previous occurrence, using the mapObject {}
         if(currentChar in charIndexMap){    // (charIndexMap[currentChar]) is wrong cus if index is 0, it will evaluate to 'false' instead of 'true'
-            windowStartIndex = Math.max(windowStartIndex, charIndexMap[currentChar] + 1);   // move to jump the window startPointer ref forward to (currentIndx + 1) when characters repeat.
-            
-            // windowStartIndex = charIndexMap[currentChar] + 1;  // when the currentChar has been seen before, adjust the window start to the next index and start a new window
+            windowStartIndex = charIndexMap[currentChar] + 1;  // when the currentChar has been seen before, adjust the window start to the next index and start a new window
+            // windowStartIndex = Math.max(windowStartIndex, charIndexMap[currentChar] + 1);   // move to jump the window startPointer ref forward to (currentIndx + 1) when characters repeat.            
         }
-
-        // Update the last seen index of the character
-        charIndexMap[currentChar] = windowEndIndex;
 
         // Update the maximum length of the substring
         let currentWindowLength = (windowEndIndex - windowStartIndex) + 1;
         maxLength = Math.max(maxLength, currentWindowLength);
+
+        // Track/update the last seen index of the character
+        charIndexMap[currentChar] = windowEndIndex;
     }
 
     return {maxLength};
@@ -67,6 +67,35 @@ console.log(lengthOfLongestSubstringWithNoCharRepeat("uvwxyz"));
 console.log(lengthOfLongestSubstringWithNoCharRepeat("z"));
 
 
+// Using whileLoop
+function lengthOfLongestSubstringWithNoCharRepeat_WhileLoop(strInput){
+    let windowStartIndex = 0;
+    let windowEndIndex = 0;
+    let maxLength = 0;
+    let charIndexMap = {};
+
+    while (windowEndIndex <= strInput.length) {
+        let currentChar = strInput[windowEndIndex];
+
+        // Track index in hashMap
+        if(currentChar in charIndexMap){
+            windowStartIndex = charIndexMap[currentChar] + 1;
+        }
+
+        // Compute length
+        let currentWindowLength = (windowEndIndex - windowStartIndex) + 1;
+        maxLength = Math.max(maxLength, currentWindowLength);
+
+        // Update index in Hashmap
+        charIndexMap[currentChar] = windowEndIndex;
+
+        windowEndIndex++;
+    }
+
+    return {maxLength};
+}
+
+console.log("While:",lengthOfLongestSubstringWithNoCharRepeat_WhileLoop("aabccbb"));
 
 /*
 Why use the index?: 
@@ -88,46 +117,5 @@ Space Comp = o(k) = o(1)
     the whole string might not have any repeating character so the entire string will be added to the HashMap. 
     Having said that, since we can expect a fixed set of characters in the input string (e.g., 26 for English letters), 
     we can say that the algorithm runs in fixed space = O(1); 
-
-*/
-
-
-
-
-
-function maxSubWithNoRepeatingString_wrong(str) {
-    let windowStart = 0;
-    let maxLength = 0;
-    let freqC = {};
-
-    for (let windowEnd = 0; windowEnd < str.length; windowEnd++) {
-        const windowEndValue = str[windowEnd];
-        
-        if(freqC[windowEndValue]){
-            windowStart = windowStart + 1;
-        }
-
-        freqC[windowEndValue] = true;
-
-        let curMaxLength = windowEnd - windowStart + 1;
-        maxLength = Math.max(maxLength, curMaxLength);
-    }
-
-    return maxLength;
-}
-
-console.log(maxSubWithNoRepeatingString_wrong("abba"));
-
-/*
-The Above implementation is wrong because: 
-
-Initially, windowStart is at index 0 and windowEnd is at index 0. The substring between windowStart and windowEnd is "a", which has no repeating characters.
-Then, windowEnd moves to index 1. The substring between windowStart and windowEnd is "ab", which still has no repeating characters.
-Next, windowEnd moves to index 2. Now, the substring between windowStart and windowEnd is "abb", which contains a repeating character ("b"). 
-According to your original logic, you would increment windowStart to 1, but this would not ensure that the resulting substring ("bb") has no repeating characters.
-
-The correct approach is to move/jump windowStart to the next index after the previous occurrence of the repeating character. 
-In this case, windowStart should be moved to index 2 (the index after the first occurrence of "b"). This ensures that the resulting substring ("ba") has no repeating characters.
-That's why simply incrementing windowStart by one is not sufficient to handle all cases where repeating characters are encountered in the substring.
 */
 
