@@ -60,12 +60,13 @@ const reorderLinkedlist = function(head) {
 
     // reverse the right half
     let prevNode = null;
-    while(rightHalf != null){
-        let righNext = rightHalf.next;
-        rightHalf.next = prevNode;
+    let currentNode = rightHalf
+    while(currentNode != null){
+        let nextNode = currentNode.next;
+        currentNode.next = prevNode;
 
-        prevNode = rightHalf;
-        rightHalf = righNext;
+        prevNode = currentNode;
+        currentNode = nextNode;
     }
     rightHalf = prevNode;
 
@@ -98,15 +99,31 @@ let list1 = new MyNode(1);
 list1.next = new MyNode(2);
 list1.next.next = new MyNode(3);
 list1.next.next.next = new MyNode(4);
-list1.next.next.next.next = new MyNode(5);
-// list1.next.next.next.next = new MyNode(5);
-// list1.next.next.next.next.next = new MyNode(6);
-// list1.next.next.next.next.next.next = new MyNode(7);
-
 reorderLinkedlist(list1);
+
+let list2 = new MyNode(1);
+list2.next = new MyNode(2);
+list2.next.next = new MyNode(3);
+list2.next.next.next = new MyNode(4);
+list2.next.next.next.next = new MyNode(5);
+reorderLinkedlist(list2);
+
+
 
 /*
 
 Real use-case
+- Photo gallery slideshow alternating oldest and newest images.
+- Playlist shuffling where you want to mix from both ends of the list.
+
+1. Time Complexity — O(n)
+- Find middle → O(n/2) ≈ O(n)
+- Reverse second half → O(n/2) ≈ O(n)
+- Merge halves → O(n)
+- Sum = O(n) overall.
+
+2. Space Complexity — O(1)
+- We only use a few pointers (slow, fast, prev, curr, etc.).
+- No extra arrays or lists are created — it’s done in-place.
 
 */
