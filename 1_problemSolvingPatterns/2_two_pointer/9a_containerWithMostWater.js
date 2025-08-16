@@ -8,6 +8,9 @@ Return the maximum amount of water a container can store.
 
 Notice that you may not slant the container.
 
+--- 
+This is different than the previous question as this finds just the two vertical lines that will contain max water
+...but the prev, finds the total trapping water in all vallies
 */
 
 // Eg: https://youtu.be/UuiTKBwPgAo?si=7bxwVqEuaYQeqAfl

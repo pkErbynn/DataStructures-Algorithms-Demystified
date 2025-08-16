@@ -118,43 +118,6 @@ linkedListHead.next.next.next.next.next = new Node(12);
 console.log("rearrangeLinkedList:", rearrangeLinkedList(linkedListHead));
 
 
-//////// W/out comments
-const rearrangingList2 = (linkedListHead) => {
-    if(!linkedListHead) return null;
-
-    let sp = linkedListHead;
-    let fp = linkedListHead;
-
-    while(fp && fp.next) {
-        sp = sp.next;
-        fp = fp.next.next;
-    }
-
-    let listList2ndHalf = reverseLinkedList(sp);
-    let listList1stHalf = linkedListHead;
-
-    while(listList1stHalf && listList2ndHalf)
-    {   
-        let listList1stHalfNext = listList1stHalf.next;
-        let listList2ndHalfNext = listList2ndHalf.next;
-
-        listList1stHalf.next = listList2ndHalf;
-        listList2ndHalf.next = listList2ndHalfNext;
-
-        listList1stHalf = listList1stHalfNext;
-        listList2ndHalf = listList2ndHalfNext;
-    }
-
-    if(listList1stHalf){
-        listList1stHalf.next = null;
-    }
-
-    return linkedListHead;
-}
-
-// console.log("rearrangingList2:", rearrangingList2(linkedListHead));
-
-
 /*
 so far: 
 

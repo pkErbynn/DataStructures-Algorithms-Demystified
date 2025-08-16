@@ -62,6 +62,7 @@ const startOfLinkedListCyle1 = function(head) {
     return null;
 }
 
+// Alternative
 const startOfLinkedListCyle2 = function(head) {
     let cycleLength = lengthOfLinkedListCycle(head);    // calculated length earlier
 
