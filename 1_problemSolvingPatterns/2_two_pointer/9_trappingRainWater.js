@@ -37,7 +37,7 @@ function trapRainWater(heights) {
                 waterTappings += (leftMaxHeightValue - heights[leftPointer]);
             }
             
-            // update leftMaxHeightValue
+            // update leftMaxHeightValue...condition not really needed
             else if(leftMaxHeightValue <= heights[leftPointer]){
                 leftMaxHeightValue = heights[leftPointer];     // record height value as current max left val
             }
