@@ -36,9 +36,8 @@ console.log("mostWater_BruteForce2:", mostWater_BruteForce([1, 1, 1]));
 //////////////////
 
 // Exp: https://youtu.be/w7ftYsZtIbs?si=_TCFoNrIbBdPm5cc
-// Ex: 
 const mostWater_Optimized = function(input) {
-    // Need to start from the ends cus wanna find the max area
+    // Pointers need to start from the ends cus wanna cover max area
     let leftPtr = 0;
     let rightPtr = input.length - 1;
 

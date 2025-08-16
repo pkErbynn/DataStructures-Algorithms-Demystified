@@ -12,7 +12,7 @@ Example 1:
 Input: prices = [7,1,5,3,6,4]
 Output: 5
 Explanation: Buy on day 2 (price = 1) and sell on day 5 (price = 6), profit = 6-1 = 5.
-Note that buying on day 2 and selling on day 1 is not allowed because you must buy before you sell.
+Note that buying on day 2 and selling on day 1 is not allowed because you must buy before you sell...and times/days moves forward 
 
 Example 2:
 
@@ -35,6 +35,7 @@ const maxProfit = function(stocks) {
         if(stocks[rightPointer] > stocks[leftPointer]){
 
             let currentProf = stocks[rightPointer] - stocks[leftPointer]
+            
             maxProf = Math.max(maxProf, currentProf);
             // if(currentProf > maxProf){
             //     maxProf = currentProf
@@ -51,5 +52,6 @@ const maxProfit = function(stocks) {
     return maxProf;
 }
 
-console.log("maxProfit1: ", maxProfit([7,1,5,3,6,4]));
-console.log("maxProfit2: ", maxProfit([7,6,4,3,1]));
+console.log("maxProfit1: ", maxProfit([7, 1, 5, 3, 6, 4]));
+console.log("maxProfit2: ", maxProfit([1, 6, 4, 3 ,1]));
+console.log("maxProfit3: ", maxProfit([6, 4, 3 ,1]));
