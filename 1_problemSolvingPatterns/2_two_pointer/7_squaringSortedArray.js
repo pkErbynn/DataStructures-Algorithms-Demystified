@@ -44,7 +44,7 @@ function createSquaredSortedArray(numbers) {
 
         if (leftValueSquared <= rightValueSquared) {
             result.unshift(rightValueSquared); // Add to the beginning of the result array if less or equal to right values
-            rightPointer--;
+            rightPointer--;     // rightPtr moves in cus it's bigger as taking a big numbers....otherwise, leftPtr
         } else {
             result.unshift(leftValueSquared); // Add to the beginning of the result array
             leftPointer++;

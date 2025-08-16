@@ -53,6 +53,7 @@ function maxSumArray_SlidingWindow(arr, k){
         if(windowSum > maxSum){
             maxSum = windowSum;
         }
+        // maxSum = Math.max(maxSum, windowSum);
     }
 
     return maxSum;

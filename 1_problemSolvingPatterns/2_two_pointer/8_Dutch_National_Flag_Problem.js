@@ -41,7 +41,7 @@ const sortArrayElements = (numbers) => {
     let rightPointer = numbers.length - 1;
     let midPointer = 0;     // for swapping to either leftPointer/rightPointer
 
-    while (midPointer <= rightPointer) {    // midPointer is the reference pointer so should be adjusted under all conditions
+    while (midPointer <= rightPointer) {    // midPointer is the key reference pointer that does all relevant movements/swapping under all conditions...midPtr goes from start to end, the rest serves as placeholders
         if(numbers[midPointer] === 0){
             [numbers[leftPointer], numbers[midPointer]] = [numbers[midPointer], numbers[leftPointer]];  // swap values (cus 0's should fall at the beginning not mid) and increase indexes
             leftPointer++;  // index filled with correct value(0), so pointer should move forward

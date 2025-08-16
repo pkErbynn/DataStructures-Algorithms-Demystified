@@ -33,7 +33,7 @@ Explanation: The only possible triplet sums up to 0.
 */
 
 
-function threeSum(nums) {
+function threeSumGroup(nums) {
     const result = [];
     nums.sort((a, b) => a - b);
 
@@ -74,5 +74,5 @@ function threeSum(nums) {
     return result;
 }
 
-console.log("threeSum", threeSum([-1, 0, 1, 2, -1, -4]));
-console.log("threeSum", threeSum([-2, -2, -2, -1, -1, -1, 0, 0, 0, 2, 2, 2, 2]));
+console.log("threeSumGroup", threeSumGroup([-1, 0, 1, 2, -1, -4]));
+console.log("threeSumGroup", threeSumGroup([-2, -2, -2, -1, -1, -1, 0, 0, 0, 2, 2, 2, 2]));

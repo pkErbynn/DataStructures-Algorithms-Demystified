@@ -42,7 +42,7 @@ console.log("x:", remove_duplicate_and_return_new_length([2, 3, 3, 3, 6, 9, 9]))
 2. 2nd pointer at the rest so can compare with the 1st pointer value
 */
 
-function remove_duplicate_to_return_new_length_optimized2(sortedNums){
+function remove_duplicate_to_return_new_length_optimized2(sortedNums){  //******
     let leftIndexPointer = 0;
 
     for (let rightIndexPointer = 1; rightIndexPointer < sortedNums.length; rightIndexPointer++) {

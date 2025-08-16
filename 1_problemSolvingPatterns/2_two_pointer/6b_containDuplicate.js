@@ -57,8 +57,8 @@ const hasDublicate = function(input) {
     return false;
 }
 
-console.log("hasDublicate1: ", hasDublicate([1,2,3,1]));
-console.log("hasDublicate2: ", hasDublicate([1,2,3,5]));
+console.log("hasDublicate1: ", hasDublicate([1, 2, 3, 1]));
+console.log("hasDublicate2: ", hasDublicate([1, 2, 3 ,5]));
 
 
 // Option 3
