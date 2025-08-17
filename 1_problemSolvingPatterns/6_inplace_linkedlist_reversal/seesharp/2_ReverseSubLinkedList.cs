@@ -88,7 +88,6 @@ namespace seesharp
             // if happens that  nodeBeforeSubList is null, means start subList range start equal the head of orginal linkedList
                 // further means, linkedlist didn't enter first while loop, thus previousNode will be null
             // then head has to start from prevNode, which is the startNode of the reversedSubList
-            
             if (nodeBeforeSubList == null)  // not currentNode because current node pointer will always point outside the linkedlist. With this problem, it will point beyond the 'end'
             {
                 head = previousNode;

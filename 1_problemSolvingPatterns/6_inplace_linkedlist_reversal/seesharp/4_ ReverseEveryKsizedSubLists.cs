@@ -21,7 +21,7 @@ namespace seesharp
         { 
             // Not reviewed. Simple but yet to understand probably: just copied the solution
 
-            Console.WriteLine("\nReverseKsizedSubLists:");
+            Console.WriteLine("ReverseEveryKsizedSubLists:");
 
             if (head == null || head.Next == null || k <= 1) return;    // guard clause: invalid list or k
 
@@ -30,7 +30,7 @@ namespace seesharp
 
             while (currentNodePointer != null)
             {
-                Node startNode = currentNodePointer;   // Start of the k-sized sub-list
+                Node startNode = currentNodePointer;   // lastNode Of This SubList = Start of the k-sized sub-list
                 Node prevSubListEnd = previousNodePointer; // Previous sub-list's end (for connection)
 
                 int count = 0;

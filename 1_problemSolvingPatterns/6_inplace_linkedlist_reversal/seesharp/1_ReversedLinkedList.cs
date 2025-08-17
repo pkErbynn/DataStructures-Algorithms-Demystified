@@ -33,19 +33,19 @@ namespace seesharp
 
 		public static void PrintReversedLinkedList(Node head)
 		{
-            Console.WriteLine("OriginalLinkedList:");
+            // Console.WriteLine("OriginalLinkedList:");
 
-            // print linkedlist before
-            var currentNodePtr = head;
-            while (currentNodePtr != null)
-            {
-                Console.Write(currentNodePtr.Value + " -> ");
-                currentNodePtr = currentNodePtr.Next;
-			}
-			Console.WriteLine(); // separate before and after line
+            // // print linkedlist before
+            // var currentNodePtr = head;
+            // while (currentNodePtr != null)
+            // {
+            //     Console.Write(currentNodePtr.Value + " -> ");
+            //     currentNodePtr = currentNodePtr.Next;
+			// }
+			// Console.WriteLine(); // separate before and after line
 
             Node reversedLinkedList = ReverseLinkedList(head);
-            Console.WriteLine("ReverseLinkedList:");
+            Console.WriteLine("ReversedLinkedList:");
 
 			// print reversed linkedlist
 			while (reversedLinkedList != null)

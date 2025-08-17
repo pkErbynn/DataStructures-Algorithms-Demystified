@@ -49,7 +49,7 @@ namespace _1_mycsharp
                 // and ignoring all out-of range values
 				// (correctValueIndex > 0), cus looking for +ve numbers **
 				// (correctValueIndex < len), cus looking for numbers within range
-                if ( (numbers[startIndex] !== numbers[correctValueIndex - 1]) && (correctValueIndex > 0) && (correctValueIndex <= numbers.Length) )
+                if ( (numbers[startIndex] != numbers[correctValueIndex - 1]) && (correctValueIndex > 0) && (correctValueIndex <= numbers.Length) )
 				{
 					// swap
 					var temp = numbers[startIndex];

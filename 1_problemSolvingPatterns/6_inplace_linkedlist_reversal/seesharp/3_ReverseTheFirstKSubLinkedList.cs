@@ -4,8 +4,10 @@ namespace seesharp
 	public class TheFirstKSubLinkedListReversal
 	{
         public static void ReverseTheFirstKSubLinkedList(Node head, int k)
-        { 
-            if(head == null || head.Next == null || k < 2) return;
+        {
+            Console.WriteLine("ReverseTheFirstKSubLinkedList:");
+            
+            if (head == null || head.Next == null || k < 2) return;
 
             Node currentNodePtr = head;
             Node previousNodePtr = null;

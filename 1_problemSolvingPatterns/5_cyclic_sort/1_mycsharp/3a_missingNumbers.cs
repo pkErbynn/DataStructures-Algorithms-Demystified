@@ -48,9 +48,9 @@ class MissingNumbers
         // Collecting missing numbers
         List<int> results = new List<int>();
 
-        for (int i = 0; i < numbers.Length; i++)
+        for(int i = 0; i < numbers.Length; i++)
         {
-            if (numbers[i] != (i + 1))  // compured to (i + 1) cus input array values starts from 1
+            if(numbers[i] != (i + 1))  // compured to (i + 1) cus input array values starts from 1
             {
                 results.Add(i + 1);     // missing numbers means getting INDEXes not the VALUEs
             }
