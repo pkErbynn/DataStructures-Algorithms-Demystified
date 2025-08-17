@@ -10,7 +10,7 @@ NB: Input does NOT increase and decrease forever, but increases and decreases do
 */
 
 // 1. Find the Pivot position in a rotated array
-function findPivot(arr){
+function findPivotIndex(arr){
 
     let start = 0;
     let end = arr.length - 1;
@@ -21,7 +21,7 @@ function findPivot(arr){
 
         // case 1: If mid is the pivot
         // [4, 5, 6, 7, 0, 1, 2, 3]...if 7(mid) > 0(mid+1) then 7 is the pivot value cus it decreased/stepped down
-        if ( arr[mid] < arr[mid + 1] ){     // boundary check if ( mid < end && arr[mid] > arr[mid + 1])
+        if ( arr[mid] > arr[mid + 1] ){     // boundary check if ( mid < end && arr[mid] > arr[mid + 1])
             return mid;
         }
 
@@ -52,10 +52,10 @@ function findPivot(arr){
     return -1;  // no pivot, cus array not rotated
 }
 
-console.log("Pivot1:", findPivot([4, 5, 6, 7, 0, 1, 2]));
-console.log("Pivot2:", findPivot([6, 7, 0, 1, 2, 4]));
-console.log("Pivot3:", findPivot([7, 0, 1, 2, 4, 6]));
-console.log("Pivot3:", findPivot([0, 1, 2, 4, 6, 7]));
+console.log("Pivot1:", findPivotIndex([4, 5, 6, 7, 0, 1, 2]));
+console.log("Pivot2:", findPivotIndex([6, 7, 0, 1, 2, 4]));
+console.log("Pivot3:", findPivotIndex([7, 0, 1, 2, 4, 6]));
+console.log("Pivot3:", findPivotIndex([0, 1, 2, 4, 6, 7]));
 
 
 // 2. Once Pivot is found, search in right and left halves
@@ -82,7 +82,7 @@ function binarySearch(arr, target, start, end){
 // 3. Now, put all together for the answer
 function findTargetInRotatedArray(arr, target){
 
-    let pivot = findPivot(arr);
+    let pivot = findPivotIndex(arr);
 
     // if no pivot exists, means array input is not rotated....thus, do a normal binary search on the input array to find the target element
     // also left pointer is less than right it means that it's fully sorted and no pivot, thus, apply regular binary sort
@@ -115,7 +115,7 @@ console.log("findTargetInRotatedArray4:", findTargetInRotatedArray([4, 5, 6, 7, 
 
 
 
-// Alternative solution, shorter and more logical *****
+// ======== Alternative solution, shorter and more logical *****
 // 1. Find the sorted part. Since it's roated, one is guaranteed to be sorted 
 // 2. Once sorted part is determined, apply binary search halfing: either within range, or outside range
 // vid: https://www.youtube.com/watch?v=5qGrJbHhqFs

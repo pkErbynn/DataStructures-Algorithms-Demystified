@@ -219,10 +219,9 @@ class RunningMedian {
         this.minHeap = new MinBinaryHeap(); // Right half (larger numbers)
 
         console.log("\n\n=== RunningMedian ===");
-        
     }
 
-    // Add a new number and maintain the balance between the heaps
+    // Add a new number and maintain the balance between the heaps...small numbers in MaxHeap n big numbers in MinHeap
     addNumber(num) {
 
         // Step 1: Add the number to the appropriate heap
@@ -284,5 +283,7 @@ console.log(`Running median: ${medians}`);
 // console.log( rm.getMedian());
 
 // Time Complexity:
+// Adding/Removing: O(log n)
+// Finding max in maxHeap = O(1) = Finding min in minHeap
 // Median: O(1)
-// Insert:  O(log n)
+

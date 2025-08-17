@@ -5,7 +5,6 @@ of all the elements of nums except nums[i].
 The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer.
 You must write an algorithm that runs in O(n) time and without using the division operation.
 
-
 Example 1:
 
 Input: nums = [1,2,3,4]
@@ -19,10 +18,6 @@ Output: [0,0,9,0,0]
 Follow up: Can you solve the problem in O(1) extra space complexity? (The output array does not count
 as extra space for space complexity analysis.)
 
-*/
-
-
-/* 
 
 === Brainstorming
 - 1st Option: nested loop could be use to solve this but will result in O(n^2) TC...meanwhile question says in O(n)
@@ -54,7 +49,6 @@ const productExceptSelf = function(nums) {
     }
 
     return result
-
 }
 
 console.log("productExceptSelf1: ", productExceptSelf([1, 2, 3, 4]));
@@ -63,31 +57,3 @@ console.log("productExceptSelf2: ", productExceptSelf([-1, 1, 0, -3, 3]));
 
 // TC: O(n)...done in-place
 // SC: O(n)
-
-
-// Alt
-const productExceptSelf_ = function(nums) {
-    const result = [];
-
-    // forward pass...calculating and shifting baseProduct forward in result
-    let baseProduct = 1
-    result[0] = baseProduct;    // first baseProduct shift inside result
-    for (let i = 1; i < nums.length; i++) {
-        result[i] = baseProduct;    // put previous product value to current index
-        baseProduct = baseProduct * nums[i];    // recompute prod again
-    }
-
-    // backward pass...calculating and shifting baseProduct backwards in result for overide after multiplied w/ existing data
-    baseProduct = 1
-    for (let i = nums.length - 1; i >= 0; i--) {
-        result[i] = result[i] * baseProduct;
-        baseProduct = baseProduct * nums[i]
-    }
-
-    return result
-
-}
-
-console.log("productExceptSelf1_: ", productExceptSelf_([1, 2, 3, 4]));
-console.log("productExceptSelf2_: ", productExceptSelf_([-1, 1, 0, -3, 3]));
-
