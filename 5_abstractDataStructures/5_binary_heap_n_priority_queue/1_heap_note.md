@@ -29,7 +29,7 @@ Overall, the core benefit of a binary heap is
 #### Time Complexities
 - insertion: O(log n) time
 - removal of the minimum (or maximum) element: O(log n) time, where n is the number of elements in the heap. 
-- finding max/min element without removing: O(1)
+- finding/peaking max/min element without removing: O(1)
 
 
 #### Finding Children/Parent Nodes from an Array 'n'
