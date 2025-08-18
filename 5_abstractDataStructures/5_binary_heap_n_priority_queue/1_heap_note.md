@@ -37,7 +37,7 @@ Overall, the core benefit of a binary heap is
     - Left child stored at index: 2n + 1
     - Right child stored at index: 2n + 2
 - Finding parent node from children nodes in an Array
-    - Formular: (n-1)/2 up to (-1) cus array is zero-indexed base...otherwise would be n/2 one-indexed array
+    - Formular: (n-1)/2 up to (-1) cus array is zero-indexed base...otherwise would be n/2 in one-indexed array
 
 
 ### Heap Tree vs Search Tree
