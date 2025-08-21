@@ -12,7 +12,7 @@
     - similar to how ArrayList abstracts traditional array operations
 
 - ** most importance element is the first one in the array
-    - the order of the rest of the elements is not realy that important
+    - the order of the rest of the elements are not reaLly that important
 
 ///////// Implementation
 

@@ -44,13 +44,13 @@ const minRotatedSortedValue = function(array) {
         let midPtr = Math.floor((leftPtr + rightPtr) / 2);
 
         // optimization: for fully sorted array, first value is simply the min
-        // if(array[leftPtr] <= array[rightPtr]){
-        //     return array[leftPtr]
-        // }
         if(array[leftPtr] <= array[rightPtr]){
-            minValue = Math.min(minValue, array[leftPtr])
-            break
+            return array[leftPtr]
         }
+        // if(array[leftPtr] <= array[rightPtr]){
+        //     minValue = Math.min(minValue, array[leftPtr])
+        //     break
+        // }
 
         // find sorted part and find the min value
         if(array[leftPtr] <= array[midPtr]){

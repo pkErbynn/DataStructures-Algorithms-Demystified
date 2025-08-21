@@ -55,7 +55,8 @@ function findPivotIndex(arr){
 console.log("Pivot1:", findPivotIndex([4, 5, 6, 7, 0, 1, 2]));
 console.log("Pivot2:", findPivotIndex([6, 7, 0, 1, 2, 4]));
 console.log("Pivot3:", findPivotIndex([7, 0, 1, 2, 4, 6]));
-console.log("Pivot3:", findPivotIndex([0, 1, 2, 4, 6, 7]));
+console.log("Pivot4:", findPivotIndex([0, 1, 2, 4, 6, 7]));
+// console.log("Pivot5:", findPivotIndex([0, 1, 2, 4, 6, 7, 5, 4, 2]));    // this algo doesn't work on peak mountain array...works for rotated
 
 
 // 2. Once Pivot is found, search in right and left halves
@@ -119,7 +120,7 @@ console.log("findTargetInRotatedArray4:", findTargetInRotatedArray([4, 5, 6, 7, 
 // 1. Find the sorted part. Since it's roated, one is guaranteed to be sorted 
 // 2. Once sorted part is determined, apply binary search halfing: either within range, or outside range
 // vid: https://www.youtube.com/watch?v=5qGrJbHhqFs
-function searchInRotatedArray(nums, target) {
+function searchInRotatedArray(nums, target) {   // ****
     let start = 0;
     let end = nums.length - 1;
 

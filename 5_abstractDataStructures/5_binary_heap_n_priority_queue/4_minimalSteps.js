@@ -13,6 +13,9 @@ Hermione realizes she can save tremendous space on her cheat-sheet by introducin
 Using these optimizations, Hermione is able to encode the potion above using only 6 characters:
 A, B, *, C, *, D
 
+1st * = "A,B"...matches A,B from begining
+2st * = "A,B,A,B,C"...matches A,B,A,B,C from begining to this "A,B,A,B,C"
+
 Task:
 Write a function that takes as input an un-encoded potion and returns the minimum number of characters required to encode the potion on Hermione's cheat-sheet.
 

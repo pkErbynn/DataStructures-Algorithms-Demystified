@@ -43,7 +43,7 @@ const hasDublicate = function(input) {
     let left = 0;
     let right = 1;
 
-    while (right < sortedInput.length) {
+    while (right < sortedInput.length) {    // or right <= sortedInput.length - 1
 
         if(sortedInput[left] == sortedInput[right]){
             return true;
