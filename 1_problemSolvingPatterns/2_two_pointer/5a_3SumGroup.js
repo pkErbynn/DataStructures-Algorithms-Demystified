@@ -39,7 +39,7 @@ function threeSumGroup(nums) {
 
     for(let i = 0; i < nums.length; i++){
 
-        // Skip duplicate values for i
+        // Skip duplicate values for i...sorting makes the duplicate skipping easier
         if(i > 0 && nums[i] == nums[i - 1]) continue;
 
         let leftPtr = i + 1;
