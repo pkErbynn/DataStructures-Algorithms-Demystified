@@ -39,7 +39,7 @@ Video: https://www.youtube.com/watch?v=yj_14t67Bh0&t=654s
 const sortArrayElements = (numbers) => {
     let leftPointer = 0;
     let rightPointer = numbers.length - 1;
-    let midPointer = 0;     // for swapping to either leftPointer/rightPointer
+    let midPointer = 0;     // for swapping to either leftPointer/rightPointer...this is technically a 2-pointer cus this not part, serves as a slider from l to r
 
     while (midPointer <= rightPointer) {    // midPointer is the key reference pointer that does all relevant movements/swapping under all conditions...midPtr goes from start to end, the rest serves as placeholders
         if(numbers[midPointer] === 0){
