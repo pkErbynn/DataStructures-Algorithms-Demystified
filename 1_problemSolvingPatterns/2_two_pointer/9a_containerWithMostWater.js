@@ -3,14 +3,15 @@
 11. Container With Most Water
 
 You are given an integer array height of length n. There are n vertical lines drawn such that the two endpoints of the ith line are (i, 0) and (i, height[i]).
-Find two lines that together with the x-axis form a container, such that the container contains the most water.
+Find two lines that together with the x-axis form a CONTAINER, such that the container contains the most water.
 Return the maximum amount of water a container can store.
 
 Notice that you may not slant the container.
 
 --- 
-This is different than the previous question as this finds just the two vertical lines that will contain max water
+This is different than the previous question as this question finds just the two vertical lines that will contain max water...and NB: each two vertical lines has 1-unit space b/n them
 ...but the prev, finds the total trapping water in all vallies
+
 */
 
 // Eg: https://youtu.be/UuiTKBwPgAo?si=7bxwVqEuaYQeqAfl
@@ -80,3 +81,5 @@ console.log("mostWater_Optimized2:", mostWater_Optimized([1, 1, 1]));
 
 // TC: O(n)
 // SP: O(1)
+
+// NB: Vertical bars has 1unit space b/n them unlike prev quest
