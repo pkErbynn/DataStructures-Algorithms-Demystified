@@ -117,6 +117,7 @@ console.log("findTargetInRotatedArray4:", findTargetInRotatedArray([4, 5, 6, 7, 
 
 
 // ======== Alternative solution, shorter and more logical *****
+
 // 1. Find the sorted part. Since it's roated, one is guaranteed to be sorted 
 // 2. Once sorted part is determined, apply binary search halfing: either within range, or outside range
 // vid: https://www.youtube.com/watch?v=5qGrJbHhqFs

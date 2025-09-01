@@ -17,14 +17,14 @@ vid: https://youtu.be/1_5VuquLbXg?si=6FPIba4npghZptyw
 
 */
 
-function trapRainWater(heights) {
+function totalTrapRainWater(heights) {
     let leftPointer = 0;    // pointers
     let rightPointer = heights.length - 1;
 
     let leftMaxHeightValue = 0;    // max trackers
     let rightMaxHeightValue = 0;
 
-    let waterTappings = 0;
+    let totalWaterTrapped = 0;
 
     // Use the two-pointer approach to traverse the array from both ends towards the center
     while (leftPointer <= rightPointer) {
@@ -34,12 +34,13 @@ function trapRainWater(heights) {
 
             // If the current max bar at 'left' is shorter than leftMaxHeightValue tracker, calculate trapped water
             if(leftMaxHeightValue > heights[leftPointer]){
-                waterTappings += (leftMaxHeightValue - heights[leftPointer]);
+                totalWaterTrapped += (leftMaxHeightValue - heights[leftPointer]);   // ...max l used as ref for subtraction
             }
             
             // update leftMaxHeightValue...condition not really needed
+            // leftMaxHeightValue = Math.max(leftMaxHeightValue, heights[leftPointer])
             else if(leftMaxHeightValue <= heights[leftPointer]){
-                leftMaxHeightValue = heights[leftPointer];     // record height value as current max left val
+                leftMaxHeightValue = heights[leftPointer];     // record height value as current max left val   //....// ...max l/r is used as ref for subtraction
             }
 
             leftPointer++
@@ -47,7 +48,7 @@ function trapRainWater(heights) {
 
         else if(heights[leftPointer] > heights[rightPointer]) {
             if(rightMaxHeightValue > heights[rightPointer]){
-                waterTappings += (rightMaxHeightValue - heights[rightPointer])
+                totalWaterTrapped += (rightMaxHeightValue - heights[rightPointer])
             }
 
             else if(rightMaxHeightValue < heights[rightPointer]){
@@ -58,11 +59,11 @@ function trapRainWater(heights) {
         }
     }
 
-    return waterTappings;
+    return totalWaterTrapped;
 }
 
 let height1 = [0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]
-console.log("tap:", trapRainWater(height1));  // Output: 6
+console.log("tap:", totalTrapRainWater(height1));  // Output: 6
 
 let height2 = [4, 2, 0, 3, 2, 5]
-console.log("tap2:", trapRainWater(height2));  // Output: 9
+console.log("tap2:", totalTrapRainWater(height2));  // Output: 9

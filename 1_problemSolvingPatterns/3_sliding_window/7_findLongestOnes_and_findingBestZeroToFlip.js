@@ -19,15 +19,16 @@ function findLongestOnesSlidingWindow(nums) {
     let maxWindowLen = 0;
 
     for (let rightPointer = 0; rightPointer < nums.length; rightPointer++) {
-        if (nums[rightPointer] === 0) {
-            // Reset window start after a 0
-            leftPointer = rightPointer + 1;
-        } 
-        else {
+        
+        if (nums[rightPointer] === 1) {
             // Update maxWindowLen as we move the rightPointer pointer
             let currentWindowSize = rightPointer - leftPointer + 1;
             maxWindowLen = Math.max(maxWindowLen, currentWindowSize);
         }
+        else if (nums[rightPointer] === 0) {
+            // Reset window start after a 0
+            leftPointer = rightPointer + 1;
+        } 
     }
 
     return maxWindowLen;
