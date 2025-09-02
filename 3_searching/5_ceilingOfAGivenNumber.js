@@ -30,7 +30,7 @@ function binarySearch_ceiling(sortedArr, target){
 
     while(start <= end){
         
-        let midIndex = Math.floor(start + (end - start) / 2);
+        let midIndex = Math.floor(start + (end - start) / 2);   // prevents integer overflow in some languages (like Java, C++)
 
         if(target === sortedArr[midIndex]) return midIndex;
 
