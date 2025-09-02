@@ -34,32 +34,32 @@ function findLongestOnesSlidingWindow(nums) {
     return maxWindowLen;
 }
 
-// Alternatively, Without sliding window
-function findLongestOnes(nums) {
-    let maxWindowLength = 0;    // Tracks the maximum sequence length
-    let currentCount = 0;       // Tracks the current sequence length
-
-    for (const num of nums) {
-        if (num === 1) {
-            currentCount++;     // Continue the streak
-            maxWindowLength = Math.max(maxWindowLength, currentCount);  // Update max if needed
-        }
-        else {
-            currentCount = 0; // Reset when a 0 is encountered
-        }
-    }
-
-    return maxWindowLength;
-}
-
 // Test input
 const input1 = [0, 1, 1, 0, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 0];
 console.log(findLongestOnesSlidingWindow(input1)); // Expected: 4
 
+// // Alternatively, Without sliding window
+// function findLongestOnes(nums) {
+//     let maxWindowLength = 0;    // Tracks the maximum sequence length
+//     let currentCount = 0;       // Tracks the current sequence length
+
+//     for (const num of nums) {
+//         if (num === 1) {
+//             currentCount++;     // Continue the streak
+//             maxWindowLength = Math.max(maxWindowLength, currentCount);  // Update max if needed
+//         }
+//         else {
+//             currentCount = 0; // Reset when a 0 is encountered
+//         }
+//     }
+
+//     return maxWindowLength;
+// }
+
 
 
 /**
- * Problem:
+ * Problem 2:
  * 
  * Provide the index of one 0 that, if it were replaced with a 1, 
  * would create the longest sequence of consecutive 1s.
