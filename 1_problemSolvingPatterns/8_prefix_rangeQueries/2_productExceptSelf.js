@@ -36,6 +36,7 @@ const productExceptSelf = function(nums) {
     // forward pass...calculating and shifting baseProduct forward in result
     let baseProduct = 1
     result[0] = baseProduct;    // first baseProduct shift inside result
+    
     for (let i = 0; i < nums.length - 1; i++) {    // nums.length - 1 cus index starts from 0
         baseProduct = baseProduct * nums[i];
         result[i + 1] = baseProduct;
