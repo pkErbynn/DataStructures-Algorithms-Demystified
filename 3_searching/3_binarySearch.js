@@ -17,7 +17,7 @@ function binarySearch_iteration(sortedArr, target){
     while(start <= end){
         // .floor() rounds down thus removing decimal points 
 
-        // let midIndex = Math.floor((start + end) / 2); // might be possible that (start + end) exceeds data type range even before it get divided by 2
+        // let midIndex = Math.floor((start + end) / 2); // might be possible that (start + end) exceeds data type range to cause overflow even before it get divided by 2
 
         let midIndex = Math.floor(start + (end - start) / 2);
 

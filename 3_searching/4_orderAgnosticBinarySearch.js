@@ -36,7 +36,7 @@ function agnostic_binary_search(arr, target){
     
     while (start <= end){   // uses the index so doesn't affect the order (whether in ascending/descending)
 
-        let mid = Math.floor( start + (end - start) / 2 );  
+        let mid = Math.floor( start + (end - start) / 2 );  // prevent integer overflow in some languages (like Java, C++)
 
         if(target === arr[mid]) return mid;
 

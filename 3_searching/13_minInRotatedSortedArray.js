@@ -84,7 +84,7 @@ const findPiiiivot = function(array) {
         
         let midPtr = Math.floor((leftPtr + rightPtr) / 2);
 
-        // optimization: for fully sorted array, first value is simply the min
+        // optimization: if fully sorted array, first value is simply the min
         if(array[leftPtr] <= array[rightPtr]){
             return array[leftPtr]
         }
