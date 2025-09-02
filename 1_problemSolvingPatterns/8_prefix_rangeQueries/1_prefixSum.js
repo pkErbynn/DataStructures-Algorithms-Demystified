@@ -38,3 +38,17 @@ const prefixSumInPlace = function(arr) {
 }
 
 console.log("prefixSumInPlace: ", prefixSumInPlace([1, 2, 3]));
+
+
+// ===== Next Question
+// Given array, answer queries that ask for the sum of the element between two indices INCLUSIVE
+
+
+function rangeSum(left, right) {
+    if (left === 0)     // just like the first question
+        return prefixSum[right];
+
+    return prefixSum[right] - prefixSum[left - 1];  // -1 cus needs to open up to include left index
+}
+
+// Time complexity = O(1) instead of O(n)
