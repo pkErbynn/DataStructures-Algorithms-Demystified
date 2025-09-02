@@ -1,0 +1,1 @@
+Sorted input array + search = Binary Search

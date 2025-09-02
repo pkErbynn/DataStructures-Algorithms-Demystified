@@ -19,7 +19,7 @@ Explaination: https://youtu.be/W9QJ8HaRvJQ?list=PL9gnSGHSqcnr_DxHsP7AW9ftq0AtAyY
 */
 
 
-findThePostitionOfTarget  = function(arr, target) {
+findThePositionOfTarget  = function(arr, target) {
 
     // start with box size of 2
     let start = 0;
@@ -54,6 +54,6 @@ findThePostitionOfTarget  = function(arr, target) {
     return -1;
 }
 
-console.log("findThePostitionOfTarget 1: ", findThePostitionOfTarget([1, 2, 4, 6, 7, 9, 14], 2));
-console.log("findThePostitionOfTarget 2: ", findThePostitionOfTarget([1, 2, 4, 6, 7, 9, 14, 15], 7));
-console.log("findThePostitionOfTarget 3: ", findThePostitionOfTarget([1, 2, 4, 6, 7, 9, 14, 17], 20));
+console.log("findThePositionOfTarget 1: ", findThePositionOfTarget([1, 2, 4, 6, 7, 9, 14], 2));
+console.log("findThePositionOfTarget 2: ", findThePositionOfTarget([1, 2, 4, 6, 7, 9, 14, 15], 7));
+console.log("findThePositionOfTarget 3: ", findThePositionOfTarget([1, 2, 4, 6, 7, 9, 14, 17], 20));

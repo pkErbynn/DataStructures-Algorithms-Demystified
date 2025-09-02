@@ -9,6 +9,57 @@ NB: Input does NOT increase and decrease forever, but increases and decreases do
 
 */
 
+
+// 1. Find the sorted part. Since it's roated, one is guaranteed to be sorted 
+// 2. Once sorted part is determined, apply binary search halfing: either within range, or outside range
+// vid: https://www.youtube.com/watch?v=5qGrJbHhqFs
+function searchInRotatedArray(nums, target) {   // ****
+    let start = 0;
+    let end = nums.length - 1;
+
+    while (start <= end) {
+        let mid = Math.floor(start + (end - start) / 2);
+
+        if (nums[mid] === target) {
+            return mid;
+        }
+
+        // Left part is sorted
+        if (nums[start] <= nums[mid]) {
+            // if target is within the left sorted half
+            if (target >= nums[start] && target <= nums[mid]) {
+                end = mid - 1;
+            } 
+            // if target is outside the sorted half...means target < nums[start] or target > nums[mid]
+            else {
+                start = mid + 1;
+            }
+        }
+
+        // Right part is sorted
+        else {
+            // if target is within right sorted half
+            if (target >= nums[mid] && target <= nums[end]) {
+                start = mid + 1;
+            }
+            // if target falls outside of its rigt sorted half due to its rotation nature
+            else {
+                end = mid - 1;
+            }
+        }
+    }
+
+    return -1; // not found
+}
+
+console.log("searchInRotatedArray:", searchInRotatedArray([4, 5, 6, 7, 0, 1, 2], 7));
+console.log("searchInRotatedArray2:", searchInRotatedArray([0, 1, 2, 4, 6, 7], 7));
+console.log("searchInRotatedArray3:", searchInRotatedArray([4, 5, 6, 7, 0, 1, 2], 5));
+console.log("searchInRotatedArray4:", searchInRotatedArray([4, 5, 6, 7, 0, 1, 2], 1));
+
+
+// ======== Alternative solution, longer
+
 // 1. Find the Pivot position in a rotated array
 function findPivotIndex(arr){
 
@@ -113,54 +164,3 @@ console.log("findTargetInRotatedArray1:", findTargetInRotatedArray([4, 5, 6, 7, 
 console.log("findTargetInRotatedArray2:", findTargetInRotatedArray([0, 1, 2, 4, 6, 7], 7));
 console.log("findTargetInRotatedArray3:", findTargetInRotatedArray([4, 5, 6, 7, 0, 1, 2], 5));
 console.log("findTargetInRotatedArray4:", findTargetInRotatedArray([4, 5, 6, 7, 0, 1, 2], 1));
-
-
-
-// ======== Alternative solution, shorter and more logical *****
-
-// 1. Find the sorted part. Since it's roated, one is guaranteed to be sorted 
-// 2. Once sorted part is determined, apply binary search halfing: either within range, or outside range
-// vid: https://www.youtube.com/watch?v=5qGrJbHhqFs
-function searchInRotatedArray(nums, target) {   // ****
-    let start = 0;
-    let end = nums.length - 1;
-
-    while (start <= end) {
-        let mid = Math.floor(start + (end - start) / 2);
-
-        if (nums[mid] === target) {
-            return mid;
-        }
-
-        // Left part is sorted
-        if (nums[start] <= nums[mid]) {
-            // if target is within the left sorted half
-            if (target >= nums[start] && target <= nums[mid]) {
-                end = mid - 1;
-            } 
-            // if target is outside the sorted half...means target < nums[start] or target > nums[mid]
-            else {
-                start = mid + 1;
-            }
-        }
-
-        // Right part is sorted
-        else {
-            // if target is within right sorted half
-            if (target >= nums[mid] && target <= nums[end]) {
-                start = mid + 1;
-            }
-            // if target falls outside of its rigt sorted half due to its rotation nature
-            else {
-                end = mid - 1;
-            }
-        }
-    }
-
-    return -1; // not found
-}
-
-console.log("searchInRotatedArray:", searchInRotatedArray([4, 5, 6, 7, 0, 1, 2], 7));
-console.log("searchInRotatedArray2:", searchInRotatedArray([0, 1, 2, 4, 6, 7], 7));
-console.log("searchInRotatedArray3:", searchInRotatedArray([4, 5, 6, 7, 0, 1, 2], 5));
-console.log("searchInRotatedArray4:", searchInRotatedArray([4, 5, 6, 7, 0, 1, 2], 1));

@@ -7,6 +7,12 @@ function binarySearch_iteration(sortedArr, target){
     let start = 0;
     let end = sortedArr.length - 1;
 
+    // beyond range
+    if(target > sortedArr[end])
+    {
+        return -1;
+    }
+
     // use (start < end) when wanna exempt middle value, and it occurs start and end point to same midpoint to break the loop
     while(start <= end){
         // .floor() rounds down thus removing decimal points 
