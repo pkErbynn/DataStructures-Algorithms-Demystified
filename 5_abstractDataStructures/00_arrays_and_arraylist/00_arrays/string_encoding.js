@@ -30,6 +30,9 @@ function encodeString(str) {
 
 console.log("encodeString:", encodeString("aabbbc")); // Output: "a2b3c"
 
+
+// ================
+
 var countBinarySubstrings = function(s) {
     // Step 1: Group the string into blocks of consecutive 0's and 1's
     let n = s.length;
