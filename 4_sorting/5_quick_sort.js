@@ -13,7 +13,7 @@ QuickSort
 
 - This is done IN-PLACE...ie, no extra memory is required
 
-- Partition the array arount the Pivot: Algorithm @ low level
+- Partition the array around the Pivot: Algorithm @ low level
     1. Choose the first element as the pivot.
     2. Store a copy of the current pivot possition/indx that will be used to keep track of where the pivot element should end up
     3. Iterate through the array from start+1 to the end
