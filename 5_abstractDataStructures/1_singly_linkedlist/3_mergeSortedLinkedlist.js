@@ -36,11 +36,11 @@ const mergeTwoLists = function(list1, list2) {
     while (l1Ptr != null && l2Ptr != null) {
         if(l1Ptr.value < l2Ptr.value){
             resultNodePtr.next = l1Ptr;
-            l1Ptr = l1Ptr.next;
+            l1Ptr = l1Ptr.next;     // move forward
         }
         else {
             resultNodePtr.next = l2Ptr;
-            l2Ptr = l2Ptr.next;
+            l2Ptr = l2Ptr.next;     // move forward
         }
         resultNodePtr = resultNodePtr.next;
     }
