@@ -26,14 +26,14 @@ class PolynomialLinkedList {
         const newNode = new MyNode(coefficient, exponent);
         if (this.head === null) {
             this.head = newNode;
+            return;
         } 
-        else {
-            let current = this.head;
-            while (current.next !== null) {
-                current = current.next;
-            }
-            current.next = newNode;
+
+        let current = this.head;
+        while (current.next !== null) {
+            current = current.next;
         }
+        current.next = newNode;
     }
 
     // Function to add two polynomials
@@ -51,10 +51,12 @@ class PolynomialLinkedList {
                 }
                 p1 = p1.next;
                 p2 = p2.next;
-            } else if (p1.exponent > p2.exponent) {
+            } 
+            else if (p1.exponent > p2.exponent) {
                 result.append(p1.coefficient, p1.exponent);
                 p1 = p1.next;
-            } else if (p1.exponent < p2.exponent) {
+            } 
+            else if (p1.exponent < p2.exponent) {
                 result.append(p2.coefficient, p2.exponent);
                 p2 = p2.next;
             }
@@ -71,7 +73,7 @@ class PolynomialLinkedList {
             result.append(p2.coefficient, p2.exponent);
             p2 = p2.next;
         }
-            
+
         return result;
     }
 
