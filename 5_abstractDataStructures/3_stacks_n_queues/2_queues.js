@@ -27,7 +27,7 @@
 // Here, items are added from the right side but removed from the left side
 
 class CustomQueueArr {
-    data;
+    data;           // array
     pointer = -1;   // can also start from index 0 as well...pointer is an END pointer tracking last element position
     DEFAULTSIZE = 5;
 
@@ -43,7 +43,7 @@ class CustomQueueArr {
         }
 
         this.pointer++
-        this.data[this.pointer] = item;
+        this.data[this.pointer] = item;     // or combined: this.data[++this.pointer]...means, increase and use NOW, insead of increase and use LATER
 
         return true;
     }
