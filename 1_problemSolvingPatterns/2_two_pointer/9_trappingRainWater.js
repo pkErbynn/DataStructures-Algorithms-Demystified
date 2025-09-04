@@ -67,3 +67,5 @@ console.log("tap:", totalTrapRainWater(height1));  // Output: 6
 
 let height2 = [4, 2, 0, 3, 2, 5]
 console.log("tap2:", totalTrapRainWater(height2));  // Output: 9
+
+// NB: Vertical bars has no space b/n them

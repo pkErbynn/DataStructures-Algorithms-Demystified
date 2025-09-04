@@ -28,6 +28,7 @@ Input: lists = [[]]
 Output: []
 
 Exp: https://www.youtube.com/watch?v=DvnxDGkjMDM&ab_channel=CrackingFAANG
+- Better: https://www.youtube.com/watch?v=ptYUCjfNhJY
 
 */
 

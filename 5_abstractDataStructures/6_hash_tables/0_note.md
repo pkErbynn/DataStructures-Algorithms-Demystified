@@ -43,6 +43,8 @@ hash("country")   -> cherry
 - Keys can be any data type (string, number index, or even an object)
 - Order is not guarandeed 
 
+- uses **hash function** to convert string/object(keys) into a **hash value/code**
+
 ---
 
 #### *Deep-Diving: 'the order'*
@@ -115,7 +117,7 @@ Qualities of Good hashmap
 
 
 
-Hash Functions
+### Hash Functions
 - converts string into a number corresponding to an index in an array
 - uses **hash function** for the conversion of string/object(keys) into a **hash value/code**
     - all **hashcode must be represented as +ve numbers**, these numbers represent the slots locations
@@ -137,10 +139,10 @@ Hash Functions
     - Multiplication Method
     - Universal hashing
 
-Dealing/Handling Collisions in Hash Functions
+#### Dealing/Handling Collisions in Hash Functions
 - 2 ways:
-- Separate Chaining (Chaining)
-- Linear Probing
+    - Separate Chaining (Chaining)
+    - Linear Probing
 
 - Separate Chaining
     - means storing multiple key-value pair data at same index using sofiscated data structure like an array/linked-list
