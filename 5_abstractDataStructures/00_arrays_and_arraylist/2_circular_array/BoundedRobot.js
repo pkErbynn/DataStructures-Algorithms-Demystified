@@ -6,14 +6,10 @@ You are given a string instructions made up of the characters:
 	•	'G': go straight 1 unit,
 	•	'L': turn 90 degrees to the left (anti-clockwise),
 	•	'R': turn 90 degrees to the right (clockwise).
-
 A robot starts at position (0, 0) on an infinite plane, facing north (i.e., toward the positive y-axis). The robot will follow the sequence of instructions repeatedly forever.
 
-
 Task:
-
 Return true if there exists a circle (i.e., the robot stays within a bounded path) such that the robot never leaves it, regardless of how many times it repeats the instructions.
-
 Otherwise, return false.
 
 

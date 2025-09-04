@@ -19,7 +19,6 @@ Given the number of friends, n, and an integer k, return the winner of the game.
 
 Example 1:
 
-
 Input: n = 5, k = 2
 Output: 3
 Explanation: Here are the steps of the game:
