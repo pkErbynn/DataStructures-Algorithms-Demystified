@@ -26,10 +26,10 @@
 Overall, the core benefit of a binary heap is 
 - its ability to efficiently maintain a collection of elements that have a **priority order**, which makes it useful in a variety of applications, including job scheduling, event-driven simulations, and graph algorithms such as Dijkstra's shortest path algorithm.
 
-#### Time Complexities
-- insertion: O(log n) time
-- removal of the minimum (or maximum) element: O(log n) time, where n is the number of elements in the heap. 
-- finding/peaking max/min element without removing: O(1)
+#### Time Complexities **
+- insertion: **O(log n)**
+- removal of the minimum (or maximum) element: **O(log n)**, where n is the number of elements in the heap. 
+- finding/peaking max/min element without removing: **O(1)** because causes no side effect
 
 
 #### Finding Children/Parent Nodes from an Array 'n'
