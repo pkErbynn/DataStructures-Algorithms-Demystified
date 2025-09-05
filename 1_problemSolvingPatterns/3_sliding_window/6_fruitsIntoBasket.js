@@ -33,7 +33,6 @@ TIP:
 */
 
 
-
 function fruitIntoBasket(fruits){
     let maxLength = 0;
     let frequencyCounterTwoBaskets = {};

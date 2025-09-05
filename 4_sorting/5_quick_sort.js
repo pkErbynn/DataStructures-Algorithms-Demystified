@@ -26,12 +26,12 @@ QuickSort
 
 Nb: Confusing but easy, so interviwers like it...they like confusing algo :)
 
-Explainaiton: https://www.youtube.com/watch?v=7h1s2SojIRw
+Explainaton: https://www.youtube.com/watch?v=7h1s2SojIRw
+
 */
 
 
-// Example: Arr = [3, 2, 6, -3, 0]
-
+// Example: arr = [3, 2, 6, -3, 0]
 
 function getPivotPartitionIndex_Helper(arr, startIndxPointer = 0, endIndxPointer = arr.length - 1){
     let pivotElement = arr[startIndxPointer];   // pivot element as first element...eg: [3(pivot), 2, 6, -3, 0]

@@ -47,7 +47,7 @@ Explanation: https://www.youtube.com/watch?v=6du1LrLbDpA
 // |num| to prevent -ves, then map each num to its length and find max
 // ...eg: maxDigitCount([43, 543,5534,00003, 00000000]) = 4...NB: |007| = 7
 const maxDigitCount = function(nums) {
-  return Math.max(...nums.map(num => Math.abs(num).toString().length)); 
+    return Math.max(...nums.map(num => Math.abs(num).toString().length)); 
 }
 
 // Finding digit at the ones, tense, or hundredths place
@@ -77,13 +77,13 @@ function radixSort(nums){
     let bucket = Array.from({length: 10}, () => []); 
     
     // entire iteration depends on the max number of digits
-    for(let i = 0; i < maxDigit; i++){
+    for(let digitIdx = 0; digitIdx < maxDigit; digitIdx++){
 
         // get the ones digit from each number, then to the tense digit from each number, then hundreths, then...
-        for(let j = 0; j < nums.length; j++){
+        for(let numIdx = 0; numIdx < nums.length; numIdx++){
 
-            let digit = getEachDigitFromNum(nums[j], i);   // eg: getEachDigitFromNum(1234, 0) = 4
-            bucket[digit].push(nums[j]);
+            let digit = getEachDigitFromNum(nums[numIdx], digitIdx);   // eg: getEachDigitFromNum(1234, 0) = 4
+            bucket[digit].push(nums[numIdx]);
         }
 
         // regrouping numbers
