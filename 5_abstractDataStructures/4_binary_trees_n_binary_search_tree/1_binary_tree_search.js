@@ -44,7 +44,7 @@ class BST {
                 // otherwise, if currentNode is NOT a leaf node, then set the current left node as the new current parent node to traverse further downwards
                 currentNode = currentNode.left;
             }
-            
+
             // if incomming value is greater than current parent node
             // then look right, for the insertion
             if(value > currentNode.value) {
@@ -57,40 +57,42 @@ class BST {
                 currentNode = currentNode.right;
             }
         }
-     
+
     }
 
-    //  insert_recursive(value){
-    //     let newNode = new Node(value);
+/*
+     insert_recursive(value){
+        let newNode = new Node(value);
 
-    //     // if not root node, set new node as root
-    //     if(!this.root) {
-    //         this.root = newNode;
-    //         return this;
-    //     }
+        // if not root node, set new node as root
+        if(!this.root) {
+            this.root = newNode;
+            return this;
+        }
 
-    //     // else
-    //     let currentNode = this.root; // for traversing and tracking
+        // else
+        let currentNode = this.root; // for traversing and tracking
 
-    //     let insert_node = function(node){
-    //         // base case
-    //         if(!node){
-    //             return newNode;
-    //         }
-    //         if(value < node.value){
-    //             node.left = insert_node(node.left); 
-    //         }
-    //         if(value > node.value) {
-    //             node.right = insert_node(node.right); 
-    //         }
-    //         if(value === node.value) {
-    //             return null;
-    //         }
-    //         return node;  // nb: return each node
-    //     }
+        let insert_node = function(node){
+            // base case
+            if(!node){
+                return newNode;
+            }
+            if(value < node.value){
+                node.left = insert_node(node.left); 
+            }
+            if(value > node.value) {
+                node.right = insert_node(node.right); 
+            }
+            if(value === node.value) {
+                return null;
+            }
+            return node;  // nb: return each node
+        }
         
-    //    insert_node(currentNode);
-    // }
+       insert_node(currentNode);
+    }
+*/
 
 
     // search a node

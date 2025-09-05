@@ -10,26 +10,26 @@ class MaxBinaryHeap{
     insert(element){
         this.values.push(element);
 
-        let elementIndex = this.values.length - 1;  // since it's at the back now
-        let elementValue = this.values[elementIndex];   // didn't use the incomming value cus this will be dynamic from the array
+        let currentPointerIndex = this.values.length - 1;  // since it's at the back now
+        let currentPointerValue = this.values[currentPointerIndex];   // didn't use the incomming value cus this will be dynamic from the array
 
-        while(elementIndex > 0) {   // while it still falls within the array/tree, as element and parent move from right to left direction
+        while(currentPointerIndex > 0) {   // while it still falls within the array/tree, as element and parent move from right to left direction
             // bubling up to the correct spot
 
             // calculate element's parent properties: index and value from the array in each iteration
-            let parentIndex = Math.floor((elementIndex - 1) / 2);
+            let parentIndex = Math.floor((currentPointerIndex - 1) / 2);
             let parentValue = this.values[parentIndex];
 
             // swap if element is greater than parent
-            if(elementValue > parentValue){
+            if(currentPointerValue > parentValue){
                 // swap parent n child element
-                [this.values[elementIndex], this.values[parentIndex]] = 
-                [this.values[parentIndex], this.values[elementIndex]];
+                [this.values[currentPointerIndex], this.values[parentIndex]] = 
+                [this.values[parentIndex], this.values[currentPointerIndex]];
 
                 // move pointers backwards
                 // moving backwards, from right to left, end of array to begining
                 // from tree perspective, parentNode become childNode...and calculating for new parent for every iteration
-                elementIndex = parentIndex;
+                currentPointerIndex = parentIndex;
             }
             else {
                 break;  // do nothing and break the loop, cus that's the position the node will be placed
@@ -125,21 +125,21 @@ class MinBinaryHeap {
     insert(element) {
         this.values.push(element);
     
-        let elementIndex = this.values.length - 1; // Index of the new element
-        let elementValue = this.values[elementIndex];
+        let currentPointerIndex = this.values.length - 1; // Index of the new element
+        let currentPointerValue = this.values[currentPointerIndex];
     
-        while (elementIndex > 0) {
+        while (currentPointerIndex > 0) {
             // Calculate the parent's index and value
-            let parentIndex = Math.floor((elementIndex - 1) / 2);
+            let parentIndex = Math.floor((currentPointerIndex - 1) / 2);
             let parentValue = this.values[parentIndex];
     
             // Swap if the new element is smaller than the parent
-            if (elementValue < parentValue) {
-            [this.values[elementIndex], this.values[parentIndex]] = 
-            [this.values[parentIndex], this.values[elementIndex]];
+            if (currentPointerValue < parentValue) {
+            [this.values[currentPointerIndex], this.values[parentIndex]] = 
+            [this.values[parentIndex], this.values[currentPointerIndex]];
     
             // Move up to the parent's position
-            elementIndex = parentIndex;
+            currentPointerIndex = parentIndex;
             } else {
             break; // The element is in the correct position
             }
@@ -177,15 +177,14 @@ class MinBinaryHeap {
     
             // Check if the left child exists and is smaller than the root
             if (leftChildIndex < this.values.length && this.values[leftChildIndex] < rootValue) {
-            swapIndex = leftChildIndex;
+                swapIndex = leftChildIndex;
             }
     
             // Check if the right child exists and is smaller than both the root and left child
-            if (
-            rightChildIndex < this.values.length &&
-            this.values[rightChildIndex] < (swapIndex === null ? rootValue : this.values[leftChildIndex])
+            if (rightChildIndex < this.values.length && 
+                this.values[rightChildIndex] < (swapIndex === null ? rootValue : this.values[leftChildIndex])
             ) {
-            swapIndex = rightChildIndex;
+                swapIndex = rightChildIndex;
             }
     
             // If no swaps are needed, the root is in the correct position
@@ -219,7 +218,6 @@ class RunningMedian {
         this.minHeap = new MinBinaryHeap(); // Right half (larger numbers)
 
         console.log("\n\n=== RunningMedian ===");
-        
     }
 
     // Add a new number and maintain the balance between the heaps

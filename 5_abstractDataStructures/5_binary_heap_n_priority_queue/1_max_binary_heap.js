@@ -30,33 +30,33 @@ class MaxBinaryHeap{
         this.values = [];
     }
 
-    
+
     // add to the end of array
     // bubble up to the correct spot
     // thus, calculating its parent nodes
     insert(element){
         this.values.push(element);
 
-        let elementIndex = this.values.length - 1;  // since it's at the back now
-        let elementValue = this.values[elementIndex];   // didn't use the incomming value cus this will be dynamic from the array
+        let currentPointerIndex = this.values.length - 1;  // since it's at the back now
+        let currentPointerValue = this.values[currentPointerIndex];   // didn't use the incomming value cus this will be dynamic from the array
 
-        while(elementIndex > 0) {   // while it still falls within the array/tree, as element and parent move from right to left direction
+        while(currentPointerIndex > 0) {   // while it still falls within the array/tree, as element and parent move from right to left direction
             // bubling up to the correct spot
 
             // calculate element's parent properties: index and value from the array in each iteration
-            let parentIndex = Math.floor((elementIndex - 1) / 2);
+            let parentIndex = Math.floor((currentPointerIndex - 1) / 2);
             let parentValue = this.values[parentIndex];
 
             // swap if element is greater than parent
-            if(elementValue > parentValue){
+            if(currentPointerValue > parentValue){
                 // swap parent n child element
-                [this.values[elementIndex], this.values[parentIndex]] = 
-                [this.values[parentIndex], this.values[elementIndex]];
+                [this.values[currentPointerIndex], this.values[parentIndex]] = 
+                [this.values[parentIndex], this.values[currentPointerIndex]];
 
                 // move pointers backwards
                 // moving backwards, from right to left, end of array to begining
                 // from tree perspective, parentNode become childNode...and calculating for new parent for every iteration
-                elementIndex = parentIndex;
+                currentPointerIndex = parentIndex;
             }
             else {
                 break;  // do nothing and break the loop, cus that's the position the node will be placed
@@ -123,7 +123,6 @@ class MaxBinaryHeap{
 
             // sink down if less than children values, by swapping
             if(rootValue < maxChildValue){
-
                 // Swap root with the maximum child
                 [ this.values[rootIndex], this.values[maxChildValueIndex] ] =
                 [ this.values[maxChildValueIndex], this.values[rootIndex] ];
@@ -230,7 +229,7 @@ class MinBinaryHeap {
         this.values.push(element);
     
         let elementIndex = this.values.length - 1; // Index of the new element
-        let elementValue = this.values[elementIndex];
+        let currentPointerValue = this.values[elementIndex];
     
         while (elementIndex > 0) {
             // Calculate the parent's index and value
@@ -238,7 +237,7 @@ class MinBinaryHeap {
             let parentValue = this.values[parentIndex];
     
             // Swap if the new element is smaller than the parent
-            if (elementValue < parentValue) {
+            if (currentPointerValue < parentValue) {
                 [this.values[elementIndex], this.values[parentIndex]] = 
                 [this.values[parentIndex], this.values[elementIndex]];
         

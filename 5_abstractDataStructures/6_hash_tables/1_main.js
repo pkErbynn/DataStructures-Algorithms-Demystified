@@ -16,7 +16,7 @@ HashTables also a ds that store key-value pairs in large array, and works by has
         - Dictionary
 Vs Arrays 
     - element access
-    - in arrays: 
+    - in arrays:
         - color[2] = #fffff
     - in HashMaps:
         - color["white"] = #ffff
@@ -30,10 +30,8 @@ Hashing conceptualization
 
 Qualities of Good hashmap
 - fast, ie constant time cus it'll be called regulary
-    - 
 - no collissions, ie doesn't conflict/cluster output at specifix index, but distribute uniformly
 - consistent, ie same input yeilds same output
-
 
 
 Hash Functions

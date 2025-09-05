@@ -73,5 +73,6 @@ ht.set("john", "kwesi");
 ht.set("magie", "nyanba");
 ht.set("raph", "nyan");
 ht.get("raph");
+
 console.log(ht.getKeys());
 console.log(ht.getValues());
