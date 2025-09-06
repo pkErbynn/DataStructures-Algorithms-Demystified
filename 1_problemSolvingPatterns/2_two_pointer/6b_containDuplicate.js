@@ -80,3 +80,71 @@ const containsDublicate = function(input) {
 console.log("containsDublicate1: ", containsDublicate([1, 2, 3, 1]));
 console.log("containsDublicate2: ", containsDublicate([1, 2, 3, 5]));
 
+
+// Using forloop
+function containsDuplicates(arr) {
+    if (arr.length <= 1) {
+        return false;
+    }
+
+    const seen = new Set();
+
+    // for-loop
+    for (let num of arr) {
+        if (seen.has(num)) {
+            return true;
+        }
+        seen.add(num);
+    }
+
+    return false;
+}
+
+
+// ===== collecting duplicates
+
+function getDuplicates(arr){
+    let seenSet = new Set();
+    let duplicates = [];
+
+    for(let num of arr){
+        console.log(num);
+        
+        if(seenSet.has(num)){
+            duplicates.push(num);
+        }
+        else {
+            seenSet.add(num)
+        }
+    }
+
+    return duplicates;
+}
+
+console.log(getDuplicates([1, 2, 3, 1, 1]))  
+
+
+
+// ===== collecting duplicates using HashMap
+
+function getDuplicates_hashMap(arr){
+    let freqCount = {};
+    let duplicates = [];
+
+    for(let num of arr){
+       freqCount[num] = freqCount[num] ? freqCount[num] + 1 : 1
+    }
+
+    for(let num in freqCount){      // key iteration
+        if(freqCount[num] <= 1){
+            continue;
+        }
+        for(let i = 1; i < freqCount[num]; i++){
+            duplicates.push(Number(num))    // key is object(string) so need to me wrap
+        }
+    }
+
+    return duplicates;
+}
+
+console.log(getDuplicates_hashMap([1, 2, 3, 1, 1])) 

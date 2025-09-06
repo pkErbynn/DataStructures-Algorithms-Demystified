@@ -52,7 +52,7 @@ const mostWater_Optimized = function(input) {
     while (leftPtr < rightPtr) {    // terminate when they meet cus can't find area at same spot
 
         let minHeight = Math.min(input[leftPtr], input[rightPtr]);
-        let currentAreaWater = (rightPtr - leftPtr) * minHeight;
+        let currentAreaWater = (rightPtr - leftPtr) * minHeight;    // Area = l * b = l * h
         maxAreaWater = Math.max(currentAreaWater, maxAreaWater);
 
         if(input[leftPtr] < input[rightPtr]) 

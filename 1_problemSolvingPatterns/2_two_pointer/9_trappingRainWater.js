@@ -13,6 +13,8 @@ Example 2:
 Input: height = [4,2,0,3,2,5]
 Output: 9
 
+====
+NB: Vertical bars has no space b/n 'em
 vid: https://youtu.be/1_5VuquLbXg?si=6FPIba4npghZptyw
 
 */
