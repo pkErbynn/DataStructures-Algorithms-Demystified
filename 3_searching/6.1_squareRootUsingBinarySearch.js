@@ -45,7 +45,10 @@ function squareRoot_bruteForce(number) {
     for(let i = 1; i <= number; i++){
         let multiplied = i * i;
 
-        if(multiplied <= number){
+        if(multiplied === number){
+            return i;    // posible ans while within
+        }
+        if(multiplied < number){
             possibleAns = i;    // posible ans while within
         }
         else{
@@ -56,7 +59,9 @@ function squareRoot_bruteForce(number) {
     return possibleAns;
 }
 
+console.log("squareRoot_bruteForce:", squareRoot_bruteForce(1));
 console.log("squareRoot_bruteForce:", squareRoot_bruteForce(9));
+console.log("squareRoot_bruteForce:", squareRoot_bruteForce(25));
 console.log("squareRoot_bruteForce:", squareRoot_bruteForce(28));
 // Time Complexity = ~O(n)
 
@@ -65,6 +70,36 @@ console.log("squareRoot_bruteForce:", squareRoot_bruteForce(28));
 === Optimized: using Binary Search
 Sqrt(28) = 5 floored => 5 * 5 = 25 <= 28
 
-target = 28 input number
+- leftPointer = 1, rightPointer = 28 number
 
+- 28 input number becomes the target(cus it's static?) for pointer adjustment
+- when leftPointer and rightPointer crosses each other, rightPointer ends up pointing to the floor, and leftPointer as ceil...like prev question
 */
+
+function squareRoot_binarySearch(number) {
+    let leftPointer = 1;
+    let rightPointer = number;
+
+    while (leftPointer <= rightPointer) {
+        let midPointer = Math.floor((leftPointer + rightPointer)/2);
+        let midMultiplied = midPointer * midPointer;
+
+        if(midMultiplied === number){
+            return midPointer;
+        }
+        else if(midMultiplied > number){
+            rightPointer = midPointer - 1;
+        }
+        else{
+            leftPointer = midPointer + 1;
+        }
+    }
+
+    return rightPointer;    // floor
+}
+
+console.log("squareRoot_binarySearch:", squareRoot_binarySearch(1));
+console.log("squareRoot_binarySearch:", squareRoot_binarySearch(9));
+console.log("squareRoot_binarySearch:", squareRoot_binarySearch(25));
+console.log("squareRoot_binarySearch:", squareRoot_binarySearch(28));
+// Time Complexity = O(log n)
