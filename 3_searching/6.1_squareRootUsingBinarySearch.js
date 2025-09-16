@@ -102,3 +102,4 @@ console.log("squareRoot_binarySearch:", squareRoot_binarySearch(1));
 console.log("squareRoot_binarySearch:", squareRoot_binarySearch(9));
 console.log("squareRoot_binarySearch:", squareRoot_binarySearch(25));
 console.log("squareRoot_binarySearch:", squareRoot_binarySearch(28));
+// Time Complexity = O(log n)
