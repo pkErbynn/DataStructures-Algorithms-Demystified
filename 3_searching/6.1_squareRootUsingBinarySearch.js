@@ -38,7 +38,6 @@ Sqrt(28) = 5.29 = 5 floored => 5 * 5 = 25 <= 28
 - and if result equal num(eg. 25), then current iterator is the answer
 - and if result is greater than the num(eg. 25) then return previous iterator value as answer
 - Time Complexity = O(n)
-
 */
 function squareRoot_bruteForce(number) {
     let possibleAns = 1; 
@@ -59,3 +58,13 @@ function squareRoot_bruteForce(number) {
 
 console.log("squareRoot_bruteForce:", squareRoot_bruteForce(9));
 console.log("squareRoot_bruteForce:", squareRoot_bruteForce(28));
+// Time Complexity = ~O(n)
+
+
+/*
+=== Optimized: using Binary Search
+Sqrt(28) = 5 floored => 5 * 5 = 25 <= 28
+
+target = 28 input number
+
+*/
