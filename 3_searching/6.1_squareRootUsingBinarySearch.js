@@ -23,7 +23,6 @@ Explanation: The square root of 8 is 2.82842..., and since we round it down to t
 
 /*
 === Brute force: from basic intuition
-
 Sqrt(4) = 2 => 2 * 2 = 25
 Sqrt(9) = 3 => 3 * 3 = 9
 Sqrt(28) = 5.29 = 5 floored => 5 * 5 = 25 <= 28
