@@ -4,9 +4,10 @@ function findSumOfThree(nums, target) {
     nums = nums.sort((a, b) => a - b);  // sorted in order
 
     for(let currentIndexPointer = 0; currentIndexPointer < nums.length; currentIndexPointer++){
-        let leftIndexPointer = currentIndexPointer + 1;     // for 3 pointers, 2nd one is always ahead of 1st by one 
+        let leftIndexPointer = currentIndexPointer + 1;   // for 3 pointers, 2nd one is always ahead of 1st by one...or can start at index 1
         let rightIndexPointer = nums.length - 1;
 
+        // currentIndexPointer will be increamenting in the for-loop already no need to be adjusted in while-loop
         while(leftIndexPointer < rightIndexPointer){    // 'currentIndexPointer' not used here sake of its auto increament...nb: seems only pointers are used while-loop
             let sum = nums[currentIndexPointer] + nums[leftIndexPointer] + nums[rightIndexPointer];
             if(sum === target) {
