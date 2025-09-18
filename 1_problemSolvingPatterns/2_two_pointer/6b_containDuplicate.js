@@ -43,13 +43,13 @@ const hasDublicate = function(input) {
     let left = 0;
     let right = 1;
 
-    while (right < sortedInput.length) {    // or right <= sortedInput.length - 1
+    while (right < sortedInput.length) {    // or right <= sortedInput.length - 1...can be subbed with for-loop like previous
 
         if(sortedInput[left] == sortedInput[right]){
             return true;
         }
         else{
-            left = right;
+            left++;     // left = right;...makes left catch-up to prev value of right
             right++;
         }
     }

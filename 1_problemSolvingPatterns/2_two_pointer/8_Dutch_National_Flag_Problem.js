@@ -45,7 +45,7 @@ const sortArrayElements = (numbers) => {
         if(numbers[midPointer] === 0){
             [numbers[leftPointer], numbers[midPointer]] = [numbers[midPointer], numbers[leftPointer]];  // swap values (cus 0's should fall at the beginning not mid) and increase indexes
             leftPointer++;  // index filled with correct value(0), so pointer should move forward
-            midPointer++; 
+            midPointer++;
         }
         else if(numbers[midPointer] === 1){
             midPointer++;   // pointer should not swap, maintain value, skip and move pointer forward...since 1's are supposed to fall in the middle
@@ -84,9 +84,8 @@ Output: [0 0 1 2 2 2 ]
 
 
 /****
- * 
- * Right now, if there is one thing to get from these implementation so far is that;
- * 1. When you think of SORTED input array, think of BINARY SEARCH + TWO-POINTER approach
- *  
- * 
+ 
+Right now, if there is one thing to get from these implementation so far is that;
+1. When you think of SORTED input array, think of BINARY SEARCH + TWO-POINTER approach
+
 ***/
