@@ -1,7 +1,7 @@
 function maxSubArray(arr, num){
     let maxSum = 0;
 
-    // iterating through to the l - num 
+    // iterating through to the (arr.len - num)
     for(let i = 0; i <= arr.length - num; i++){ //for(let i=0; i < arr.length - num + 1; i++){
         
         let innerSum = 0;
