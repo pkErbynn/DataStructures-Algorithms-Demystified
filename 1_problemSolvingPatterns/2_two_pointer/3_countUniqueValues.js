@@ -5,7 +5,7 @@
 // - input = [1,1,1,2,2,2]...output = 2
 
 // solution
-// using Pointer-pointer pattern
+// using two-pointer pattern
 
 /*
 
