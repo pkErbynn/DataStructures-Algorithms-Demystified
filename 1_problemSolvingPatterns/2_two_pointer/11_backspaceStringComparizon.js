@@ -33,34 +33,36 @@ Can solved using Stack, not 2-pointers approach
 */
 
 
-const compareStrings = (string1: string, string2: string): boolean => {
+const compareStrings = (string1, string2) => {
     if(string1.length < 1 || string2.length < 1) return false;
 
-    const processedString1: string = processString(string1);
-    const processedString2: string = processString(string2);
+    const processedString1 = processString(string1);
+    const processedString2 = processString(string2);
     // console.log(processedString1, processedString2);
     
     return processedString1 === processedString2;
 }
 
-const processString = (stringInput: string): string => {
+const processString = (stringInput) => {
     stringInput = stringInput.toLowerCase();
-    let stack: string[] = [];
+    let stack = [];
 
     for (const char of stringInput) {
-        let isValidChar: boolean = char.charCodeAt(0) >= 97 && char.charCodeAt(0) <= 122;
         
-        if(isValidChar && char !== '#'){
+        if(char !== '#'){
             stack.push(char);
-        } 
+        }
         else if(char === '#'){
-            stack.pop();
+            if(stack.length > 0){   // pop only when item dey
+                stack.pop();
+            }
         }
     }
     return stack.join('');
 }
 
-console.log("Same ?:", compareStrings("xy#z", "xzz#"));
-console.log("Same2 ?:", compareStrings("xp#", "xyz##"));
-console.log("Same3 ?:", compareStrings("xywrrmp", "xywrrmu#p"));
-console.log("Same3 ?:", compareStrings("xy#z", "xyz#"));         // Output: false
+console.log("Same1?:", compareStrings("xy#z", "xzz#"));
+console.log("Same2?:", compareStrings("xp#", "xyz##"));
+console.log("Same3?:", compareStrings("xywrrmp", "xywrrmu#p"));
+console.log("Same4?:", compareStrings("xy#z", "xyz#"));         // Output: false
+console.log("Same5?:", compareStrings("#xy#z", "##xy#z#z"));

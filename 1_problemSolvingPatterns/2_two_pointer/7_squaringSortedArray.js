@@ -92,7 +92,7 @@ const createSquaredSortedArray_optimized = (numbers) => {
         }
         else {
             result[resultPointer] = rightValueSquare;
-            rightPointer --;
+            rightPointer--;
         }
 
         resultPointer--;    // change storage alot, from right to left
