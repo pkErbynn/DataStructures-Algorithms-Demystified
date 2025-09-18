@@ -110,7 +110,7 @@ const findCycleLength = function(head) {
     let fastPointer = head;
     let cycleLength = 0;
 
-    while(fastPointer && fastPointer.next){
+    while(fastPointer != null && fastPointer.next != null){
         slowPointer = slowPointer.next;
         fastPointer = fastPointer.next.next; // 'fastPointer.next' checked cus another '.next' will be accessed
 
@@ -118,7 +118,7 @@ const findCycleLength = function(head) {
             // pin on to where they meet, as point reference
             // and make a single round-cicle move with another pointer, "counterPointer", counting each step
             let stepCountPointer = slowPointer;
-            while(stepCountPointer.next){
+            while(stepCountPointer.next != null){
                 stepCountPointer = stepCountPointer.next;
                 cycleLength += 1;
 

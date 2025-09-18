@@ -41,21 +41,21 @@ const startOfLinkedListCyle1 = function(head) {
     let cycleLength = lengthOfLinkedListCycle(head);
     console.log('length:', cycleLength);
 
-    let startPointer = head;
-    let forwardPointer = head;
+    let slowPointer = head;
+    let fastPointer = head;
 
-    // move forwardPointer ahead by the cycle length
+    // move fastPointer ahead by the cycle length
     // used for-loop since the end lenght is known
     for (let start = 1; start <= cycleLength; start++) {
-        forwardPointer = forwardPointer.next;
+        fastPointer = fastPointer.next;
     }
 
-    while(startPointer.next){
-        forwardPointer = forwardPointer.next;
-        startPointer = startPointer.next;
+    while(slowPointer.next != null){
+        slowPointer = slowPointer.next;
+        fastPointer = fastPointer.next;     // moves one-step not twice cus it's already ahead slow pointer
 
-        if(forwardPointer === startPointer){
-            return forwardPointer;
+        if(fastPointer === slowPointer){
+            return fastPointer;
         }
     }
 
@@ -66,22 +66,22 @@ const startOfLinkedListCyle1 = function(head) {
 const startOfLinkedListCyle2 = function(head) {
     let cycleLength = lengthOfLinkedListCycle(head);    // calculated length earlier
 
-    let startPointer = head;
-    let forwardPointer = head;
+    let slowPointer = head;
+    let fastPointer = head;
 
-    // move forwardPointer ahead by the cycle length
+    // move fastPointer ahead by the cycle length
     while(cycleLength > 0){
-        forwardPointer = forwardPointer.next;
+        fastPointer = fastPointer.next;
         cycleLength -= 1;
     }
 
-    while(startPointer != forwardPointer){
-        forwardPointer = forwardPointer.next;
-        startPointer = startPointer.next;
+    while(slowPointer != fastPointer){
+        fastPointer = fastPointer.next;
+        slowPointer = slowPointer.next;
     }
 
-    if(startPointer === forwardPointer) {   // can just return
-        return forwardPointer;
+    if(slowPointer === fastPointer) {   // can just return
+        return fastPointer;
     }
 
     return null;

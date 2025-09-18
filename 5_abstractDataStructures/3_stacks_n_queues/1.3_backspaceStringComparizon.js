@@ -29,7 +29,7 @@ Explanation: After applying backspaces the strings become "xywrrmp" and "xywrrmp
 
 
 ====
-Can solved using Stack, not 2-pointers approach
+Can solved using Stack, cus 2-pointers approach will be nested
 */
 
 
