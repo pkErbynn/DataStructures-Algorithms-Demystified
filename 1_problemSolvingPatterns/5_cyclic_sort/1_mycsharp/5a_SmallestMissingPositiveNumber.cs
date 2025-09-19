@@ -1,5 +1,4 @@
-﻿
-/*
+﻿/*
 
 == Question (Medium) ***
 

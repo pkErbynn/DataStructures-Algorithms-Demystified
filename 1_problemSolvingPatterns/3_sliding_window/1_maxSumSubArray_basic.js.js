@@ -18,7 +18,7 @@ function maxSubArray(arr, num){
     }
     return maxSum;
 }
-console.log("maxSum:", maxSubArray([1,2,3,4,5], 3));
+console.log("maxSubArray:", maxSubArray([1,2,3,4,5], 3));
 
 
 function maxSubArray2(arr, num){
@@ -38,6 +38,6 @@ function maxSubArray2(arr, num){
     return maxSum;
 }
 
-console.log(maxSubArray2([1,2,3,4,5], 3));
+console.log("maxSubArray2:", maxSubArray2([1,2,3,4,5], 3));
 
 

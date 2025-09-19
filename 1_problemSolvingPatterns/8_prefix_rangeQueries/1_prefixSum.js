@@ -2,11 +2,12 @@
 
 - Prefix sum used to find the cummulative sum of element from start of array to a given index
 - Eg: [3, 7, 2, 5, 8]
--    to [3, 10, 12, 17, 25]
+    - to [3, 10, 12, 17, 25]...suming element up to current element
 
-- Now, what is the sum of element from 0 to index 2? 
-- Ans: simply 12
-- O(n) time
+    - Now, what is the sum of element from 0 to index 2? 
+    - Ans: simply 12...at index 2
+    - TC: O(n) one-time...subsequent query will be O(n)
+    - Instead of Naive approach: suming from 0 to n everytime query is made
 */
 
 // https://www.youtube.com/watch?v=yuws7YK0Yng&ab_channel=AlgoMasterIO

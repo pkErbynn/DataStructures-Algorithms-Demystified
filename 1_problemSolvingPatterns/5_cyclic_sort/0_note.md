@@ -6,12 +6,13 @@
 - When to use?
     - when need to sort elements
     - when given unsorted array in a 111
-        - and array elements are **from within range 1 to n, or 0 to (n-1)**
+        - and array elements are **from within range 1 to n, or 0 to (n-1)** (normally stated in the questions)
             - for hard questions(worse case): 
                 - array contains _negative numbers_...no big deal, just swap them way to position +ve numbers to their right index position
                 - element values _fall off the range by small margin_ like [2, 3, 4]...4 is beyond array length by small margin
         - and to find **missing** number(s)
         - and to find **duplicate** number(s)
+        - clue: [missing] **positive number**...means from 1 to N
     - when only O(1) space complexity is needed
     - when O(n) runtime complexity is needed
 

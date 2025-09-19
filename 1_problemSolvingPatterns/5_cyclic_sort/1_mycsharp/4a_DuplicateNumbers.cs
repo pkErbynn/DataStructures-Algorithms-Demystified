@@ -30,8 +30,6 @@ namespace _1_mycsharp
 
 		*/
 
-
-
         public static int FindDistinctDuplicateNumber(int[] numbers)
 		{
 			// for-loop won't workout as index won't move for each element but will move index conditionally, thus, while loop
@@ -133,7 +131,7 @@ namespace _1_mycsharp
 
 		/*
 		 * What if to find the duplicate number in an array without a specific range
-		 */
+		*/
 		public static void FindDuplicateNumber_NoRange(int[] numbers)
 		{
 			HashSet<int> numSet = new HashSet<int>();

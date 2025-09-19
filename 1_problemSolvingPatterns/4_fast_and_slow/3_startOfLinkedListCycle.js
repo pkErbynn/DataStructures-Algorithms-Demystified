@@ -52,7 +52,7 @@ const startOfLinkedListCyle1 = function(head) {
 
     while(slowPointer.next != null){
         slowPointer = slowPointer.next;
-        fastPointer = fastPointer.next;     // moves one-step not twice cus it's already ahead slow pointer
+        fastPointer = fastPointer.next;     // moves ONE-STEP not twice cus it's already ahead slow pointer
 
         if(fastPointer === slowPointer){
             return fastPointer;

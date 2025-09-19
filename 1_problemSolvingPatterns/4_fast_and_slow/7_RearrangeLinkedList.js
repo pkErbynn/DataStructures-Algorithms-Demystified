@@ -75,7 +75,7 @@ const rearrangeLinkedList = function(linkedListHead) {
         let secondHalfNext = secondHalf.next;
         secondHalf.next = firstHalfNext;
 
-        // move forward on step
+        // move forward one step...that's the reason copy of next was kept initially
         firstHalf = firstHalfNext;
         secondHalf = secondHalfNext;
     }
