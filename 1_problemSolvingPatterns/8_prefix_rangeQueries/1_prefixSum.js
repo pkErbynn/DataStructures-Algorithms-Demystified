@@ -18,7 +18,7 @@ const prefixSum = function(arr) {
     prefSum[0] = arr[0];        // maintain same value
 
     for (let i = 1; i < arr.length; i++) {
-        prefSum[i] = prefSum[i - 1] + arr[i];
+        prefSum[i] = prefSum[i - 1] + arr[i];   // no out-of-bound error cus starting from index 1 :)
     }
 
     return prefSum;

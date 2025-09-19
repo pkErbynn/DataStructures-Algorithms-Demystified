@@ -21,7 +21,7 @@ New Phase of questions: No Target
 */
 
 
-function peakIndexInMountainArray2(arr) {
+function peakIndexInMountainArray2(arr) {   // ****
 
     // guard clause
     if (!arr || arr.length < 3) return -1;
@@ -73,7 +73,7 @@ console.log("== Peak005", peakIndexInMountainArray2([9, 8, 7, 5, 4, 3, 2, 1, 0 ]
 
 
 
-/////// Alternative  ***
+/////// Alternative  **
 function peakIndexInMountainArray(arr) {
     let start = 0;
     let end = arr.length - 1;

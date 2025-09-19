@@ -51,13 +51,16 @@ const minRotatedSortedValue = function(array) {
         //     break
         // }
 
-        // find sorted part and find the min value
+        // Case 1: Left side [leftPtr...midPtr] is sorted
+        // ...set min with array[leftPtr], then search in the right half
         if(array[leftPtr] <= array[midPtr]){
             minValue = Math.min(minValue, array[leftPtr])
-            leftPtr = midPtr + 1;
+            leftPtr = midPtr + 1;   
         }
 
-        // when mid pointer value is smaller, then it will be the current min...and it means small numbers are on the right to move pointer there
+        // Case 2: Right side [midPtr..rightPtr] is unsorted
+        // when mid pointer value is smaller, then it will be the current min
+        // ...and it means, there might be smaller number on the left half so move pointer there
         else {
             minValue = Math.min(minValue, array[midPtr])
             rightPtr = midPtr - 1;

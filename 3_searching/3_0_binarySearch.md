@@ -1,4 +1,5 @@
-Sorted input array + search = Binary Search
+Clue on When to Use BS
+- Sorted input array + search = Binary Search
 
 NB:
 Normally 
