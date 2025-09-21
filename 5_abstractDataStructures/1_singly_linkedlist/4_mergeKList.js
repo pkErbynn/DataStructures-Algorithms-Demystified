@@ -70,7 +70,7 @@ class MyNode {
 }
 
 const mergeTwoLists = function(list1, list2) {
-  let defaultStartNode = new MyNode(-1);
+  let defaultStartNode = new MyNode(-1);  // dummy node
 
   let resultNodePtr = defaultStartNode;
   let l1Ptr = list1;

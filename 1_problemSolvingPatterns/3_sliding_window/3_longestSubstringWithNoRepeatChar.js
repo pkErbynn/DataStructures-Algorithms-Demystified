@@ -51,7 +51,7 @@ function lengthOfLongestSubstringWithNoCharRepeat(strInput){
         let currentWindowLength = (windowEndIndex - windowStartIndex) + 1;
         maxLength = Math.max(maxLength, currentWindowLength);
 
-        // Track/update the last seen index of the character
+        // Track/update the last seen index of the character after window slide
         charIndexMap[currentChar] = windowEndIndex;
     }
 

@@ -85,7 +85,7 @@ function binarySearch_nextGreatestLetter(letters, target){
     if(start == letters.length)
         return letters[0];
 
-    return letters[start];   // combined: return letters[start % letters.length];
+    return letters[start];   // combined: return letters[start % letters.length];   // ceil
 }
 
 console.log("binarySearch_nextGreatestLetter:", binarySearch_nextGreatestLetter(["c","f","j"], "a"));

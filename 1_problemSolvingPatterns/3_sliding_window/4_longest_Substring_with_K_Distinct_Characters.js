@@ -48,11 +48,10 @@ Algo:
 function longest_Substring_with_K_Distinct_Characters(strInput, k){
   // guard clause handling edge case
   if (!strInput || k <= 0) return 0;
-  
-  let maxLength = Number.NEGATIVE_INFINITY;   // set smallest -ve as default while looking for max positive
 
-  let charFrequency = {};   // keeps track of the window counters...map/object used cus keys are distinct, which can help find distinct chars's length
   let windowStart = 0;    // 0
+  let maxLength = Number.NEGATIVE_INFINITY;   // set smallest -ve as default while looking for max positive
+  let charFrequency = {};   // keeps track of the window counters...map/object used cus keys are distinct, which can help find distinct chars's length
 
   for (let windowEnd = 0; windowEnd < strInput.length; windowEnd++) {
     const windowEndValue = strInput[windowEnd];
@@ -65,7 +64,7 @@ function longest_Substring_with_K_Distinct_Characters(strInput, k){
       // when num of keys bigger than k, shrink the window block in from the start element
       const currentWindowStartValue = strInput[windowStart];
       
-      // update map counter accordingly to match the block by decreasing its value or remove the key when counter value is zero or 1
+      // update map counter accordingly to match the block by decreasing its value or remove the key when counter value is zero or 1 (meaning, extra key is added)
       if(charFrequency[currentWindowStartValue] >= 2){  // > 1
         charFrequency[currentWindowStartValue] = charFrequency[currentWindowStartValue] - 1;
       } 
@@ -86,7 +85,7 @@ function longest_Substring_with_K_Distinct_Characters(strInput, k){
       
       */
 
-      // move windowStart forward, after updating the Object{}
+      // move windowStart forward, after updating the Object{} to shrink window accordingly
       windowStart++;
       
       // Update maxLength after adjusting the window

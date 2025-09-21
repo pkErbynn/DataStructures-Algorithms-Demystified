@@ -151,9 +151,9 @@ class BST {
 
         // while there's something in the queue for processing...
         while(queue.length > 0){
-            let removedHeadNode = queue.shift();    // take from queue's front
+            let removedHeadNode = queue.shift();    // take from queue's front...
 
-            visitedResult.push(removedHeadNode.value);  // explore/process element from queue...when element leaves the queue, it's considered visited (likewise, when leaves a stack, it's considered visited)
+            visitedResult.push(removedHeadNode.value);  // explore/process element from queue...when element leaves the queue, it's considered processed/visited (likewise, when leaves a stack, it's considered visited)
 
             // once removed and put to visitedResult, push parent's leg children nodes to the end of the queue...this allows all parents to come out visited before their chiLdren provided they have one
             // this also allow the node not to vanish with it's legged nodes, knowing that they have some data
@@ -180,7 +180,7 @@ class BST {
 
         // while there's something in the stack for processing...
         while(stack.length > 0){    // => (stack.length) => while stack has an element...
-            let removedNode = stack.pop();  // element considered visited/used when removed from Stack, similar to dsf with queue
+            let removedNode = stack.pop();  // element considered processed/visited/used when removed from Stack, similar to dsf with queue
             
             // process removed element n push to stack
             visitedResult.push(removedNode.value);
@@ -195,7 +195,6 @@ class BST {
                 stack.push(removedNode.left);
 
             ///////// in-order: leftNode-parentNode-RightNode
-            // let removedNode = stack.pop();
             //
             // if(removedNode.right)
             //     stack.push(removedNode.right);
@@ -204,7 +203,6 @@ class BST {
             //     stack.push(removedNode.left);
 
             ///////// post-order: leftNode-RightNode-parentNode
-            // let removedNode = stack.pop();
             // 
             // if(removedNode.right)
             //     stack.push(removedNode.right);

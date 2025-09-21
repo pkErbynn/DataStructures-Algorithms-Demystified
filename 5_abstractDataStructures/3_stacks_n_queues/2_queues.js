@@ -26,9 +26,15 @@
 
 // Here, items are added from the right side but removed from the left side
 
+/*
+   Array Queue Architecture
+   ----------------
+<- <- <-       <- <- <-
+   ----------------
+*/
 class CustomQueueArr {
     data;           // array
-    pointer = -1;   // can also start from index 0 as well...pointer is an END pointer tracking last element position
+    placementPointer = -1;   // can also start from index 0 as well...placementPointer is an END pointer tracking last element position
     DEFAULTSIZE = 5;
 
     constructor(size = null) {
@@ -42,8 +48,8 @@ class CustomQueueArr {
             return false;
         }
 
-        this.pointer++
-        this.data[this.pointer] = item;     // or combined: this.data[++this.pointer]...means, increase and use NOW, insead of increase and use LATER
+        this.placementPointer++
+        this.data[this.placementPointer] = item;     // or combined: this.data[++this.placementPointer]...means, increase and use NOW, insead of increase and use LATER
 
         return true;
     }
@@ -57,11 +63,13 @@ class CustomQueueArr {
         let removedItem = this.data[0];
 
         // shift items to the left
-        for (let index = 1; index < this.pointer; index++) {
+        for (let index = 1; index <= this.placementPointer; index++) {
             this.data[index - 1] = this.data[index]
         }
 
-        this.pointer--;
+        this.data[this.placementPointer] = null;  // or undefined to clear old item
+
+        this.placementPointer--;
 
         return removedItem;
     }
@@ -72,11 +80,11 @@ class CustomQueueArr {
     }
 
     isFull(){
-        return this.pointer === this.data.length - 1;
+        return this.placementPointer === this.data.length - 1;
     }
 
     isEmpty(){
-        return this.pointer === -1;
+        return this.placementPointer === -1;
     }
     
     display(){

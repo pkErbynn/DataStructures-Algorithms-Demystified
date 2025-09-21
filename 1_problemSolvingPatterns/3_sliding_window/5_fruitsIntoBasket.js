@@ -20,7 +20,7 @@ Example 2:
 
 Input: Fruit=['A', 'B', 'C', 'B', 'B', 'C']
 Output: 5
-Explanation: We can put 3 'B' in one basket and two 'C' in the other basket. 
+Explanation: We can put 3 'B' in one basket and two 'C' in the other basket.
 This can be done if we start with the second letter: ['B', 'C', 'B', 'B', 'C']
 
 ===
@@ -28,7 +28,7 @@ This can be done if we start with the second letter: ['B', 'C', 'B', 'B', 'C']
 TIP:
 - "start with any tree, but once you have started you can’t skip a tree" => contiguous
 - similar to previous question
-- In simple terms, the question is askin' to find the maximum continuous subarray that contains only two distinct characters/fruit types
+- In simple terms, the question is same as findin' the maximum continuous subarray that contains only two distinct characters/fruit types
 
 */
 

@@ -104,10 +104,10 @@ function infixToPostfix(inputExpr){
         '/': 2
     }
     const postfixResultList = []
-    const operatorsStack = new StackLL();
+    const operatorsStack = new StackLL();   // operators are stored in stack cus there is an order
 
     for (const char of inputExpr.split(' ')) {
-        // 1) when char is a number...push to result list easily 
+        // 1) when incoming char is a number...push to result list easily 
         if (isANumber(char))
             postfixResultList.push(char)
 

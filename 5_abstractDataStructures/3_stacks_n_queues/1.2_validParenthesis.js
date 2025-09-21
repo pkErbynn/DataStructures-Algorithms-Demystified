@@ -10,12 +10,12 @@ function validParenthesis(input) {
 
     for (const character of input) {
 
-        // 1) Push openings freely unto stack
+        // 1) Push all openings freely unto stack first
         if(character == "{" || character == "[" || character == "("){
             stack.push(character);
         }
         else {
-            // 2) Match closings with their openings...
+            // 2) Match incoming closings with their openings...
             // ...pop their openings from stack if matched
             // ...return invalid if unmatched
             if(character == "}")
