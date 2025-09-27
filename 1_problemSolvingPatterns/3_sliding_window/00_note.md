@@ -6,7 +6,11 @@
 
 > Leverage SlidingWindow when dealing with problems having an array (or a LinkedList), where asked to find or calculate something among all the **contiguous subarrays** (or sublists) of a **given size**.
 
-
+### Types of SW
+1. Static Sliding Window
+2. Dynamic Sliding Window
+    - While sliding, stop when block-size is beyond a condition
+    - then, be reduce the block-size from front
 
 #### Note
 The sliding window approach is commonly used in data structure questions that involves: 
