@@ -1,4 +1,4 @@
-#### Sliding Window Approach
+### Sliding Window Approach
 - creates a window, from one position to another
 - creates subset of data that is continuous, consecutive (next to each other)
 - input: unsorted data
@@ -7,9 +7,9 @@
 > Leverage SlidingWindow when dealing with problems having an array (or a LinkedList), where asked to find or calculate something among all the **contiguous subarrays** (or sublists) of a **given size**.
 
 
-##### Note
+
+#### Note
 The sliding window approach is commonly used in data structure questions that involves: 
-    
     - finding a maximum or minimum value k-length subarray, 
     - finding a subarray with a certain property, or 
     - finding a substring with a certain property.
@@ -21,7 +21,7 @@ The sliding window approach is commonly used in data structure questions that in
 - The sliding window approach can also be used to solve problems that involve finding all substrings or subarrays that satisfy certain constraints. For example, if you need to find all substrings of a string that contain exactly k distinct characters, you can use the sliding window approach to maintain a window of k distinct characters and slide the window over the string to find all substrings that satisfy the constraint.
 
 
-#### Frequency Counter vs 2-Pointer vs Sliding Window Approaches
+### Frequency Counter vs 2-Pointer vs Sliding Window Approaches
 This may not be entirely true but so far this is my relization:
 
 - Realized FC, 
