@@ -20,12 +20,24 @@ function romanToInt(str) {
             intNumberRep = intNumberRep + current;
             iPointer++;
         }
+
         else if(current < next) {   // Edge case: prev less than next...eg. IIV
             intNumberRep = intNumberRep + (next - current);
             iPointer += 2;  // jump over the two pairs
+        }
+
+        if(next == undefined){      // when 'next' points outside...meaning one element remains only for 'current'
+            intNumberRep = intNumberRep + current;
+            return intNumberRep;
         }
     }
 
     return intNumberRep;
 }
+
+console.log("romanToInt1", romanToInt("III"));     // 3
+console.log("romanToInt2", romanToInt("IV"));      // 4
+console.log("romanToInt3", romanToInt("IX"));      // 9
+console.log("romanToInt4", romanToInt("LVIII"));   // 58
+console.log("romanToInt5", romanToInt("MCMXCIV")); // 1994
 
