@@ -40,4 +40,3 @@ console.log("romanToInt2", romanToInt("IV"));      // 4
 console.log("romanToInt3", romanToInt("IX"));      // 9
 console.log("romanToInt4", romanToInt("LVIII"));   // 58
 console.log("romanToInt5", romanToInt("MCMXCIV")); // 1994
-
