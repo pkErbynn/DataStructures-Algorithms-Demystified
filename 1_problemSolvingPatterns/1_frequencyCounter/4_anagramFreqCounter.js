@@ -29,6 +29,7 @@ function anagram(str1, str2){
         // if(!frequencyCounterStr2.hasOwnProperty(key)){
         //     return false;
         // }
+        // Above can be OR'ed together
         if(!frequencyCounterStr2[key]){ // no value, implies no key
             return false;
         }
