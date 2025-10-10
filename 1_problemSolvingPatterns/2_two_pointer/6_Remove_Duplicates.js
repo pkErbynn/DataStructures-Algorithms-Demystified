@@ -53,7 +53,7 @@ function remove_duplicate_to_return_new_length_optimized2(sortedNums){  //******
             continue;   // right index auto moves forward
         }
 
-        if(leftValue !== rightValue){
+        if(leftValue !== rightValue){   // or else block
             leftIndexPointer++; // then move pointer forward to stand on the position that the non-duplicate value was inserted
             sortedNums[leftIndexPointer] = sortedNums[rightIndexPointer];   // insert the 'right' value in-front of left-index pointer
         }
@@ -80,8 +80,10 @@ function remove_duplicate_to_return_new_length_optimized(sortedNums){
             continue;
         }
         else{   // different values
-            sortedNums[leftIndexPointer + 1] = sortedNums[rightIndexPointer];   // insert the 'right' value in-front of left-index pointer
-            leftIndexPointer++; // then move pointer forward to stand on the position that the non-duplicate value was inserted
+            // sortedNums[leftIndexPointer + 1] = sortedNums[rightIndexPointer];   // insert the 'right' value in-front of left-index pointer
+            // leftIndexPointer++; // then move pointer forward to stand on the position that the non-duplicate value was inserted
+            
+            sortedNums[++leftIndexPointer] = sortedNums[rightIndexPointer]; // increament and instantly use pointer
         }
     }
 

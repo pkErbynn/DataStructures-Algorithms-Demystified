@@ -42,7 +42,7 @@ function threeSumGroup(nums) {
         // Skip duplicate values for i...sorting makes the duplicate skipping easier
         if(i > 0 && nums[i] == nums[i - 1]) continue;
 
-        let leftPtr = i + 1;    // or 1
+        let leftPtr = i + 1;    // or 1...cus takes care of its positioning/increament conditionally
         let rightPtr = nums.length - 1;
 
         while (leftPtr < rightPtr) {
@@ -61,7 +61,7 @@ function threeSumGroup(nums) {
                 leftPtr++;
 
                 // Skip duplicates for left and right pointers
-                while (leftPtr < rightPtr && nums[leftPtr] == nums[leftPtr - 1]) {
+                while (leftPtr < rightPtr && nums[leftPtr] == nums[leftPtr - 1]) {  // not 'if' cus not one-time, it continuously move to seek next unique element
                     leftPtr++;
                 }
                 while (leftPtr < rightPtr && nums[rightPtr] == nums[rightPtr + 1]) {
