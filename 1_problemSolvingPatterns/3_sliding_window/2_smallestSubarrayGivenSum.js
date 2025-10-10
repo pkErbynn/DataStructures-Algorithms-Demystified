@@ -81,8 +81,6 @@ console.log("k2:", smallest_subarray_given_sum([2, 1, 5, 2, 3, 2], 7));
 console.log("k3:", smallest_subarray_given_sum([1, 1, 1, 2], 7));
 console.log("k4:", smallest_subarray_given_sum([1, 2, 3, 4, 5], 15));   // whole array
 
-
-
 /*
 
 Time Complexity:

@@ -35,7 +35,7 @@ Output: [0 0 1 2 2 2 ]
 Video: https://www.youtube.com/watch?v=yj_14t67Bh0&t=654s
 */
 
-
+// 3-pointer approach
 const sortArrayElements = (numbers) => {
     let leftPointer = 0;
     let rightPointer = numbers.length - 1;
@@ -53,7 +53,7 @@ const sortArrayElements = (numbers) => {
         else if(numbers[midPointer] === 2){
             [numbers[midPointer], numbers[rightPointer]] = [numbers[rightPointer], numbers[midPointer]];    // swap with rightPointer cus 2's should fall on the right side
             rightPointer--; // index filled with correct value, so pointer should move backwards
-            midPointer++; // don't need to cus it will break the look prematurelly
+            // midPointer++; // not needed cus mid position in array already passed
         }
     }
     return numbers;
@@ -61,7 +61,7 @@ const sortArrayElements = (numbers) => {
 
 console.log("Result:", sortArrayElements([1, 0, 2, 1, 0]));
 console.log("Result2:", sortArrayElements([2, 0, 2, 1, 1, 0])); 
-
+console.log("Result3:", sortArrayElements([1, 1, 2, 2, 2, 0, 0, 0, 1])); 
 
 /*
 

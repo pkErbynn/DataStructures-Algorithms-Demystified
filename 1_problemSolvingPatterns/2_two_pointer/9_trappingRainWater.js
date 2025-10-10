@@ -13,7 +13,7 @@ Output: 9
 
 ====
 
-NB: Vertical bars has no space b/n 'em
+NB: Vertical bars has no space b/n 'em cus it's TRAPPING H2O, spaces means leakage/drain/water-loss
 vid: https://youtu.be/1_5VuquLbXg?si=6FPIba4npghZptyw
 
 */
@@ -49,7 +49,7 @@ function totalTrapRainWater(heights) {
             leftPointer++
         }
 
-        // water is trapped on the right side
+        // otherwise, water is trapped on the right side
         else if(heights[leftPointer] > heights[rightPointer]) {
 
             // Note that before water is actually trapped on right side, there should be a longer poll too on the right side of heights[rightPointer], otherwise that becomes that longer poll so far

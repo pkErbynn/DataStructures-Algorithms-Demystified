@@ -56,19 +56,19 @@ const mostWater_Optimized = function(input) {
         maxAreaWater = Math.max(currentAreaWater, maxAreaWater);
 
         if(input[leftPtr] < input[rightPtr]) 
-            leftPtr++
+            leftPtr++;   // needs bigger pole/val from left
 
         else if(input[leftPtr] > input[rightPtr]) 
-            rightPtr--
+            rightPtr--;  // needs bigger pole/val from right
 
         else if(input[leftPtr] == input[rightPtr]){
-            // explicitly moving smallest height
+            // explicitly moving smallest height by peaking ahead
             if(input[leftPtr + 1] < input[rightPtr - 1])
                 leftPtr++
             else
                 rightPtr--
         }
-        // if equal, any pointer can be moved
+        // or if equal, any pointer can be moved
         // else{
         //     rightPtr--
         // }

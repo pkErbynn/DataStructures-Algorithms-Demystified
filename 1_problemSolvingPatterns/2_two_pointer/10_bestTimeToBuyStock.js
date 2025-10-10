@@ -29,7 +29,7 @@ const maxProfit = function(stocks) {
     let maxProf = 0;    // 4
 
     // [7,1,5,3,6,4]
-        //   l   r
+    //  l r
     while (rightPointer < stocks.length) {
 
         if(stocks[rightPointer] > stocks[leftPointer]){
@@ -55,3 +55,4 @@ const maxProfit = function(stocks) {
 console.log("maxProfit1: ", maxProfit([7, 1, 5, 3, 6, 4]));
 console.log("maxProfit2: ", maxProfit([1, 6, 4, 3 ,1]));
 console.log("maxProfit3: ", maxProfit([6, 4, 3 ,1]));
+console.log("maxProfit4: ", maxProfit([1, 2, 3, 4]));

@@ -42,7 +42,7 @@ function fruitIntoBasket(fruits){
         let rightChar = fruits[windowEndIndex];
         frequencyCounterTwoBaskets[rightChar] = !frequencyCounterTwoBaskets[rightChar] ? 1 : frequencyCounterTwoBaskets[rightChar] + 1; // fruit types equals keys
         
-        while(Object.keys(frequencyCounterTwoBaskets).length > 2){ // 2 => two fruit kinds  
+        while(Object.keys(frequencyCounterTwoBaskets).length > 2){  // 2 => two fruit kinds  
             let leftChar = fruits[windowStartIndex];
 
             if(frequencyCounterTwoBaskets[leftChar] > 1){
