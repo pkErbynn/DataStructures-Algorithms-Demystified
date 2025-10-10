@@ -2,7 +2,7 @@
 
 function search(arr, targetValue){
     let minIndexPointer = 0;
-    let maxIndexPointer = arr.length-1;
+    let maxIndexPointer = arr.length - 1;
 
     while(minIndexPointer <= maxIndexPointer){
         let middleIndexPointer = Math.floor((minIndexPointer + maxIndexPointer) / 2) // removes decimal points

@@ -17,6 +17,8 @@ Example 3:
 Input: nums = [1,1,1,3,3,4,3,2,4,2]
 Output: true
 
+SS 
+
 */
 
 
@@ -63,7 +65,7 @@ console.log("hasDublicate2: ", hasDublicate([1, 2, 3 ,5]));
 
 // Option 3
 const containsDublicate = function(input) {
-    let hashset = new Set();
+    let hashset = new Set();    // Set handles duplications
     let i = 0;
 
     while (i < input.length) {
@@ -148,3 +150,6 @@ function getDuplicates_hashMap(arr){
 }
 
 console.log(getDuplicates_hashMap([1, 2, 3, 1, 1])) 
+
+
+// ==== Plus Binary Search as last question
