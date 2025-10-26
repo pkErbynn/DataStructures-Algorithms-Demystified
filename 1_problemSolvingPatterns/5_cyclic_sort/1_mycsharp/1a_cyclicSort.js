@@ -39,7 +39,7 @@ const cyclicSort = (numbers) => {
         let currentNumber = numbers[startIndexPointer];
         let rightNumber = numbers[currentNumber - 1];   // the number value itself is used as index for checking 
          
-        // keep swapping until right value at right index is found, there, pointer moves forward
+        // keep swapping until right value at right index is found, then move pointer forward
         if(currentNumber != rightNumber && currentNumber < numbers.length){     // DON'T FORGET "WITHIN-RANGE" CONDITION
             [numbers[startIndexPointer], numbers[currentNumber - 1]] = [numbers[currentNumber - 1], numbers[startIndexPointer]];
         }

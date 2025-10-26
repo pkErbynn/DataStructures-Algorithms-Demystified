@@ -47,7 +47,8 @@ function fruitIntoBasket(fruits){
 
             if(frequencyCounterTwoBaskets[leftChar] > 1){
                 frequencyCounterTwoBaskets[leftChar] = frequencyCounterTwoBaskets[leftChar] - 1;
-            }else {
+            }
+            else {
                 delete frequencyCounterTwoBaskets[leftChar];
             }
 

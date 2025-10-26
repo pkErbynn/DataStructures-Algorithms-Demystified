@@ -227,7 +227,7 @@ class RunningMedian {
         // Step 1: Add the number to the appropriate heap
         // if max heap is empty at first, drop the first incoming number to the maxheap
         // ...also, drop to the maxHeap if the incomming number is less than the max number in the maxheap, 
-        // eg. num = 4...maxHeap = [2, 6]...then drop num = 4 to the maxHeap...this allows to put all nums below the upper limit to the left maxHeap bucket
+        // eg. num = 4...maxHeap = [6, 2]...then drop num = 4 to the maxHeap...this allows to put all nums below the upper limit to the left maxHeap bucket
         if (this.maxHeap.values.length === 0 || num <= this.maxHeap.values[0]) {
             this.maxHeap.insert(num);
         } 

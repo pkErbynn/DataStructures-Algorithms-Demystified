@@ -44,10 +44,9 @@ const compareStrings = (string1, string2) => {
 }
 
 const processString = (stringInput) => {
-    stringInput = stringInput.toLowerCase();
     let stack = [];
 
-    for (const char of stringInput) {
+    for (const char of stringInput.toLowerCase()) {
         
         if(char !== '#'){
             stack.push(char);

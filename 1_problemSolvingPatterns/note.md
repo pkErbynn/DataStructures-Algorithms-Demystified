@@ -15,9 +15,13 @@
 > Differences summary here - https://hackernoon.com/14-patterns-to-ace-any-coding-interview-question-c5bb3357f6ed
 
 
-* Next:
-    - These solved questions are okay
-    - Next will be to move on with Tree Pattern algo questions
+### Tips..
+- When does a nested loop have O(n²) time complexity and when does it become O(n)?
+    - O(n²) when: 
+        - One loop repeatedly scans the whole array for each iteration of the other...ie, onr loop repeats/goes back/revisits scanned element
+        - Example algos: Bubble Sort 
 
-
-https://www.linkedin.com/premium/redeem/gift?_ed=-jLC69uYJCnIpMkP4gLxAWLYpBPc
+    - O(n) when:
+        - Both loops continuesly move forward through the data only once
+        - Example algos: Sliding window, two pointers
+    
