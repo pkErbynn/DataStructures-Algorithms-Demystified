@@ -68,4 +68,7 @@ console.log("a3:", longestSubstringWithRepeatingCharReplacement("AABABCCBCCB", 2
         - Both loops continuesly move forward through the data only once 
         - In worse case where left pointer shrinks window from start to the right at the end (ie, zero/one size window), time complexity will still be O(n + n) = O(n)....similar to sibbling loops
         - Example algos: Sliding window, two pointers
+
+- Pattern: slide until you go beyond the condition then strink
+    - the key logic is calculating the number of char that can be replaced
 */
