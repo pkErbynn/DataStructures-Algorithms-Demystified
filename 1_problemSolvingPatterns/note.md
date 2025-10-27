@@ -22,6 +22,7 @@
         - Example algos: Bubble Sort 
 
     - O(n) when:
-        - Both loops continuesly move forward through the data only once
+        - Both loops continuesly move forward through the data only once 
+        - In worse case where left pointer shrinks window from start to the right at the end (ie, zero/one size window), time complexity will still be O(n + n) = O(n)....similar to sibbling loops
         - Example algos: Sliding window, two pointers
     

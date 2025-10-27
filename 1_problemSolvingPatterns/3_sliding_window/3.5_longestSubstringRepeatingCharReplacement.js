@@ -21,12 +21,43 @@ There may exists other ways to achieve this answer too.
 Info: https://www.youtube.com/watch?v=ExY8svHF_Eo&t=961s
 */
 
+function longestSubstringWithRepeatingCharReplacement(inpString, k) {
+    let leftPointer = 0;
+    let maxWindowSize = 0;
+    let freqMapper = {};
+    let maxfreq = 0
 
+    for (let rightPointer = 0; rightPointer < inpString.length; rightPointer++) {
+        // track char occurrences
+        const char = inpString[rightPointer]
+        freqMapper[char] = (freqMapper[char] || 0) + 1  // access existing value then +1 or default 0 then +1
+        
+        // find char w/ max freq 
+        maxfreq = Math.max(maxfreq, freqMapper[char]);
+        
+        // shrink window if number-of-char-to-change go beyond limit
+            // ...rightPointer - leftPointer + 1 => current window size
+            // ...windowSize - maxfreq => number of char to change
+        while(((rightPointer - leftPointer + 1) - maxfreq) > k){
+            leftPointer++;
+            freqMapper[inpString[leftPointer]]--;  // update map for that char
+        }
+        
+        // find max win
+        windowSize = rightPointer - leftPointer + 1;    // recalculate win size as might change
+        maxWindowSize = Math.max(maxWindowSize, windowSize)
+    }
+    
+    return maxWindowSize;
+}
 
+console.log("a1:", longestSubstringWithRepeatingCharReplacement("AABABBA", 1));
+console.log("a2:", longestSubstringWithRepeatingCharReplacement("ABAB", 2));
+console.log("a3:", longestSubstringWithRepeatingCharReplacement("AABABCCBCCB", 2));
 
 
 /*
-- Note: that since both loops move forward through the data once → TC = O(n) NOT O(n²)
+- Note: that since both loops move forward through the data once → TC = O(n + n) = O(n)
 
 - When does a nested loop have O(n²) time complexity and when does it become O(n)?
     - O(n²) when: 
