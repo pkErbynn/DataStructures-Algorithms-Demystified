@@ -11,6 +11,7 @@ Example 1:
 Input: s = "ADOBECODEBANC", t = "ABC"
 Output: "BANC"
 Explanation: The minimum window substring "BANC" includes 'A', 'B', and 'C' from string t.
+NB: the order does not matter
 
 Example 2:
 
