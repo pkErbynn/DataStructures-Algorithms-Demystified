@@ -26,4 +26,61 @@ Output: ""
 Explanation: Both 'a's from t must be included in the window.
 Since the largest window of s only has one 'a', return empty string.
 
+Ref: https://www.youtube.com/watch?v=jSto0O4AJbM
 */
+
+function minWindow(inpString, target) {
+    if(target.length > inpString.length || target === "") return "";    // invalid
+
+    const needTargetMap = {};
+    for(let char of target){
+        needTargetMap[char] = (needTargetMap[char] || 0) + 1;
+    }
+    const needTargetCounter = Object.keys(needTargetMap).length;
+
+    const windowMap = {};
+    let haveCounter = 0;
+
+    let leftPointer = 0;
+    let minWindow = Infinity;
+    let minLeftPointerOfValidWindow = 0;
+
+    // Input: s = "ADOBECODEBANC", t = "ABC"
+    for (let rightPointer = 0; rightPointer < inpString.length; rightPointer++) {
+        const char = inpString[rightPointer];
+        windowMap[char] = (windowMap[char] || 0) + 1;
+
+        if(needTargetMap.hasOwnProperty(char) && windowMap[char] === needTargetMap[char]){
+            haveCounter++;
+        }
+
+        // Shrink window while all required chars are satisfied
+        while (haveCounter === needTargetCounter) {
+            // record min valid window
+            let currentWindow = rightPointer - leftPointer + 1;
+            if(currentWindow < minWindow){
+                minWindow = currentWindow;
+                minLeftPointerOfValidWindow = leftPointer;  // keep copy of the starting index of the smallest valid window
+            }
+
+            // strink window from left
+            let leftChar = inpString[leftPointer];
+            windowMap[leftChar]--;  // update map
+            if(windowMap[leftChar] < needTargetMap[leftChar]){
+                haveCounter--;  // update counter
+            }
+            leftPointer++;  // update pointer by moving forward
+        }
+    }
+
+    if(minWindow === Infinity){
+        return "";
+    }
+
+    return inpString.substring(minLeftPointerOfValidWindow, minLeftPointerOfValidWindow + minWindow);
+}
+
+console.log(minWindow("ADOBECODEBANC", "ABC")); // "BANC"
+console.log(minWindow("ADOBECODEBANC", ""));    // ""
+console.log(minWindow("a", "a"));               // "a"
+console.log(minWindow("a", "aa"));              // ""
