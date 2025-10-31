@@ -57,6 +57,7 @@ function longest_Substring_with_K_Distinct_Characters(strInput, k){
     const windowEndValue = strInput[windowEnd];
     // populates frequency counter {}
     charFrequency[windowEndValue] = !charFrequency[windowEndValue] ? 1 : charFrequency[windowEndValue] + 1; // charFrequency = { "a": 2, c: 1 };
+    
     //{a: 2, r: 1, c: 1}
     // convert object to map to get access to key length which represent the length of distinct letters 
     // used to ensure that whenever the number of diff/unique letters is more than the k, then remove the firstEle from the window block to resize it 
