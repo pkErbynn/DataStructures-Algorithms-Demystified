@@ -4,7 +4,7 @@
 - input: unsorted data
 - output: sum of subset
 
-> Leverage SlidingWindow when dealing with problems having an array (or a LinkedList), where asked to find or calculate something among all the **contiguous subarrays** (or sublists) of a **given size**.
+> Leverage SlidingWindow when dealing with problems having an array (or a LinkedList), where asked to extract subarray or calculate something among all the **contiguous subarrays** (or sublists) of a **given size**.
 
 ### Types of SW
 1. Static Sliding Window
@@ -41,3 +41,11 @@ This may not be entirely true but so far this is my relization:
     - inputs: mostly for unsorted inputs
     - retrieves subset of the entire input **contiguously**
     - it's special kind of 2-pointer but in close boundary
+
+### POV
+- Simple sliding window excludes frequency map
+- Mid-difficult sliding window has only a condition that needs to be met
+- Complex sliding window include condition + frequency map tracker
+- The question determines if window size is calculated within/outside the condition
+    - for max win, window may mostly be calc outside the shrinking while loop (after making window valid)
+    - for min win, inside the shrinking while loop (right before shrinking)
