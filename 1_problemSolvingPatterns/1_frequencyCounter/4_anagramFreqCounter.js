@@ -113,3 +113,18 @@ console.log(anagram2('seee', 'eess'));
 // - Frequency Counter has a lot of instances where the arrays/strings are not same/equivalent (based on condition)
 // - That's why the inner loops checks for falsy statement
 // - And the outer loop checks for truthy return
+
+/*
+
+Recall tip:
+
+Anagram
+- think “Arrange again.”
+- “Gram” (letters) → “Ana” (again).
+- Another arrangement/grammar
+
+Palindrom 
+- Same both ways, forward and backwards
+- Pendilom swings
+
+*/
