@@ -52,3 +52,19 @@ function isPalindrome_forloop(s) {
 console.log("Result_forloop:", isPalindrome_forloop("madam"));
 console.log("Result2_forloop:", isPalindrome_forloop("racecar"));
 console.log("Result3_forloop:", isPalindrome_forloop("javascript"));
+
+
+/*
+
+Recall tips:
+
+Anagram
+- think “Arrange again.”
+- “Gram” (letters) → “Ana” (again).
+- Another arrangement/grammar
+
+Palindrom 
+- Same both ways
+- Pendilom swings,  forward and backwards
+
+*/
