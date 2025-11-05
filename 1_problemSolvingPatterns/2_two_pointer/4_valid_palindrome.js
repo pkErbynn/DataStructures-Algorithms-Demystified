@@ -1,7 +1,8 @@
 /*
 Write a function that takes a string s as input and checks whether it’s a palindrome or not.
 
-About Palintrome
+---
+About Palindrome
 - Palindrome is a word, phrase, number, or other sequence of characters 
 that reads the same forward and backward, ignoring any spaces, punctuation, or capitalization
 - Palindrome is like a MIRROW REFLECTION. When you look at a word that's a palindrome, it's like seeing its reflection in a mirror. It's like the word is mirrored perfectly, showing the same pattern no matter which way you look at it. 
@@ -9,7 +10,51 @@ that reads the same forward and backward, ignoring any spaces, punctuation, or c
 
 */
 
+// TODO: Complete, Test, Move down as alt solution + generate consolidated solution
+function palindrome_midToEndsApproach(s) {
 
+    // even by default
+    isEven = true;
+    let midIndex = Math.floor(s.length/2);
+
+    if((midIndex % 2) !== 0){
+        isEven = false;
+    }
+
+    if (isEven){
+        let startIndex = midIndex;
+        let endIndex = midIndex + 1;
+
+        while (startIndex >= 0 && endIndex <= s.length - 1) {
+            if(s[startIndex] !== s[endIndex]){
+                return false;
+            }
+
+            startIndex--;
+            endIndex++;
+        }
+        return true;
+    }
+
+    let startIndex = midIndex;
+    let endIndex = midIndex;
+    while (startIndex >= 0 && endIndex <= s.length - 1) {
+        if(startIndex == endIndex) continue;    // skip first iteration
+
+        if(s[startIndex] !== s[endIndex]){
+            return false;
+        }
+
+        startIndex--;
+        endIndex++;
+    }
+    
+    return true;
+
+
+
+
+}
 
 function isPalindrome(s) { // ***
     let startIndex = 0;
