@@ -17,7 +17,7 @@ function palindrome_midToEndsApproach(s) {
     isEven = true;
     let midIndex = Math.floor(s.length/2);
 
-    if((midIndex % 2) !== 0){
+    if((s.length % 2) !== 0){
         isEven = false;
     }
 
@@ -36,10 +36,15 @@ function palindrome_midToEndsApproach(s) {
         return true;
     }
 
+    // Odd case
     let startIndex = midIndex;
     let endIndex = midIndex;
     while (startIndex >= 0 && endIndex <= s.length - 1) {
-        if(startIndex == endIndex) continue;    // skip first iteration
+        if(startIndex == endIndex){ // skip first iteration cus they point to same index w/ same value
+            startIndex--;
+            endIndex++;
+            continue;    
+        }
 
         if(s[startIndex] !== s[endIndex]){
             return false;
@@ -50,12 +55,16 @@ function palindrome_midToEndsApproach(s) {
     }
     
     return true;
-
-
-
-
 }
 
+console.log("palindrome_midToEndsApproach1:", palindrome_midToEndsApproach("madam"));   // odd - valid
+console.log("palindrome_midToEndsApproach1:", palindrome_midToEndsApproach("madmm"));   // odd - invalid
+console.log("palindrome_midToEndsApproach2:", palindrome_midToEndsApproach("racecar"));
+console.log("palindrome_midToEndsApproach3:", palindrome_midToEndsApproach("baab"));  // even
+console.log("palindrome_midToEndsApproach4:", palindrome_midToEndsApproach("javascript"));
+
+
+// -----
 function isPalindrome(s) { // ***
     let startIndex = 0;
     let endIndex = s.length - 1;  // -1 cus of zero-based index
