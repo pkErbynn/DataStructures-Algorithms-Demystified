@@ -89,7 +89,8 @@ console.log("Result2_forloop:", isPalindrome_forloop("racecar"));
 console.log("Result3_forloop:", isPalindrome_forloop("baab"));  // even
 console.log("Result4_forloop:", isPalindrome_forloop("javascript"));
 
-// ===================== Mid to ends approach   ========
+
+// ===================== Mid-to-ends approach   ========
 function palindrome_midToEndsApproach(s) {  // **
     if(s.length === 0) return true;
 
@@ -146,6 +147,7 @@ console.log("palindrome_midToEndsApproach5:", palindrome_midToEndsApproach("m"))
 console.log("palindrome_midToEndsApproach6:", palindrome_midToEndsApproach(""));   // edgeCase - valide - The reverse of an empty string is also an empty string.
 console.log("palindrome_midToEndsApproach7:", palindrome_midToEndsApproach("mm"));   // even - edgeCase - valid
 
+
 // consolidation refactore
 function palindrome_midToEndsApproach_refactored(s) {  // **
     if(s.length === 0) return true;
@@ -174,6 +176,7 @@ function palindrome_midToEndsApproach_refactored(s) {  // **
         startIndex--;
         endIndex++;
     }
+
     return true;
 }
 
