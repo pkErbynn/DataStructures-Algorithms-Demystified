@@ -10,64 +10,6 @@ that reads the same forward and backward, ignoring any spaces, punctuation, or c
 
 */
 
-// TODO: Complete(odd case completed, left w/ even case, need debugin'), Test, Move down as alt solution + generate consolidated solution
-function palindrome_midToEndsApproach(s) {
-
-    isOdd = true;  // even by default
-
-    if((s.length % 2) == 0){   // even/odd uses actual length w/out index positions
-        isOdd = false;
-    }
-
-    let midIndex = Math.floor((s.length - 1)/2);    // rembr: w/out (-1) assumes index starts from 1, but (-1) required since it's finding the index and position starts at 0...same way midIndex in BinarySearch is (0 + len-1)/2 and (0 + len)/2
-
-    // Even case
-    if (!isOdd){
-        let startIndex = midIndex;
-        let endIndex = midIndex + 1;
-
-        while (startIndex >= 0 && endIndex <= s.length - 1) {
-            if(s[startIndex] !== s[endIndex]){
-                return false;
-            }
-
-            startIndex--;
-            endIndex++;
-        }
-        return true;
-    }
-
-    // Odd case
-    let startIndex = midIndex;
-    let endIndex = midIndex;
-    while (startIndex >= 0 && endIndex <= s.length - 1) {
-        if(startIndex == endIndex){ // skip first iteration cus they point to same index w/ same value
-            startIndex--;
-            endIndex++;
-            continue;    
-        }
-
-        if(s[startIndex] !== s[endIndex]){
-            return false;
-        }
-
-        startIndex--;
-        endIndex++;
-    }
-    
-    return true;
-}
-
-console.log("palindrome_midToEndsApproach1:", palindrome_midToEndsApproach("madam"));   // odd - valid
-console.log("palindrome_midToEndsApproach2:", palindrome_midToEndsApproach("madmm"));   // odd - invalid
-console.log("palindrome_midToEndsApproach3:", palindrome_midToEndsApproach("baab"));    // even - valid
-console.log("palindrome_midToEndsApproach4:", palindrome_midToEndsApproach("mbaabn"));    // even - invalid
-console.log("palindrome_midToEndsApproach5:", palindrome_midToEndsApproach("m"));   // odd - edgeCase - valid
-console.log("palindrome_midToEndsApproach6:", palindrome_midToEndsApproach(""));   // edgeCase - valide - The reverse of an empty string is also an empty string.
-console.log("palindrome_midToEndsApproach7:", palindrome_midToEndsApproach("mm"));   // even - edgeCase - valid
-
-// add edge casex
-
 
 // -----
 function isPalindrome(s) { // ***
@@ -146,6 +88,102 @@ console.log("Result1_forloop:", isPalindrome_forloop("madam"));
 console.log("Result2_forloop:", isPalindrome_forloop("racecar"));
 console.log("Result3_forloop:", isPalindrome_forloop("baab"));  // even
 console.log("Result4_forloop:", isPalindrome_forloop("javascript"));
+
+// ===================== Mid to ends approach   ========
+function palindrome_midToEndsApproach(s) {  // **
+    if(s.length === 0) return true;
+
+    isOdd = true;  // odd by default
+
+    if((s.length % 2) == 0){   // even/odd uses actual length w/out index positions
+        isOdd = false;
+    }
+
+    let midIndex = Math.floor((s.length - 1)/2);    // rembr: w/out (-1) assumes index starts from 1, but (-1) required since it's finding the index and position starts at 0...same way midIndex in BinarySearch is (0 + len-1)/2 and (0 + len)/2
+    let startIndex = midIndex;
+    let endIndex = midIndex;    // all same index since odd
+
+    // Even case
+    if (!isOdd){
+        startIndex = midIndex;
+        endIndex = midIndex + 1;
+
+        while (startIndex >= 0 && endIndex <= s.length - 1) {
+            if(s[startIndex] !== s[endIndex]){
+                return false;
+            }
+
+            startIndex--;
+            endIndex++;
+        }
+        return true;
+    }
+
+    // Odd case
+    while (startIndex >= 0 && endIndex <= s.length - 1) {
+        if(startIndex == endIndex){ // skip first iteration cus they point to same index w/ same value
+            startIndex--;
+            endIndex++;
+            continue;    
+        }
+
+        if(s[startIndex] !== s[endIndex]){
+            return false;
+        }
+
+        startIndex--;
+        endIndex++;
+    }
+    
+    return true;
+}
+
+console.log("palindrome_midToEndsApproach1:", palindrome_midToEndsApproach("madam"));   // odd - valid
+console.log("palindrome_midToEndsApproach2:", palindrome_midToEndsApproach("madmm"));   // odd - invalid
+console.log("palindrome_midToEndsApproach3:", palindrome_midToEndsApproach("baab"));    // even - valid
+console.log("palindrome_midToEndsApproach4:", palindrome_midToEndsApproach("mbaabn"));    // even - invalid
+console.log("palindrome_midToEndsApproach5:", palindrome_midToEndsApproach("m"));   // odd - edgeCase - valid
+console.log("palindrome_midToEndsApproach6:", palindrome_midToEndsApproach(""));   // edgeCase - valide - The reverse of an empty string is also an empty string.
+console.log("palindrome_midToEndsApproach7:", palindrome_midToEndsApproach("mm"));   // even - edgeCase - valid
+
+// consolidation refactore
+function palindrome_midToEndsApproach_refactored(s) {  // **
+    if(s.length === 0) return true;
+
+    isOdd = (s.length % 2) !== 0;  // odd by default
+
+    let midIndex = Math.floor((s.length - 1)/2);    // rembr: w/out (-1) assumes index starts from 1, but (-1) required since it's finding the index and position starts at 0...same way midIndex in BinarySearch is (0 + len-1)/2 and (0 + len)/2
+    let startIndex = midIndex;
+    let endIndex = isOdd ? midIndex : midIndex + 1;    // all same index since odd
+
+    // if(!isOdd) {
+    //     endIndex = midIndex + 1;
+    // }
+
+    while (startIndex >= 0 && endIndex <= s.length - 1) {
+        if(isOdd && startIndex === endIndex){    // can be removed since doesn't break logic
+            startIndex--;
+            endIndex++;
+            continue;    
+        }
+
+        if(s[startIndex] !== s[endIndex]){
+            return false;
+        }
+
+        startIndex--;
+        endIndex++;
+    }
+    return true;
+}
+
+console.log("palindrome_midToEndsApproach_refactored1:", palindrome_midToEndsApproach_refactored("madam"));   // odd - valid
+console.log("palindrome_midToEndsApproach_refactored2:", palindrome_midToEndsApproach_refactored("madmm"));   // odd - invalid
+console.log("palindrome_midToEndsApproach_refactored3:", palindrome_midToEndsApproach_refactored("baab"));    // even - valid
+console.log("palindrome_midToEndsApproach_refactored4:", palindrome_midToEndsApproach_refactored("mbaabn"));    // even - invalid
+console.log("palindrome_midToEndsApproach_refactored5:", palindrome_midToEndsApproach_refactored("m"));   // odd - edgeCase - valid
+console.log("palindrome_midToEndsApproach_refactored6:", palindrome_midToEndsApproach_refactored(""));   // edgeCase - valide - The reverse of an empty string is also an empty string.
+console.log("palindrome_midToEndsApproach_refactored7:", palindrome_midToEndsApproach_refactored("mm"));   // even - edgeCase - valid
 
 
 /*
