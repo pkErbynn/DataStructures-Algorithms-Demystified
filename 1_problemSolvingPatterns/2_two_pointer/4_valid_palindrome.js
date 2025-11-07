@@ -10,18 +10,19 @@ that reads the same forward and backward, ignoring any spaces, punctuation, or c
 
 */
 
-// TODO: Complete, Test, Move down as alt solution + generate consolidated solution
+// TODO: Complete(odd case completed, left w/ even case, need debugin'), Test, Move down as alt solution + generate consolidated solution
 function palindrome_midToEndsApproach(s) {
 
-    // even by default
-    isEven = true;
-    let midIndex = Math.floor(s.length/2);
+    isOdd = true;  // even by default
 
-    if((s.length % 2) !== 0){
-        isEven = false;
+    if((s.length % 2) == 0){   // even/odd uses actual length w/out index positions
+        isOdd = false;
     }
 
-    if (isEven){
+    let midIndex = Math.floor((s.length - 1)/2);    // rembr: w/out (-1) assumes index starts from 1, but (-1) required since it's finding the index and position starts at 0...same way midIndex in BinarySearch is (0 + len-1)/2 and (0 + len)/2
+
+    // Even case
+    if (!isOdd){
         let startIndex = midIndex;
         let endIndex = midIndex + 1;
 
@@ -58,10 +59,14 @@ function palindrome_midToEndsApproach(s) {
 }
 
 console.log("palindrome_midToEndsApproach1:", palindrome_midToEndsApproach("madam"));   // odd - valid
-console.log("palindrome_midToEndsApproach1:", palindrome_midToEndsApproach("madmm"));   // odd - invalid
-console.log("palindrome_midToEndsApproach2:", palindrome_midToEndsApproach("racecar"));
-console.log("palindrome_midToEndsApproach3:", palindrome_midToEndsApproach("baab"));  // even
-console.log("palindrome_midToEndsApproach4:", palindrome_midToEndsApproach("javascript"));
+console.log("palindrome_midToEndsApproach2:", palindrome_midToEndsApproach("madmm"));   // odd - invalid
+console.log("palindrome_midToEndsApproach3:", palindrome_midToEndsApproach("baab"));    // even - valid
+console.log("palindrome_midToEndsApproach4:", palindrome_midToEndsApproach("mbaabn"));    // even - invalid
+console.log("palindrome_midToEndsApproach5:", palindrome_midToEndsApproach("m"));   // odd - edgeCase - valid
+console.log("palindrome_midToEndsApproach6:", palindrome_midToEndsApproach(""));   // edgeCase - valide - The reverse of an empty string is also an empty string.
+console.log("palindrome_midToEndsApproach7:", palindrome_midToEndsApproach("mm"));   // even - edgeCase - valid
+
+// add edge casex
 
 
 // -----
