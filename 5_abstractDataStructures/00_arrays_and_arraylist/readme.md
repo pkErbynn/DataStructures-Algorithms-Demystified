@@ -1,5 +1,14 @@
 ### Core concepts ####
+https://www.youtube.com/watch?v=n60Dn0UsbEk&t=2327s
+
+- linear ds stored in contiguous meme allocation
+    - contiguous, no extra mem allocations => no mem overflow
+- store same type
+    - can't mix it
+- fixed size
+- String[] arr => declaration
 - String[] arr = new String[size]
+    - arr is the reference var
     - arr are stored in Stack memory at compile time
     - object for arr is stored in the Heap and it's created at runtime
     - each element in the array is also a reference variable to an object in some memory allocation in the heap determine by the jvm

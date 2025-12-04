@@ -8,5 +8,5 @@
 
 253. Meeting Rooms II – find minimum rooms (interval overlap count).
 
-LeetCode 759 – Employee Free Time 🧩
+LeetCode 759 – Employee Free Time
 → Given employee working intervals, find time slots (gaps) when everyone is free.

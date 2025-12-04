@@ -17,7 +17,7 @@
 
 ### vs Arrays
 - Arrays are indexed in order
-    - List is not inexed
+    - LinkedList is not indexed
 - In arrays, accessing item is super fast **
     - In List, individual item access is expensive cus need to traverse through all elements...eg: elevator can't skip some floors straight to a particular floor
 - In Arrays, insertion or Deletion is super expensive, cus of the ripple effect of reindexing
