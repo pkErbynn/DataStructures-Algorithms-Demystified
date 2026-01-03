@@ -15,6 +15,25 @@
 ### When not to use
 - accessing an element in the list requires traversing the list from the HEAD until the desired element is reached, which can be time-consuming for large lists.
 
+### real-world cases where a singly linked list is better than an array (short):
+
+1. Music / video playlist (next track only)
+
+    - Easy to insert/remove songs without shifting elements
+    - Only need to move forward (current → next)
+
+2. Browser history (forward navigation)
+    - Each page points to the next visited page
+    - No need for random access, just sequential traversal
+
+3. Job queue / task scheduling (FIFO)
+
+    - Fast insert at tail, fast remove from head
+    - No costly resizing or shifting like arrays
+
+Key idea:
+    - Use a singly linked list when data changes often and access is sequential, not random.
+
 ### vs Arrays
 - Arrays are indexed in order
     - LinkedList is not indexed
@@ -23,7 +42,7 @@
 - In Arrays, insertion or Deletion is super expensive, cus of the ripple effect of reindexing
     - Insertion and deletion gave birth to List **
 - Array: Better for 'Write less, Read' many operations
-    - LinkedList: Better for Write many, Read less operations (at start)
+    - LinkedList: Better for 'Write many, Read less' operations (at start)
     - Write => Insert, Delete (Delete at end is not efficient in Linkedlist, unless Doubly)
 
 

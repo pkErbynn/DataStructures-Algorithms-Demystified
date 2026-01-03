@@ -3,7 +3,6 @@
 /* 
 
 Singly Linked List:
-
    2 -> 3 -> 4 -> 1 -> 6 
 (head)               (tail)     
 
