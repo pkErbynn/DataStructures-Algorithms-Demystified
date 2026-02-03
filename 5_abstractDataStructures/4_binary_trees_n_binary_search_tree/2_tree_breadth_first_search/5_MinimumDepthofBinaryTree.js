@@ -15,7 +15,7 @@ As soon as we find our first leaf node, that level will represent the minimum de
 
 I ask, Why not use DFS approach? 
 - because otherwise you would have to visit every depth, then take the least depth, which is an expensive operation
-- with BFS, you could just do a partial visit / traversal, thus, efficient operation
+- with BFS, you could just do a partial visit/traversal at each level, thus, efficient operation
 
 */
 
