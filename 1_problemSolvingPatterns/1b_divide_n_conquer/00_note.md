@@ -29,3 +29,28 @@ Binary search and binary tree search are both search algorithms used in data str
 - In summary, the main difference between binary search and binary tree search is:
     - the data structure being searched. Binary search is used to search for a value in a sorted array, while binary tree search is used to search for a value in a binary tree. 
     - Additionally, binary tree search requires traversing the tree from the root to the leaf node, whereas binary search only requires dividing the array in half.
+
+#### The While-loop pure translation
+- While I'm young I will continue to play football
+    - Can be seen as:
+        - Since I'm young, I'll continue to play football.
+        - Until I am no longer young, I will continue to play football
+
+- Example
+    - While I'm young, I will continue to play football
+    ```js
+    // While I'm young, I will continue to play football => Since I'm young, I'll continue to play football.
+    let age = 18; // Current age
+    while (age < 30) { // Assuming "young" means under 30 years
+        console.log("I will continue to play football.");
+        age++; // Increment age each time (representing a year)
+    }
+
+    // Until I am no longer young, I will continue to play football
+    let age = 18; // Example age
+    while (age < 30) { // Assuming "young" means under 30 years
+        console.log("I will continue to play football.");
+        age++; // Increment age each time (representing a year)
+    }
+
+    ```

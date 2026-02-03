@@ -104,8 +104,28 @@ function palindrome_midToEndsApproach(s) {  // **
     let startIndex = midIndex;
     let endIndex = midIndex;    // all same index since odd
 
+    // Odd case
+    if(isOdd){
+        while (startIndex >= 0 && endIndex <= s.length - 1) {
+            if(startIndex == endIndex){ // skip first iteration cus they point to same index w/ same value
+                startIndex--;
+                endIndex++;
+                continue;    
+            }
+
+            if(s[startIndex] !== s[endIndex]){
+                return false;
+            }
+
+            startIndex--;
+            endIndex++;
+        }
+        
+        return true;
+    }
+
     // Even case
-    if (!isOdd){
+    if (!isOdd){    // can be removed
         startIndex = midIndex;
         endIndex = midIndex + 1;
 
@@ -117,26 +137,10 @@ function palindrome_midToEndsApproach(s) {  // **
             startIndex--;
             endIndex++;
         }
+        
         return true;
     }
-
-    // Odd case
-    while (startIndex >= 0 && endIndex <= s.length - 1) {
-        if(startIndex == endIndex){ // skip first iteration cus they point to same index w/ same value
-            startIndex--;
-            endIndex++;
-            continue;    
-        }
-
-        if(s[startIndex] !== s[endIndex]){
-            return false;
-        }
-
-        startIndex--;
-        endIndex++;
-    }
     
-    return true;
 }
 
 console.log("palindrome_midToEndsApproach1:", palindrome_midToEndsApproach("madam"));   // odd - valid
