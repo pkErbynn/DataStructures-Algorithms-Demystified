@@ -42,6 +42,7 @@ Explanation: The friends leave in this order: 5, 4, 6, 2, 3. The winner is frien
 */
 
 
+// Uses the Round-Robbin elimination method
 function getWinnerInTheCircle(n, k) {
     
     // Initialize an array representing the friends in the circle
