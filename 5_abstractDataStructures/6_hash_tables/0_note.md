@@ -98,7 +98,10 @@ Vs Arrays
 - in HashMaps:
     - color["white"] = #ffff
     - much better
-        
+
+### Workflow
+- key -> hash() -> hashcode -> bucket slot
+
 ### Implementation
 Hashing conceptualization
 - implemented just like arrays but uses any other ds like strings
