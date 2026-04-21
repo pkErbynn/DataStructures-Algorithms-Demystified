@@ -41,6 +41,8 @@ class SinglyLinkedList {
     }
 
     // remove node from the end
+    //   2 -> 3 -> 4 -> 1 -> 6 
+    // (head)              (tail)   
     pop(){
         // check for empty list ==> 0
         if(!this.head){
@@ -66,7 +68,7 @@ class SinglyLinkedList {
             currentNode = currentNode.next;
         }
 
-        if(penultimateNodeOfCurrentNode){
+        if(penultimateNodeOfCurrentNode != null){   // or if(penultimateNodeOfCurrentNode)
             penultimateNodeOfCurrentNode.next = null; // break/terminate the chain
         }
         
@@ -137,6 +139,8 @@ class SinglyLinkedList {
     // get a node by its position
     // getting the 100th node means traversing through 99 nodes which is inefficient...cus can't be accessed outright
     // this is where array beats linkedlist...cus element can be access directly without traversing through any other elements
+    //   2 -> 3 -> 4 -> 1 -> 6 
+    // (head)              (tail)   
     get(index){
         // check if not within range
         if(index < 0 || index >= this.length){  // >= cus index start at 0
@@ -152,7 +156,7 @@ class SinglyLinkedList {
         let currentNode = this.head;
         let counter = 0;    // initial index
         
-        while(currentNode.next){
+        while(currentNode.next != null){    // while(currentNode.next)
             currentNode = currentNode.next;
             counter++; // counting the steps to match the incoming index position that the object needs to be retrieved
             if(counter === index){
@@ -169,6 +173,8 @@ class SinglyLinkedList {
     }
 
      // remove a node from specific position
+    //   2 -> 3 -> 4 -> 5 -> 1 -> 6 
+    // (head)                   (tail) 
     remove(index){
         // if invalid range
         if(index < 0 || index >= this.length) return null;
