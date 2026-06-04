@@ -1,3 +1,3 @@
-// Simulate the 2 Git Pull Request workflows
+// Simulate the 2 Git Pull Request synchronization workflows
 // 1. Git pull and merge 
 // 2. Git pull and rebase
