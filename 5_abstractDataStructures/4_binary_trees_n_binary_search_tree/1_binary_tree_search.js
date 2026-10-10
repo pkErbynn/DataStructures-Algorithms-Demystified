@@ -1,4 +1,6 @@
-// Node has a value and nullable left n right nodes by default
+// A Tree Node has: 
+// 1. a value and 
+// 2. nullable left n right nodes by default
 class Node {
     constructor(value){
         this.value = value;
@@ -36,7 +38,7 @@ class BST {
             // if incomming value is less than current parent node
             // then go left, for the insertion
             if(value < currentNode.value){
-                // if current parent not is a leaf node, set its left node
+                // if current parent node is a leaf node, set its left node
                 if(currentNode.left === null){  // null check
                     currentNode.left = newNode;
                     return this;
@@ -60,23 +62,29 @@ class BST {
 
     }
 
-/*
-     insert_recursive(value){
+
+    insert_recursive(value){
         let newNode = new Node(value);
 
-        // if not root node, set new node as root
+        // if no root node exist, set new node as root (ie, tree)
+        // read (!x) as: X does NOT exist...or X is NOT found....so trick is: variable first, then the ! second...apply to everywhere
         if(!this.root) {
             this.root = newNode;
             return this;
         }
 
-        // else
-        let currentNode = this.root; // for traversing and tracking
+        // else if root node already exist, then set a current pointer for traversal and tracking 
+        let currentNode = this.root;
 
         let insert_node = function(node){
-            // base case
+            // base case => when to stop
             if(!node){
                 return newNode;
+            }
+
+            // body + self call
+            if(value === node.value) {
+                return null;
             }
             if(value < node.value){
                 node.left = insert_node(node.left); 
@@ -84,15 +92,11 @@ class BST {
             if(value > node.value) {
                 node.right = insert_node(node.right); 
             }
-            if(value === node.value) {
-                return null;
-            }
             return node;  // nb: return each node
         }
         
        insert_node(currentNode);
     }
-*/
 
 
     // search a node
@@ -126,9 +130,10 @@ class BST {
 
         let currentNode = troot;
         
-        // base case: currentNode ==null
+        // base case: currentNode == null
         if(!currentNode) return false;
 
+        // body + self call: return if found, otherwise recurse/traverse/walkthrough each left n right leg
         if(value === currentNode.value){
             return currentNode;
         }
@@ -329,3 +334,10 @@ to fix it: take the mid as root, and break into binary
         5       -
      2    -  -    -
 */
+
+
+
+
+// The Catch: ***
+// if(x != null)  => if(x) ...READ AS if(x exists) => if(x is present)=> if(x is available)
+// if(x == null)  => if(!x) ...READ AS if(x does NOT exists) => if(x is NOT present) => if(x is NOT available)
